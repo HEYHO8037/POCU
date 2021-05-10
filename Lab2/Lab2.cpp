@@ -8,9 +8,9 @@ namespace lab2
 	{
 		int number;
 
-		string nonNumberTrash;
+		char nonNumberTrash;
 
-		out << "         out" << "        dec" << "      hex" << endl;
+		out << "         oct" << "        dec" << "      hex" << endl;
 		out << "------------ " << "---------- " << "--------" << endl;
 
 		while (!in.eof())
@@ -51,7 +51,7 @@ namespace lab2
 			}
 			else
 			{
-				if (saveMaxNumber == 0 || saveMaxNumber < number)
+				if (saveMaxNumber - number <= 0)
 				{
 					saveMaxNumber = number;
 				}
