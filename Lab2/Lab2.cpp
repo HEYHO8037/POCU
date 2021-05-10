@@ -56,11 +56,16 @@ namespace lab2
                 {
                     saveMaxNumber = number;
                 }
-                out << std::setfill(' ') << std::setw(5) <<  "" << std::setw(12) << std::internal  << std::showpoint << std::showpos << number << std::endl;
+
+                out << std::fixed;
+                out.precision(3);
+                out << std::setfill(' ') << std::setw(5) <<  "" << std::setw(12) << std::internal << std::showpos << number << std::endl;
                 continue;
             }
         }
-
-        out << "max : " << std::setw(12) << std::internal << std::showpoint << std::showpos << saveMaxNumber << std::endl;
+        
+        out << std::fixed;
+        out.precision(3);
+        out << "max: " << std::setw(12) << std::internal << std::showpos << saveMaxNumber << std::endl;
     }
 }
