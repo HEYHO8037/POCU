@@ -36,6 +36,7 @@ namespace lab2
 	void PrintMaxFloat(std::istream& in, std::ostream& out)
 	{
 		float saveMaxNumber = 0.0f;
+		int count = 0;
 		float number;
 
 		string nonNumberTrash;
@@ -43,6 +44,7 @@ namespace lab2
 		while (!in.eof())
 		{
 			in >> number;
+			count++;
 
 			if (in.fail())
 			{
@@ -51,10 +53,15 @@ namespace lab2
 			}
 			else
 			{
-				if (saveMaxNumber - number <= 0)
+				if (count == 1)
 				{
 					saveMaxNumber = number;
 				}
+				else if (count != 1 && saveMaxNumber - number <= 0)
+				{
+					saveMaxNumber = number;
+				}
+				
 
 				out << fixed;
 				out.precision(3);
