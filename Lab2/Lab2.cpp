@@ -5,13 +5,13 @@ namespace lab2
     void PrintIntegers(std::istream& in, std::ostream& out)
     {
         int number;
-
+        int count = 0;
         char nonNumberTrash;
 
         while (!in.eof())
         {
             in >> number;
-
+        
             if (in.fail())
             {
                 in.clear();
@@ -19,9 +19,16 @@ namespace lab2
             }
             else
             {
+                if (count == 0)
+                {
+                    out << "         out" << "        dec" << "      hex" << std::endl;
+                    out << "------------ " << "---------- " << "--------" << std::endl;
+                    count++;
+                }
+
                 out << std::setfill(' ') << std::setw(12) << std::oct << number;
-                out << std::setfill(' ') << std::setw(12) << std::dec << number;
-                out << std::setfill(' ') << std::setw(12) << std::hex << number << std::endl;
+                out << std::setfill(' ') << std::setw(11) << std::dec << number;
+                out << std::setfill(' ') << std::setw(9) << std::hex << number << std::endl;
                 continue;
             }
         }
@@ -49,11 +56,11 @@ namespace lab2
                 {
                     saveMaxNumber = number;
                 }
-                out << std::setfill(' ') << std::setw(5) <<  "" << std::setw(12) << std::internal << number << std::endl;
+                out << std::setfill(' ') << std::setw(5) <<  "" << std::setw(12) << std::internal  << std::showpoint << std::showpos << number << std::endl;
                 continue;
             }
         }
 
-        out << "max : " << std::setw(12) << std::internal << saveMaxNumber << std::endl;
+        out << "max : " << std::setw(12) << std::internal << std::showpoint << std::showpos << saveMaxNumber << std::endl;
     }
 }
