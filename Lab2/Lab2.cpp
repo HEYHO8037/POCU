@@ -6,12 +6,12 @@ namespace lab2
     {
         int number;
         int count = 0;
-        char nonNumberTrash;
+        std::string nonNumberTrash;
 
         while (!in.eof())
         {
             in >> number;
-        
+
             if (in.fail())
             {
                 in.clear();
@@ -26,9 +26,9 @@ namespace lab2
                     count++;
                 }
 
-                out << std::setfill(' ') << std::setw(12) << std::oct << number;
-                out << std::setfill(' ') << std::setw(11) << std::dec << number;
-                out << std::setfill(' ') << std::setw(9) << std::hex << number << std::endl;
+                out << std::setfill(' ') << std::setw(12) << std::oct << std::right << number;
+                out << std::setfill(' ') << std::setw(11) << std::dec << std::right << number;
+                out << std::setfill(' ') << std::setw(9) << std::hex << std::right << number << std::endl;
                 continue;
             }
         }
@@ -39,13 +39,13 @@ namespace lab2
         float saveMaxNumber = 0.0f;
         float number;
 
-        char nonNumberTrash;
+        std::string nonNumberTrash;
 
         while (!in.eof())
         {
             in >> number;
 
-            if (in.fail())
+            if (in.get() != '.' && in.fail())
             {
                 in.clear();
                 in >> nonNumberTrash;
@@ -59,13 +59,14 @@ namespace lab2
 
                 out << std::fixed;
                 out.precision(3);
-                out << std::setfill(' ') << std::setw(5) <<  "" << std::setw(12) << std::internal << std::showpos << number << std::endl;
+                out << std::setfill(' ') << std::setw(5) <<  "" << std::setw(15) << std::internal << std::showpos << number << std::endl;
                 continue;
             }
         }
-        
+
         out << std::fixed;
         out.precision(3);
-        out << "max: " << std::setw(12) << std::internal << std::showpos << saveMaxNumber << std::endl;
+        out << "max: " << std::setw(15) << std::internal << std::showpos << saveMaxNumber << std::endl;
+
     }
 }
