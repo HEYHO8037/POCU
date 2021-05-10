@@ -5,6 +5,7 @@ namespace lab2
     void PrintIntegers(std::istream& in, std::ostream& out)
     {
         int number;
+
         char nonNumberTrash;
 
         while (!in.eof())
@@ -28,8 +29,9 @@ namespace lab2
 
     void PrintMaxFloat(std::istream& in, std::ostream& out)
     {
-        float saveMaxNumber = 0;
+        float saveMaxNumber = 0.0f;
         float number;
+
         char nonNumberTrash;
 
         while (!in.eof())
