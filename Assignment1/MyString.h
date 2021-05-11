@@ -25,5 +25,8 @@ namespace assignment1
 		MyString& operator=(const MyString& rhs);
 		void ToLower();
 		void ToUpper();
+
+	private:
+		char* mString;
 	};
 }

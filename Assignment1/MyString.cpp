@@ -2,96 +2,143 @@
 
 namespace assignment1
 {
-    MyString::MyString(const char* s)
-    {
-        while (s != "\0")
-        {
+	MyString::MyString(const char* s)
+	{
+		int length;
+		int num;
+		char a;
 
-        }
-    }
+		for (length = 0; s[length]; length++);
 
-    MyString::MyString(const MyString& other)
-    {
-    }
+		mString = new char[length + 1];
 
-    MyString::~MyString()
-    {
-    }
+		for (num = 0; num <= length; num++)
+		{
+			mString[num] = s[num];
+		}
+	}
 
-    unsigned int MyString::GetLength() const
-    {
-        
-        return 0;
-    }
+	MyString::MyString(const MyString& other)
+	{
 
-    const char* MyString::GetCString() const
-    {
-        return 0;
-    }
+	}
 
-    void MyString::Append(const char* s)
-    {
-    }
+	MyString::~MyString()
+	{
+		delete[] mString;
+	}
 
-    MyString MyString::operator+(const MyString& other) const
-    {
-        return MyString("temporary");
-    }
+	unsigned int MyString::GetLength() const
+	{
+		int length;
 
-    int MyString::IndexOf(const char* s)
-    {
-        return 0;
-    }
+		for (length = 0; mString[length]; length++);
 
-    int MyString::LastIndexOf(const char* s)
-    {
-        return 0;
-    }
+		return length;
+	}
 
-    void MyString::Interleave(const char* s)
-    {
-    }
+	const char* MyString::GetCString() const
+	{
+		const char* pString = mString;
+		return pString;
+	}
 
-    bool MyString::RemoveAt(unsigned int i)
-    {
-        return false;
-    }
+	void MyString::Append(const char* s)
+	{
+		int length;
+		int num;
+		int totalLength;
+		int getNum = 0;
 
-    void MyString::PadLeft(unsigned int totalLength)
-    {
-    }
+		for (length = 0; s[length]; length++);
 
-    void MyString::PadLeft(unsigned int totalLength, const char c)
-    {
-    }
+		totalLength = GetLength() + length + 1;
 
-    void MyString::PadRight(unsigned int totalLength)
-    {
-    }
+		char* appendString = new char[totalLength];
 
-    void MyString::PadRight(unsigned int totalLength, const char c)
-    {
-    }
+		for (num = 0; num <= GetLength(); num++)
+		{
+			appendString[num] = mString[num];
+		}
 
-    void MyString::Reverse()
-    {
-    }
+		for (num = GetLength(); num <= totalLength - 1; num++)
+		{
+			appendString[num] = s[getNum];
+			getNum++;
+		}
 
-    bool MyString::operator==(const MyString& rhs) const
-    {
-        return false;
-    }
+		delete[] mString;
 
-    MyString& MyString::operator=(const MyString& rhs)
-    {
-        return *this;
-    }
+		mString = appendString;
 
-    void MyString::ToLower()
-    {
-    }
+		appendString = nullptr;
+	}
 
-    void MyString::ToUpper()
-    {
-    }
+	MyString MyString::operator+(const MyString& other) const
+	{
+
+
+
+
+
+
+		return MyString("ABC");
+	}
+
+	int MyString::IndexOf(const char* s)
+	{
+		return 0;
+	}
+
+	int MyString::LastIndexOf(const char* s)
+	{
+		return 0;
+	}
+
+	void MyString::Interleave(const char* s)
+	{
+	}
+
+	bool MyString::RemoveAt(unsigned int i)
+	{
+		return false;
+	}
+
+	void MyString::PadLeft(unsigned int totalLength)
+	{
+	}
+
+	void MyString::PadLeft(unsigned int totalLength, const char c)
+	{
+	}
+
+	void MyString::PadRight(unsigned int totalLength)
+	{
+	}
+
+	void MyString::PadRight(unsigned int totalLength, const char c)
+	{
+	}
+
+	void MyString::Reverse()
+	{
+	}
+
+	bool MyString::operator==(const MyString& rhs) const
+	{
+		return false;
+	}
+
+	MyString& MyString::operator=(const MyString& rhs)
+	{
+		return *this;
+	}
+
+	void MyString::ToLower()
+	{
+	}
+
+	void MyString::ToUpper()
+	{
+	}
 }
