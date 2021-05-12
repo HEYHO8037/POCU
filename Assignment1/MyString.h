@@ -28,5 +28,6 @@ namespace assignment1
 
 	private:
 		char* mString;
+		int mStringLength = 0;
 	};
 }
