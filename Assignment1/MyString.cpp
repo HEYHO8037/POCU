@@ -118,30 +118,34 @@ namespace assignment1
 	int MyString::IndexOf(const char* s)
 	{
 		int index = -1;
-		bool bEqual = false;
+		int isEqual = 0;
 		int isEmpty = *s;
+		int length;
 
 		if (isEmpty == 0)
 		{
-			return isEmpty;
+			return 0;
 		}
 
-		
+		for (length = 0; s[length]; length++);
+
 		for (int totalNum = 0; mString[totalNum]; totalNum++)
 		{
+			isEqual = 0;
+
 			for (int subNum = 0; s[subNum]; subNum++)
 			{
 				if (mString[totalNum + subNum] == s[subNum])
 				{
-					bEqual = true;
+					isEqual++;
 				}
 				else
 				{
-					bEqual = false;
+					continue;
 				}
 			}
 
-			if (bEqual)
+			if (isEqual == length)
 			{
 				index = totalNum;
 				break;
@@ -154,30 +158,34 @@ namespace assignment1
 	int MyString::LastIndexOf(const char* s)
 	{
 		int index = -1;
-		bool bEqual = false;
+		int isEqual = 0;
 		int isEmpty = *s;
+		int length;
 
 		if (isEmpty == 0)
 		{
 			return GetLength();
 		}
 
+		for (length = 0; s[length]; length++);
 
 		for (int totalNum = 0; mString[totalNum]; totalNum++)
 		{
+			isEqual = 0;
+
 			for (int subNum = 0; s[subNum]; subNum++)
 			{
 				if (mString[totalNum + subNum] == s[subNum])
 				{
-					bEqual = true;
+					isEqual++;
 				}
 				else
 				{
-					bEqual = false;
+					continue;
 				}
 			}
 
-			if (bEqual)
+			if (isEqual == length)
 			{
 				index = totalNum;
 			}
@@ -454,14 +462,12 @@ namespace assignment1
 
 	bool MyString::operator==(const MyString& rhs) const
 	{
-		MyString Compare(GetCString());
-
-		char* firstString = Compare.mString;
+		char* firstString = mString;
 		char* secondString = rhs.mString;
 
 		bool bCompare = false;
 
-		int firstLength = Compare.GetLength();
+		int firstLength = GetLength();
 		int secondLength = rhs.GetLength();
 		int length;
 
