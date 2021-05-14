@@ -130,9 +130,9 @@ namespace assignment1
 
 	MyString MyString::operator+(const MyString& other) const
 	{
-		const char* getString = GetCString();
+		const char* getMyString = GetCString();
 
-		MyString PlusString(getString);
+		MyString PlusString(getMyString);
 		PlusString.Append(other.GetCString());
 
 		return PlusString;
@@ -494,7 +494,7 @@ namespace assignment1
 
 		if (maxLength != 0 && mString != nullptr)
 		{
-			for (length = 0; length <= maxLength; length++)
+			for (length = 0; length < maxLength; length++)
 			{
 				save = mString[length];
 				mString[length] = mString[GetLength() - length - 1];

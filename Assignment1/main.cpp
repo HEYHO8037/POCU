@@ -8,8 +8,8 @@ using namespace assignment1;
 
 int main()
 {
-	MyString a = MyString("");
-	a.Interleave("abc");
+	MyString a = MyString("abcd");
+	a.Reverse();
 
 
 	return 0;
