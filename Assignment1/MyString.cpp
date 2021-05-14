@@ -57,17 +57,11 @@ namespace assignment1
 
 	unsigned int MyString::GetLength() const
 	{
-		int length;
+		int length = 0;
 
 		if (mString != nullptr)
 		{
-			for (length = 0; mString[length]; length++)
-			{
-				if (&mString[length] == 0)
-				{
-					return 0;
-				}
-			}
+			for (length = 0; mString[length]; length++);
 		}
 		else
 		{
@@ -308,14 +302,13 @@ namespace assignment1
 		int saveNum = 0;
 		int saveLength = mStringLength;
 
-		mStringLength -= 1;
-
 		if (saveLength - 2 <= i)
 		{
 			return false;
 		}
 		else
 		{
+			mStringLength -= 1;
 			saveString = new char[mStringLength];
 
 			for (length = 0; length < saveLength - 1; length++)
@@ -483,11 +476,14 @@ namespace assignment1
 		char save;
 		int maxLength = GetLength() / 2;
 
-		for (length = 0; length <= maxLength; length++)
+		if (maxLength != 0 && mString != nullptr)
 		{
-			save = mString[length];
-			mString[length] = mString[GetLength() - length - 1];
-			mString[GetLength() - length - 1] = save;
+			for (length = 0; length <= maxLength; length++)
+			{
+				save = mString[length];
+				mString[length] = mString[GetLength() - length - 1];
+				mString[GetLength() - length - 1] = save;
+			}
 		}
 	}
 
