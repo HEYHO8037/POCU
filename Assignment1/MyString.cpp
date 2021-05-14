@@ -269,8 +269,8 @@ namespace assignment1
 		int saveNum = 0;
 		int saveLength = mStringLength;
 
-
 		mStringLength -= 1;
+
 		if (saveLength - 2 <= i)
 		{
 			return false;
@@ -440,7 +440,16 @@ namespace assignment1
 
 	void MyString::Reverse()
 	{
+		int length;
+		char save;
+		int maxLength = GetLength() / 2;
 
+		for (length = 0; length <= maxLength; length++)
+		{
+			save = mString[length];
+			mString[length] = mString[GetLength() - length - 1];
+			mString[GetLength() - length - 1] = save;
+		}
 	}
 
 	bool MyString::operator==(const MyString& rhs) const
@@ -482,16 +491,57 @@ namespace assignment1
 
 	MyString& MyString::operator=(const MyString& rhs)
 	{
+		mStringLength = rhs.mStringLength;
+		int length;
+		char* saveString =  new char[mStringLength];
+		char* storeString;
+
+		for (length = 0; length <= rhs.GetLength(); length++)
+		{
+			saveString[length] = rhs.mString[length];
+		}
+
+		saveString[mStringLength - 1] = '\0';
+
+		storeString = mString;
+		mString = saveString;
+
+		saveString = nullptr;
+		delete[] storeString;
+
+
 		return *this;
 	}
 
 	void MyString::ToLower()
 	{
-
+		int length;
+		for (length = 0; length <= GetLength(); length++)
+		{
+			if (mString[length] > 64 && mString[length] < 91)
+			{
+				mString[length] += 32;
+			}
+			else
+			{
+				continue;
+			}
+		}
 	}
 
 	void MyString::ToUpper()
 	{
-
+		int length;
+		for (length = 0; length <= GetLength(); length++)
+		{
+			if (mString[length] > 96 && mString[length] < 123)
+			{
+				mString[length] -= 32;
+			}
+			else
+			{
+				continue;
+			}
+		}
 	}
 }

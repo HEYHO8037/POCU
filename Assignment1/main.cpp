@@ -3,11 +3,13 @@
 
 int main()
 {
-	assignment1::MyString my1("abc");
+	assignment1::MyString my1("");
 	assignment1::MyString my2("");
 	assignment1::MyString m3 = my1 + my2;
+	bool a = my1 == my2;
 
-	my1.PadRight(6);
+	my1.ToUpper();
+
 
 
 
