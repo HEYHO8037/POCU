@@ -243,7 +243,7 @@ namespace assignment1
 
 		unsigned int firstNum = 0;
 		unsigned int secondNum = 0;
-		
+
 		if (s != nullptr)
 		{
 			isEmpty = *s;
@@ -332,7 +332,7 @@ namespace assignment1
 			mStringLength -= 1;
 			saveString = new char[mStringLength];
 
-			for (length = 0; length < mStringLength - 1; length++)
+			for (length = 0; length <= saveLength; length++)
 			{
 				if (length == i)
 				{
@@ -352,7 +352,7 @@ namespace assignment1
 
 			saveString = nullptr;
 			delete[] storeString;
-			
+
 			return true;
 		}
 	}
@@ -548,7 +548,7 @@ namespace assignment1
 		mStringLength = rhs.mStringLength;
 
 		unsigned int length;
-		char* saveString =  new char[mStringLength];
+		char* saveString = new char[mStringLength];
 		char* storeString;
 		char* otherString = rhs.mString;
 
