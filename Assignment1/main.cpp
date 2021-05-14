@@ -10,7 +10,7 @@ int main()
 {
 	MyString a("ABC");
 
-	MyString c("abcd");
+	a.RemoveAt(0);
 	MyString b = a;
 
 
