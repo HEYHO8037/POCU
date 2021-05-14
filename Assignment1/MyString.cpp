@@ -7,18 +7,25 @@ namespace assignment1
 		int otherLength;
 		int length;
 
-		for (otherLength = 0; s[otherLength]; otherLength++);
-
-		mStringLength = otherLength + 2;
-
-		mString = new char[mStringLength];
-
-		for (length = 0; length <= otherLength; length++)
+		if (s == nullptr)
 		{
-			mString[length] = s[length];
+			mStringLength = 0;
 		}
+		else
+		{
+			for (otherLength = 0; s[otherLength]; otherLength++);
 
-		mString[mStringLength - 1] = '\0';
+			mStringLength = otherLength + 2;
+
+			mString = new char[mStringLength];
+
+			for (length = 0; length <= otherLength; length++)
+			{
+				mString[length] = s[length];
+			}
+
+			mString[mStringLength - 1] = '\0';
+		}
 
 	}
 
@@ -51,12 +58,20 @@ namespace assignment1
 	unsigned int MyString::GetLength() const
 	{
 		int length;
-		for (length = 0; mString[length]; length++)
+
+		if (mString != nullptr)
 		{
-			if (&mString[length] == 0)
+			for (length = 0; mString[length]; length++)
 			{
-				return 0;
+				if (&mString[length] == 0)
+				{
+					return 0;
+				}
 			}
+		}
+		else
+		{
+			return 0;
 		}
 
 		return length;
@@ -72,23 +87,25 @@ namespace assignment1
 	void MyString::Append(const char* s)
 	{
 		int otherLength;
-		int length;
+		int length = 0;
 		int getNum = 0;
 		char* appendString;
 		int isEmpty = *s;
 
 		if (isEmpty != 0)
 		{
-
 			for (otherLength = 0; s[otherLength]; otherLength++);
 
-			mStringLength += otherLength;
+			mStringLength = GetLength() + otherLength + 2;
 
 			appendString = new char[mStringLength];
 
-			for (length = 0; mString[length]; length++)
+			if (mString != nullptr)
 			{
-				appendString[length] = mString[length];
+				for (length = 0; mString[length]; length++)
+				{
+					appendString[length] = mString[length];
+				}
 			}
 
 			for (; length <= mStringLength - 2; length++)
@@ -117,81 +134,95 @@ namespace assignment1
 
 	int MyString::IndexOf(const char* s)
 	{
-		int index = -1;
-		int isEqual = 0;
-		int isEmpty = *s;
-		int length;
-
-		if (isEmpty == 0)
+		if (s == nullptr)
 		{
-			return 0;
+			return -1;
 		}
-
-		for (length = 0; s[length]; length++);
-
-		for (int totalNum = 0; mString[totalNum]; totalNum++)
+		else
 		{
-			isEqual = 0;
+			int index = -1;
+			int isEqual = 0;
+			int isEmpty = *s;
+			int length;
 
-			for (int subNum = 0; s[subNum]; subNum++)
+			if (isEmpty == 0)
 			{
-				if (mString[totalNum + subNum] == s[subNum])
+				return 0;
+			}
+
+			for (length = 0; s[length]; length++);
+
+			for (int totalNum = 0; mString[totalNum]; totalNum++)
+			{
+				isEqual = 0;
+
+				for (int subNum = 0; s[subNum]; subNum++)
 				{
-					isEqual++;
+					if (mString[totalNum + subNum] == s[subNum])
+					{
+						isEqual++;
+					}
+					else
+					{
+						continue;
+					}
 				}
-				else
+
+				if (isEqual == length)
 				{
-					continue;
+					index = totalNum;
+					break;
 				}
 			}
 
-			if (isEqual == length)
-			{
-				index = totalNum;
-				break;
-			}
+			return index;
 		}
-
-		return index;
 	}
 
 	int MyString::LastIndexOf(const char* s)
 	{
-		int index = -1;
-		int isEqual = 0;
-		int isEmpty = *s;
-		int length;
-
-		if (isEmpty == 0)
+		if (s == nullptr)
 		{
-			return GetLength();
+			return -1;
 		}
-
-		for (length = 0; s[length]; length++);
-
-		for (int totalNum = 0; mString[totalNum]; totalNum++)
+		else
 		{
-			isEqual = 0;
+			int index = -1;
+			int isEqual = 0;
+			int isEmpty = *s;
+			int length;
 
-			for (int subNum = 0; s[subNum]; subNum++)
+			if (isEmpty == 0)
 			{
-				if (mString[totalNum + subNum] == s[subNum])
+				return GetLength();
+			}
+
+			for (length = 0; s[length]; length++);
+
+			for (int totalNum = 0; mString[totalNum]; totalNum++)
+			{
+				isEqual = 0;
+
+				for (int subNum = 0; s[subNum]; subNum++)
 				{
-					isEqual++;
+					if (mString[totalNum + subNum] == s[subNum])
+					{
+						isEqual++;
+					}
+					else
+					{
+						continue;
+					}
 				}
-				else
+
+				if (isEqual == length)
 				{
-					continue;
+					index = totalNum;
 				}
 			}
 
-			if (isEqual == length)
-			{
-				index = totalNum;
-			}
+			return index;
 		}
-
-		return index;
 	}
 
 	void MyString::Interleave(const char* s)
