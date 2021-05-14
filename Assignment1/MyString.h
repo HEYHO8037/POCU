@@ -27,7 +27,7 @@ namespace assignment1
 		void ToUpper();
 
 	private:
-		char* mString;
+		char* mString = nullptr;
 		int mStringLength = 0;
 	};
 }
