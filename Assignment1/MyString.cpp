@@ -18,7 +18,7 @@ namespace assignment1
 			mString[length] = s[length];
 		}
 
-		mString[mStringLength-1] = '\0';
+		mString[mStringLength - 1] = '\0';
 
 	}
 
@@ -27,6 +27,7 @@ namespace assignment1
 		int otherLength;
 		int length;
 		const char* getString = other.GetCString();
+		int isEmpty = *other.GetCString();
 
 		for (otherLength = 0; getString[otherLength]; otherLength++);
 
@@ -50,8 +51,13 @@ namespace assignment1
 	unsigned int MyString::GetLength() const
 	{
 		int length;
-
-		for (length = 0; mString[length]; length++);
+		for (length = 0; mString[length]; length++)
+		{
+			if (&mString[length] == 0)
+			{
+				return 0;
+			}
+		}
 
 		return length;
 	}
@@ -69,31 +75,36 @@ namespace assignment1
 		int length;
 		int getNum = 0;
 		char* appendString;
+		int isEmpty = *s;
 
-		for (otherLength = 0; s[otherLength]; otherLength++);
-
-		mStringLength += otherLength;
-
-		appendString = new char[mStringLength];
-
-		for (length = 0; mString[length]; length++)
+		if (isEmpty != 0)
 		{
-			appendString[length] = mString[length];
+
+			for (otherLength = 0; s[otherLength]; otherLength++);
+
+			mStringLength += otherLength;
+
+			appendString = new char[mStringLength];
+
+			for (length = 0; mString[length]; length++)
+			{
+				appendString[length] = mString[length];
+			}
+
+			for (; length <= mStringLength - 2; length++)
+			{
+				appendString[length] = s[getNum];
+				getNum++;
+			}
+
+			appendString[mStringLength - 1] = '\0';
+
+			delete[] mString;
+
+			mString = appendString;
+
+			appendString = nullptr;
 		}
-
-		for (; length <= mStringLength - 2; length++)
-		{
-			appendString[length] = s[getNum];
-			getNum++;
-		}
-
-		appendString[mStringLength - 1] = '\0';
-
-		delete[] mString;
-
-		mString = appendString;
-
-		appendString = nullptr;
 	}
 
 	MyString MyString::operator+(const MyString& other) const
@@ -108,6 +119,13 @@ namespace assignment1
 	{
 		int index = -1;
 		bool bEqual = false;
+		int isEmpty = *s;
+
+		if (isEmpty == 0)
+		{
+			return isEmpty;
+		}
+
 		
 		for (int totalNum = 0; mString[totalNum]; totalNum++)
 		{
@@ -137,6 +155,13 @@ namespace assignment1
 	{
 		int index = -1;
 		bool bEqual = false;
+		int isEmpty = *s;
+
+		if (isEmpty == 0)
+		{
+			return GetLength();
+		}
+
 
 		for (int totalNum = 0; mString[totalNum]; totalNum++)
 		{
@@ -281,22 +306,141 @@ namespace assignment1
 
 	void MyString::PadLeft(unsigned int totalLength)
 	{
+		char* saveString;
+		char* storeString;
+		int length;
+		int padNum = totalLength - GetLength();
+
+		if (totalLength > GetLength())
+		{
+			mStringLength = totalLength + 1;
+			saveString = new  char[mStringLength];
+
+			for (length = 0; length < mStringLength-1; length++)
+			{
+				if (length < padNum)
+				{
+					saveString[length] = ' ';
+				}
+				else
+				{
+					saveString[length] = mString[length - padNum];
+				}
+			}
+
+			saveString[mStringLength - 1] = '\0';
+
+			storeString = mString;
+			mString = saveString;
+			saveString = nullptr;
+			delete[] storeString;
+		}
+
 	}
 
 	void MyString::PadLeft(unsigned int totalLength, const char c)
 	{
+		char* saveString;
+		char* storeString;
+		int length;
+		int padNum = totalLength - GetLength();
+
+		if (totalLength > GetLength())
+		{
+			mStringLength = totalLength + 1;
+			saveString = new  char[mStringLength];
+
+			for (length = 0; length < mStringLength - 1; length++)
+			{
+				if (length < padNum)
+				{
+					saveString[length] = c;
+				}
+				else
+				{
+					saveString[length] = mString[length - padNum];
+				}
+			}
+
+			saveString[mStringLength - 1] = '\0';
+
+			storeString = mString;
+			mString = saveString;
+			saveString = nullptr;
+			delete[] storeString;
+		}
+
 	}
 
 	void MyString::PadRight(unsigned int totalLength)
 	{
+		char* saveString;
+		char* storeString;
+		int length;
+		int padNum = totalLength - GetLength();
+
+		if (totalLength > GetLength())
+		{
+			mStringLength = totalLength + 1;
+			saveString = new  char[mStringLength];
+
+			for (length = 0; length < mStringLength - 1; length++)
+			{
+				if (length < GetLength())
+				{
+					saveString[length] = mString[length];
+				}
+				else
+				{
+					saveString[length] = ' ';
+				}
+			}
+
+			saveString[mStringLength - 1] = '\0';
+
+			storeString = mString;
+			mString = saveString;
+			saveString = nullptr;
+			delete[] storeString;
+		}
 	}
 
 	void MyString::PadRight(unsigned int totalLength, const char c)
 	{
+		char* saveString;
+		char* storeString;
+		int length;
+		int padNum = totalLength - GetLength();
+
+		if (totalLength > GetLength())
+		{
+			mStringLength = totalLength + 1;
+			saveString = new  char[mStringLength];
+
+			for (length = 0; length < mStringLength - 1; length++)
+			{
+				if (length < GetLength())
+				{
+					saveString[length] = mString[length];
+				}
+				else
+				{
+					saveString[length] = c;
+				}
+			}
+
+			saveString[mStringLength - 1] = '\0';
+
+			storeString = mString;
+			mString = saveString;
+			saveString = nullptr;
+			delete[] storeString;
+		}
 	}
 
 	void MyString::Reverse()
 	{
+
 	}
 
 	bool MyString::operator==(const MyString& rhs) const
@@ -312,33 +456,27 @@ namespace assignment1
 		int secondLength = rhs.GetLength();
 		int length;
 
-		if (firstLength != secondLength)
-		{
-			return false;
-		}
-		else
-		{
-			for (length = 0; length <= firstLength; length++)
-			{
-				if (firstString[length] == secondString[length])
-				{
-					bCompare = true;
-				}
-				else
-				{
-					bCompare = false;
-					break;
-				}
-			}
 
-			if (bCompare)
+		for (length = 0; length <= firstLength; length++)
+		{
+			if (firstString[length] == secondString[length])
 			{
-				return true;
+				bCompare = true;
 			}
 			else
 			{
-				return false;
+				bCompare = false;
+				break;
 			}
+		}
+
+		if (bCompare)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 
@@ -349,9 +487,11 @@ namespace assignment1
 
 	void MyString::ToLower()
 	{
+
 	}
 
 	void MyString::ToUpper()
 	{
+
 	}
 }
