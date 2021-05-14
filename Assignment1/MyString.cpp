@@ -130,9 +130,9 @@ namespace assignment1
 
 	MyString MyString::operator+(const MyString& other) const
 	{
-		const char* getMyString = GetCString();
+		const char* saveString = GetCString();
 
-		MyString PlusString(getMyString);
+		MyString PlusString(saveString);
 		PlusString.Append(other.GetCString());
 
 		return PlusString;
@@ -236,6 +236,7 @@ namespace assignment1
 		int otherLength;
 		int saveLength;
 		int length;
+		int isEmpty;
 
 		char* saveString;
 		char* storeString;
@@ -245,67 +246,71 @@ namespace assignment1
 		
 		if (s != nullptr)
 		{
+			isEmpty = *s;
 
-			for (otherLength = 0; s[otherLength]; otherLength++);
-
-			saveLength = otherLength + GetLength();
-
-			if (otherLength == saveLength)
+			if (isEmpty != 0)
 			{
-				delete[] mString;
+				for (otherLength = 0; s[otherLength]; otherLength++);
 
-				mStringLength = otherLength + 2;
+				saveLength = otherLength + GetLength();
 
-				mString = new char[mStringLength];
-
-				for (length = 0; length <= otherLength; length++)
+				if (otherLength == saveLength)
 				{
-					mString[length] = s[length];
+					delete[] mString;
+
+					mStringLength = otherLength + 2;
+
+					mString = new char[mStringLength];
+
+					for (length = 0; length <= otherLength; length++)
+					{
+						mString[length] = s[length];
+					}
+
+					mString[mStringLength - 1] = '\0';
 				}
-
-				mString[mStringLength - 1] = '\0';
-			}
-			else if (otherLength != saveLength && otherLength != 0)
-			{
-				mStringLength += otherLength;
-
-				saveString = new char[mStringLength];
-
-				for (length = 0; length < mStringLength - 1; length++)
+				else if (otherLength != saveLength && otherLength != 0)
 				{
-					if (length % 2 == 0 && firstNum < GetLength())
+					mStringLength += otherLength;
+
+					saveString = new char[mStringLength];
+
+					for (length = 0; length < mStringLength - 1; length++)
 					{
-						saveString[length] = mString[firstNum];
-						firstNum++;
-					}
-					else if (length % 2 != 0 && secondNum < otherLength)
-					{
-						saveString[length] = s[secondNum];
-						secondNum++;
-					}
-					else
-					{
-						if (firstNum < GetLength())
+						if (length % 2 == 0 && firstNum < GetLength())
 						{
 							saveString[length] = mString[firstNum];
 							firstNum++;
 						}
-						else
+						else if (length % 2 != 0 && secondNum < otherLength)
 						{
 							saveString[length] = s[secondNum];
 							secondNum++;
 						}
+						else
+						{
+							if (firstNum < GetLength())
+							{
+								saveString[length] = mString[firstNum];
+								firstNum++;
+							}
+							else
+							{
+								saveString[length] = s[secondNum];
+								secondNum++;
+							}
+						}
 					}
+
+					saveString[mStringLength - 1] = '\0';
+
+					storeString = mString;
+					mString = saveString;
+
+					saveString = nullptr;
+					delete[] storeString;
+
 				}
-
-				saveString[mStringLength - 1] = '\0';
-
-				storeString = mString;
-				mString = saveString;
-
-				saveString = nullptr;
-				delete[] storeString;
-
 			}
 		}
 	}
@@ -316,9 +321,9 @@ namespace assignment1
 		char* storeString;
 		int length = 0;
 		int saveNum = 0;
-		unsigned int saveLength = mStringLength;
+		unsigned int saveLength = mStringLength - 2;
 
-		if (saveLength - 2 <= i)
+		if (saveLength <= i)
 		{
 			return false;
 		}
@@ -327,7 +332,7 @@ namespace assignment1
 			mStringLength -= 1;
 			saveString = new char[mStringLength];
 
-			for (length = 0; length < saveLength - 1; length++)
+			for (length = 0; length < mStringLength - 1; length++)
 			{
 				if (length == i)
 				{
@@ -425,7 +430,7 @@ namespace assignment1
 		char* saveString;
 		char* storeString;
 		unsigned int length;
-		int padNum = totalLength - GetLength();
+		unsigned int padNum = totalLength - GetLength();
 
 		if (totalLength > GetLength())
 		{
@@ -458,7 +463,7 @@ namespace assignment1
 		char* saveString;
 		char* storeString;
 		unsigned int length;
-		int padNum = totalLength - GetLength();
+		unsigned int padNum = totalLength - GetLength();
 
 		if (totalLength > GetLength())
 		{
@@ -490,7 +495,7 @@ namespace assignment1
 	{
 		int length;
 		char save;
-		int maxLength = GetLength() / 2;
+		unsigned int maxLength = GetLength() / 2;
 
 		if (maxLength != 0 && mString != nullptr)
 		{
@@ -541,13 +546,15 @@ namespace assignment1
 	MyString& MyString::operator=(const MyString& rhs)
 	{
 		mStringLength = rhs.mStringLength;
+
 		unsigned int length;
 		char* saveString =  new char[mStringLength];
 		char* storeString;
+		char* otherString = rhs.mString;
 
 		for (length = 0; length <= rhs.GetLength(); length++)
 		{
-			saveString[length] = rhs.mString[length];
+			saveString[length] = otherString[length];
 		}
 
 		saveString[mStringLength - 1] = '\0';
