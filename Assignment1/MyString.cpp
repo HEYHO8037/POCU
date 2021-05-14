@@ -34,20 +34,25 @@ namespace assignment1
 		int otherLength;
 		int length;
 		const char* getString = other.GetCString();
-		int isEmpty = *other.GetCString();
+		int isEmpty;
 
-		for (otherLength = 0; getString[otherLength]; otherLength++);
-
-		mStringLength = otherLength + 2;
-
-		mString = new char[mStringLength];
-
-		for (length = 0; length <= otherLength; length++)
+		if (getString != nullptr)
 		{
-			mString[length] = getString[length];
-		}
+			isEmpty = *other.GetCString();
 
-		mString[mStringLength - 1] = '\0';
+			for (otherLength = 0; getString[otherLength]; otherLength++);
+
+			mStringLength = otherLength + 2;
+
+			mString = new char[mStringLength];
+
+			for (length = 0; length <= otherLength; length++)
+			{
+				mString[length] = getString[length];
+			}
+
+			mString[mStringLength - 1] = '\0';
+		}
 	}
 
 	MyString::~MyString()
@@ -84,43 +89,50 @@ namespace assignment1
 		int length = 0;
 		int getNum = 0;
 		char* appendString;
-		int isEmpty = *s;
+		int isEmpty;
 
-		if (isEmpty != 0)
+		if (s != nullptr)
 		{
-			for (otherLength = 0; s[otherLength]; otherLength++);
+			isEmpty = *s;
 
-			mStringLength = GetLength() + otherLength + 2;
-
-			appendString = new char[mStringLength];
-
-			if (mString != nullptr)
+			if (isEmpty != 0)
 			{
-				for (length = 0; mString[length]; length++)
+				for (otherLength = 0; s[otherLength]; otherLength++);
+
+				mStringLength = GetLength() + otherLength + 2;
+
+				appendString = new char[mStringLength];
+
+				if (mString != nullptr)
 				{
-					appendString[length] = mString[length];
+					for (length = 0; mString[length]; length++)
+					{
+						appendString[length] = mString[length];
+					}
 				}
+
+				for (; length <= mStringLength - 2; length++)
+				{
+					appendString[length] = s[getNum];
+					getNum++;
+				}
+
+				appendString[mStringLength - 1] = '\0';
+
+				delete[] mString;
+
+				mString = appendString;
+
+				appendString = nullptr;
 			}
-
-			for (; length <= mStringLength - 2; length++)
-			{
-				appendString[length] = s[getNum];
-				getNum++;
-			}
-
-			appendString[mStringLength - 1] = '\0';
-
-			delete[] mString;
-
-			mString = appendString;
-
-			appendString = nullptr;
 		}
 	}
 
 	MyString MyString::operator+(const MyString& other) const
 	{
-		MyString PlusString(GetCString());
+		const char* getString = GetCString();
+
+		MyString PlusString(getString);
 		PlusString.Append(other.GetCString());
 
 		return PlusString;
@@ -352,7 +364,7 @@ namespace assignment1
 			mStringLength = totalLength + 1;
 			saveString = new  char[mStringLength];
 
-			for (length = 0; length < mStringLength-1; length++)
+			for (length = 0; length < mStringLength - 1; length++)
 			{
 				if (length < padNum)
 				{
