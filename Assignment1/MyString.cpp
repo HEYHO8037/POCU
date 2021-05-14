@@ -132,10 +132,10 @@ namespace assignment1
 	{
 		const char* saveString = GetCString();
 
-		MyString PlusString(saveString);
-		PlusString.Append(other.GetCString());
+		MyString plusString(saveString);
+		plusString.Append(other.GetCString());
 
-		return PlusString;
+		return plusString;
 	}
 
 	int MyString::IndexOf(const char* s)
