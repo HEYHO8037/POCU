@@ -560,11 +560,13 @@ namespace assignment1
 		mStringLength = rhs.mStringLength;
 
 		int length;
+		int otherLength = rhs.GetLength();
+
 		char* saveString = new char[mStringLength];
 		char* storeString;
 		char* otherString = rhs.mString;
 
-		for (length = 0; length <= rhs.GetLength(); length++)
+		for (length = 0; length <= otherLength; length++)
 		{
 			saveString[length] = otherString[length];
 		}
@@ -584,7 +586,9 @@ namespace assignment1
 	void MyString::ToLower()
 	{
 		int length;
-		for (length = 0; length <= GetLength(); length++)
+		int myLength = GetLength();
+
+		for (length = 0; length <= myLength; length++)
 		{
 			if (mString[length] > 64 && mString[length] < 91)
 			{
@@ -600,7 +604,9 @@ namespace assignment1
 	void MyString::ToUpper()
 	{
 		int length;
-		for (length = 0; length <= GetLength(); length++)
+		int myLength = GetLength();
+
+		for (length = 0; length <= myLength; length++)
 		{
 			if (mString[length] > 96 && mString[length] < 123)
 			{
