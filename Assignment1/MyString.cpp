@@ -4,8 +4,8 @@ namespace assignment1
 {
 	MyString::MyString(const char* s)
 	{
-		unsigned int otherLength;
-		unsigned int length;
+		int otherLength;
+		int length;
 
 		if (s == nullptr)
 		{
@@ -31,10 +31,10 @@ namespace assignment1
 
 	MyString::MyString(const MyString& other)
 	{
-		unsigned int otherLength;
-		unsigned int length;
+		int otherLength;
+		int length;
 		const char* getString = other.GetCString();
-		unsigned int isEmpty;
+		int isEmpty;
 
 		if (getString != nullptr)
 		{
@@ -62,7 +62,7 @@ namespace assignment1
 
 	unsigned int MyString::GetLength() const
 	{
-		unsigned int length = 0;
+		int length = 0;
 
 		if (mString != nullptr)
 		{
@@ -85,11 +85,13 @@ namespace assignment1
 
 	void MyString::Append(const char* s)
 	{
-		unsigned int otherLength;
-		unsigned int length = 0;
-		unsigned int getNum = 0;
+		int otherLength;
+		int length = 0;
+		int getNum = 0;
 		char* appendString;
-		unsigned int isEmpty;
+		int isEmpty;
+		int secondLength;
+
 
 		if (s != nullptr)
 		{
@@ -111,7 +113,9 @@ namespace assignment1
 					}
 				}
 
-				for (; length < mStringLength - 1; length++)
+				secondLength = mStringLength - 1;
+
+				for (; length < secondLength; length++)
 				{
 					appendString[length] = s[getNum];
 					getNum++;
@@ -147,9 +151,9 @@ namespace assignment1
 		else
 		{
 			int index = -1;
-			unsigned int isEqual = 0;
-			unsigned int isEmpty = *s;
-			unsigned int length;
+			int isEqual = 0;
+			int isEmpty = *s;
+			int length;
 
 			if (isEmpty == 0)
 			{
@@ -194,9 +198,9 @@ namespace assignment1
 		else
 		{
 			int index = -1;
-			unsigned int isEqual = 0;
-			unsigned int isEmpty = *s;
-			unsigned int length;
+			int isEqual = 0;
+			int isEmpty = *s;
+			int length;
 
 			if (isEmpty == 0)
 			{
@@ -233,16 +237,17 @@ namespace assignment1
 
 	void MyString::Interleave(const char* s)
 	{
-		unsigned int otherLength;
-		unsigned int saveLength;
-		unsigned int length;
-		unsigned int isEmpty;
+		int otherLength;
+		int saveLength;
+		int length;
+		int isEmpty;
+		int myLength = GetLength();
 
 		char* saveString;
 		char* storeString;
 
-		unsigned int firstNum = 0;
-		unsigned int secondNum = 0;
+		int firstNum = 0;
+		int secondNum = 0;
 
 		if (s != nullptr)
 		{
@@ -252,7 +257,7 @@ namespace assignment1
 			{
 				for (otherLength = 0; s[otherLength]; otherLength++);
 
-				saveLength = otherLength + GetLength();
+				saveLength = otherLength + myLength;
 
 				if (otherLength == saveLength)
 				{
@@ -277,7 +282,7 @@ namespace assignment1
 
 					for (length = 0; length < mStringLength - 1; length++)
 					{
-						if (length % 2 == 0 && firstNum < GetLength())
+						if (length % 2 == 0 && firstNum < myLength)
 						{
 							saveString[length] = mString[firstNum];
 							firstNum++;
@@ -289,7 +294,7 @@ namespace assignment1
 						}
 						else
 						{
-							if (firstNum < GetLength())
+							if (firstNum < myLength)
 							{
 								saveString[length] = mString[firstNum];
 								firstNum++;
@@ -319,11 +324,12 @@ namespace assignment1
 	{
 		char* saveString;
 		char* storeString;
-		unsigned int length = 0;
-		unsigned int saveNum = 0;
-		unsigned int saveLength = mStringLength - 2;
+		int myRemovePosition = i;
+		int length = 0;
+		int saveNum = 0;
+		int saveLength = mStringLength - 2;
 
-		if (saveLength <= i)
+		if (saveLength <= myRemovePosition)
 		{
 			return false;
 		}
@@ -361,8 +367,8 @@ namespace assignment1
 	{
 		char* saveString;
 		char* storeString;
-		unsigned int length;
-		unsigned int padNum = totalLength - GetLength();
+		int length;
+		int padNum = totalLength - GetLength();
 
 		if (totalLength > GetLength())
 		{
@@ -395,8 +401,8 @@ namespace assignment1
 	{
 		char* saveString;
 		char* storeString;
-		unsigned int length;
-		unsigned int padNum = totalLength - GetLength();
+		int length;
+		int padNum = totalLength - GetLength();
 
 		if (totalLength > GetLength())
 		{
@@ -429,17 +435,20 @@ namespace assignment1
 	{
 		char* saveString;
 		char* storeString;
-		unsigned int length;
-		unsigned int padNum = totalLength - GetLength();
 
-		if (totalLength > GetLength())
+		int myPadLength = totalLength;
+		int myLength = GetLength();
+		int length;
+		int padNum = myPadLength - myLength;
+
+		if (myPadLength > myLength)
 		{
-			mStringLength = totalLength + 1;
+			mStringLength = myPadLength + 1;
 			saveString = new  char[mStringLength];
 
 			for (length = 0; length < mStringLength - 1; length++)
 			{
-				if (length < GetLength())
+				if (length < myLength)
 				{
 					saveString[length] = mString[length];
 				}
@@ -462,17 +471,20 @@ namespace assignment1
 	{
 		char* saveString;
 		char* storeString;
-		unsigned int length;
-		unsigned int padNum = totalLength - GetLength();
 
-		if (totalLength > GetLength())
+		int myPadLength = totalLength;
+		int myLength = GetLength();
+		int length;
+		int padNum = myPadLength - myLength;
+
+		if (myPadLength > myLength)
 		{
-			mStringLength = totalLength + 1;
+			mStringLength = myPadLength + 1;
 			saveString = new  char[mStringLength];
 
 			for (length = 0; length < mStringLength - 1; length++)
 			{
-				if (length < GetLength())
+				if (length < myLength)
 				{
 					saveString[length] = mString[length];
 				}
@@ -493,9 +505,9 @@ namespace assignment1
 
 	void MyString::Reverse()
 	{
-		unsigned int length;
+		int length;
 		char save;
-		unsigned int maxLength = GetLength() / 2;
+		int maxLength = GetLength() / 2;
 
 		if (maxLength != 0 && mString != nullptr)
 		{
@@ -515,9 +527,9 @@ namespace assignment1
 
 		bool bCompare = false;
 
-		unsigned int firstLength = GetLength();
-		unsigned int secondLength = rhs.GetLength();
-		unsigned int length;
+		int firstLength = GetLength();
+		int secondLength = rhs.GetLength();
+		int length;
 
 
 		for (length = 0; length <= firstLength; length++)
@@ -547,7 +559,7 @@ namespace assignment1
 	{
 		mStringLength = rhs.mStringLength;
 
-		unsigned int length;
+		int length;
 		char* saveString = new char[mStringLength];
 		char* storeString;
 		char* otherString = rhs.mString;
@@ -571,7 +583,7 @@ namespace assignment1
 
 	void MyString::ToLower()
 	{
-		unsigned int length;
+		int length;
 		for (length = 0; length <= GetLength(); length++)
 		{
 			if (mString[length] > 64 && mString[length] < 91)
@@ -587,7 +599,7 @@ namespace assignment1
 
 	void MyString::ToUpper()
 	{
-		unsigned int length;
+		int length;
 		for (length = 0; length <= GetLength(); length++)
 		{
 			if (mString[length] > 96 && mString[length] < 123)
