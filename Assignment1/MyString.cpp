@@ -4,8 +4,8 @@ namespace assignment1
 {
 	MyString::MyString(const char* s)
 	{
-		int otherLength;
-		int length;
+		unsigned int otherLength;
+		unsigned int length;
 
 		if (s == nullptr)
 		{
@@ -31,10 +31,10 @@ namespace assignment1
 
 	MyString::MyString(const MyString& other)
 	{
-		int otherLength;
-		int length;
+		unsigned int otherLength;
+		unsigned int length;
 		const char* getString = other.GetCString();
-		int isEmpty;
+		unsigned int isEmpty;
 
 		if (getString != nullptr)
 		{
@@ -62,7 +62,7 @@ namespace assignment1
 
 	unsigned int MyString::GetLength() const
 	{
-		int length = 0;
+		unsigned int length = 0;
 
 		if (mString != nullptr)
 		{
@@ -85,11 +85,11 @@ namespace assignment1
 
 	void MyString::Append(const char* s)
 	{
-		int otherLength;
-		int length = 0;
-		int getNum = 0;
+		unsigned int otherLength;
+		unsigned int length = 0;
+		unsigned int getNum = 0;
 		char* appendString;
-		int isEmpty;
+		unsigned int isEmpty;
 
 		if (s != nullptr)
 		{
@@ -111,7 +111,7 @@ namespace assignment1
 					}
 				}
 
-				for (; length <= mStringLength - 2; length++)
+				for (; length < mStringLength - 1; length++)
 				{
 					appendString[length] = s[getNum];
 					getNum++;
@@ -147,9 +147,9 @@ namespace assignment1
 		else
 		{
 			int index = -1;
-			int isEqual = 0;
-			int isEmpty = *s;
-			int length;
+			unsigned int isEqual = 0;
+			unsigned int isEmpty = *s;
+			unsigned int length;
 
 			if (isEmpty == 0)
 			{
@@ -194,9 +194,9 @@ namespace assignment1
 		else
 		{
 			int index = -1;
-			int isEqual = 0;
-			int isEmpty = *s;
-			int length;
+			unsigned int isEqual = 0;
+			unsigned int isEmpty = *s;
+			unsigned int length;
 
 			if (isEmpty == 0)
 			{
@@ -233,10 +233,10 @@ namespace assignment1
 
 	void MyString::Interleave(const char* s)
 	{
-		int otherLength;
-		int saveLength;
-		int length;
-		int isEmpty;
+		unsigned int otherLength;
+		unsigned int saveLength;
+		unsigned int length;
+		unsigned int isEmpty;
 
 		char* saveString;
 		char* storeString;
@@ -319,8 +319,8 @@ namespace assignment1
 	{
 		char* saveString;
 		char* storeString;
-		int length = 0;
-		int saveNum = 0;
+		unsigned int length = 0;
+		unsigned int saveNum = 0;
 		unsigned int saveLength = mStringLength - 2;
 
 		if (saveLength <= i)
@@ -361,8 +361,8 @@ namespace assignment1
 	{
 		char* saveString;
 		char* storeString;
-		int length;
-		int padNum = totalLength - GetLength();
+		unsigned int length;
+		unsigned int padNum = totalLength - GetLength();
 
 		if (totalLength > GetLength())
 		{
@@ -395,8 +395,8 @@ namespace assignment1
 	{
 		char* saveString;
 		char* storeString;
-		int length;
-		int padNum = totalLength - GetLength();
+		unsigned int length;
+		unsigned int padNum = totalLength - GetLength();
 
 		if (totalLength > GetLength())
 		{
@@ -493,7 +493,7 @@ namespace assignment1
 
 	void MyString::Reverse()
 	{
-		int length;
+		unsigned int length;
 		char save;
 		unsigned int maxLength = GetLength() / 2;
 
@@ -515,9 +515,9 @@ namespace assignment1
 
 		bool bCompare = false;
 
-		int firstLength = GetLength();
-		int secondLength = rhs.GetLength();
-		int length;
+		unsigned int firstLength = GetLength();
+		unsigned int secondLength = rhs.GetLength();
+		unsigned int length;
 
 
 		for (length = 0; length <= firstLength; length++)
