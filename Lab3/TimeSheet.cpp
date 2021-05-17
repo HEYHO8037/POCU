@@ -16,19 +16,22 @@ namespace lab3
 
 	}
 
-	TimeSheet::TimeSheet(const TimeSheet& timesheet)
+	TimeSheet::TimeSheet(const TimeSheet& timeSheet)
 	{
 		int length;
 
-		mMyName = timesheet.mMyName;
-		mTimeLength = timesheet.mTimeLength;
-		mPosition = timesheet.mPosition;
+		mMyName = timeSheet.mMyName;
+		mTimeLength = timeSheet.mTimeLength;
+		mPosition = timeSheet.mPosition;
 
 		mMyTotalTime = new int[mTimeLength];
 
-		for (length = 0; length < mTimeLength; length++)
+		if (mPosition != 0)
 		{
-			mMyTotalTime[length] = timesheet.mMyTotalTime[length];
+			for (length = 0; length < mTimeLength; length++)
+			{
+				mMyTotalTime[length] = timeSheet.mMyTotalTime[length];
+			}
 		}
 	}
 
@@ -135,5 +138,25 @@ namespace lab3
 	const std::string& TimeSheet::GetName() const
 	{
 		return mMyName;
+	}
+
+	TimeSheet& TimeSheet::operator=(const TimeSheet& timeSheet)
+	{
+		int length;
+
+		mMyName = timeSheet.mMyName;
+		mTimeLength = timeSheet.mTimeLength;
+		mPosition = timeSheet.mPosition;
+
+		mMyTotalTime = new int[mTimeLength];
+
+		if (mPosition != 0)
+		{
+			for (length = 0; length < mTimeLength; length++)
+			{
+				mMyTotalTime[length] = timeSheet.mMyTotalTime[length];
+			}
+		}
+		return *this;
 	}
 }
