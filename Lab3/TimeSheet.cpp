@@ -26,12 +26,9 @@ namespace lab3
 
 		mMyTotalTime = new int[mTimeLength];
 
-		if (timesheet.mPosition != 0)
+		for (length = 0; length < mTimeLength; length++)
 		{
-			for (length = 0; length < mTimeLength; length++)
-			{
-				mMyTotalTime[length] = timesheet.mMyTotalTime[length];
-			}
+			mMyTotalTime[length] = timesheet.mMyTotalTime[length];
 		}
 	}
 
