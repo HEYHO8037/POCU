@@ -45,9 +45,11 @@ namespace lab3
 
 	int TimeSheet::GetTimeEntry(unsigned int index) const
 	{
-		if (index < mPosition)
+		int changeIndex = index;
+
+		if (changeIndex < mPosition)
 		{
-			return mMyTotalTime[index];
+			return mMyTotalTime[changeIndex];
 		}
 		else
 		{
@@ -75,13 +77,22 @@ namespace lab3
 		int length;
 		float average = 0.0f;
 
-		for (length = 0; length < mPosition; length++)
+		if (mPosition != 0)
 		{
-			average += mMyTotalTime[length];
+
+			for (length = 0; length < mPosition; length++)
+			{
+				average += mMyTotalTime[length];
+			}
+			average /= mPosition;
+
+			return average;
+		}
+		else
+		{
+			return 0.0f;
 		}
 
-		average /= mPosition;
-		return average;
 	}
 
 	float TimeSheet::GetStandardDeviation() const
