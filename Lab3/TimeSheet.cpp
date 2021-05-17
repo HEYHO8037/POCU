@@ -144,22 +144,25 @@ namespace lab3
 	{
 		int length;
 
-		if (mMyTotalTime == nullptr)
+		int* saveMyTotalTime;
+		int* storeTime;
+
+		mMyName = timeSheet.GetName();
+		mTimeLength = timeSheet.mTimeLength;
+		mPosition = timeSheet.mPosition;
+
+		saveMyTotalTime = new int[mTimeLength];
+
+		for (length = 0; length < mTimeLength; length++)
 		{
-			mMyName = timeSheet.GetName();
-			mTimeLength = timeSheet.mTimeLength;
-			mPosition = timeSheet.mPosition;
-
-			mMyTotalTime = new int[mTimeLength];
-
-			if (mPosition != 0)
-			{
-				for (length = 0; length < mTimeLength; length++)
-				{
-					mMyTotalTime[length] = timeSheet.mMyTotalTime[length];
-				}
-			}
+			saveMyTotalTime[length] = timeSheet.mMyTotalTime[length];
 		}
+
+		storeTime = mMyTotalTime;
+		mMyTotalTime = saveMyTotalTime;
+
+		delete[] storeTime;
+		saveMyTotalTime = nullptr;
 
 		return *this;
 	}
