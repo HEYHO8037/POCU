@@ -2,92 +2,123 @@
 
 namespace lab3
 {
-    TimeSheet::TimeSheet(const char* name, unsigned int maxEntries)
-    {
-        mMyName = name;
-        mTimeLength = maxEntries;
-        mMyTotalTime = new int[mTimeLength];
-    }
+	TimeSheet::TimeSheet(const char* name, unsigned int maxEntries)
+	{
+		mMyName = name;
+		mTimeLength = maxEntries;
+		mMyTotalTime = new int[mTimeLength];
+	}
 
-    TimeSheet::~TimeSheet()
-    {
-        delete[] mMyTotalTime;
-    }
+	TimeSheet::TimeSheet(const TimeSheet& timesheet)
+	{
+		int length;
 
-    void TimeSheet::AddTime(int timeInHours)
-    {
-        if (timeInHours > 0 && timeInHours < 11 && mPosition < mTimeLength)
-        {
-            mMyTotalTime[mPosition] = timeInHours;
-            mPosition++;
-        }
-    }
+		mMyName = timesheet.mMyName;
+		mTimeLength = timesheet.mTimeLength;
+		mPosition = timesheet.mPosition;
 
-    int TimeSheet::GetTimeEntry(unsigned int index) const
-    {
-        if (index < mPosition)
-        {
-            return mMyTotalTime[index];
-        }
-        else
-        {
-            return -1;
-        }
+		mMyTotalTime = new int[mTimeLength];
 
-    }
-
-    int TimeSheet::GetTotalTime() const
-    {
-        int length;
-        int total = 0;
-
-        for (length = 0; length < mPosition; length++)
-        {
-            total += mMyTotalTime[length];
-        }
+		if (timesheet.mPosition != 0)
+		{
+			for (length = 0; length < timesheet.mPosition; length++)
+			{
+				mMyTotalTime[length] = timesheet.mMyTotalTime[length];
+			}
+		}
+	}
 
 
-        return total;
-    }
+	TimeSheet::~TimeSheet()
+	{
+		delete[] mMyTotalTime;
+	}
 
-    float TimeSheet::GetAverageTime() const
-    {
-        int length;
-        float average = 0.0f;
+	void TimeSheet::AddTime(int timeInHours)
+	{
+		if (timeInHours > 0 && timeInHours < 11 && mPosition < mTimeLength)
+		{
+			mMyTotalTime[mPosition] = timeInHours;
+			mPosition++;
+		}
+	}
 
-        for (length = 0; length < mPosition; length++)
-        {
-            average += mMyTotalTime[length];
-        }
+	int TimeSheet::GetTimeEntry(unsigned int index) const
+	{
+		if (index < mPosition)
+		{
+			return mMyTotalTime[index];
+		}
+		else
+		{
+			return -1;
+		}
 
-        average /= mPosition;
-        return average;
-    }
+	}
 
-    float TimeSheet::GetStandardDeviation() const
-    {
-        int length;
-        float standardDeviation = 0;
-        float deviation = 0;
+	int TimeSheet::GetTotalTime() const
+	{
+		int length;
+		int total = 0;
 
-        for (length = 0; length < mPosition; length++)
-        {
-            deviation = GetAverageTime() - mMyTotalTime[length];
-            if (deviation < 0)
-            {
-                deviation = -deviation;
-            }
+		for (length = 0; length < mPosition; length++)
+		{
+			total += mMyTotalTime[length];
+		}
 
-            standardDeviation += deviation;
-        }
 
-        standardDeviation /= mPosition;
+		return total;
+	}
 
-        return standardDeviation;
-    }
+	float TimeSheet::GetAverageTime() const
+	{
+		int length;
+		float average = 0.0f;
 
-    const std::string& TimeSheet::GetName() const
-    {
-        return mMyName;
-    }
+		for (length = 0; length < mPosition; length++)
+		{
+			average += mMyTotalTime[length];
+		}
+
+		average /= mPosition;
+		return average;
+	}
+
+	float TimeSheet::GetStandardDeviation() const
+	{
+		int length;
+
+		float standardDeviation = 0;
+		float deviation = 0;
+		float sqrt = 2.0f;
+
+		if (mPosition != 0)
+		{
+			for (length = 0; length < mPosition; length++)
+			{
+				deviation = GetAverageTime() - mMyTotalTime[length];
+				deviation *= deviation;
+
+				standardDeviation += deviation;
+			}
+
+			standardDeviation /= mPosition;
+
+			for (length = 0; length < 10; length++)
+			{
+				sqrt = (sqrt + (standardDeviation / sqrt)) / 2;
+			}
+
+			return sqrt;
+		}
+		else
+		{
+			return 0.0f;
+		}
+	}
+
+	const std::string& TimeSheet::GetName() const
+	{
+		return mMyName;
+	}
 }
