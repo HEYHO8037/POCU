@@ -27,7 +27,6 @@ namespace lab2
 				out << std::setfill(' ') << setw(12) << oct << right << number;
 				out << std::setfill(' ') << setw(11) << dec << right << number;
 				out << std::setfill(' ') << setw(9) << uppercase << hex << right << number << endl;
-				continue;
 			}
 		}
 	}
@@ -66,7 +65,6 @@ namespace lab2
 				out << fixed;
 				out.precision(3);
 				out << setfill(' ') << setw(5) << "" << setw(15) << internal << showpos << number << endl;
-				continue;
 			}
 		}
 
