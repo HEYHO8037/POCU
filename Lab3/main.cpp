@@ -7,8 +7,6 @@ int main()
 
 	lab3::TimeSheet employee2("Pope", 10);
 	employee2.AddTime(4);    // ok
-	employee2.AddTime(7);    // ok
-	employee2.AddTime(6);    // ok
 
 	std::cout << employee2.GetTotalTime() << std::endl;          // 17
 	std::cout << employee2.GetAverageTime() << std::endl;        // 5.66667

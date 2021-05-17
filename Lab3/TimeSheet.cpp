@@ -4,9 +4,16 @@ namespace lab3
 {
 	TimeSheet::TimeSheet(const char* name, unsigned int maxEntries)
 	{
+		int length;
 		mMyName = name;
 		mTimeLength = maxEntries;
 		mMyTotalTime = new int[mTimeLength];
+
+		for (length = 0; length < mTimeLength; length++)
+		{
+			mMyTotalTime[length] = 0;
+		}
+
 	}
 
 	TimeSheet::TimeSheet(const TimeSheet& timesheet)
@@ -21,7 +28,7 @@ namespace lab3
 
 		if (timesheet.mPosition != 0)
 		{
-			for (length = 0; length < timesheet.mPosition; length++)
+			for (length = 0; length < mTimeLength; length++)
 			{
 				mMyTotalTime[length] = timesheet.mMyTotalTime[length];
 			}
