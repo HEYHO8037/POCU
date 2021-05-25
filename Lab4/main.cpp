@@ -1,5 +1,6 @@
 #include <cassert>
 #include <cmath>
+#include <iostream>
 
 #include "Point.h"
 #include "PolyLine.h"
@@ -222,6 +223,7 @@ void PolyLineOperateIndexTest()
 
 int main()
 {
+
 	PointOperatePlusTest();
 	PointOperateMinusTest();
 	PointOperateMultiplyTest();

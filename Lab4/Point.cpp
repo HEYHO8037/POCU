@@ -56,6 +56,7 @@ namespace lab4
 		return *this;
 	}
 
+
 	float Point::GetX() const
 	{
 		return mPointX;
@@ -68,11 +69,13 @@ namespace lab4
 
 	Point operator*(int value, Point& other)
 	{
-		return other * value;
+		float changeValue = value;
+		return other * changeValue;
 	}
 
 	Point operator*(float value, Point& other)
 	{
 		return other * value;
 	}
+
 }

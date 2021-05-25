@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-
 namespace lab4
 {
 	class Point
@@ -16,6 +14,7 @@ namespace lab4
 		float Dot(const Point& other) const;
 
 		Point operator*(float operand) const;
+
 		Point& operator=(const Point& other);
 
 		float GetX() const;

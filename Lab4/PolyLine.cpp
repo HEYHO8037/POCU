@@ -7,11 +7,13 @@ namespace lab4
 	PolyLine::PolyLine()
 	{
 		mCount = 0;
+		mpCount = 0;
 	}
 
 	PolyLine::PolyLine(const PolyLine& other)
 	{
 		mCount = other.mCount;
+		mpCount = 0;
 
 		for (int length = 0; length < mCount; length++)
 		{
@@ -21,7 +23,13 @@ namespace lab4
 
 	PolyLine::~PolyLine()
 	{
-
+		if (mpCount != 0)
+		{
+			for (int i = 0; i < mpCount; i++)
+			{
+				delete mpPoint[i];
+			}
+		}
 	}
 
 	bool PolyLine::AddPoint(float x, float y)
@@ -46,14 +54,17 @@ namespace lab4
 		}
 		else
 		{
-			mPoint[mCount] = Point(point->GetX(), point->GetY());
+			mPoint[mCount] = *point;
+			mpPoint[mpCount] = point;
 			mCount++;
+			mpCount++;
 			return true;
 		}
 	}
 
 	bool PolyLine::RemovePoint(unsigned int i)
 	{
+		Point* savePoint;;
 		if (i >= mCount)
 		{
 			return false;
@@ -120,7 +131,7 @@ namespace lab4
 	{
 		if (i < mCount)
 		{
-			return new Point(mPoint[i].GetX(), mPoint[i].GetY());
+			return &mPoint[i];
 		}
 		else
 		{
