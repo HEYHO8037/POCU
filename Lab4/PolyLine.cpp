@@ -5,15 +5,14 @@
 namespace lab4
 {
 	PolyLine::PolyLine()
+		: mCount(0)
 	{
-		mCount = 0;
-		mpCount = 0;
+
 	}
 
 	PolyLine::PolyLine(const PolyLine& other)
 	{
 		mCount = other.mCount;
-		mpCount = 0;
 
 		for (int length = 0; length < mCount; length++)
 		{
@@ -23,13 +22,18 @@ namespace lab4
 
 	PolyLine::~PolyLine()
 	{
-		if (mpCount != 0)
+		for (int length = 0; length < mCount; length++)
 		{
-			for (int i = 0; i < mpCount; i++)
+			if (mPpoint[length] == nullptr)
 			{
-				delete mpPoint[i];
+				continue;
+			}
+			else
+			{
+				delete mPpoint[length];
 			}
 		}
+
 	}
 
 	bool PolyLine::AddPoint(float x, float y)
@@ -54,10 +58,9 @@ namespace lab4
 		}
 		else
 		{
-			mPoint[mCount] = *point;
-			mpPoint[mpCount] = point;
+			mPoint[mCount] = Point(*point);
+			mPpoint[mCount] = point;
 			mCount++;
-			mpCount++;
 			return true;
 		}
 	}
@@ -71,7 +74,13 @@ namespace lab4
 		}
 		else
 		{
-			for (int length = i; length < mCount - 1; length++)
+			if (mPpoint[i] != nullptr && mPoint[i].GetX() == mPpoint[i]->GetX())
+			{
+				delete mPpoint[i];
+				mPpoint[i] = nullptr;
+			}
+
+			for (int length = i; length < mCount-1; length++)
 			{
 				mPoint[length] = mPoint[length + 1];
 			}

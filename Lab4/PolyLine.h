@@ -21,8 +21,7 @@ namespace lab4
 		
 	private:
 		Point mPoint[10];
-		const Point* mpPoint[10];
+		const Point* mPpoint[10] = { nullptr };
 		int mCount;
-		int mpCount;
 	};
 }

@@ -3,20 +3,24 @@
 namespace lab4
 {
 	Point::Point()
+		: mPointX(0), mPointY(0)
 	{
-		mPointX = 0;
-		mPointY = 0;
 	}
 
 	Point::Point(float x, float y)
+		: mPointX(x), mPointY(y)
 	{
-		mPointX = x;
-		mPointY = y;
+	}
+
+	Point::Point(const Point& other)
+		: mPointX(other.GetX()), mPointY(other.GetY())
+	{
 	}
 
 	Point::~Point()
 	{
-
+		mPointX = 0;
+		mPointY = 0;
 	}
 
 	Point Point::operator+(const Point& other) const
@@ -50,12 +54,11 @@ namespace lab4
 
 	Point& Point::operator=(const Point& other)
 	{
-		mPointX = other.mPointX;
-		mPointY = other.mPointY;
+		mPointX = other.GetX();
+		mPointY = other.GetY();
 
 		return *this;
 	}
-
 
 	float Point::GetX() const
 	{
