@@ -226,13 +226,7 @@ int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	PointOperatePlusTest();
-	PointOperateMinusTest();
-	PointOperateMultiplyTest();
-	PointDotProductTest();
+	PolyLine p1;
+	p1.AddPoint(nullptr);
 
-	PolyLineAddPointTest();
-	PolyLineRemovePointTest();
-	PolyLineTryGetMinBoundingRectangleTest();
-	PolyLineOperateIndexTest();
 }

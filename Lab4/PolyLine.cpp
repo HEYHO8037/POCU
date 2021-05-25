@@ -52,7 +52,7 @@ namespace lab4
 
 	bool PolyLine::AddPoint(const Point* point)
 	{
-		if (mCount >= 10)
+		if (mCount >= 10 || point == nullptr)
 		{
 			return false;
 		}
@@ -146,7 +146,7 @@ namespace lab4
 	{
 		if (i < mCount)
 		{
-			return mPoint+i;
+			return (mPoint+i);
 		}
 		else
 		{
