@@ -58,7 +58,7 @@ namespace lab4
 		}
 		else
 		{
-			mPoint[mCount] = Point(*point);
+			mPoint[mCount] = *point;
 			mPpoint[mCount] = point;
 			mCount++;
 			return true;
@@ -67,7 +67,6 @@ namespace lab4
 
 	bool PolyLine::RemovePoint(unsigned int i)
 	{
-		Point* savePoint;;
 		if (i >= mCount)
 		{
 			return false;
@@ -80,11 +79,18 @@ namespace lab4
 				mPpoint[i] = nullptr;
 			}
 
-			for (int length = i; length < mCount-1; length++)
+			for (int length = i; length < mCount; length++)
 			{
-				mPoint[length] = mPoint[length + 1];
+				if (length == mCount - 1)
+				{
+					mPoint[length] = Point(0, 0);
+				}
+				else
+				{
+					mPoint[length] = mPoint[length + 1];
+				}
 			}
-
+			
 			mCount--;
 			return true;
 		}
@@ -118,9 +124,9 @@ namespace lab4
 			}
 		}
 
-
 		*outMin = Point(minimum[0], minimum[1]);
 		*outMax = Point(maximum[0], maximum[1]);
+
 		return true;
 	}
 
@@ -140,7 +146,7 @@ namespace lab4
 	{
 		if (i < mCount)
 		{
-			return &mPoint[i];
+			return mPoint+i;
 		}
 		else
 		{

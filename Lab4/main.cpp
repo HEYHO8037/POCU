@@ -1,6 +1,7 @@
 #include <cassert>
 #include <cmath>
 #include <iostream>
+#include <crtdbg.h>
 
 #include "Point.h"
 #include "PolyLine.h"
@@ -223,6 +224,7 @@ void PolyLineOperateIndexTest()
 
 int main()
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 	PointOperatePlusTest();
 	PointOperateMinusTest();
