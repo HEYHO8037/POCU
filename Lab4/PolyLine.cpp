@@ -52,15 +52,34 @@ namespace lab4
 
 	bool PolyLine::AddPoint(const Point* point)
 	{
+		bool bCheck = false;
+
 		if (mCount >= 10 || point == nullptr)
 		{
 			return false;
 		}
 		else
 		{
-			mPoint[mCount] = *point;
-			mPpoint[mCount] = point;
-			mCount++;
+			for (int length = 0; length < mCount; length++)
+			{
+				if (point == mPpoint[length])
+				{
+					bCheck = true;
+					break;
+				}
+			}
+
+			if (bCheck)
+			{
+				mPoint[mCount] = *point;
+				mCount++;
+			}
+			else
+			{
+				mPoint[mCount] = *point;
+				mPpoint[mCount] = point;
+				mCount++;
+			}
 			return true;
 		}
 	}
@@ -77,6 +96,7 @@ namespace lab4
 			{
 				delete mPpoint[i];
 				mPpoint[i] = nullptr;
+				
 			}
 
 			for (int length = i; length < mCount; length++)
