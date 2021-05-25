@@ -70,4 +70,9 @@ namespace lab4
 	{
 		return other * value;
 	}
+
+	Point operator*(float value, Point& other)
+	{
+		return other * value;
+	}
 }

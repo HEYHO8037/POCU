@@ -26,7 +26,7 @@ namespace lab4
 
 	bool PolyLine::AddPoint(float x, float y)
 	{
-		if (mCount > 10)
+		if (mCount >= 10)
 		{
 			return false;
 		}
@@ -40,7 +40,7 @@ namespace lab4
 
 	bool PolyLine::AddPoint(const Point* point)
 	{
-		if (mCount > 10)
+		if (mCount >= 10)
 		{
 			return false;
 		}
@@ -54,7 +54,7 @@ namespace lab4
 
 	bool PolyLine::RemovePoint(unsigned int i)
 	{
-		if (i >= mCount && i < -1)
+		if (i >= mCount)
 		{
 			return false;
 		}
@@ -62,7 +62,7 @@ namespace lab4
 		{
 			for (int length = i; length < mCount - 1; length++)
 			{
-				mPoint[i] = mPoint[i + 1];
+				mPoint[length] = mPoint[length + 1];
 			}
 
 			mCount--;
@@ -98,18 +98,10 @@ namespace lab4
 			}
 		}
 
-		if (maximum[0] == minimum[0] || maximum[1] == minimum[1])
-		{
-			*outMin = Point(minimum[0], minimum[1]);
-			*outMax = Point(maximum[0], maximum[1]);
-			return false;
-		}
-		else
-		{
-			*outMin = Point(minimum[0], minimum[1]);
-			*outMax = Point(maximum[0], maximum[1]);
-			return true;
-		}
+
+		*outMin = Point(minimum[0], minimum[1]);
+		*outMax = Point(maximum[0], maximum[1]);
+		return true;
 	}
 
 	PolyLine& PolyLine::operator=(const PolyLine& other)
@@ -126,7 +118,7 @@ namespace lab4
 
 	const Point* PolyLine::operator[](unsigned int i) const
 	{
-		if (i > -1 && i < mCount)
+		if (i < mCount)
 		{
 			return new Point(mPoint[i].GetX(), mPoint[i].GetY());
 		}

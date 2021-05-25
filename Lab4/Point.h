@@ -27,4 +27,5 @@ namespace lab4
 	};
 
 	Point operator* (int value, Point& other);
+	Point operator* (float value, Point& other);
 }
