@@ -133,6 +133,7 @@ namespace lab4
 
 		for (int length = 0; length < mCount; length++)
 		{
+			delete mPoint[length];
 			mPoint[length] = new Point(other.mPoint[length]->GetX(), other.mPoint[length]->GetY());
 		}
 
