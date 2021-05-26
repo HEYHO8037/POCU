@@ -26,6 +26,5 @@ namespace lab4
 		float mPointY;
 	};
 
-	Point operator* (int value, Point& other);
 	Point operator* (float value, Point& other);
 }

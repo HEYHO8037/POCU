@@ -70,12 +70,6 @@ namespace lab4
 		return mPointY;
 	}
 
-	Point operator*(int value, Point& other)
-	{
-		float changeValue = value;
-		return other * changeValue;
-	}
-
 	Point operator*(float value, Point& other)
 	{
 		return other * value;

@@ -55,7 +55,8 @@ namespace lab4
 
 	bool PolyLine::RemovePoint(unsigned int i)
 	{
-		if (i >= mCount)
+		int getPosition = i;
+		if (getPosition >= mCount)
 		{
 			return false;
 		}
@@ -137,7 +138,9 @@ namespace lab4
 
 	const Point* PolyLine::operator[](unsigned int i) const
 	{
-		if (i < mCount)
+		int getPosition = i;
+
+		if (getPosition < mCount)
 		{
 			return mPoint[i];
 		}
