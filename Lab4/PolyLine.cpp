@@ -74,12 +74,13 @@ namespace lab4
 		else
 		{
 			delete mPoint[i];
+			mPoint[i] = nullptr;
 
 			for (int length = i; length < mCount; length++)
 			{
 				if (length == mCount - 1)
 				{
-					mPoint[length] = 0;
+					mPoint[length] = nullptr;
 				}
 				else
 				{
