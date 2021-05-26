@@ -18,6 +18,8 @@ namespace lab4
 		Point operator*(float operand) const;
 		Point& operator=(const Point& other);
 
+		friend Point operator* (float value, Point& other);
+
 		float GetX() const;
 		float GetY() const;
 
@@ -26,5 +28,5 @@ namespace lab4
 		float mPointY;
 	};
 
-	Point operator* (float value, Point& other);
+	
 }
