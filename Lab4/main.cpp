@@ -226,16 +226,12 @@ int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	PolyLine *p1 = new PolyLine();
-	Point* a = new Point(1.f, 1.f);
-	p1->AddPoint(a);
-	p1->AddPoint(a);
-	p1->AddPoint(a);
-	p1->AddPoint(a);
-	p1->AddPoint(a);
-	p1->AddPoint(a);
-
-	p1->RemovePoint(0);
-	delete p1;
-
+	PointOperatePlusTest();
+	PointOperateMinusTest();
+	PointOperateMultiplyTest();
+	PointDotProductTest();
+	PolyLineAddPointTest();
+	PolyLineRemovePointTest();
+	PolyLineTryGetMinBoundingRectangleTest();
+	PolyLineOperateIndexTest();
 }

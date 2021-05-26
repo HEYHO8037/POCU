@@ -7,7 +7,6 @@ namespace lab4
 	PolyLine::PolyLine()
 		: mCount(0)
 	{
-
 	}
 
 	PolyLine::PolyLine(const PolyLine& other)
@@ -16,7 +15,7 @@ namespace lab4
 
 		for (int length = 0; length < mCount; length++)
 		{
-			mPoint[length] = other.mPoint[length];
+			mPoint[length] = new Point(other.mPoint[length]->GetX(), other.mPoint[length]->GetY());
 		}
 	}
 
@@ -24,13 +23,14 @@ namespace lab4
 	{
 		for (int length = 0; length < mCount; length++)
 		{
-			if (mPpoint[length] == nullptr)
+			if (mPoint[length] == nullptr)
 			{
 				continue;
 			}
 			else
 			{
-				delete mPpoint[length];
+				delete mPoint[length];
+				mPoint[length] = nullptr;
 			}
 		}
 
@@ -44,7 +44,7 @@ namespace lab4
 		}
 		else
 		{
-			mPoint[mCount] = Point(x, y);
+			mPoint[mCount] = new Point(x, y);
 			mCount++;
 			return true;
 		}
@@ -52,7 +52,6 @@ namespace lab4
 
 	bool PolyLine::AddPoint(const Point* point)
 	{
-		bool bCheck = false;
 
 		if (mCount >= 10 || point == nullptr)
 		{
@@ -60,26 +59,8 @@ namespace lab4
 		}
 		else
 		{
-			for (int length = 0; length < mCount; length++)
-			{
-				if (point == mPpoint[length])
-				{
-					bCheck = true;
-					break;
-				}
-			}
-
-			if (bCheck)
-			{
-				mPoint[mCount] = *point;
-				mCount++;
-			}
-			else
-			{
-				mPoint[mCount] = *point;
-				mPpoint[mCount] = point;
-				mCount++;
-			}
+			mPoint[mCount] = point;
+			mCount++;
 			return true;
 		}
 	}
@@ -92,18 +73,13 @@ namespace lab4
 		}
 		else
 		{
-			if (mPpoint[i] != nullptr && mPoint[i].GetX() == mPpoint[i]->GetX())
-			{
-				delete mPpoint[i];
-				mPpoint[i] = nullptr;
-				
-			}
+			delete mPoint[i];
 
 			for (int length = i; length < mCount; length++)
 			{
 				if (length == mCount - 1)
 				{
-					mPoint[length] = Point(0, 0);
+					mPoint[length] = 0;
 				}
 				else
 				{
@@ -130,17 +106,17 @@ namespace lab4
 		{
 			if (length == 0)
 			{
-				minimum[0] = mPoint[length].GetX();
-				minimum[1] = mPoint[length].GetY();
-				maximum[0] = mPoint[length].GetX();
-				maximum[1] = mPoint[length].GetY();
+				minimum[0] = mPoint[length]->GetX();
+				minimum[1] = mPoint[length]->GetY();
+				maximum[0] = mPoint[length]->GetX();
+				maximum[1] = mPoint[length]->GetY();
 			}
 			else
 			{
-				maximum[0] = (mPoint[length].GetX() > maximum[0]) ? mPoint[length].GetX() : maximum[0];
-				maximum[1] = (mPoint[length].GetY() > maximum[1]) ? mPoint[length].GetY() : maximum[1];
-				minimum[0] = (mPoint[length].GetX() < minimum[0]) ? mPoint[length].GetX() : minimum[0];
-				minimum[1] = (mPoint[length].GetY() < minimum[1]) ? mPoint[length].GetY() : minimum[1];
+				maximum[0] = (mPoint[length]->GetX() > maximum[0]) ? mPoint[length]->GetX() : maximum[0];
+				maximum[1] = (mPoint[length]->GetY() > maximum[1]) ? mPoint[length]->GetY() : maximum[1];
+				minimum[0] = (mPoint[length]->GetX() < minimum[0]) ? mPoint[length]->GetX() : minimum[0];
+				minimum[1] = (mPoint[length]->GetY() < minimum[1]) ? mPoint[length]->GetY() : minimum[1];
 			}
 		}
 
@@ -156,7 +132,7 @@ namespace lab4
 
 		for (int length = 0; length < mCount; length++)
 		{
-			mPoint[length] = other.mPoint[length];
+			mPoint[length] = new Point(other.mPoint[length]->GetX(), other.mPoint[length]->GetY());
 		}
 
 		return *this;
@@ -166,7 +142,7 @@ namespace lab4
 	{
 		if (i < mCount)
 		{
-			return (mPoint+i);
+			return mPoint[i];
 		}
 		else
 		{
