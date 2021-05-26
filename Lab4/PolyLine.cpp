@@ -21,19 +21,7 @@ namespace lab4
 
 	PolyLine::~PolyLine()
 	{
-		for (int length = 0; length < mCount; length++)
-		{
-			if (mPoint[length] == nullptr)
-			{
-				continue;
-			}
-			else
-			{
-				delete mPoint[length];
-				mPoint[length] = nullptr;
-			}
-		}
-
+		DeleteMemory();
 	}
 
 	bool PolyLine::AddPoint(float x, float y)
@@ -131,13 +119,20 @@ namespace lab4
 	{
 		mCount = other.mCount;
 
-		for (int length = 0; length < mCount; length++)
+		if (this == &other)
 		{
-			delete mPoint[length];
-			mPoint[length] = new Point(other.mPoint[length]->GetX(), other.mPoint[length]->GetY());
+			return *this;
 		}
+		else
+		{
+			DeleteMemory();
+			for (int length = 0; length < mCount; length++)
+			{
+				mPoint[length] = new Point(other.mPoint[length]->GetX(), other.mPoint[length]->GetY());
+			}
 
-		return *this;
+			return *this;
+		}
 	}
 
 	const Point* PolyLine::operator[](unsigned int i) const
@@ -149,6 +144,22 @@ namespace lab4
 		else
 		{
 			return nullptr;
+		}
+	}
+
+	void PolyLine::DeleteMemory()
+	{
+		for (int length = 0; length < mCount; length++)
+		{
+			if (mPoint[length] == nullptr)
+			{
+				continue;
+			}
+			else
+			{
+				delete mPoint[length];
+				mPoint[length] = nullptr;
+			}
 		}
 	}
 }
