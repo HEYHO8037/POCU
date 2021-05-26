@@ -18,6 +18,7 @@ namespace lab4
 		PolyLine& operator=(const PolyLine& other);
 
 		const Point* operator[](unsigned int i) const;
+		void DeleteMemory();
 		
 	private:
 		const Point* mPoint[10] = { nullptr };
