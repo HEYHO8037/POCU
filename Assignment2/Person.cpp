@@ -4,7 +4,7 @@ namespace assignment2
 {
 	Person::Person()
 	{
-		mName = nullptr;
+		mName = "";
 		mPersonWeight = 0;
 	}
 

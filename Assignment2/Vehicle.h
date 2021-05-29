@@ -7,6 +7,8 @@ namespace assignment2
 	class Vehicle
 	{
 	public:
+		Vehicle();
+		Vehicle(Vehicle& vehicle);
 		Vehicle(unsigned int maxPassengersCount);
 		~Vehicle();
 
@@ -17,8 +19,12 @@ namespace assignment2
 		const Person* GetPassenger(unsigned int i) const;
 		unsigned int GetPassengersCount() const;
 		unsigned int GetMaxPassengersCount() const;
+		unsigned int GetTotalPassengerWeight() const;
 
-	private:
+		Vehicle& operator=(Vehicle& vehicle);
+		void ChangeArrayNullptr();
+
+	protected:
 		unsigned int mCount;
 		unsigned int mMaxPassengerCount;
 		const Person** mPerson;

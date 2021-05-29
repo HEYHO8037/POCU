@@ -2,15 +2,42 @@
 
 namespace assignment2
 {
+	Vehicle::Vehicle()
+	{
+		mCount = 0;
+		mMaxPassengerCount = 0;
+		mPerson = nullptr;
+	}
+
+	Vehicle::Vehicle(Vehicle& vehicle)
+	{
+		unsigned int maxPassenger = vehicle.GetMaxPassengersCount();
+		if (this != &vehicle)
+		{
+			mPerson = new const Person* [maxPassenger];
+			mCount = vehicle.mCount;
+
+			for (int length = 0; length < maxPassenger; length++)
+			{
+				mPerson[length] = vehicle.mPerson[length];
+			}
+
+			vehicle.mPerson = nullptr;
+		}
+	}
+
 	Vehicle::Vehicle(unsigned int maxPassengersCount)
 	{
 		mMaxPassengerCount = maxPassengersCount;
-		mPerson = new Person* [mMaxPassengerCount];
+		mPerson = new const Person* [mMaxPassengerCount];
 	}
 
 	Vehicle::~Vehicle()
 	{
-		delete[] mPerson;
+		if (mPerson != nullptr)
+		{
+			delete[] mPerson;
+		}
 	}
 
 	bool Vehicle::AddPassenger(const Person* person)
@@ -35,6 +62,21 @@ namespace assignment2
 		else
 		{
 			delete mPerson[i];
+
+			for (unsigned int length = i; length < mCount - 1; length++)
+			{
+				if (length != mCount - 1)
+				{
+					mPerson[length] = mPerson[length + 1];
+				}
+				else
+				{
+					mPerson[length] = nullptr;
+				}
+			}
+
+			mCount--;
+			
 			return true;
 		}
 	}
@@ -49,6 +91,18 @@ namespace assignment2
 		return mMaxPassengerCount;
 	}
 
+	unsigned int Vehicle::GetTotalPassengerWeight() const
+	{
+		unsigned int totalWeight = 0;
+
+		for (unsigned int length = 0; length < mCount; length++)
+		{
+			totalWeight = mPerson[length]->GetWeight();
+		}
+
+		return totalWeight;
+	}
+
 	const Person* Vehicle::GetPassenger(unsigned int i) const
 	{
 		if (i > mCount)
@@ -58,6 +112,34 @@ namespace assignment2
 		else
 		{
 			return mPerson[i];
+		}
+	}
+
+	Vehicle& Vehicle::operator=(Vehicle& vehicle)
+	{
+		if (mCount != 0)
+		{
+			delete[] mPerson;
+		}
+
+		mCount = vehicle.mCount;
+		mMaxPassengerCount = vehicle.mMaxPassengerCount;
+		mPerson = new const Person * [mMaxPassengerCount];
+
+
+		for (unsigned int length = 0; length < vehicle.mMaxPassengerCount; length++)
+		{
+			mPerson[length] = vehicle.mPerson[length];
+		}
+
+		vehicle.mPerson = nullptr;
+	}
+
+	void Vehicle::ChangeArrayNullptr()
+	{
+		for (unsigned int length = 0; length < mCount; length++)
+		{
+			mPerson[length] = nullptr;
 		}
 	}
 }
