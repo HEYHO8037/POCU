@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Person.h"
+#include <cmath>
 
 namespace assignment2
 {

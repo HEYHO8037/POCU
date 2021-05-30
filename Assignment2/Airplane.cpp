@@ -33,21 +33,21 @@ namespace assignment2
 
 	unsigned int Airplane::GetFlySpeed() const
 	{
-		int totalWeight = GetTotalPassengerWeight();
-		int totalSpeed = 0;
+		unsigned int totalWeight = GetTotalPassengerWeight();
+		unsigned int totalSpeed = 0;
 
-		totalSpeed = 200 * exp((-totalWeight + 800) / 500);
+		totalSpeed = 200 * static_cast<unsigned int>(exp((-totalWeight + 800) / 500));
 		
 		return totalSpeed;
 	}
 
 	unsigned int Airplane::GetDriveSpeed() const
 	{
-		int totalWeight = GetTotalPassengerWeight();
-		int totalSpeed = 0;
+		unsigned int totalWeight = GetTotalPassengerWeight();
+		unsigned int totalSpeed = 0;
 
-		totalSpeed = 4 * exp((-totalWeight + 400) / 70);
-		return 0;
+		totalSpeed = 4 * static_cast<unsigned int>(exp((-totalWeight + 400) / 70));
+		return totalSpeed;
 	}
 
 	Boatplane Airplane::operator+(Boat& boat)

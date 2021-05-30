@@ -1,10 +1,14 @@
 #pragma once
 
+#include "Vehicle.h"
+#include "IDrivable.h"
+#include "Trailer.h"
+
 namespace assignment2
 {
 	class Trailer;
 
-	class Sedan
+	class Sedan : public Vehicle, public IDrivable
 	{
 	public:
 		Sedan();

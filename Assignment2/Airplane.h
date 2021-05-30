@@ -5,7 +5,6 @@
 #include "IFlyable.h"
 #include "IDrivable.h"
 #include "Boat.h"
-#include <cmath>
 
 namespace assignment2
 {
