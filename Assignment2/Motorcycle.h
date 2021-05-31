@@ -10,6 +10,7 @@ namespace assignment2
 	public:
 		Motorcycle();
 		~Motorcycle();
+		virtual unsigned int GetDriveSpeed() const;
 
 	};
 }
