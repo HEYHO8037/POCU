@@ -34,34 +34,11 @@ namespace lab5
 
 	unsigned int CircleLawn::GetMinimumFencesCount() const
 	{
-		float fenceCount = 2.0f * mHalfLength * mPi;
-		fenceCount /= 0.25f;
-
-		if (fenceCount == static_cast<unsigned int>(fenceCount))
-		{
-			return static_cast<unsigned int>(fenceCount);
-		}
-
-		return static_cast<unsigned int>(fenceCount + 1);
-
+		return 0;
 	}
 
 	unsigned int CircleLawn::GetFencePrice(eFenceType fenceType) const
 	{
-		float fencePrice = 0;
-
-		switch (fenceType)
-		{
-		case 0:
-			fencePrice = static_cast<float>(GetMinimumFencesCount()) * 1.5;
-			break;
-
-		case 1:
-			fencePrice = static_cast<float>(GetMinimumFencesCount()) * 1.5;
-			break;
-
-		}
-
-		return static_cast<unsigned int>(fencePrice);
+		return 0;
 	}
 }

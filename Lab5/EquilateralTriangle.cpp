@@ -25,7 +25,7 @@ namespace lab5
 
 	unsigned int EquilateralTriangleLawn::GetArea() const
 	{
-		return  (sqrt(3) / 4) * (mLength * mLength) + 0.5f;
+		return  static_cast<unsigned int>((sqrt(3) / 4) * (mLength * mLength) + 0.5f);
 	}
 
 	unsigned int EquilateralTriangleLawn::GetMinimumFencesCount() const
@@ -42,20 +42,20 @@ namespace lab5
 
 	unsigned int EquilateralTriangleLawn::GetFencePrice(eFenceType fenceType) const
 	{
-		unsigned int fencePrice = 0;
+		float fencePrice = 0;
 
 		switch (fenceType)
 		{
 		case 0:
-			fencePrice = GetMinimumFencesCount() * 1.5;
+			fencePrice = static_cast<float>(GetMinimumFencesCount()) * 1.5f;
 			break;
 
 		case 1:
-			fencePrice = GetMinimumFencesCount() * 1.75;
+			fencePrice = static_cast<float>(GetMinimumFencesCount()) * 1.75f;
 			break;
 
 		}
 
-		return fencePrice;
+		return static_cast<unsigned int>(fencePrice);
 	}
 }
