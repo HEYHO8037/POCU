@@ -31,14 +31,4 @@ namespace lab5
 
 		return static_cast<unsigned int>(area);
 	}
-
-	unsigned int CircleLawn::GetMinimumFencesCount() const
-	{
-		return 0;
-	}
-
-	unsigned int CircleLawn::GetFencePrice(eFenceType fenceType) const
-	{
-		return 0;
-	}
 }

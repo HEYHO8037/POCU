@@ -5,7 +5,7 @@
 
 namespace lab5
 {
-	class CircleLawn : public Lawn, public IFenceable
+	class CircleLawn : public Lawn
 	{
 	public:
 		CircleLawn();
@@ -13,8 +13,6 @@ namespace lab5
 		CircleLawn(unsigned int halfLength);
 		~CircleLawn();
 		virtual unsigned int GetArea() const;
-		virtual unsigned int GetMinimumFencesCount() const;
-		virtual unsigned int GetFencePrice(eFenceType fenceType) const;
 	private:
 		unsigned int mHalfLength;
 		float mPi = 3.14f;

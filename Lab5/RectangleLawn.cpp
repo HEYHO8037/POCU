@@ -40,7 +40,8 @@ namespace lab5
 			return static_cast<unsigned int>(fenceCount);
 		}
 
-		return static_cast<unsigned int>(fenceCount+1);
+		fenceCount += 1;
+		return static_cast<unsigned int>(fenceCount);
 	}
 
 	unsigned int RectangleLawn::GetFencePrice(eFenceType fenceType) const
