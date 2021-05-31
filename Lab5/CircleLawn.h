@@ -2,7 +2,6 @@
 
 #include "IFenceable.h"
 #include "Lawn.h"
-#include <cmath>
 
 namespace lab5
 {

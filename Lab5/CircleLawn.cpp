@@ -32,7 +32,12 @@ namespace lab5
 		float fenceCount = 2.0f * mHalfLength * mPi;
 		fenceCount /= 0.25f;
 
-		return static_cast<unsigned int>(ceil(fenceCount));
+		if (fenceCount == static_cast<unsigned int>(fenceCount))
+		{
+			return static_cast<unsigned int>(fenceCount);
+		}
+
+		return static_cast<unsigned int>(fenceCount + 1);
 
 	}
 

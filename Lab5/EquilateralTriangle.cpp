@@ -27,7 +27,12 @@ namespace lab5
 	{
 		float fenceCount = (mLength * 3) / 0.25f;
 
-		return static_cast<unsigned int>(ceil(fenceCount));
+		if (fenceCount == static_cast<unsigned int>(fenceCount))
+		{
+			return static_cast<unsigned int>(fenceCount);
+		}
+
+		return static_cast<unsigned int>(fenceCount + 1);
 	}
 
 	unsigned int EquilateralTriangleLawn::GetFencePrice(eFenceType fenceType) const

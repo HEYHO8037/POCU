@@ -33,13 +33,23 @@ namespace lab5
 			break;
 		}
 
-		return static_cast<unsigned int>(ceil(grassPrice));
+		if (grassPrice == static_cast<unsigned int>(grassPrice))
+		{
+			return static_cast<unsigned int>(grassPrice);
+		}
+
+		return static_cast<unsigned int>(grassPrice + 1);
 	}
 
 	unsigned int Lawn::GetMinimumSodRollsCount() const
 	{
 		float rollCount = GetArea() / 0.3f;
 
-		return static_cast<unsigned int>(ceil(rollCount));
+		if (rollCount == static_cast<unsigned int>(rollCount))
+		{
+			return static_cast<unsigned int>(rollCount);
+		}
+
+		return static_cast<unsigned int>(rollCount + 1);
 	}
 }

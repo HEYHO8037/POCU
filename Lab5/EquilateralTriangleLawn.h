@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IFenceable.h";
+#include "IFenceable.h"
 #include "Lawn.h"
 #include <cmath>
 

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "eGrassType.h"
-#include <cmath>
 
 namespace lab5
 {
