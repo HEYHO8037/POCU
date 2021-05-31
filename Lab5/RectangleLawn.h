@@ -9,6 +9,7 @@ namespace lab5
 	{
 	public:
 		RectangleLawn();
+		RectangleLawn(RectangleLawn& rectangleLawn);
 		RectangleLawn(unsigned int length, unsigned int height);
 		~RectangleLawn();
 		virtual unsigned int GetArea() const;

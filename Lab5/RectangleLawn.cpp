@@ -9,6 +9,12 @@ namespace lab5
 		mHeight = 0;
 	}
 
+	RectangleLawn::RectangleLawn(RectangleLawn& rectangleLawn)
+	{
+		mLength = rectangleLawn.mLength;
+		mHeight = rectangleLawn.mHeight;
+	}
+
 	RectangleLawn::RectangleLawn(unsigned int length, unsigned int height)
 	{
 		mLength = length;

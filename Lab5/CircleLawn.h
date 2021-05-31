@@ -9,6 +9,7 @@ namespace lab5
 	{
 	public:
 		CircleLawn();
+		CircleLawn(CircleLawn& circleLawn);
 		CircleLawn(unsigned int halfLength);
 		~CircleLawn();
 		virtual unsigned int GetArea() const;

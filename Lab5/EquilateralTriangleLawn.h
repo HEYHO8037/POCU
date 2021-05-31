@@ -10,6 +10,7 @@ namespace lab5
 	{
 	public:
 		EquilateralTriangleLawn();
+		EquilateralTriangleLawn(EquilateralTriangleLawn& equilateralTriangleLawn);
 		EquilateralTriangleLawn(unsigned int length);
 		~EquilateralTriangleLawn();
 		virtual unsigned int GetArea() const;

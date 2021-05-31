@@ -8,6 +8,11 @@ namespace lab5
 		mLength = 0;
 	}
 
+	EquilateralTriangleLawn::EquilateralTriangleLawn(EquilateralTriangleLawn& equilateralTriangleLawn)
+	{
+		mLength = equilateralTriangleLawn.mLength;
+	}
+
 	EquilateralTriangleLawn::EquilateralTriangleLawn(unsigned int length)
 	{
 		mLength = length;

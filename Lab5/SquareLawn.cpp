@@ -8,6 +8,11 @@ namespace lab5
 		mLength = 0;
 	}
 
+	SquareLawn::SquareLawn(SquareLawn& squareLawn)
+	{
+		mLength = squareLawn.mLength;
+	}
+
 	SquareLawn::SquareLawn(unsigned int length)
 	{
 		mLength = length;

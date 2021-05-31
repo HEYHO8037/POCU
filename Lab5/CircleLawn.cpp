@@ -13,6 +13,11 @@ namespace lab5
 		mHalfLength = halfLength;
 	}
 
+	CircleLawn::CircleLawn(CircleLawn& circleLawn)
+	{
+		mHalfLength = circleLawn.mHalfLength;
+	}
+
 	CircleLawn::~CircleLawn()
 	{
 
@@ -43,20 +48,20 @@ namespace lab5
 
 	unsigned int CircleLawn::GetFencePrice(eFenceType fenceType) const
 	{
-		unsigned int fencePrice = 0;
+		float fencePrice = 0;
 
 		switch (fenceType)
 		{
 		case 0:
-			fencePrice = GetMinimumFencesCount() * 1.5;
+			fencePrice = static_cast<float>(GetMinimumFencesCount()) * 1.5;
 			break;
 
 		case 1:
-			fencePrice = GetMinimumFencesCount() * 1.5;
+			fencePrice = static_cast<float>(GetMinimumFencesCount()) * 1.5;
 			break;
 
 		}
 
-		return fencePrice;
+		return static_cast<unsigned int>(fencePrice);
 	}
 }

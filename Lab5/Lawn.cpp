@@ -17,19 +17,19 @@ namespace lab5
 		switch (grassType)
 		{
 		case 0:
-			grassPrice = GetArea() * 8;
+			grassPrice = static_cast<float>(GetArea()) * 8.0f;
 			break;
 		case 1:
-			grassPrice = GetArea() * 5;
+			grassPrice = static_cast<float>(GetArea()) * 5.0f;
 			break;
 		case 2:
-			grassPrice = GetArea() * 3;
+			grassPrice = static_cast<float>(GetArea()) * 3.0f;
 			break;
 		case 3:
-			grassPrice = GetArea() * 2.5;
+			grassPrice = static_cast<float>(GetArea()) * 2.5f;
 			break;
 		case 4:
-			grassPrice = GetArea() * 4.5;
+			grassPrice = static_cast<float>(GetArea()) * 4.5f;
 			break;
 		}
 
