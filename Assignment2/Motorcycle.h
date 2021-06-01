@@ -9,8 +9,11 @@ namespace assignment2
 	{
 	public:
 		Motorcycle();
+		Motorcycle(Motorcycle& motorCycle);
 		~Motorcycle();
+
 		virtual unsigned int GetDriveSpeed() const;
+		Motorcycle& operator=(Motorcycle& motorCycle);
 
 	};
 }

@@ -22,7 +22,7 @@ namespace assignment2
 				mPerson[length] = vehicle.mPerson[length];
 			}
 
-			vehicle.mPerson = nullptr;
+			ChangeArrayNullptr();
 		}
 	}
 
@@ -139,7 +139,10 @@ namespace assignment2
 	{
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			mPerson[length] = nullptr;
+			if (mPerson[length] != nullptr)
+			{
+				mPerson[length] = nullptr;
+			}
 		}
 	}
 }

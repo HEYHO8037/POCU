@@ -12,24 +12,24 @@ namespace lab5
 
 	unsigned int Lawn::GetGrassPrice(eGrassType grassType) const
 	{
-		float grassPrice = 0;
+		double grassPrice = 0;
 
 		switch (grassType)
 		{
 		case 0:
-			grassPrice = static_cast<float>(GetArea()) * 8.0f;
+			grassPrice = static_cast<double>(GetArea()) * 8.0f;
 			break;
 		case 1:
-			grassPrice = static_cast<float>(GetArea()) * 5.0f;
+			grassPrice = static_cast<double>(GetArea()) * 5.0f;
 			break;
 		case 2:
-			grassPrice = static_cast<float>(GetArea()) * 3.0f;
+			grassPrice = static_cast<double>(GetArea()) * 3.0f;
 			break;
 		case 3:
-			grassPrice = static_cast<float>(GetArea()) * 2.5f;
+			grassPrice = static_cast<double>(GetArea()) * 2.5f;
 			break;
 		case 4:
-			grassPrice = static_cast<float>(GetArea()) * 4.5f;
+			grassPrice = static_cast<double>(GetArea()) * 4.5f;
 			break;
 		}
 
@@ -43,7 +43,7 @@ namespace lab5
 
 	unsigned int Lawn::GetMinimumSodRollsCount() const
 	{
-		float rollCount = GetArea() / 0.3f;
+		double rollCount = GetArea() / 0.3f;
 
 		if (rollCount == static_cast<unsigned int>(rollCount))
 		{

@@ -8,6 +8,12 @@ namespace assignment2
 		mPersonWeight = 0;
 	}
 
+	Person::Person(Person& person)
+	{
+		mName = person.mName;
+		mPersonWeight = person.mPersonWeight;
+	}
+
 	Person::Person(const char* name, unsigned int weight)
 	{
 		mName = name;

@@ -30,7 +30,7 @@ namespace lab5
 
 	unsigned int EquilateralTriangleLawn::GetMinimumFencesCount() const
 	{
-		float fenceCount = (mLength * 3) / 0.25f;
+		double fenceCount = (mLength * 3) / 0.25f;
 
 		if (fenceCount == static_cast<unsigned int>(fenceCount))
 		{
@@ -42,16 +42,16 @@ namespace lab5
 
 	unsigned int EquilateralTriangleLawn::GetFencePrice(eFenceType fenceType) const
 	{
-		float fencePrice = 0;
+		double fencePrice = 0;
 
 		switch (fenceType)
 		{
 		case 0:
-			fencePrice = static_cast<float>(GetMinimumFencesCount()) * 1.5f;
+			fencePrice = static_cast<double>(GetMinimumFencesCount()) * 1.5f;
 			break;
 
 		case 1:
-			fencePrice = static_cast<float>(GetMinimumFencesCount()) * 1.75f;
+			fencePrice = static_cast<double>(GetMinimumFencesCount()) * 1.75f;
 			break;
 
 		}

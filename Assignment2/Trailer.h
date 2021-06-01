@@ -6,9 +6,11 @@ namespace assignment2
 	{
 	public:
 		Trailer(unsigned int weight);
+		Trailer(Trailer& trailer);
 		~Trailer();
 
 		unsigned int GetWeight() const;
+		Trailer& operator=(Trailer& trailer);
 
 	private:
 		unsigned int mTrailerWeight;

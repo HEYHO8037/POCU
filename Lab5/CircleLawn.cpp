@@ -25,7 +25,7 @@ namespace lab5
 
 	unsigned int CircleLawn::GetArea() const
 	{
-		float area = mHalfLength * mHalfLength * mPi;
+		double area = mHalfLength * mHalfLength * mPi;
 
 		area += 0.5f;
 

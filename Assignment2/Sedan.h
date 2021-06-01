@@ -12,12 +12,16 @@ namespace assignment2
 	{
 	public:
 		Sedan();
+		Sedan(Sedan& sedan);
 		~Sedan();
 
 		bool AddTrailer(const Trailer* trailer);
 		bool RemoveTrailer();
 
 		virtual unsigned int GetDriveSpeed() const;
+
+		Sedan& operator=(Sedan& sedan);
+
 	private:
 		const Trailer* mTrailer;
 
