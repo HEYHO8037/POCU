@@ -7,6 +7,11 @@ namespace assignment2
 		mMaxPassengerCount = 50;
 	}
 
+	UBoat::UBoat(UBoat& uBoat)
+	{
+		mMaxPassengerCount = uBoat.mMaxPassengerCount;
+	}
+
 	UBoat::~UBoat()
 	{
 	}
@@ -19,5 +24,10 @@ namespace assignment2
 	unsigned int UBoat::GetSailSpeed() const
 	{
 		return static_cast<unsigned int>(fmax((550 - GetTotalPassengerWeight() / 10), 200));
+	}
+
+	UBoat& UBoat::operator=(UBoat& uBoat)
+	{
+		mMaxPassengerCount = uBoat.mMaxPassengerCount;
 	}
 }

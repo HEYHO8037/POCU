@@ -9,6 +9,11 @@ namespace assignment2
 		mMaxPassengerCount = 0;
 	}
 
+	Airplane::Airplane(Airplane& airPlane)
+	{
+		mMaxPassengerCount = airPlane.mMaxPassengerCount;
+	}
+
 	Airplane::Airplane(unsigned int maxPassengersCount)
 	{
 		mMaxPassengerCount = maxPassengersCount;
@@ -71,5 +76,10 @@ namespace assignment2
 		boat.ChangeArrayNullptr();
 
 		return bp;
+	}
+
+	Airplane& Airplane::operator=(Airplane& airPlane)
+	{
+		mMaxPassengerCount = airPlane.mMaxPassengerCount;
 	}
 }

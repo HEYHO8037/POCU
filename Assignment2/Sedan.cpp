@@ -8,6 +8,12 @@ namespace assignment2
 		mMaxPassengerCount = 4;
 	}
 
+	Sedan::Sedan(Sedan& sedan)
+	{
+		mTrailer = sedan.mTrailer;
+		mMaxPassengerCount = 4;
+	}
+
 	Sedan::~Sedan()
 	{
 	}
@@ -62,5 +68,11 @@ namespace assignment2
 		{
 			return 300;
 		}
+	}
+
+	Sedan& Sedan::operator=(Sedan& sedan)
+	{
+		mTrailer = sedan.mTrailer;
+		mMaxPassengerCount = 4;
 	}
 }

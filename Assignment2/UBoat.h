@@ -17,6 +17,5 @@ namespace assignment2
 		virtual unsigned int GetSailSpeed() const;
 
 		UBoat& operator=(UBoat& uBoat);
-);
 	};
 }

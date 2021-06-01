@@ -7,6 +7,11 @@ namespace assignment2
 		mMaxPassengerCount = maxPassengersCount;
 	}
 
+	Boatplane::Boatplane(Boatplane& boatPlane)
+	{
+		mMaxPassengerCount = boatPlane.mMaxPassengerCount;
+	}
+
 	Boatplane::~Boatplane()
 	{
 
@@ -32,5 +37,10 @@ namespace assignment2
 	unsigned int Boatplane::GetSailSpeed() const
 	{
 		return static_cast<unsigned int>(fmax(800 - (1.7 * GetTotalPassengerWeight()), 20));
+	}
+
+	Boatplane& Boatplane::operator=(Boatplane& boatPlane)
+	{
+		mMaxPassengerCount = boatPlane.mMaxPassengerCount;
 	}
 }

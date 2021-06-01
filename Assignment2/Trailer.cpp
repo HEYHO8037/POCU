@@ -7,6 +7,11 @@ namespace assignment2
 		mTrailerWeight = weight;
 	}
 
+	Trailer::Trailer(Trailer& trailer)
+	{
+		mTrailerWeight = trailer.mTrailerWeight;
+	}
+
 	Trailer::~Trailer()
 	{
 	}
@@ -14,5 +19,10 @@ namespace assignment2
 	unsigned int Trailer::GetWeight() const
 	{
 		return mTrailerWeight;
+	}
+
+	Trailer& Trailer::operator=(Trailer& trailer)
+	{
+		mTrailerWeight = trailer.mTrailerWeight;
 	}
 }

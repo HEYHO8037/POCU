@@ -34,4 +34,10 @@ namespace assignment2
 	{
 		return mPersonWeight;
 	}
+
+	Person& Person::operator=(Person& person)
+	{
+		mName = person.mName;
+		mPersonWeight = person.mPersonWeight;
+	}
 }
