@@ -39,7 +39,7 @@ namespace assignment2
 
 	Boat& Boat::operator=(Boat& boat)
 	{
-		mMaxPassengerCount = boat.maxPassengersCount;
+		mMaxPassengerCount = boat.mMaxPassengerCount;
 		mTravelCheck = 2;
 	}
 

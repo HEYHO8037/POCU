@@ -133,6 +133,8 @@ namespace assignment2
 		}
 
 		vehicle.mPerson = nullptr;
+
+		return *this;
 	}
 
 	void Vehicle::ChangeArrayNullptr()

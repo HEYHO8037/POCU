@@ -24,5 +24,7 @@ namespace assignment2
 	Trailer& Trailer::operator=(Trailer& trailer)
 	{
 		mTrailerWeight = trailer.mTrailerWeight;
+
+		return *this;
 	}
 }

@@ -39,5 +39,7 @@ namespace assignment2
 	{
 		mMaxPassengerCount = motorCycle.mMaxPassengerCount;
 		mTravelCheck = 5;
+
+		return *this;
 	}
 }

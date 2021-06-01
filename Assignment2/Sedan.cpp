@@ -107,5 +107,7 @@ namespace assignment2
 		mTrailer = sedan.mTrailer;
 		mMaxPassengerCount = 4;
 		mTravelCheck = 6;
+
+		return *this;
 	}
 }

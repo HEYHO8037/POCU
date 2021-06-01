@@ -61,7 +61,7 @@ namespace assignment2
 		unsigned int totalWeight = GetTotalPassengerWeight();
 		unsigned int totalSpeed = 0;
 
-		totalSpeed = static_cast<unsigned int>(200 * (exp((-totalWeight + 800) / 500)));
+		totalSpeed = static_cast<unsigned int>(200 * (exp((totalWeight + 800) / 500)));
 		
 		return totalSpeed;
 	}
@@ -71,7 +71,7 @@ namespace assignment2
 		unsigned int totalWeight = GetTotalPassengerWeight();
 		unsigned int totalSpeed = 0;
 
-		totalSpeed = static_cast<unsigned int>(4 * (exp((-totalWeight + 400) / 70)));
+		totalSpeed = static_cast<unsigned int>(4 * (exp((totalWeight + 400) / 70)));
 		return totalSpeed;
 	}
 
@@ -102,5 +102,7 @@ namespace assignment2
 	{
 		mMaxPassengerCount = airPlane.mMaxPassengerCount;
 		mTravelCheck = 3;
+
+		return *this;
 	}
 }

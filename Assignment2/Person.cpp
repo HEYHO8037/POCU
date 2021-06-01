@@ -39,5 +39,7 @@ namespace assignment2
 	{
 		mName = person.mName;
 		mPersonWeight = person.mPersonWeight;
+
+		return *this;
 	}
 }

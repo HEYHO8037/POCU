@@ -62,5 +62,7 @@ namespace assignment2
 	{
 		mMaxPassengerCount = boatPlane.mMaxPassengerCount;
 		mTravelCheck = 3;
+
+		return *this;
 	}
 }
