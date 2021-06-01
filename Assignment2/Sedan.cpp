@@ -5,6 +5,7 @@ namespace assignment2
 	Sedan::Sedan()
 	{
 		mTrailer = nullptr;
+		mTravelCheck = 6;
 		mMaxPassengerCount = 4;
 	}
 
@@ -12,6 +13,7 @@ namespace assignment2
 	{
 		mTrailer = sedan.mTrailer;
 		mMaxPassengerCount = 4;
+		mTravelCheck = 6;
 	}
 
 	Sedan::~Sedan()
@@ -70,9 +72,40 @@ namespace assignment2
 		}
 	}
 
+	unsigned int Sedan::GetMaxSpeed() const
+	{
+		return GetDriveSpeed();
+	}
+
+	unsigned int Sedan::GetTravelSpeed() const
+	{
+		if (mTravelCheck == 1 && mTrailer == nullptr)
+		{
+			mTravelCheck = 6;
+			return 0;
+		}
+		else if (mTravelCheck == 1 && mTrailer != nullptr)
+		{
+			mTravelCheck--;
+			return 0;
+		}
+		else if (mTravelCheck == 0 && mTrailer != nullptr)
+		{
+			mTravelCheck = 6;
+			return 0;
+		}
+		else
+		{
+			mTravelCheck--;
+			return GetMaxSpeed();
+		}
+	}
+
+
 	Sedan& Sedan::operator=(Sedan& sedan)
 	{
 		mTrailer = sedan.mTrailer;
 		mMaxPassengerCount = 4;
+		mTravelCheck = 6;
 	}
 }

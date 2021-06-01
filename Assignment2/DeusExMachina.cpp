@@ -4,8 +4,8 @@ namespace assignment2
 {
 	DeusExMachina::DeusExMachina()
 	{
-		mCountTravel = 0;
 		mCountVehicle = 0;
+		isTravel = false;
 	}
 
 	DeusExMachina::~DeusExMachina()
@@ -24,7 +24,12 @@ namespace assignment2
 
 	void DeusExMachina::Travel() const
 	{
+		isTravel = true;
 
+		for (unsigned int length = 0; length < mCountVehicle; length++)
+		{
+			mCountSpeed[length] = mVehicle[length]->GetTravelSpeed();
+		}
 	}
 
 	bool DeusExMachina::AddVehicle(Vehicle* vehicle)
@@ -51,7 +56,7 @@ namespace assignment2
 		{
 			delete mVehicle[i];
 
-			for (int length = i; length < mCountVehicle; length++)
+			for (unsigned int length = i; length < mCountVehicle; length++)
 			{
 				if (length == mCountVehicle - 1)
 				{
@@ -68,6 +73,38 @@ namespace assignment2
 
 	const Vehicle* DeusExMachina::GetFurthestTravelled() const
 	{
-		return NULL;
+		unsigned int topSpeed = 0;
+
+		if (mCountVehicle == 0)
+		{
+			return NULL;
+		}
+		else if (isTravel == false && mCountVehicle != 0)
+		{
+			return mVehicle[0];
+		}
+		else
+		{
+			for (unsigned int length = 0; length < mCountVehicle; length++)
+			{
+				if (topSpeed > mCountSpeed[length])
+				{
+					continue;
+				}
+				else
+				{
+					topSpeed = mCountSpeed[length];
+				}
+			}
+
+			for (unsigned int length = 0; length < mCountVehicle; length++)
+			{
+				if (topSpeed == mCountSpeed[length])
+				{
+					return mVehicle[length];
+				}
+			}
+		}
+
 	}
 }

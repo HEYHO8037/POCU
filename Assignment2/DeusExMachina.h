@@ -20,8 +20,9 @@ namespace assignment2
 		~DeusExMachina();
 		static DeusExMachina* mDeusExMachina;
 		Vehicle** mVehicle = new Vehicle* [10];
+		static unsigned int mCountSpeed[10];
 		static unsigned int mCountVehicle;
-		static unsigned int mCountTravel;
+		static bool isTravel;
 	};
 
 }

@@ -19,11 +19,13 @@ namespace assignment2
 		bool RemoveTrailer();
 
 		virtual unsigned int GetDriveSpeed() const;
+		virtual unsigned int GetMaxSpeed() const;
+		virtual unsigned int GetTravelSpeed() const;
 
 		Sedan& operator=(Sedan& sedan);
 
 	private:
 		const Trailer* mTrailer;
-
+		static unsigned int mTravelCheck;
 	};
 }

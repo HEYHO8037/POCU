@@ -5,11 +5,13 @@ namespace assignment2
 	Boatplane::Boatplane(unsigned int maxPassengersCount)
 	{
 		mMaxPassengerCount = maxPassengersCount;
+		mTravelCheck = 3;
 	}
 
 	Boatplane::Boatplane(Boatplane& boatPlane)
 	{
 		mMaxPassengerCount = boatPlane.mMaxPassengerCount;
+		mTravelCheck = 3;
 	}
 
 	Boatplane::~Boatplane()
@@ -19,7 +21,7 @@ namespace assignment2
 
 	unsigned int Boatplane::GetFlySpeed() const
 	{
-		return 150 * static_cast<unsigned int>(exp((-GetTotalPassengerWeight() + 500) / 300));
+		return static_cast < unsigned int>(150 * (exp((-GetTotalPassengerWeight() + 500) / 300)));
 	}
 
 	unsigned int Boatplane::GetMaxSpeed() const
@@ -34,6 +36,23 @@ namespace assignment2
 		}
 	}
 
+	unsigned int Boatplane::GetTravelSpeed() const
+	{
+		if (mTravelCheck == 3)
+		{
+			return GetMaxSpeed();
+		}
+		else
+		{
+			mTravelCheck--;
+			if (mTravelCheck == 0)
+			{
+				mTravelCheck = 3;
+			}
+			return 0;
+		}
+	}
+
 	unsigned int Boatplane::GetSailSpeed() const
 	{
 		return static_cast<unsigned int>(fmax(800 - (1.7 * GetTotalPassengerWeight()), 20));
@@ -42,5 +61,6 @@ namespace assignment2
 	Boatplane& Boatplane::operator=(Boatplane& boatPlane)
 	{
 		mMaxPassengerCount = boatPlane.mMaxPassengerCount;
+		mTravelCheck = 3;
 	}
 }
