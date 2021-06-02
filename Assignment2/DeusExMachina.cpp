@@ -2,10 +2,13 @@
 
 namespace assignment2
 {
+	DeusExMachina* DeusExMachina::mDeusExMachina = nullptr;
+	unsigned int DeusExMachina::mCountSpeed[10] = { 0 };
+	unsigned int DeusExMachina::mCountVehicle = 0;
+	bool DeusExMachina::isTravel = false;
+
 	DeusExMachina::DeusExMachina()
 	{
-		mCountVehicle = 0;
-		isTravel = false;
 	}
 
 	DeusExMachina::~DeusExMachina()

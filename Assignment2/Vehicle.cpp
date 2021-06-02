@@ -22,7 +22,7 @@ namespace assignment2
 				mPerson[length] = vehicle.mPerson[length];
 			}
 
-			ChangeArrayNullptr();
+			vehicle.ChangeArrayNullptr();
 		}
 	}
 
@@ -34,7 +34,7 @@ namespace assignment2
 
 	Vehicle::~Vehicle()
 	{
-		if (mPerson != nullptr)
+		if (mPerson[0] != nullptr)
 		{
 			delete[] mPerson;
 		}
@@ -49,13 +49,14 @@ namespace assignment2
 		else
 		{
 			mPerson[mCount] = person;
+			mCount++;
 			return true;
 		}
 	}
 
 	bool Vehicle::RemovePassenger(unsigned int i)
 	{
-		if (i > mCount)
+		if (i >= mCount)
 		{
 			return false;
 		}
@@ -63,7 +64,7 @@ namespace assignment2
 		{
 			delete mPerson[i];
 
-			for (unsigned int length = i; length < mCount - 1; length++)
+			for (unsigned int length = i; length < mCount; length++)
 			{
 				if (length != mCount - 1)
 				{
@@ -76,7 +77,6 @@ namespace assignment2
 			}
 
 			mCount--;
-			
 			return true;
 		}
 	}
@@ -146,5 +146,7 @@ namespace assignment2
 				mPerson[length] = nullptr;
 			}
 		}
+
+		mCount = 0;
 	}
 }

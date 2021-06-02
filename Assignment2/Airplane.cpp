@@ -5,20 +5,20 @@
 namespace assignment2
 {
 	Airplane::Airplane()
+		: Vehicle()
 	{
-		mMaxPassengerCount = 0;
 		mTravelCheck = 3;
 	}
 
 	Airplane::Airplane(Airplane& airPlane)
+		: Vehicle(airPlane)
 	{
-		mMaxPassengerCount = airPlane.mMaxPassengerCount;
 		mTravelCheck = 3;
 	}
 
 	Airplane::Airplane(unsigned int maxPassengersCount)
+		: Vehicle(maxPassengersCount)
 	{
-		mMaxPassengerCount = maxPassengersCount;
 		mTravelCheck = 3;
 	}
 
@@ -94,6 +94,7 @@ namespace assignment2
 
 		ChangeArrayNullptr();
 		boat.ChangeArrayNullptr();
+
 
 		return bp;
 	}

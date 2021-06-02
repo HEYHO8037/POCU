@@ -3,9 +3,9 @@
 namespace assignment2
 {
 	Motorcycle::Motorcycle()
+		: Vehicle(2)
 	{
 		mTravelCheck = 5;
-		mMaxPassengerCount = 2;
 	}
 
 	Motorcycle::~Motorcycle()

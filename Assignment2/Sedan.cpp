@@ -3,16 +3,16 @@
 namespace assignment2
 {
 	Sedan::Sedan()
+		: Vehicle(4)
 	{
 		mTrailer = nullptr;
 		mTravelCheck = 6;
-		mMaxPassengerCount = 4;
 	}
 
 	Sedan::Sedan(Sedan& sedan)
+		: Vehicle(sedan)
 	{
 		mTrailer = sedan.mTrailer;
-		mMaxPassengerCount = 4;
 		mTravelCheck = 6;
 	}
 

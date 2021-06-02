@@ -3,8 +3,8 @@
 namespace assignment2
 {
 	Boat::Boat(unsigned int maxPassengersCount)
+		:Vehicle(maxPassengersCount)
 	{
-		mMaxPassengerCount = maxPassengersCount;
 		mTravelCheck = 2;
 	}
 

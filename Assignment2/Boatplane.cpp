@@ -3,14 +3,14 @@
 namespace assignment2
 {
 	Boatplane::Boatplane(unsigned int maxPassengersCount)
+		:Vehicle(maxPassengersCount)
 	{
-		mMaxPassengerCount = maxPassengersCount;
 		mTravelCheck = 3;
 	}
 
 	Boatplane::Boatplane(Boatplane& boatPlane)
+		: Vehicle(boatPlane)
 	{
-		mMaxPassengerCount = boatPlane.mMaxPassengerCount;
 		mTravelCheck = 3;
 	}
 

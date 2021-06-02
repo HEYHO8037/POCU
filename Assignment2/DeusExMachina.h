@@ -8,6 +8,8 @@ namespace assignment2
 	class DeusExMachina
 	{
 	public:
+		DeusExMachina();
+		~DeusExMachina();
 		static DeusExMachina* GetInstance();
 		void Travel() const;
 		bool AddVehicle(Vehicle* vehicle);
@@ -15,9 +17,8 @@ namespace assignment2
 		const Vehicle* GetFurthestTravelled() const;
 
 
+
 	private:
-		DeusExMachina();
-		~DeusExMachina();
 		static DeusExMachina* mDeusExMachina;
 		Vehicle** mVehicle = new Vehicle* [10];
 		static unsigned int mCountSpeed[10];

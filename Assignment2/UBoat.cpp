@@ -3,14 +3,14 @@
 namespace assignment2
 {
 	UBoat::UBoat()
+		: Vehicle(50)
 	{
-		mMaxPassengerCount = 50;
 		mTravelCheck = 5;
 	}
 
 	UBoat::UBoat(UBoat& uBoat)
+		: Vehicle(uBoat)
 	{
-		mMaxPassengerCount = uBoat.mMaxPassengerCount;
 		mTravelCheck = 5;
 	}
 
