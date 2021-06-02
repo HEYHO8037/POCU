@@ -58,8 +58,8 @@ namespace assignment2
 
 	unsigned int Airplane::GetFlySpeed() const
 	{
-		unsigned int totalWeight = GetTotalPassengerWeight();
-		double totalSpeed = 0;
+		int totalWeight = GetTotalPassengerWeight();
+		int totalSpeed = 0;
 
 		totalSpeed = (200 * (exp((-totalWeight + 800) / 500)));
 		
@@ -68,8 +68,8 @@ namespace assignment2
 
 	unsigned int Airplane::GetDriveSpeed() const
 	{
-		unsigned int totalWeight = GetTotalPassengerWeight();
-		unsigned int totalSpeed = 0;
+		int totalWeight = GetTotalPassengerWeight();
+		int totalSpeed = 0;
 
 		totalSpeed = (4 * (exp((-totalWeight + 400) / 70)));
 		return static_cast<unsigned int>(totalSpeed);

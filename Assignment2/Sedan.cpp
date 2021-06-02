@@ -48,7 +48,7 @@ namespace assignment2
 
 	unsigned int Sedan::GetDriveSpeed() const
 	{
-		unsigned int weight = GetTotalPassengerWeight() + mTrailer->GetWeight();
+		int weight = GetTotalPassengerWeight() + mTrailer->GetWeight();
 
 		if (weight <= 80)
 		{
