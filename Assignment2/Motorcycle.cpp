@@ -14,7 +14,10 @@ namespace assignment2
 
 	unsigned int Motorcycle::GetDriveSpeed() const
 	{
-		return static_cast<unsigned int>(fmax((-pow((GetTotalPassengerWeight() / 15), 3) + 2 * GetTotalPassengerWeight() + 400), 0));
+		double weight = GetTotalPassengerWeight();
+		double driveSpeed = round(fmax((-pow((weight / 15), 3) + 2 * weight + 400), 0));
+
+		return static_cast<unsigned int>(driveSpeed);
 	}
 
 	unsigned int Motorcycle::GetTravelSpeed()

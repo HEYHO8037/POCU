@@ -44,16 +44,10 @@ int main()
 
 	while (air->RemovePassenger(0))
 	{
-		cout << CUR_P_LABLE << air->GetPassengersCount() << endl;
+		cout << CUR_P_LABLE << air->GetPassengersCount() << endl;;
 	}
 
-	//Person* overlapTest = new Person("Overlap Test", 100);
-	//air->AddPassenger(overlapTest);
-	//air->AddPassenger(overlapTest);
-	//assert(air->GetPassengersCount() == 1); // 빌드봇은 이런 테스트 안함
-
-	//toAdd = NULL;
-	//assert(air->AddPassenger(toAdd) == false); // 빌드봇은 이런 테스트 안함
+	Person* overlapTest = new Person("Overlap Test", 100);
 
 	delete air;
 
@@ -65,7 +59,6 @@ int main()
 		dockingTest1.AddPassenger(new Person(STR(i), i));
 		dockingTest2.AddPassenger(new Person(STR(i), i));
 	}
-
 	const Person* comp1 = dockingTest1.GetPassenger(0);
 
 	Boatplane bp1 = dockingTest1 + dockingTest2;
@@ -73,7 +66,7 @@ int main()
 
 	const Person* comp2 = bp1.GetPassenger(0);
 
-	//assert(comp1 == comp2); // 빌드봇은 이런 테스트 안함
+	assert(comp1 == comp2); // 빌드봇은 이런 테스트 안함
 	assert(dockingTest1.GetPassengersCount() == 0);
 	assert(dockingTest2.GetPassengersCount() == 0);
 	assert(bp1.GetPassengersCount() == 10);
@@ -121,19 +114,6 @@ int main()
 	d->AddVehicle(demSedan2);
 	d->AddVehicle(demUBoat);
 
-	/*for (size_t i = 0; i < 7; i++)
-	{
-		Vehicle* tempVPointer = d->GetVehicle(i);
-		for (size_t j = tempVPointer->GetPassengersCount(); j < tempVPointer->GetMaxPassengersCount(); j++)
-		{
-			tempVPointer->AddPassenger(new Person(STR((i + j)), 10));
-		}
-	}
-
-	for (size_t i = 0; i < 10; i++)
-	{
-		d->Travel();
-	}*/
 
 	delete d;
 }

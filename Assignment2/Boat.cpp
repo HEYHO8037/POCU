@@ -20,7 +20,10 @@ namespace assignment2
 
 	unsigned int Boat::GetSailSpeed() const
 	{
-		return static_cast<unsigned int>(fmax(800 - (10 * GetTotalPassengerWeight()), 20));
+		double weight = GetTotalPassengerWeight();
+		double sailSpeed = round(fmax(800 - (10 * weight), 20));
+
+		return static_cast<unsigned int>(sailSpeed);
 	}
 
 	unsigned int Boat::GetTravelSpeed()

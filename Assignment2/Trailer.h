@@ -13,6 +13,6 @@ namespace assignment2
 		Trailer& operator=(Trailer& trailer);
 
 	private:
-		unsigned int mTrailerWeight;
+		unsigned int mTrailerWeight = 0;
 	};
 }

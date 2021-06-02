@@ -21,7 +21,10 @@ namespace assignment2
 
 	unsigned int Boatplane::GetFlySpeed() const
 	{
-		return static_cast < unsigned int>(150 * (exp((-GetTotalPassengerWeight() + 500) / 300)));
+		double weight = GetTotalPassengerWeight();
+		double flySpeed = round(150 * (exp((-weight + 500) / 300)));
+
+		return static_cast<unsigned int>(flySpeed);
 	}
 
 	unsigned int Boatplane::GetMaxSpeed() const
@@ -40,6 +43,7 @@ namespace assignment2
 	{
 		if (mTravelCheck == 3)
 		{
+			mTravelCheck--;
 			return GetMaxSpeed();
 		}
 		else
@@ -55,7 +59,10 @@ namespace assignment2
 
 	unsigned int Boatplane::GetSailSpeed() const
 	{
-		return static_cast<unsigned int>(fmax(800 - (1.7 * GetTotalPassengerWeight()), 20));
+		double weight = GetTotalPassengerWeight();
+		double sailSpeed = round(fmax(800 - (1.7 * weight), 20));
+
+		return static_cast<unsigned int>(sailSpeed);
 	}
 
 	Boatplane& Boatplane::operator=(Boatplane& boatPlane)

@@ -43,6 +43,7 @@ namespace assignment2
 	{
 		if (mTravelCheck == 3)
 		{
+			mTravelCheck--;
 			return GetMaxSpeed();
 		}
 		else
@@ -58,26 +59,27 @@ namespace assignment2
 
 	unsigned int Airplane::GetFlySpeed() const
 	{
-		int totalWeight = GetTotalPassengerWeight();
+		double totalWeight = GetTotalPassengerWeight();
 		int totalSpeed = 0;
 
-		totalSpeed = (200 * (exp((-totalWeight + 800) / 500)));
+		totalSpeed = round(200 * exp((-totalWeight + 800) / 500));
 		
 		return static_cast<unsigned int>(totalSpeed);
 	}
 
 	unsigned int Airplane::GetDriveSpeed() const
 	{
-		int totalWeight = GetTotalPassengerWeight();
-		int totalSpeed = 0;
+		double totalWeight = GetTotalPassengerWeight();
+		double totalSpeed = 0;
 
-		totalSpeed = (4 * (exp((-totalWeight + 400) / 70)));
+		totalSpeed = round(4 * exp((-totalWeight + 400) / 70));
+
 		return static_cast<unsigned int>(totalSpeed);
 	}
 
 	Boatplane Airplane::operator+(Boat& boat)
 	{	
-		unsigned int passengers = boat.GetPassengersCount() + GetPassengersCount();
+		unsigned int passengers = boat.GetMaxPassengersCount() + GetMaxPassengersCount();
 		unsigned int boatPassengers = boat.GetPassengersCount();
 		
 		Boatplane bp(passengers);

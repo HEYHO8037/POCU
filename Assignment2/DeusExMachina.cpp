@@ -31,13 +31,13 @@ namespace assignment2
 
 		for (unsigned int length = 0; length < mCountVehicle; length++)
 		{
-			mCountSpeed[length] = mVehicle[length]->GetTravelSpeed();
+			mCountSpeed[length] += mVehicle[length]->GetTravelSpeed();
 		}
 	}
 
 	bool DeusExMachina::AddVehicle(Vehicle* vehicle)
 	{
-		if (mCountVehicle < 10 || vehicle != nullptr)
+		if (mCountVehicle < 10 && vehicle != nullptr)
 		{
 			mVehicle[mCountVehicle] = vehicle;
 			mCountVehicle++;
@@ -70,8 +70,10 @@ namespace assignment2
 					mVehicle[length] = mVehicle[length + 1];
 				}
 			}
+
+			mCountVehicle--;
 		}
-		return false;
+		return true;
 	}
 
 	const Vehicle* DeusExMachina::GetFurthestTravelled() const
