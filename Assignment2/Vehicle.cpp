@@ -91,9 +91,9 @@ namespace assignment2
 		return mMaxPassengerCount;
 	}
 
-	unsigned int Vehicle::GetTotalPassengerWeight() const
+	int Vehicle::GetTotalPassengerWeight() const
 	{
-		unsigned int totalWeight = 0;
+		int totalWeight = 0;
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
