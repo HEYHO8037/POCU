@@ -39,7 +39,7 @@ namespace assignment2
 		}
 	}
 
-	unsigned int Airplane::GetTravelSpeed() const
+	unsigned int Airplane::GetTravelSpeed()
 	{
 		if (mTravelCheck == 3)
 		{
@@ -59,11 +59,11 @@ namespace assignment2
 	unsigned int Airplane::GetFlySpeed() const
 	{
 		unsigned int totalWeight = GetTotalPassengerWeight();
-		unsigned int totalSpeed = 0;
+		double totalSpeed = 0;
 
-		totalSpeed = static_cast<unsigned int>(200 * (exp((totalWeight + 800) / 500)));
+		totalSpeed = (200 * (exp((-totalWeight + 800) / 500)));
 		
-		return totalSpeed;
+		return static_cast<unsigned int>(totalSpeed);
 	}
 
 	unsigned int Airplane::GetDriveSpeed() const
@@ -71,8 +71,8 @@ namespace assignment2
 		unsigned int totalWeight = GetTotalPassengerWeight();
 		unsigned int totalSpeed = 0;
 
-		totalSpeed = static_cast<unsigned int>(4 * (exp((totalWeight + 400) / 70)));
-		return totalSpeed;
+		totalSpeed = (4 * (exp((-totalWeight + 400) / 70)));
+		return static_cast<unsigned int>(totalSpeed);
 	}
 
 	Boatplane Airplane::operator+(Boat& boat)

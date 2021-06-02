@@ -39,7 +39,7 @@ namespace assignment2
 			return GetSailSpeed();
 		}
 	}
-	unsigned int UBoat::GetTravelSpeed() const
+	unsigned int UBoat::GetTravelSpeed()
 	{
 		if (mTravelCheck == 5 || mTravelCheck == 4)
 		{

@@ -36,7 +36,7 @@ namespace assignment2
 		}
 	}
 
-	unsigned int Boatplane::GetTravelSpeed() const
+	unsigned int Boatplane::GetTravelSpeed()
 	{
 		if (mTravelCheck == 3)
 		{

@@ -17,11 +17,11 @@ namespace assignment2
 		virtual unsigned int GetSailSpeed() const;
 
 		virtual unsigned int GetMaxSpeed() const;
-		virtual unsigned int GetTravelSpeed() const;
+		virtual unsigned int GetTravelSpeed();
 
 		UBoat& operator=(UBoat& uBoat);
 
 	private:
-		static unsigned int mTravelCheck;
+		unsigned int mTravelCheck;
 	};
 }

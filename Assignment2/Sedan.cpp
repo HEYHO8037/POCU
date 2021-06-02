@@ -77,7 +77,7 @@ namespace assignment2
 		return GetDriveSpeed();
 	}
 
-	unsigned int Sedan::GetTravelSpeed() const
+	unsigned int Sedan::GetTravelSpeed()
 	{
 		if (mTravelCheck == 1 && mTrailer == nullptr)
 		{

@@ -13,12 +13,12 @@ namespace assignment2
 		~Motorcycle();
 
 		virtual unsigned int GetDriveSpeed() const;
-		virtual unsigned int GetTravelSpeed() const;
+		virtual unsigned int GetTravelSpeed();
 		virtual unsigned int GetMaxSpeed() const;
 
 		Motorcycle& operator=(Motorcycle& motorCycle);
 	private:
-		static unsigned int mTravelCheck;
+		unsigned int mTravelCheck;
 
 	};
 }

@@ -17,7 +17,7 @@ namespace assignment2
 		return static_cast<unsigned int>(fmax((-pow((GetTotalPassengerWeight() / 15), 3) + 2 * GetTotalPassengerWeight() + 400), 0));
 	}
 
-	unsigned int Motorcycle::GetTravelSpeed() const
+	unsigned int Motorcycle::GetTravelSpeed()
 	{
 		if (mTravelCheck == 0)
 		{

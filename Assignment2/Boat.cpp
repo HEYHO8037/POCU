@@ -23,7 +23,7 @@ namespace assignment2
 		return static_cast<unsigned int>(fmax(800 - (10 * GetTotalPassengerWeight()), 20));
 	}
 
-	unsigned int Boat::GetTravelSpeed() const
+	unsigned int Boat::GetTravelSpeed()
 	{
 		if (mTravelCheck == 0)
 		{
@@ -41,6 +41,8 @@ namespace assignment2
 	{
 		mMaxPassengerCount = boat.mMaxPassengerCount;
 		mTravelCheck = 2;
+
+		return *this;
 	}
 
 	Boatplane Boat::operator+(Airplane& plane)
