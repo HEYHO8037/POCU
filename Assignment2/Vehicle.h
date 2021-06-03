@@ -25,10 +25,11 @@ namespace assignment2
 
 		Vehicle& operator=(Vehicle& vehicle);
 		void ChangeArrayNullptr();
+		void DeletePerson();
 
 	protected:
 		unsigned int mCount;
 		unsigned int mMaxPassengerCount;
-		Person* mPerson[100];
+		Person** mPerson;
 	};
 }

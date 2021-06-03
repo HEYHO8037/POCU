@@ -41,21 +41,12 @@ namespace assignment2
 
 	Motorcycle& Motorcycle::operator=(Motorcycle& motorCycle)
 	{
-		for (int length = 0; length < mCount; length++)
-		{
-			if (mPerson[length] != nullptr)
-			{
-				delete mPerson[length];
-			}
-			else
-			{
-				continue;
-			}
-		}
+		DeletePerson();
 
 		mMaxPassengerCount = motorCycle.mMaxPassengerCount;
 		mTravelCheck = 5;
 		mCount = motorCycle.mCount;
+		mPerson = new Person * [mMaxPassengerCount];
 
 		for (int length = 0; length < mCount; length++)
 		{

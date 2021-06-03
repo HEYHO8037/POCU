@@ -67,21 +67,12 @@ namespace assignment2
 
 	UBoat& UBoat::operator=(UBoat& uBoat)
 	{
-		for (int length = 0; length < mCount; length++)
-		{
-			if (mPerson[length] != nullptr)
-			{
-				delete mPerson[length];
-			}
-			else
-			{
-				continue;
-			}
-		}
+		DeletePerson();
 
 		mMaxPassengerCount = uBoat.mMaxPassengerCount;
 		mTravelCheck = 5;
 		mCount = uBoat.mCount;
+		mPerson = new Person * [mMaxPassengerCount];
 
 		for (int length = 0; length < mCount; length++)
 		{

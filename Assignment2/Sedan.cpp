@@ -118,22 +118,13 @@ namespace assignment2
 
 	Sedan& Sedan::operator=(Sedan& sedan)
 	{
-		for (int length = 0; length < mCount; length++)
-		{
-			if (mPerson[length] != nullptr)
-			{
-				delete mPerson[length];
-			}
-			else
-			{
-				continue;
-			}
-		}
+		DeletePerson();
 
 		mTrailer = sedan.mTrailer;
 		mMaxPassengerCount = sedan.mMaxPassengerCount;
 		mTravelCheck = 6;
 		mCount = sedan.mCount;
+		mPerson = new Person * [mMaxPassengerCount];
 
 		for (int length = 0; length < mCount; length++)
 		{

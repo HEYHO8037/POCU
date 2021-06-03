@@ -99,27 +99,17 @@ namespace assignment2
 		ChangeArrayNullptr();
 		boat.ChangeArrayNullptr();
 
-
 		return bp;
 	}
 
 	Airplane& Airplane::operator=(Airplane& airPlane)
 	{
-		for (int length = 0; length < mCount; length++)
-		{
-			if (mPerson[length] != nullptr)
-			{
-				delete mPerson[length];
-			}
-			else
-			{
-				continue;
-			}
-		}
+		DeletePerson();
 
 		mMaxPassengerCount = airPlane.mMaxPassengerCount;
 		mCount = airPlane.mCount;
 		mTravelCheck = 3;
+		mPerson = new Person * [mMaxPassengerCount];
 		
 		for (int length = 0; length < mCount; length++)
 		{
