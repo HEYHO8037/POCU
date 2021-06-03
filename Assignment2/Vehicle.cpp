@@ -12,38 +12,42 @@ namespace assignment2
 	Vehicle::Vehicle(Vehicle& vehicle)
 	{
 		unsigned int maxPassenger = vehicle.GetMaxPassengersCount();
+
 		if (this != &vehicle)
 		{
 			mPerson = new const Person* [maxPassenger];
 			mCount = vehicle.mCount;
 			mMaxPassengerCount = maxPassenger;
 
-			for (int length = 0; length < maxPassenger; length++)
+			for (int length = 0; length < mCount; length++)
 			{
-				mPerson[length] = vehicle.mPerson[length];
+				mPerson[length] = new const Person(vehicle.mPerson[length]->GetName(), vehicle.mPerson[length]->GetWeight());
 			}
 
-			vehicle.ChangeArrayNullptr();
 		}
 	}
 
 	Vehicle::Vehicle(unsigned int maxPassengersCount)
 	{
 		mMaxPassengerCount = maxPassengersCount;
+		mCount = 0;
 		mPerson = new const Person* [mMaxPassengerCount];
 	}
 
 	Vehicle::~Vehicle()
 	{
-		for (int length = 0; length < mCount; length++)
+		if (mCount != 0)
 		{
-			if (mPerson[length] != nullptr)
+			for (int length = 0; length < mCount; length++)
 			{
-				delete mPerson[length];
-			}
-			else
-			{
-				continue;
+				if (mPerson[length] != nullptr)
+				{
+					delete mPerson[length];
+				}
+				else
+				{
+					continue;
+				}
 			}
 		}
 	}
@@ -140,7 +144,7 @@ namespace assignment2
 			mPerson[length] = vehicle.mPerson[length];
 		}
 
-		vehicle.mPerson = nullptr;
+		vehicle.ChangeArrayNullptr();
 
 		return *this;
 	}

@@ -13,7 +13,6 @@ namespace assignment2
 
 	DeusExMachina::~DeusExMachina()
 	{
-		delete mDeusExMachina;
 	}
 
 	DeusExMachina* DeusExMachina::GetInstance()
