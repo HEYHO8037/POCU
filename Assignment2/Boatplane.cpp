@@ -22,7 +22,8 @@ namespace assignment2
 	unsigned int Boatplane::GetFlySpeed() const
 	{
 		double weight = GetTotalPassengerWeight();
-		double flySpeed = round(150 * (exp((-weight + 500) / 300)));
+		double flySpeed = 150 * (exp((-weight + 500) / 300));
+		flySpeed += 0.5f;
 
 		return static_cast<unsigned int>(flySpeed);
 	}
@@ -60,15 +61,38 @@ namespace assignment2
 	unsigned int Boatplane::GetSailSpeed() const
 	{
 		double weight = GetTotalPassengerWeight();
-		double sailSpeed = round(fmax(800 - (1.7 * weight), 20));
+		double sailSpeed = fmax(800 - (1.7 * weight), 20);
+		sailSpeed += 0.5f;
 
 		return static_cast<unsigned int>(sailSpeed);
 	}
 
 	Boatplane& Boatplane::operator=(Boatplane& boatPlane)
 	{
+		for (int length = 0; length < mCount; length++)
+		{
+			if (mPerson[length] != nullptr)
+			{
+				delete mPerson[length];
+			}
+			else
+			{
+				continue;
+			}
+		}
+
 		mMaxPassengerCount = boatPlane.mMaxPassengerCount;
 		mTravelCheck = 3;
+		mCount = boatPlane.mCount;
+		mPerson = new Person * [mMaxPassengerCount];
+
+		for (int length = 0; length < mCount; length++)
+		{
+			AddPassenger(boatPlane.mPerson[length]);
+		}
+
+		boatPlane.ChangeArrayNullptr();
+		boatPlane.mCount = 0;
 
 		return *this;
 	}

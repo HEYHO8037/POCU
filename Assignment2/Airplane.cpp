@@ -62,7 +62,8 @@ namespace assignment2
 		double totalWeight = GetTotalPassengerWeight();
 		int totalSpeed = 0;
 
-		totalSpeed = round(200 * exp((-totalWeight + 800) / 500));
+		totalSpeed = 200 * exp((-totalWeight + 800) / 500);
+		totalSpeed += 0.5;
 		
 		return static_cast<unsigned int>(totalSpeed);
 	}
@@ -72,7 +73,8 @@ namespace assignment2
 		double totalWeight = GetTotalPassengerWeight();
 		double totalSpeed = 0;
 
-		totalSpeed = round(4 * exp((-totalWeight + 400) / 70));
+		totalSpeed = 4 * exp((-totalWeight + 400) / 70);
+		totalSpeed += 0.5;
 
 		return static_cast<unsigned int>(totalSpeed);
 	}
@@ -103,8 +105,30 @@ namespace assignment2
 
 	Airplane& Airplane::operator=(Airplane& airPlane)
 	{
+		for (int length = 0; length < mCount; length++)
+		{
+			if (mPerson[length] != nullptr)
+			{
+				delete mPerson[length];
+			}
+			else
+			{
+				continue;
+			}
+		}
+
 		mMaxPassengerCount = airPlane.mMaxPassengerCount;
+		mCount = airPlane.mCount;
 		mTravelCheck = 3;
+		mPerson = new Person * [mMaxPassengerCount];
+		
+		for (int length = 0; length < mCount; length++)
+		{
+			AddPassenger(airPlane.mPerson[length]);
+		}
+
+		airPlane.ChangeArrayNullptr();
+		airPlane.mCount = 0;
 
 		return *this;
 	}

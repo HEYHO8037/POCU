@@ -15,7 +15,8 @@ namespace assignment2
 	unsigned int Motorcycle::GetDriveSpeed() const
 	{
 		double weight = GetTotalPassengerWeight();
-		double driveSpeed = round(fmax((-pow((weight / 15), 3) + 2 * weight + 400), 0));
+		double driveSpeed = fmax((-pow((weight / 15), 3) + 2 * weight + 400), 0);
+		driveSpeed += 0.5f;
 
 		return static_cast<unsigned int>(driveSpeed);
 	}
@@ -40,8 +41,30 @@ namespace assignment2
 
 	Motorcycle& Motorcycle::operator=(Motorcycle& motorCycle)
 	{
+		for (int length = 0; length < mCount; length++)
+		{
+			if (mPerson[length] != nullptr)
+			{
+				delete mPerson[length];
+			}
+			else
+			{
+				continue;
+			}
+		}
+
 		mMaxPassengerCount = motorCycle.mMaxPassengerCount;
 		mTravelCheck = 5;
+		mCount = motorCycle.mCount;
+		mPerson = new Person * [mMaxPassengerCount];
+
+		for (int length = 0; length < mCount; length++)
+		{
+			AddPassenger(motorCycle.mPerson[length]);
+		}
+
+		motorCycle.ChangeArrayNullptr();
+		motorCycle.mCount = 0;
 
 		return *this;
 	}

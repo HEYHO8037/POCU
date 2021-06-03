@@ -6,22 +6,20 @@ namespace assignment2
 	{
 		mCount = 0;
 		mMaxPassengerCount = 0;
+		mPerson = nullptr;
 	}
 
 	Vehicle::Vehicle(Vehicle& vehicle)
 	{
 		unsigned int maxPassenger = vehicle.GetMaxPassengersCount();
 
-		if (this != &vehicle)
+		mCount = vehicle.mCount;
+		mPerson = new Person * [maxPassenger];
+		mMaxPassengerCount = maxPassenger;
+
+		for (int length = 0; length < mCount; length++)
 		{
-			mCount = vehicle.mCount;
-			mMaxPassengerCount = maxPassenger;
-
-			for (int length = 0; length < mCount; length++)
-			{
-				mPerson[length] = new Person(vehicle.mPerson[length]->GetName(), vehicle.mPerson[length]->GetWeight());
-			}
-
+			mPerson[length] = new Person(vehicle.mPerson[length]->GetName(), vehicle.mPerson[length]->GetWeight());
 		}
 	}
 
@@ -29,34 +27,28 @@ namespace assignment2
 	{
 		mMaxPassengerCount = maxPassengersCount;
 		mCount = 0;
+		mPerson = new Person* [mMaxPassengerCount];
 	}
 
 	Vehicle::~Vehicle()
 	{
 		for (int length = 0; length < mCount; length++)
 		{
-			if (mPerson[length] != nullptr)
-			{
-				delete mPerson[length];
-				mPerson[length] = nullptr;
-			}
-			else
-			{
-				continue;
-			}	
+			delete mPerson[length];
 		}
 	}
 
 	bool Vehicle::AddPassenger(const Person* person)
 	{
-		if (mCount > mMaxPassengerCount || person == nullptr)
+		if (mCount >= mMaxPassengerCount || person == nullptr)
 		{
 			return false;
 		}
 		else
 		{
-			mPerson[mCount] = person;
+			mPerson[mCount] = const_cast<Person *>(person);
 			mCount++;
+
 			return true;
 		}
 	}
@@ -112,7 +104,7 @@ namespace assignment2
 
 	const Person* Vehicle::GetPassenger(unsigned int i) const
 	{
-		if (i > mCount)
+		if (i >= mCount)
 		{
 			return NULL;
 		}
@@ -126,11 +118,16 @@ namespace assignment2
 	{
 		if (mCount != 0)
 		{
-			delete[] mPerson;
+			for (int length = 0; length < mCount; length++)
+			{
+				delete mPerson[length];
+			}
 		}
 
 		mCount = vehicle.mCount;
 		mMaxPassengerCount = vehicle.mMaxPassengerCount;
+		mPerson = new Person * [mMaxPassengerCount];
+
 
 		for (unsigned int length = 0; length < vehicle.mMaxPassengerCount; length++)
 		{

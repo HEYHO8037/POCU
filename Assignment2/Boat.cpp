@@ -21,7 +21,8 @@ namespace assignment2
 	unsigned int Boat::GetSailSpeed() const
 	{
 		double weight = GetTotalPassengerWeight();
-		double sailSpeed = round(fmax(800 - (10 * weight), 20));
+		double sailSpeed = fmax(800 - (10 * weight), 20);
+		sailSpeed += 0.5;
 
 		return static_cast<unsigned int>(sailSpeed);
 	}
@@ -42,8 +43,30 @@ namespace assignment2
 
 	Boat& Boat::operator=(Boat& boat)
 	{
+		for (int length = 0; length < mCount; length++)
+		{
+			if (mPerson[length] != nullptr)
+			{
+				delete mPerson[length];
+			}
+			else
+			{
+				continue;
+			}
+		}
+
 		mMaxPassengerCount = boat.mMaxPassengerCount;
 		mTravelCheck = 2;
+		mCount = boat.mCount;
+		mPerson = new Person * [mMaxPassengerCount];
+
+		for (int length = 0; length < mCount; length++)
+		{
+			AddPassenger(boat.mPerson[length]);
+		}
+
+		boat.ChangeArrayNullptr();
+		boat.mCount = 0;
 
 		return *this;
 	}

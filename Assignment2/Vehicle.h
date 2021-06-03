@@ -29,6 +29,6 @@ namespace assignment2
 	protected:
 		unsigned int mCount;
 		unsigned int mMaxPassengerCount;
-		const Person* mPerson[100] = { nullptr };
+		Person** mPerson;
 	};
 }

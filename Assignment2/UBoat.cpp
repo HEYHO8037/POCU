@@ -21,7 +21,8 @@ namespace assignment2
 	unsigned int UBoat::GetDiveSpeed() const
 	{
 		double weight = GetTotalPassengerWeight();
-		double diveSpeed = round(500 * log((weight + 150) / 150) + 30);
+		double diveSpeed = 500 * log((weight + 150) / 150) + 30;
+		diveSpeed += 0.5f;
 
 		return static_cast<unsigned int>(diveSpeed);
 	}
@@ -29,7 +30,8 @@ namespace assignment2
 	unsigned int UBoat::GetSailSpeed() const
 	{
 		double weight = GetTotalPassengerWeight();
-		double sailSpeed = round(fmax((550 - weight / 10), 200));
+		double sailSpeed = fmax((550 - weight / 10), 200);
+		sailSpeed += 0.5;
 
 		return static_cast<unsigned int>(sailSpeed);
 	}
@@ -65,8 +67,30 @@ namespace assignment2
 
 	UBoat& UBoat::operator=(UBoat& uBoat)
 	{
+		for (int length = 0; length < mCount; length++)
+		{
+			if (mPerson[length] != nullptr)
+			{
+				delete mPerson[length];
+			}
+			else
+			{
+				continue;
+			}
+		}
+
 		mMaxPassengerCount = uBoat.mMaxPassengerCount;
 		mTravelCheck = 5;
+		mCount = uBoat.mCount;
+		mPerson = new Person * [mMaxPassengerCount];
+
+		for (int length = 0; length < mCount; length++)
+		{
+			AddPassenger(uBoat.mPerson[length]);
+		}
+
+		uBoat.ChangeArrayNullptr();
+		uBoat.mCount = 0;
 
 		return *this;
 	}
