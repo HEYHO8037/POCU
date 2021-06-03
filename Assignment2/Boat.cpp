@@ -58,7 +58,6 @@ namespace assignment2
 		mMaxPassengerCount = boat.mMaxPassengerCount;
 		mTravelCheck = 2;
 		mCount = boat.mCount;
-		mPerson = new Person * [mMaxPassengerCount];
 
 		for (int length = 0; length < mCount; length++)
 		{

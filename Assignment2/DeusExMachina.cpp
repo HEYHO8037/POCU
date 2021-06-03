@@ -51,21 +51,21 @@ namespace assignment2
 
 	bool DeusExMachina::AddVehicle(Vehicle* vehicle)
 	{
-		if (mCountVehicle < 10 && vehicle != nullptr)
+		if (mCountVehicle >= 10 || vehicle == nullptr)
+		{
+			return false;
+		}
+		else
 		{
 			mVehicle[mCountVehicle] = vehicle;
 			mCountVehicle++;
 			return true;
 		}
-		else
-		{
-			return false;
-		}
 	}
 
 	bool DeusExMachina::RemoveVehicle(unsigned int i)
 	{
-		if (i > mCountVehicle)
+		if (i >= mCountVehicle)
 		{
 			return false;
 		}

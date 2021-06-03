@@ -134,7 +134,6 @@ namespace assignment2
 		mMaxPassengerCount = sedan.mMaxPassengerCount;
 		mTravelCheck = 6;
 		mCount = sedan.mCount;
-		mPerson = new Person * [mMaxPassengerCount];
 
 		for (int length = 0; length < mCount; length++)
 		{

@@ -56,7 +56,6 @@ namespace assignment2
 		mMaxPassengerCount = motorCycle.mMaxPassengerCount;
 		mTravelCheck = 5;
 		mCount = motorCycle.mCount;
-		mPerson = new Person * [mMaxPassengerCount];
 
 		for (int length = 0; length < mCount; length++)
 		{

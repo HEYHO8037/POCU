@@ -29,6 +29,6 @@ namespace assignment2
 	protected:
 		unsigned int mCount;
 		unsigned int mMaxPassengerCount;
-		Person** mPerson;
+		Person* mPerson[100];
 	};
 }
