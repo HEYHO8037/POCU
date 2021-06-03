@@ -16,11 +16,9 @@ namespace assignment2
 		bool RemoveVehicle(unsigned int i);
 		const Vehicle* GetFurthestTravelled() const;
 
-
-
 	private:
 		static DeusExMachina* mDeusExMachina;
-		Vehicle** mVehicle = new Vehicle* [10];
+		Vehicle* mVehicle[10] = { nullptr };
 		static unsigned int mCountSpeed[10];
 		static unsigned int mCountVehicle;
 		static bool isTravel;

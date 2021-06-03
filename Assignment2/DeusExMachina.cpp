@@ -13,6 +13,21 @@ namespace assignment2
 
 	DeusExMachina::~DeusExMachina()
 	{
+		if (mCountVehicle != 0)
+		{
+			for (int length = 0; length < mCountVehicle; length++)
+			{
+				if (mVehicle[length] != nullptr)
+				{
+					delete mVehicle[length];
+					mVehicle[length] = nullptr;
+				}
+				else
+				{
+					continue;
+				}
+			}
+		}
 	}
 
 	DeusExMachina* DeusExMachina::GetInstance()
