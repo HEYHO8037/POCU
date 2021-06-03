@@ -44,7 +44,7 @@ int main()
 	b.AddPassenger(p5);
 	b.AddPassenger(p6);
 
-	Boatplane bp = a + b;
+	Boatplane bp = b + a;
 
 	assert(bp.GetPassengersCount() == 6);
 	assert(bp.GetMaxPassengersCount() == 10);

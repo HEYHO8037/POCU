@@ -43,8 +43,11 @@ namespace assignment2
 
 	Person& Person::operator=(Person& person)
 	{
-		mName = person.mName;
-		mPersonWeight = person.mPersonWeight;
+		if (&person != this)
+		{
+			mName = person.mName;
+			mPersonWeight = person.mPersonWeight;
+		}
 
 		return *this;
 	}

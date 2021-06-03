@@ -113,21 +113,21 @@ namespace assignment2
 
 	Vehicle& Vehicle::operator=(Vehicle& vehicle)
 	{
-		if (mCount != 0)
+		if (this != &vehicle)
 		{
 			DeletePerson();
+
+			mCount = vehicle.mCount;
+			mMaxPassengerCount = vehicle.mMaxPassengerCount;
+			mPerson = new const Person * [mMaxPassengerCount];
+
+			for (unsigned int length = 0; length < vehicle.mMaxPassengerCount; length++)
+			{
+				mPerson[length] = vehicle.mPerson[length];
+			}
+
+			vehicle.ChangeArrayNullptr();
 		}
-
-		mCount = vehicle.mCount;
-		mMaxPassengerCount = vehicle.mMaxPassengerCount;
-		mPerson = new const Person * [mMaxPassengerCount];
-
-		for (unsigned int length = 0; length < vehicle.mMaxPassengerCount; length++)
-		{
-			mPerson[length] = vehicle.mPerson[length];
-		}
-
-		vehicle.ChangeArrayNullptr();
 
 		return *this;
 	}

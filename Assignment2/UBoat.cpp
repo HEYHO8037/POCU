@@ -67,20 +67,23 @@ namespace assignment2
 
 	UBoat& UBoat::operator=(UBoat& uBoat)
 	{
-		DeletePerson();
-
-		mMaxPassengerCount = uBoat.mMaxPassengerCount;
-		mTravelCheck = 5;
-		mCount = uBoat.mCount;
-		mPerson = new const Person * [mMaxPassengerCount];
-
-		for (int length = 0; length < mCount; length++)
+		if (this != &uBoat)
 		{
-			AddPassenger(uBoat.mPerson[length]);
-		}
+			DeletePerson();
 
-		uBoat.ChangeArrayNullptr();
-		uBoat.mCount = 0;
+			mMaxPassengerCount = uBoat.mMaxPassengerCount;
+			mTravelCheck = 5;
+			mCount = uBoat.mCount;
+			mPerson = new const Person * [mMaxPassengerCount];
+
+			for (int length = 0; length < mCount; length++)
+			{
+				AddPassenger(uBoat.mPerson[length]);
+			}
+
+			uBoat.ChangeArrayNullptr();
+			uBoat.mCount = 0;
+		}
 
 		return *this;
 	}

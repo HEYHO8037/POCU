@@ -104,20 +104,23 @@ namespace assignment2
 
 	Airplane& Airplane::operator=(Airplane& airPlane)
 	{
-		DeletePerson();
-
-		mMaxPassengerCount = airPlane.mMaxPassengerCount;
-		mCount = airPlane.mCount;
-		mTravelCheck = 3;
-		mPerson = new const Person * [mMaxPassengerCount];
-		
-		for (unsigned int length = 0; length < mCount; length++)
+		if (this != &airPlane)
 		{
-			AddPassenger(airPlane.mPerson[length]);
-		}
+			DeletePerson();
 
-		airPlane.ChangeArrayNullptr();
-		airPlane.mCount = 0;
+			mMaxPassengerCount = airPlane.mMaxPassengerCount;
+			mCount = airPlane.mCount;
+			mTravelCheck = 3;
+			mPerson = new const Person * [mMaxPassengerCount];
+
+			for (unsigned int length = 0; length < mCount; length++)
+			{
+				AddPassenger(airPlane.mPerson[length]);
+			}
+
+			airPlane.ChangeArrayNullptr();
+			airPlane.mCount = 0;
+		}
 
 		return *this;
 	}

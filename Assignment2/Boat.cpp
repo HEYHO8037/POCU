@@ -7,6 +7,12 @@ namespace assignment2
 	{
 		mTravelCheck = 2;
 	}
+	
+	Boat::Boat(Boat& boat)
+		: Vehicle(boat)
+	{
+		mTravelCheck = 2;
+	}
 
 	Boat::~Boat()
 	{
@@ -43,27 +49,31 @@ namespace assignment2
 
 	Boat& Boat::operator=(Boat& boat)
 	{
-		DeletePerson();
-
-		mMaxPassengerCount = boat.mMaxPassengerCount;
-		mTravelCheck = 2;
-		mCount = boat.mCount;
-		mPerson = new const Person * [mMaxPassengerCount];
-
-		for (int length = 0; length < mCount; length++)
+		if (this != &boat)
 		{
-			AddPassenger(boat.mPerson[length]);
+			DeletePerson();
+
+			mMaxPassengerCount = boat.mMaxPassengerCount;
+			mTravelCheck = 2;
+			mCount = boat.mCount;
+			mPerson = new const Person * [mMaxPassengerCount];
+
+			for (int length = 0; length < mCount; length++)
+			{
+				AddPassenger(boat.mPerson[length]);
+			}
+
+			boat.ChangeArrayNullptr();
+			boat.mCount = 0;
 		}
 
-		boat.ChangeArrayNullptr();
-		boat.mCount = 0;
-
 		return *this;
+
 	}
 
 	Boatplane Boat::operator+(Airplane& plane)
 	{
-		unsigned int passengers = plane.GetPassengersCount() + GetPassengersCount();
+		unsigned int passengers = plane.GetMaxPassengersCount() + GetMaxPassengersCount();
 		unsigned int planePassengers = plane.GetPassengersCount();
 
 		Boatplane bp(passengers);

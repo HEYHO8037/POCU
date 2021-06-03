@@ -12,7 +12,7 @@ namespace assignment2
 	Sedan::Sedan(Sedan& sedan)
 		: Vehicle(sedan)
 	{
-		mTrailer = sedan.mTrailer;
+		mTrailer = nullptr;
 		mTravelCheck = 6;
 	}
 
@@ -63,10 +63,9 @@ namespace assignment2
 			weight = GetTotalPassengerWeight();
 		}
 
-
 		if (weight <= 80)
 		{
-			return 450;
+			return 480;
 		}
 		else if (160 >= weight && weight > 80)
 		{
@@ -118,22 +117,25 @@ namespace assignment2
 
 	Sedan& Sedan::operator=(Sedan& sedan)
 	{
-		DeletePerson();
-
-		mTrailer = sedan.mTrailer;
-		mMaxPassengerCount = sedan.mMaxPassengerCount;
-		mTravelCheck = 6;
-		mCount = sedan.mCount;
-		mPerson = new const Person * [mMaxPassengerCount];
-
-		for (unsigned int length = 0; length < mCount; length++)
+		if (this != &sedan)
 		{
-			AddPassenger(sedan.mPerson[length]);
-		}
+			DeletePerson();
 
-		sedan.ChangeArrayNullptr();
-		sedan.mCount = 0;
-		sedan.mTrailer = nullptr;
+			mTrailer = sedan.mTrailer;
+			mMaxPassengerCount = sedan.mMaxPassengerCount;
+			mTravelCheck = 6;
+			mCount = sedan.mCount;
+			mPerson = new const Person * [mMaxPassengerCount];
+
+			for (unsigned int length = 0; length < mCount; length++)
+			{
+				AddPassenger(sedan.mPerson[length]);
+			}
+
+			sedan.ChangeArrayNullptr();
+			sedan.mCount = 0;
+			sedan.mTrailer = nullptr;
+		}
 
 		return *this;
 	}
