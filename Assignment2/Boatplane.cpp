@@ -74,9 +74,9 @@ namespace assignment2
 		mMaxPassengerCount = boatPlane.mMaxPassengerCount;
 		mTravelCheck = 3;
 		mCount = boatPlane.mCount;
-		mPerson = new Person * [mMaxPassengerCount];
+		mPerson = new const Person * [mMaxPassengerCount];
 
-		for (int length = 0; length < mCount; length++)
+		for (unsigned int length = 0; length < mCount; length++)
 		{
 			AddPassenger(boatPlane.mPerson[length]);
 		}

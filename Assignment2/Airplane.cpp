@@ -60,7 +60,7 @@ namespace assignment2
 	unsigned int Airplane::GetFlySpeed() const
 	{
 		double totalWeight = GetTotalPassengerWeight();
-		int totalSpeed = 0;
+		double totalSpeed = 0;
 
 		totalSpeed = 200 * exp((-totalWeight + 800) / 500);
 		totalSpeed += 0.5;
@@ -86,12 +86,12 @@ namespace assignment2
 		
 		Boatplane bp(passengers);
 		
-		for (int length = 0; length < mCount; length++)
+		for (unsigned int length = 0; length < mCount; length++)
 		{
 			bp.AddPassenger(mPerson[length]);
 		}
 
-		for (int length = 0; length < boatPassengers; length++)
+		for (unsigned int length = 0; length < boatPassengers; length++)
 		{
 			bp.AddPassenger(boat.GetPassenger(length));
 		}
@@ -109,9 +109,9 @@ namespace assignment2
 		mMaxPassengerCount = airPlane.mMaxPassengerCount;
 		mCount = airPlane.mCount;
 		mTravelCheck = 3;
-		mPerson = new Person * [mMaxPassengerCount];
+		mPerson = new const Person * [mMaxPassengerCount];
 		
-		for (int length = 0; length < mCount; length++)
+		for (unsigned int length = 0; length < mCount; length++)
 		{
 			AddPassenger(airPlane.mPerson[length]);
 		}

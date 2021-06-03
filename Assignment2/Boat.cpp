@@ -48,7 +48,7 @@ namespace assignment2
 		mMaxPassengerCount = boat.mMaxPassengerCount;
 		mTravelCheck = 2;
 		mCount = boat.mCount;
-		mPerson = new Person * [mMaxPassengerCount];
+		mPerson = new const Person * [mMaxPassengerCount];
 
 		for (int length = 0; length < mCount; length++)
 		{
@@ -68,12 +68,12 @@ namespace assignment2
 
 		Boatplane bp(passengers);
 
-		for (int length = 0; length < mCount; length++)
+		for (unsigned int length = 0; length < mCount; length++)
 		{
 			bp.AddPassenger(mPerson[length]);
 		}
 
-		for (int length = 0; length < planePassengers; length++)
+		for (unsigned int length = 0; length < planePassengers; length++)
 		{
 			bp.AddPassenger(plane.GetPassenger(length));
 		}

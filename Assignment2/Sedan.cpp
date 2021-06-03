@@ -56,7 +56,7 @@ namespace assignment2
 
 		if (mTrailer != nullptr)
 		{
-			weight = GetTotalPassengerWeight() + mTrailer->GetWeight();
+			weight = GetTotalPassengerWeight() + static_cast<int>(mTrailer->GetWeight());
 		}
 		else
 		{
@@ -124,15 +124,16 @@ namespace assignment2
 		mMaxPassengerCount = sedan.mMaxPassengerCount;
 		mTravelCheck = 6;
 		mCount = sedan.mCount;
-		mPerson = new Person * [mMaxPassengerCount];
+		mPerson = new const Person * [mMaxPassengerCount];
 
-		for (int length = 0; length < mCount; length++)
+		for (unsigned int length = 0; length < mCount; length++)
 		{
 			AddPassenger(sedan.mPerson[length]);
 		}
 
 		sedan.ChangeArrayNullptr();
 		sedan.mCount = 0;
+		sedan.mTrailer = nullptr;
 
 		return *this;
 	}

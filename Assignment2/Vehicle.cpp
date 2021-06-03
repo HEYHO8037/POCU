@@ -15,7 +15,7 @@ namespace assignment2
 
 		mCount = vehicle.mCount;
 		mMaxPassengerCount = maxPassenger;
-		mPerson = new Person * [mMaxPassengerCount];
+		mPerson = new const Person * [mMaxPassengerCount];
 
 		for (int length = 0; length < mCount; length++)
 		{
@@ -27,7 +27,7 @@ namespace assignment2
 	{
 		mMaxPassengerCount = maxPassengersCount;
 		mCount = 0;
-		mPerson = new Person * [mMaxPassengerCount];
+		mPerson = new const Person * [mMaxPassengerCount];
 	}
 
 	Vehicle::~Vehicle()
@@ -43,7 +43,7 @@ namespace assignment2
 		}
 		else
 		{
-			mPerson[mCount] = const_cast<Person *>(person);
+			mPerson[mCount] = person;
 			mCount++;
 
 			return true;
@@ -120,7 +120,7 @@ namespace assignment2
 
 		mCount = vehicle.mCount;
 		mMaxPassengerCount = vehicle.mMaxPassengerCount;
-		mPerson = new Person * [mMaxPassengerCount];
+		mPerson = new const Person * [mMaxPassengerCount];
 
 		for (unsigned int length = 0; length < vehicle.mMaxPassengerCount; length++)
 		{
@@ -134,7 +134,7 @@ namespace assignment2
 
 	void Vehicle::ChangeArrayNullptr()
 	{
-		for (int length = 0; length < mCount; length++)
+		for (unsigned int length = 0; length < mCount; length++)
 		{
 			if (mPerson[length] != nullptr)
 			{
@@ -151,7 +151,7 @@ namespace assignment2
 
 	void Vehicle::DeletePerson()
 	{
-		for (int length = 0; length < mCount; length++)
+		for (unsigned int length = 0; length < mCount; length++)
 		{
 			delete mPerson[length];
 		}
