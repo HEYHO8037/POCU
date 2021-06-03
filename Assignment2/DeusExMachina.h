@@ -21,7 +21,7 @@ namespace assignment2
 		Vehicle* mVehicle[10] = { nullptr };
 		static unsigned int mCountSpeed[10];
 		static unsigned int mCountVehicle;
-		static bool isTravel;
+		static bool mbTravel;
 	};
 
 }

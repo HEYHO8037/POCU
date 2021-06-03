@@ -72,7 +72,7 @@ namespace assignment2
 		mMaxPassengerCount = uBoat.mMaxPassengerCount;
 		mTravelCheck = 5;
 		mCount = uBoat.mCount;
-		mPerson = new Person * [mMaxPassengerCount];
+		mPerson = new const Person * [mMaxPassengerCount];
 
 		for (int length = 0; length < mCount; length++)
 		{

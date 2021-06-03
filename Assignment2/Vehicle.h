@@ -30,6 +30,6 @@ namespace assignment2
 	protected:
 		unsigned int mCount;
 		unsigned int mMaxPassengerCount;
-		Person** mPerson;
+		const Person** mPerson;
 	};
 }
