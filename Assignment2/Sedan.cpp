@@ -137,7 +137,7 @@ namespace assignment2
 
 			for (unsigned int length = 0; length < mCount; length++)
 			{
-				mPerson[length] = new Person(sedan.mPerson[length]->GetName(), sedan.mPerson[length]->GetWeight());
+				mPerson[length] = new Person(sedan.mPerson[length]->GetName().c_str(), sedan.mPerson[length]->GetWeight());
 			}
 
 			if (sedan.mTrailer != nullptr)

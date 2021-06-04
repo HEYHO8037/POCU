@@ -1,6 +1,14 @@
+ï»¿#include <iostream>
+#include <Windows.h>
 #include <cassert>
-#include <iostream>
-#include <iomanip>
+
+#define _CRTDBG_MAP_ALLOC
+#include <cstdlib>
+#include <crtdbg.h>
+
+#ifdef _DEBUG
+#define new new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+#endif
 
 #include "Vehicle.h"
 #include "Airplane.h"
@@ -13,16 +21,13 @@
 #include "DeusExMachina.h"
 #include "Person.h"
 
-#define STR(name) #name
 
 
 using namespace assignment2;
 
 int main()
 {
-	Airplane c(10);
-	Airplane d(5);
-	c = d;
+	//_CrtSetBreakAlloc(170);
 
 	Person* p = new Person("Bob", 85);
 
@@ -53,7 +58,7 @@ int main()
 	b.AddPassenger(p5);
 	b.AddPassenger(p6);
 
-	Boatplane bp = b + a;
+	Boatplane bp = a + b;
 
 	assert(bp.GetPassengersCount() == 6);
 	assert(bp.GetMaxPassengersCount() == 10);
@@ -106,51 +111,22 @@ int main()
 	bRemoved = deusExMachina1->RemoveVehicle(9);
 	assert(!bRemoved);
 
-	deusExMachina1->Travel(); // ¸ðµç ¿î¼Û ¼ö´ÜÀÌ ÀÌµ¿
-	deusExMachina1->Travel(); // Boat, Motorcycle, µÎ Sedan, UBoat°¡ ÀÌµ¿
-	deusExMachina1->Travel(); // Motorcycle, µÎ SedanÀÌ ÀÌµ¿
-	deusExMachina1->Travel(); // Boat, Motorcycle, µÎ SedanÀÌ ÀÌµ¿
-	deusExMachina1->Travel(); // UBoat¸¸ »©°í ÀüºÎ ÀÌµ¿
-	deusExMachina1->Travel(); // ¾î¶² ¿î¼Û ¼ö´Üµµ ¿òÁ÷ÀÌÁö ¾ÊÀ½
-	deusExMachina1->Travel(); // Boat, Motorcycle, Æ®·¹ÀÏ·¯ ¾È ´Þ¸° Sedan, UBoat°¡ ÀÌµ¿
-	deusExMachina1->Travel(); // Boat, Motorcycle, µÎ Sedan, UBoat°¡ ÀÌµ¿
-	deusExMachina1->Travel(); // Airplane, Boatplane, Motorcycle, µÎ SedanÀÌ ÀÌµ¿
-	deusExMachina1->Travel(); // Boat, Motorcycle, µÎ SedanÀÌ ÀÌµ¿
-	deusExMachina1->Travel(); // Boat, Motorcycle, µÎ SedanÀÌ ÀÌµ¿
-	deusExMachina1->Travel(); // Æ®·¹ÀÏ·¯ ´Þ¸° Sedan¸¸ ÀÌµ¿
+	deusExMachina1->Travel(); // ëª¨ë“  ìš´ì†¡ ìˆ˜ë‹¨ì´ ì´ë™
+	deusExMachina1->Travel(); // Boat, Motorcycle, ë‘ Sedan, UBoatê°€ ì´ë™
+	deusExMachina1->Travel(); // Motorcycle, ë‘ Sedanì´ ì´ë™
+	deusExMachina1->Travel(); // Boat, Motorcycle, ë‘ Sedanì´ ì´ë™
+	deusExMachina1->Travel(); // UBoatë§Œ ë¹¼ê³  ì „ë¶€ ì´ë™
+	deusExMachina1->Travel(); // ì–´ë–¤ ìš´ì†¡ ìˆ˜ë‹¨ë„ ì›€ì§ì´ì§€ ì•ŠìŒ
+	deusExMachina1->Travel(); // Boat, Motorcycle, íŠ¸ë ˆì¼ëŸ¬ ì•ˆ ë‹¬ë¦° Sedan, UBoatê°€ ì´ë™
+	deusExMachina1->Travel(); // Boat, Motorcycle, ë‘ Sedan, UBoatê°€ ì´ë™
+	deusExMachina1->Travel(); // Airplane, Boatplane, Motorcycle, ë‘ Sedanì´ ì´ë™
+	deusExMachina1->Travel(); // Boat, Motorcycle, ë‘ Sedanì´ ì´ë™
+	deusExMachina1->Travel(); // Boat, Motorcycle, ë‘ Sedanì´ ì´ë™
+	deusExMachina1->Travel(); // íŠ¸ë ˆì¼ëŸ¬ ë‹¬ë¦° Sedanë§Œ ì´ë™
 
 	assert(deusExMachina1->GetFurthestTravelled() == boat);
 
-	Airplane dockingTest1(10);
-	Boat dockingTest2(10);
 
-	for (size_t i = 0; i < 5; i++)
-	{
-		dockingTest1.AddPassenger(new Person(STR(i), i));
-		dockingTest2.AddPassenger(new Person(STR(i), i));
-	}
-
-	const Person* comp1 = dockingTest1.GetPassenger(0);
-
-	Boatplane bp1 = dockingTest1 + dockingTest2;
-	Boatplane bp2 = dockingTest2 + dockingTest1;
-	assert(dockingTest1.GetPassengersCount() == 0);
-	assert(dockingTest2.GetPassengersCount() == 0);
-	assert(bp1.GetPassengersCount() == 10);
-	assert(bp2.GetPassengersCount() == 0);
-
-	Boatplane copyConstuctorTest(bp1);
-
-	for (size_t i = 0; i < bp1.GetPassengersCount(); i++)
-	{
-		const Person* p1 = bp1.GetPassenger(i);
-		const Person* p2 = copyConstuctorTest.GetPassenger(i);
-		assert(p1 != p2);
-	}
-	assert(bp1.GetMaxPassengersCount() == copyConstuctorTest.GetMaxPassengersCount());
-	assert(bp1.GetPassengersCount() == copyConstuctorTest.GetPassengersCount());
-	assert(bp1.GetMaxSpeed() == copyConstuctorTest.GetMaxSpeed());
-
-
+	_CrtDumpMemoryLeaks();
 	return 0;
 }

@@ -107,7 +107,7 @@ namespace assignment2
 		{
 			for (unsigned int length = 0; length < mCountVehicle; length++)
 			{
-				if (topSpeed > mCountSpeed[length])
+				if (topSpeed >= mCountSpeed[length])
 				{
 					continue;
 				}

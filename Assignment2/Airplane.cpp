@@ -115,7 +115,7 @@ namespace assignment2
 
 			for (unsigned int length = 0; length < mCount; length++)
 			{
-				mPerson[length] = new Person(airPlane.mPerson[length]->GetName(), airPlane.mPerson[length]->GetWeight());
+				mPerson[length] = new Person(airPlane.mPerson[length]->GetName().c_str(), airPlane.mPerson[length]->GetWeight());
 			}
 
 		}

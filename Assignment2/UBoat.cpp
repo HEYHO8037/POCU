@@ -78,7 +78,7 @@ namespace assignment2
 
 			for (int length = 0; length < mCount; length++)
 			{
-				AddPassenger(new Person(uBoat.mPerson[length]->GetName(), uBoat.mPerson[length]->GetWeight()));
+				AddPassenger(new Person(uBoat.mPerson[length]->GetName().c_str(), uBoat.mPerson[length]->GetWeight()));
 			}
 		}
 

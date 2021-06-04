@@ -47,27 +47,6 @@ namespace assignment2
 		}
 	}
 
-	Boat& Boat::operator=(Boat& boat)
-	{
-		if (this != &boat)
-		{
-			DeletePerson();
-
-			mMaxPassengerCount = boat.mMaxPassengerCount;
-			mTravelCheck = 2;
-			mCount = boat.mCount;
-			mPerson = new const Person * [mMaxPassengerCount];
-
-			for (int length = 0; length < mCount; length++)
-			{
-				AddPassenger(new Person(boat.mPerson[length]->GetName(), boat.mPerson[length]->GetWeight()));
-			}
-		}
-
-		return *this;
-
-	}
-
 	Boatplane Boat::operator+(Airplane& plane)
 	{
 		unsigned int passengers = plane.GetMaxPassengersCount() + GetMaxPassengersCount();
@@ -89,5 +68,26 @@ namespace assignment2
 		plane.ChangeArrayNullptr();
 
 		return bp;
+	}
+
+	Boat& Boat::operator=(Boat& boat)
+	{
+		if (this != &boat)
+		{
+			DeletePerson();
+
+			mMaxPassengerCount = boat.mMaxPassengerCount;
+			mTravelCheck = 2;
+			mCount = boat.mCount;
+			mPerson = new const Person * [mMaxPassengerCount];
+
+			for (int length = 0; length < mCount; length++)
+			{
+				AddPassenger(new Person(boat.mPerson[length]->GetName().c_str(), boat.mPerson[length]->GetWeight()));
+			}
+		}
+
+		return *this;
+
 	}
 }

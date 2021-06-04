@@ -9,7 +9,6 @@ namespace assignment2
 	public:
 		Person();
 		Person(Person& person);
-		Person(std::string name, unsigned int weight);
 		Person(const char* name, unsigned int weight);
 		~Person();
 

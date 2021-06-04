@@ -58,7 +58,7 @@ namespace assignment2
 
 			for (unsigned int length = 0; length < mCount; length++)
 			{
-				mPerson[length] = new Person(motorCycle.mPerson[length]->GetName(), motorCycle.mPerson[length]->GetWeight());
+				mPerson[length] = new Person(motorCycle.mPerson[length]->GetName().c_str(), motorCycle.mPerson[length]->GetWeight());
 			}
 
 		}

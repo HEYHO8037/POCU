@@ -19,7 +19,7 @@ namespace assignment2
 
 		for (int length = 0; length < mCount; length++)
 		{
-			mPerson[length] = new Person(vehicle.mPerson[length]->GetName(), vehicle.mPerson[length]->GetWeight());
+			mPerson[length] = new const Person(vehicle.mPerson[length]->GetName().c_str(), vehicle.mPerson[length]->GetWeight());
 		}
 	}
 
@@ -62,13 +62,14 @@ namespace assignment2
 
 			for (unsigned int length = i; length < mCount; length++)
 			{
-				if (length != mCount - 1)
+				if (length == mCount - 1)
 				{
-					mPerson[length] = mPerson[length + 1];
+					mPerson[length] = nullptr;
+					
 				}
 				else
 				{
-					mPerson[length] = nullptr;
+					mPerson[length] = mPerson[length + 1];
 				}
 			}
 
@@ -123,7 +124,7 @@ namespace assignment2
 
 			for (int length = 0; length < mCount; length++)
 			{
-				mPerson[length] = new Person(vehicle.mPerson[length]->GetName(), vehicle.mPerson[length]->GetWeight());
+				mPerson[length] = new Person(vehicle.mPerson[length]->GetName().c_str(), vehicle.mPerson[length]->GetWeight());
 			}
 		}
 

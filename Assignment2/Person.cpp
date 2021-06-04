@@ -14,12 +14,6 @@ namespace assignment2
 		mPersonWeight = person.mPersonWeight;
 	}
 
-	Person::Person(std::string name, unsigned int weight)
-	{
-		mName = name;
-		mPersonWeight = weight;
-	}
-
 	Person::Person(const char* name, unsigned int weight)
 	{
 		mName = name;
