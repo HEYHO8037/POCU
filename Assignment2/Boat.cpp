@@ -75,9 +75,9 @@ namespace assignment2
 	{
 		unsigned int passengers = plane.GetMaxPassengersCount() + GetMaxPassengersCount();
 		unsigned int planePassengers = plane.GetPassengersCount();
-
+		
 		Boatplane bp(passengers);
-
+		
 		for (unsigned int length = 0; length < mCount; length++)
 		{
 			bp.AddPassenger(mPerson[length]);
@@ -90,7 +90,7 @@ namespace assignment2
 
 		ChangeArrayNullptr();
 		plane.ChangeArrayNullptr();
-		
+
 		return bp;
 	}
 }

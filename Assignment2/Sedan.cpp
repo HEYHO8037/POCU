@@ -12,7 +12,15 @@ namespace assignment2
 	Sedan::Sedan(Sedan& sedan)
 		: Vehicle(sedan)
 	{
-		mTrailer = nullptr;
+		if (sedan.mTrailer != nullptr)
+		{
+			mTrailer = new Trailer(sedan.mTrailer->GetWeight());
+		}
+		else
+		{
+			mTrailer = nullptr;
+		}
+
 		mTravelCheck = 6;
 	}
 
