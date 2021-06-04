@@ -19,7 +19,7 @@ namespace assignment2
 
 	private:
 		std::string mName;
-		int mPersonWeight;
+		unsigned int mPersonWeight;
 
 	};
 

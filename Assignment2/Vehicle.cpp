@@ -15,9 +15,9 @@ namespace assignment2
 
 		mCount = vehicle.mCount;
 		mMaxPassengerCount = maxPassenger;
-		mPerson = new const Person * [mMaxPassengerCount];
+		mPerson = new Person* [mMaxPassengerCount];
 
-		for (int length = 0; length < mCount; length++)
+		for (unsigned int length = 0; length < mCount; length++)
 		{
 			mPerson[length] = new Person(vehicle.mPerson[length]->GetName().c_str(), vehicle.mPerson[length]->GetWeight());
 		}
@@ -27,7 +27,8 @@ namespace assignment2
 	{
 		mMaxPassengerCount = maxPassengersCount;
 		mCount = 0;
-		mPerson = new const Person * [mMaxPassengerCount];
+
+		mPerson = new Person* [mMaxPassengerCount];
 	}
 
 	Vehicle::~Vehicle()
@@ -39,16 +40,11 @@ namespace assignment2
 	{
 		if (mCount >= mMaxPassengerCount || person == nullptr)
 		{
-			if (person != nullptr)
-			{
-				delete person;
-			}
 			return false;
-			
 		}
 		else
 		{
-			mPerson[mCount] = person;
+			mPerson[mCount] = (Person *)person;
 			mCount++;
 
 			return true;
@@ -125,7 +121,7 @@ namespace assignment2
 
 			mCount = vehicle.mCount;
 			mMaxPassengerCount = vehicle.mMaxPassengerCount;
-			mPerson = new const Person * [mMaxPassengerCount];
+			mPerson = new Person * [mMaxPassengerCount];
 
 			for (int length = 0; length < mCount; length++)
 			{
@@ -160,6 +156,8 @@ namespace assignment2
 			delete mPerson[length];
 		}
 
+		mCount = 0;
 		delete[] mPerson;
+		mPerson = nullptr;
 	}
 }

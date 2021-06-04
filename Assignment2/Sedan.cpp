@@ -36,10 +36,6 @@ namespace assignment2
 	{
 		if (trailer == nullptr || mTrailer != nullptr)
 		{
-			if (mTrailer != nullptr)
-			{
-				delete trailer;
-			}
 			return false;
 		}
 		else
@@ -57,6 +53,7 @@ namespace assignment2
 		}
 		else
 		{
+			delete mTrailer;
 			mTrailer = nullptr;
 			return true;
 		}
@@ -137,7 +134,7 @@ namespace assignment2
 			mMaxPassengerCount = sedan.mMaxPassengerCount;
 			mTravelCheck = 6;
 			mCount = sedan.mCount;
-			mPerson = new const Person * [mMaxPassengerCount];
+			mPerson = new Person * [mMaxPassengerCount];
 
 			for (unsigned int length = 0; length < mCount; length++)
 			{

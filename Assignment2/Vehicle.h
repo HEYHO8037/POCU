@@ -11,7 +11,8 @@ namespace assignment2
 		Vehicle();
 		Vehicle(Vehicle& vehicle);
 		Vehicle(unsigned int maxPassengersCount);
-		~Vehicle();
+
+		virtual ~Vehicle();
 
 		virtual unsigned int GetMaxSpeed() const = 0;
 		virtual unsigned int GetTravelSpeed() = 0;
@@ -30,6 +31,6 @@ namespace assignment2
 	protected:
 		unsigned int mCount;
 		unsigned int mMaxPassengerCount;
-		const Person** mPerson;
+		Person** mPerson;
 	};
 }
