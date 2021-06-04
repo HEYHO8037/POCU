@@ -58,11 +58,9 @@ namespace assignment2
 
 			for (unsigned int length = 0; length < mCount; length++)
 			{
-				AddPassenger(motorCycle.mPerson[length]);
+				mPerson[length] = new Person(motorCycle.mPerson[length]->GetName(), motorCycle.mPerson[length]->GetWeight());
 			}
 
-			motorCycle.ChangeArrayNullptr();
-			motorCycle.mCount = 0;
 		}
 
 		return *this;

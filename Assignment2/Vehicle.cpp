@@ -121,12 +121,10 @@ namespace assignment2
 			mMaxPassengerCount = vehicle.mMaxPassengerCount;
 			mPerson = new const Person * [mMaxPassengerCount];
 
-			for (unsigned int length = 0; length < vehicle.mMaxPassengerCount; length++)
+			for (int length = 0; length < mCount; length++)
 			{
-				mPerson[length] = vehicle.mPerson[length];
+				mPerson[length] = new Person(vehicle.mPerson[length]->GetName(), vehicle.mPerson[length]->GetWeight());
 			}
-
-			vehicle.ChangeArrayNullptr();
 		}
 
 		return *this;

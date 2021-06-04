@@ -137,12 +137,18 @@ namespace assignment2
 
 			for (unsigned int length = 0; length < mCount; length++)
 			{
-				AddPassenger(sedan.mPerson[length]);
+				mPerson[length] = new Person(sedan.mPerson[length]->GetName(), sedan.mPerson[length]->GetWeight());
 			}
 
-			sedan.ChangeArrayNullptr();
-			sedan.mCount = 0;
-			sedan.mTrailer = nullptr;
+			if (sedan.mTrailer != nullptr)
+			{
+				mTrailer = new Trailer(sedan.mTrailer->GetWeight());
+			}
+			else
+			{
+				mTrailer = nullptr;
+			}
+
 		}
 
 		return *this;

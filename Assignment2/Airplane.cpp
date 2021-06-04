@@ -115,11 +115,9 @@ namespace assignment2
 
 			for (unsigned int length = 0; length < mCount; length++)
 			{
-				AddPassenger(airPlane.mPerson[length]);
+				mPerson[length] = new Person(airPlane.mPerson[length]->GetName(), airPlane.mPerson[length]->GetWeight());
 			}
 
-			airPlane.ChangeArrayNullptr();
-			airPlane.mCount = 0;
 		}
 
 		return *this;

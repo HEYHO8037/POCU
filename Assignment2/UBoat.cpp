@@ -78,11 +78,8 @@ namespace assignment2
 
 			for (int length = 0; length < mCount; length++)
 			{
-				AddPassenger(uBoat.mPerson[length]);
+				AddPassenger(new Person(uBoat.mPerson[length]->GetName(), uBoat.mPerson[length]->GetWeight()));
 			}
-
-			uBoat.ChangeArrayNullptr();
-			uBoat.mCount = 0;
 		}
 
 		return *this;

@@ -1,4 +1,6 @@
 #include <cassert>
+#include <iostream>
+#include <iomanip>
 
 #include "Vehicle.h"
 #include "Airplane.h"
@@ -11,10 +13,17 @@
 #include "DeusExMachina.h"
 #include "Person.h"
 
+#define STR(name) #name
+
+
 using namespace assignment2;
 
 int main()
 {
+	Airplane c(10);
+	Airplane d(5);
+	c = d;
+
 	Person* p = new Person("Bob", 85);
 
 	assert(p->GetName() == std::string("Bob"));
@@ -111,6 +120,37 @@ int main()
 	deusExMachina1->Travel(); // 트레일러 달린 Sedan만 이동
 
 	assert(deusExMachina1->GetFurthestTravelled() == boat);
+
+	Airplane dockingTest1(10);
+	Boat dockingTest2(10);
+
+	for (size_t i = 0; i < 5; i++)
+	{
+		dockingTest1.AddPassenger(new Person(STR(i), i));
+		dockingTest2.AddPassenger(new Person(STR(i), i));
+	}
+
+	const Person* comp1 = dockingTest1.GetPassenger(0);
+
+	Boatplane bp1 = dockingTest1 + dockingTest2;
+	Boatplane bp2 = dockingTest2 + dockingTest1;
+	assert(dockingTest1.GetPassengersCount() == 0);
+	assert(dockingTest2.GetPassengersCount() == 0);
+	assert(bp1.GetPassengersCount() == 10);
+	assert(bp2.GetPassengersCount() == 0);
+
+	Boatplane copyConstuctorTest(bp1);
+
+	for (size_t i = 0; i < bp1.GetPassengersCount(); i++)
+	{
+		const Person* p1 = bp1.GetPassenger(i);
+		const Person* p2 = copyConstuctorTest.GetPassenger(i);
+		assert(p1 != p2);
+	}
+	assert(bp1.GetMaxPassengersCount() == copyConstuctorTest.GetMaxPassengersCount());
+	assert(bp1.GetPassengersCount() == copyConstuctorTest.GetPassengersCount());
+	assert(bp1.GetMaxSpeed() == copyConstuctorTest.GetMaxSpeed());
+
 
 	return 0;
 }
