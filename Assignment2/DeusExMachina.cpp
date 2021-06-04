@@ -28,6 +28,8 @@ namespace assignment2
 				}
 			}
 		}
+
+		delete mDeusExMachina;
 	}
 
 	DeusExMachina* DeusExMachina::GetInstance()
@@ -53,6 +55,10 @@ namespace assignment2
 	{
 		if (mCountVehicle >= 10 || vehicle == nullptr)
 		{
+			if (vehicle != nullptr)
+			{
+				delete vehicle;
+			}
 			return false;
 		}
 		else

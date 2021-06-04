@@ -36,6 +36,10 @@ namespace assignment2
 	{
 		if (trailer == nullptr || mTrailer != nullptr)
 		{
+			if (mTrailer != nullptr)
+			{
+				delete trailer;
+			}
 			return false;
 		}
 		else

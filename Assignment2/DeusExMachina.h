@@ -8,7 +8,6 @@ namespace assignment2
 	class DeusExMachina
 	{
 	public:
-		DeusExMachina();
 		~DeusExMachina();
 		static DeusExMachina* GetInstance();
 		void Travel() const;
@@ -17,6 +16,7 @@ namespace assignment2
 		const Vehicle* GetFurthestTravelled() const;
 
 	private:
+		DeusExMachina();
 		static DeusExMachina* mDeusExMachina;
 		Vehicle* mVehicle[10] = { nullptr };
 		static unsigned int mCountSpeed[10];

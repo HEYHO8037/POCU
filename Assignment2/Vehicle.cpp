@@ -19,7 +19,7 @@ namespace assignment2
 
 		for (int length = 0; length < mCount; length++)
 		{
-			mPerson[length] = new const Person(vehicle.mPerson[length]->GetName().c_str(), vehicle.mPerson[length]->GetWeight());
+			mPerson[length] = new Person(vehicle.mPerson[length]->GetName().c_str(), vehicle.mPerson[length]->GetWeight());
 		}
 	}
 
@@ -39,7 +39,12 @@ namespace assignment2
 	{
 		if (mCount >= mMaxPassengerCount || person == nullptr)
 		{
+			if (person != nullptr)
+			{
+				delete person;
+			}
 			return false;
+			
 		}
 		else
 		{

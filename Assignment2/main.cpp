@@ -27,7 +27,7 @@ using namespace assignment2;
 
 int main()
 {
-	//_CrtSetBreakAlloc(170);
+	//_CrtSetBreakAlloc(177);
 
 	Person* p = new Person("Bob", 85);
 
@@ -127,6 +127,5 @@ int main()
 	assert(deusExMachina1->GetFurthestTravelled() == boat);
 
 
-	_CrtDumpMemoryLeaks();
 	return 0;
 }
