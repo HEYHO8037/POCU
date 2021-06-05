@@ -54,14 +54,14 @@ namespace assignment2
 		
 		Boatplane bp(passengers);
 		
-		for (unsigned int length = 0; length < mCount; length++)
-		{
-			bp.AddPassenger(mPerson[length]);
-		}
-
 		for (unsigned int length = 0; length < planePassengers; length++)
 		{
 			bp.AddPassenger(plane.GetPassenger(length));
+		}
+
+		for (unsigned int length = 0; length < mCount; length++)
+		{
+			bp.AddPassenger(mPerson[length]);
 		}
 
 		ChangeArrayNullptr();
