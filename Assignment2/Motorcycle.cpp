@@ -8,7 +8,7 @@ namespace assignment2
 		mTravelCheck = 5;
 	}
 
-	Motorcycle::Motorcycle(Motorcycle& motorCycle)
+	Motorcycle::Motorcycle(const Motorcycle& motorCycle)
 		: Vehicle(motorCycle)
 	{
 		mTravelCheck = 5;
@@ -45,7 +45,7 @@ namespace assignment2
 		return GetDriveSpeed();
 	}
 
-	Motorcycle& Motorcycle::operator=(Motorcycle& motorCycle)
+	Motorcycle& Motorcycle::operator=(const Motorcycle& motorCycle)
 	{
 		if (this != &motorCycle)
 		{

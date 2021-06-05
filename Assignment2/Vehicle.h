@@ -9,7 +9,7 @@ namespace assignment2
 	{
 	public:
 		Vehicle();
-		Vehicle(Vehicle& vehicle);
+		Vehicle(const Vehicle& vehicle);
 		Vehicle(unsigned int maxPassengersCount);
 
 		virtual ~Vehicle();
@@ -24,7 +24,7 @@ namespace assignment2
 		unsigned int GetMaxPassengersCount() const;
 		int GetTotalPassengerWeight() const;
 
-		Vehicle& operator=(Vehicle& vehicle);
+		Vehicle& operator=(const Vehicle& vehicle);
 		void ChangeArrayNullptr();
 		void DeletePerson();
 

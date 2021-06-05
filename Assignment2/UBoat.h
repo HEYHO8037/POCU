@@ -10,7 +10,7 @@ namespace assignment2
 	{
 	public:
 		UBoat();
-		UBoat(UBoat& uBoat);
+		UBoat(const UBoat& uBoat);
 		~UBoat();
 
 		virtual unsigned int GetDiveSpeed() const;
@@ -19,7 +19,7 @@ namespace assignment2
 		virtual unsigned int GetMaxSpeed() const;
 		virtual unsigned int GetTravelSpeed();
 
-		UBoat& operator=(UBoat& uBoat);
+		UBoat& operator=(const UBoat& uBoat);
 
 	private:
 		unsigned int mTravelCheck;

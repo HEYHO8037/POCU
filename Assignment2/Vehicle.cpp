@@ -9,7 +9,7 @@ namespace assignment2
 		mPerson = nullptr;
 	}
 
-	Vehicle::Vehicle(Vehicle& vehicle)
+	Vehicle::Vehicle(const Vehicle& vehicle)
 	{
 		unsigned int maxPassenger = vehicle.GetMaxPassengersCount();
 		mPerson = nullptr;
@@ -121,7 +121,7 @@ namespace assignment2
 		}
 	}
 
-	Vehicle& Vehicle::operator=(Vehicle& vehicle)
+	Vehicle& Vehicle::operator=(const Vehicle& vehicle)
 	{
 		if (this != &vehicle)
 		{

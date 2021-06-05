@@ -8,7 +8,7 @@ namespace assignment2
 		mPersonWeight = 0;
 	}
 
-	Person::Person(Person& person)
+	Person::Person(const Person& person)
 	{
 		mName = person.mName;
 		mPersonWeight = person.mPersonWeight;
@@ -35,7 +35,7 @@ namespace assignment2
 		return mPersonWeight;
 	}
 
-	Person& Person::operator=(Person& person)
+	Person& Person::operator=(const Person& person)
 	{
 		if (&person != this)
 		{

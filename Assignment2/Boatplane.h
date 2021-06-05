@@ -10,7 +10,7 @@ namespace assignment2
 	{
 	public:
 		Boatplane(unsigned int maxPassengersCount);
-		Boatplane(Boatplane& boatPlane);
+		Boatplane(const Boatplane& boatPlane);
 		~Boatplane();
 
 		virtual unsigned int GetFlySpeed() const;
@@ -18,7 +18,7 @@ namespace assignment2
 		virtual unsigned int GetSailSpeed() const;
 		virtual unsigned int GetTravelSpeed();
 
-		Boatplane& operator=(Boatplane& boatPlane);
+		Boatplane& operator=(const Boatplane& boatPlane);
 	private:
 		unsigned int mTravelCheck;
 		

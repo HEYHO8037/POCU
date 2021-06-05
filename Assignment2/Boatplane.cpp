@@ -8,7 +8,7 @@ namespace assignment2
 		mTravelCheck = 3;
 	}
 
-	Boatplane::Boatplane(Boatplane& boatPlane)
+	Boatplane::Boatplane(const Boatplane& boatPlane)
 		: Vehicle(boatPlane)
 	{
 		mTravelCheck = 3;
@@ -67,7 +67,7 @@ namespace assignment2
 		return static_cast<unsigned int>(sailSpeed);
 	}
 
-	Boatplane& Boatplane::operator=(Boatplane& boatPlane)
+	Boatplane& Boatplane::operator=(const Boatplane& boatPlane)
 	{
 		if (this != &boatPlane)
 		{
@@ -82,12 +82,9 @@ namespace assignment2
 
 				for (unsigned int length = 0; length < mCount; length++)
 				{
-					AddPassenger(boatPlane.mPerson[length]);
+					mPerson[length] = new Person(boatPlane.mPerson[length]->GetName().c_str(), boatPlane.mPerson[length]->GetWeight());
 				}
 			}
-
-			boatPlane.ChangeArrayNullptr();
-			boatPlane.mCount = 0;
 		}
 
 		return *this;

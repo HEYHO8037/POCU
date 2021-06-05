@@ -9,14 +9,14 @@ namespace assignment2
 	{
 	public:
 		Motorcycle();
-		Motorcycle(Motorcycle& motorCycle);
+		Motorcycle(const Motorcycle& motorCycle);
 		~Motorcycle();
 
 		virtual unsigned int GetDriveSpeed() const;
 		virtual unsigned int GetTravelSpeed();
 		virtual unsigned int GetMaxSpeed() const;
 
-		Motorcycle& operator=(Motorcycle& motorCycle);
+		Motorcycle& operator=(const Motorcycle& motorCycle);
 	private:
 		unsigned int mTravelCheck;
 

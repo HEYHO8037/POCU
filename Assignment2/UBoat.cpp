@@ -8,7 +8,7 @@ namespace assignment2
 		mTravelCheck = 5;
 	}
 
-	UBoat::UBoat(UBoat& uBoat)
+	UBoat::UBoat(const UBoat& uBoat)
 		: Vehicle(uBoat)
 	{
 		mTravelCheck = 5;
@@ -65,7 +65,7 @@ namespace assignment2
 		}
 	}
 
-	UBoat& UBoat::operator=(UBoat& uBoat)
+	UBoat& UBoat::operator=(const UBoat& uBoat)
 	{
 		if (this != &uBoat)
 		{

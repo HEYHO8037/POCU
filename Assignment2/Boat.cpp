@@ -8,7 +8,7 @@ namespace assignment2
 		mTravelCheck = 2;
 	}
 	
-	Boat::Boat(Boat& boat)
+	Boat::Boat(const Boat& boat)
 		: Vehicle(boat)
 	{
 		mTravelCheck = 2;
@@ -70,7 +70,7 @@ namespace assignment2
 		return bp;
 	}
 
-	Boat& Boat::operator=(Boat& boat)
+	Boat& Boat::operator=(const Boat& boat)
 	{
 		if (this != &boat)
 		{

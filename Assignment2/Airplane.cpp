@@ -10,7 +10,7 @@ namespace assignment2
 		mTravelCheck = 3;
 	}
 
-	Airplane::Airplane(Airplane& airPlane)
+	Airplane::Airplane(const Airplane& airPlane)
 		: Vehicle(airPlane)
 	{
 		mTravelCheck = 3;
@@ -102,7 +102,7 @@ namespace assignment2
 		return bp;
 	}
 
-	Airplane& Airplane::operator=(Airplane& airPlane)
+	Airplane& Airplane::operator=(const Airplane& airPlane)
 	{
 		if (this != &airPlane)
 		{

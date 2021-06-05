@@ -9,7 +9,7 @@ namespace assignment2
 		mTravelCheck = 6;
 	}
 
-	Sedan::Sedan(Sedan& sedan)
+	Sedan::Sedan(const Sedan& sedan)
 		: Vehicle(sedan)
 	{
 		if (sedan.mTrailer != nullptr)
@@ -124,7 +124,7 @@ namespace assignment2
 	}
 
 
-	Sedan& Sedan::operator=(Sedan& sedan)
+	Sedan& Sedan::operator=(const Sedan& sedan)
 	{
 		if (this != &sedan)
 		{

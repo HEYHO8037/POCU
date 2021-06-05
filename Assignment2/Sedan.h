@@ -12,7 +12,7 @@ namespace assignment2
 	{
 	public:
 		Sedan();
-		Sedan(Sedan& sedan);
+		Sedan(const Sedan& sedan);
 		~Sedan();
 
 		bool AddTrailer(const Trailer* trailer);
@@ -22,7 +22,7 @@ namespace assignment2
 		virtual unsigned int GetMaxSpeed() const;
 		virtual unsigned int GetTravelSpeed();
 
-		Sedan& operator=(Sedan& sedan);
+		Sedan& operator=(const Sedan& sedan);
 
 	private:
 		const Trailer* mTrailer;

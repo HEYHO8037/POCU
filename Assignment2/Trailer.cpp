@@ -7,7 +7,7 @@ namespace assignment2
 		mTrailerWeight = weight;
 	}
 
-	Trailer::Trailer(Trailer& trailer)
+	Trailer::Trailer(const Trailer& trailer)
 	{
 		mTrailerWeight = trailer.mTrailerWeight;
 	}
@@ -21,7 +21,7 @@ namespace assignment2
 		return mTrailerWeight;
 	}
 
-	Trailer& Trailer::operator=(Trailer& trailer)
+	Trailer& Trailer::operator=(const Trailer& trailer)
 	{
 		if (this != &trailer)
 		{
