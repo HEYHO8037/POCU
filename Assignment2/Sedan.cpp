@@ -134,11 +134,15 @@ namespace assignment2
 			mMaxPassengerCount = sedan.mMaxPassengerCount;
 			mTravelCheck = 6;
 			mCount = sedan.mCount;
-			mPerson = new Person * [mMaxPassengerCount];
-
-			for (unsigned int length = 0; length < mCount; length++)
+			
+			if (mMaxPassengerCount != 0)
 			{
-				mPerson[length] = new Person(sedan.mPerson[length]->GetName().c_str(), sedan.mPerson[length]->GetWeight());
+				mPerson = new Person * [mMaxPassengerCount];
+
+				for (unsigned int length = 0; length < mCount; length++)
+				{
+					mPerson[length] = new Person(sedan.mPerson[length]->GetName().c_str(), sedan.mPerson[length]->GetWeight());
+				}
 			}
 
 			if (sedan.mTrailer != nullptr)

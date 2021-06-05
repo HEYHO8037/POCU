@@ -111,11 +111,15 @@ namespace assignment2
 			mMaxPassengerCount = airPlane.mMaxPassengerCount;
 			mCount = airPlane.mCount;
 			mTravelCheck = 3;
-			mPerson = new Person * [mMaxPassengerCount];
 
-			for (unsigned int length = 0; length < mCount; length++)
+			if (mMaxPassengerCount != 0)
 			{
-				mPerson[length] = new Person(airPlane.mPerson[length]->GetName().c_str(), airPlane.mPerson[length]->GetWeight());
+				mPerson = new Person * [mMaxPassengerCount];
+
+				for (unsigned int length = 0; length < mCount; length++)
+				{
+					mPerson[length] = new Person(airPlane.mPerson[length]->GetName().c_str(), airPlane.mPerson[length]->GetWeight());
+				}
 			}
 
 		}

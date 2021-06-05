@@ -21,5 +21,6 @@ namespace assignment2
 		Boatplane& operator=(Boatplane& boatPlane);
 	private:
 		unsigned int mTravelCheck;
+		
 	};
 }

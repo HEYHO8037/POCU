@@ -54,11 +54,15 @@ namespace assignment2
 			mMaxPassengerCount = motorCycle.mMaxPassengerCount;
 			mTravelCheck = 5;
 			mCount = motorCycle.mCount;
-			mPerson = new Person * [mMaxPassengerCount];
 
-			for (unsigned int length = 0; length < mCount; length++)
+			if (mMaxPassengerCount != 0)
 			{
-				mPerson[length] = new Person(motorCycle.mPerson[length]->GetName().c_str(), motorCycle.mPerson[length]->GetWeight());
+				mPerson = new Person * [mMaxPassengerCount];
+
+				for (unsigned int length = 0; length < mCount; length++)
+				{
+					mPerson[length] = new Person(motorCycle.mPerson[length]->GetName().c_str(), motorCycle.mPerson[length]->GetWeight());
+				}
 			}
 
 		}

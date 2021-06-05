@@ -76,11 +76,14 @@ namespace assignment2
 			mMaxPassengerCount = boatPlane.mMaxPassengerCount;
 			mTravelCheck = 3;
 			mCount = boatPlane.mCount;
-			mPerson = new Person * [mMaxPassengerCount];
-
-			for (unsigned int length = 0; length < mCount; length++)
+			if (mMaxPassengerCount != 0)
 			{
-				AddPassenger(boatPlane.mPerson[length]);
+				mPerson = new Person * [mMaxPassengerCount];
+
+				for (unsigned int length = 0; length < mCount; length++)
+				{
+					AddPassenger(boatPlane.mPerson[length]);
+				}
 			}
 
 			boatPlane.ChangeArrayNullptr();

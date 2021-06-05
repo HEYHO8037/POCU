@@ -74,11 +74,15 @@ namespace assignment2
 			mMaxPassengerCount = uBoat.mMaxPassengerCount;
 			mTravelCheck = 5;
 			mCount = uBoat.mCount;
-			mPerson = new Person * [mMaxPassengerCount];
 
-			for (int length = 0; length < mCount; length++)
+			if (mMaxPassengerCount != 0)
 			{
-				AddPassenger(new Person(uBoat.mPerson[length]->GetName().c_str(), uBoat.mPerson[length]->GetWeight()));
+				mPerson = new Person * [mMaxPassengerCount];
+
+				for (int length = 0; length < mCount; length++)
+				{
+					AddPassenger(new Person(uBoat.mPerson[length]->GetName().c_str(), uBoat.mPerson[length]->GetWeight()));
+				}
 			}
 		}
 

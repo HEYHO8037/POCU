@@ -12,23 +12,31 @@ namespace assignment2
 	Vehicle::Vehicle(Vehicle& vehicle)
 	{
 		unsigned int maxPassenger = vehicle.GetMaxPassengersCount();
-
+		mPerson = nullptr;
 		mCount = vehicle.mCount;
 		mMaxPassengerCount = maxPassenger;
-		mPerson = new Person* [mMaxPassengerCount];
 
-		for (unsigned int length = 0; length < mCount; length++)
+		if (mMaxPassengerCount != 0)
 		{
-			mPerson[length] = new Person(vehicle.mPerson[length]->GetName().c_str(), vehicle.mPerson[length]->GetWeight());
+			mPerson = new Person * [mMaxPassengerCount];
+
+			for (unsigned int length = 0; length < mCount; length++)
+			{
+				mPerson[length] = new Person(vehicle.mPerson[length]->GetName().c_str(), vehicle.mPerson[length]->GetWeight());
+			}
 		}
 	}
 
 	Vehicle::Vehicle(unsigned int maxPassengersCount)
 	{
+		mPerson = nullptr;
 		mMaxPassengerCount = maxPassengersCount;
 		mCount = 0;
 
-		mPerson = new Person* [mMaxPassengerCount];
+		if (mMaxPassengerCount != 0)
+		{
+			mPerson = new Person * [mMaxPassengerCount];
+		}
 	}
 
 	Vehicle::~Vehicle()
