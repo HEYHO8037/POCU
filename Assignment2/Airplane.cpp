@@ -9,10 +9,9 @@ namespace assignment2
 	{
 	}
 
-	Airplane::Airplane(Airplane& airPlane)
+	Airplane::Airplane(const Airplane& airPlane)
 		: Vehicle(airPlane), mTravelCheck(3)
 	{
-		airPlane.DeletePerson();
 	}
 
 	Airplane::Airplane(unsigned int maxPassengersCount)

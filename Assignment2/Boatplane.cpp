@@ -7,10 +7,9 @@ namespace assignment2
 	{
 	}
 
-	Boatplane::Boatplane(Boatplane& boatPlane)
+	Boatplane::Boatplane(const Boatplane& boatPlane)
 		: Vehicle(boatPlane), mTravelCheck(3)
 	{
-		boatPlane.DeletePerson();
 	}
 
 	Boatplane::~Boatplane()

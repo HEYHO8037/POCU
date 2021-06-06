@@ -20,7 +20,7 @@ namespace assignment2
 			}
 		}
 
-
+		vehicle.~Vehicle();
 	}
 
 	Vehicle::Vehicle(unsigned int maxPassengersCount)
@@ -61,6 +61,7 @@ namespace assignment2
 		else
 		{
 			delete mPerson[i];
+			mPerson[i] = nullptr;
 
 			for (unsigned int length = i; length < mCount; length++)
 			{
@@ -156,6 +157,7 @@ namespace assignment2
 		{
 			delete mPerson[length];
 		}
+
 		mCount = 0;
 		delete[] mPerson;
 		mPerson = nullptr;

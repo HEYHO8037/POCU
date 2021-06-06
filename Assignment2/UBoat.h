@@ -10,7 +10,7 @@ namespace assignment2
 	{
 	public:
 		UBoat();
-		UBoat(UBoat& uBoat);
+		UBoat(const UBoat& uBoat);
 		~UBoat();
 
 		virtual unsigned int GetDiveSpeed() const;

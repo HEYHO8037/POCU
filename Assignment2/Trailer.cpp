@@ -9,7 +9,7 @@ namespace assignment2
 
 	Trailer::Trailer(const Trailer& trailer)
 		: mTrailerWeight(trailer.mTrailerWeight)
-	{;
+	{
 	}
 
 	Trailer::~Trailer()

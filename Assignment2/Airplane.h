@@ -14,7 +14,7 @@ namespace assignment2
 	{
 	public:
 		Airplane();
-		Airplane(Airplane& airPlane);
+		Airplane(const Airplane& airPlane);
 		Airplane(unsigned int maxPassengersCount);
 		~Airplane();
 

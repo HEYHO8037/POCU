@@ -14,7 +14,7 @@ namespace assignment2
 	{
 	public:
 		Boat(unsigned int maxPassengersCount);
-		Boat(Boat& boat);
+		Boat(const Boat& boat);
 		~Boat();
 
 		virtual unsigned int GetMaxSpeed() const;
