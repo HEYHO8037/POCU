@@ -9,7 +9,7 @@ namespace assignment2
 	{
 	public:
 		Motorcycle();
-		Motorcycle(const Motorcycle& motorCycle);
+		Motorcycle(Motorcycle& motorCycle);
 		~Motorcycle();
 
 		virtual unsigned int GetDriveSpeed() const;
