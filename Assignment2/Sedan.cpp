@@ -92,6 +92,8 @@ namespace assignment2
 		{
 			return 300;
 		}
+
+		return 0;
 	}
 
 	unsigned int Sedan::GetMaxSpeed() const
@@ -133,7 +135,7 @@ namespace assignment2
 	{
 		if (this != &sedan)
 		{
-			DeletePerson();
+			deletePerson();
 
 			if (mTrailer != nullptr)
 			{

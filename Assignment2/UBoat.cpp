@@ -74,7 +74,7 @@ namespace assignment2
 	{
 		if (this != &uBoat)
 		{
-			DeletePerson();
+			deletePerson();
 
 			mMaxPassengerCount = uBoat.mMaxPassengerCount;
 			mTravelCheck = 5;

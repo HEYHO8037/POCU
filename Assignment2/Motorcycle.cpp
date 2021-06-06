@@ -54,7 +54,7 @@ namespace assignment2
 	{
 		if (this != &motorCycle)
 		{
-			DeletePerson();
+			deletePerson();
 
 			mMaxPassengerCount = motorCycle.mMaxPassengerCount;
 			mTravelCheck = 5;

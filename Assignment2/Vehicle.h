@@ -29,7 +29,7 @@ namespace assignment2
 		void ChangeArrayNullptr();
 
 	protected:
-		void DeletePerson();
+		void deletePerson();
 		unsigned int mCount;
 		unsigned int mMaxPassengerCount;
 		unsigned int mTravelCheck;

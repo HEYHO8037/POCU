@@ -74,16 +74,19 @@ namespace assignment2
 		else
 		{
 			delete mVehicle[i];
+			mCountSpeed[i] = 0;
 
 			for (unsigned int length = i; length < mCountVehicle; length++)
 			{
 				if (length == mCountVehicle - 1)
 				{
 					mVehicle[length] = nullptr;
+					mCountSpeed[length] = 0;
 				}
 				else
 				{
 					mVehicle[length] = mVehicle[length + 1];
+					mCountSpeed[length] = mCountSpeed[length + 1];
 				}
 			}
 

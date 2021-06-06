@@ -33,7 +33,7 @@ namespace assignment2
 
 	Vehicle::~Vehicle()
 	{
-		DeletePerson();
+		deletePerson();
 	}
 
 	bool Vehicle::AddPassenger(const Person* person)
@@ -118,7 +118,7 @@ namespace assignment2
 	{
 		if (this != &vehicle)
 		{
-			DeletePerson();
+			deletePerson();
 
 			mCount = vehicle.mCount;
 			mMaxPassengerCount = vehicle.mMaxPassengerCount;
@@ -150,7 +150,7 @@ namespace assignment2
 		mCount = 0;
 	}
 
-	void Vehicle::DeletePerson() 
+	void Vehicle::deletePerson()
 	{
 		for (unsigned int length = 0; length < mCount; length++)
 		{

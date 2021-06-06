@@ -111,7 +111,7 @@ namespace assignment2
 	{
 		if (this != &airPlane)
 		{
-			DeletePerson();
+			deletePerson();
 
 			mMaxPassengerCount = airPlane.mMaxPassengerCount;
 			mCount = airPlane.mCount;
