@@ -44,7 +44,7 @@ namespace assignment2
 		}
 		else
 		{
-			mPerson[mCount] = (Person *)person;
+			mPerson[mCount] = (Person*)person;
 			mCount++;
 
 			return true;
@@ -124,7 +124,7 @@ namespace assignment2
 			mMaxPassengerCount = vehicle.mMaxPassengerCount;
 			mPerson = new Person * [mMaxPassengerCount];
 
-			for (int length = 0; length < mCount; length++)
+			for (unsigned int length = 0; length < mCount; length++)
 			{
 				mPerson[length] = new Person(vehicle.mPerson[length]->GetName().c_str(), vehicle.mPerson[length]->GetWeight());
 			}

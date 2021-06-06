@@ -15,13 +15,12 @@ namespace assignment2
 
 		virtual unsigned int GetDiveSpeed() const;
 		virtual unsigned int GetSailSpeed() const;
-
 		virtual unsigned int GetMaxSpeed() const;
 		virtual unsigned int GetTravelSpeed();
+		virtual void ResetTravelCheck();
 
 		UBoat& operator=(const UBoat& uBoat);
 
 	private:
-		unsigned int mTravelCheck;
 	};
 }

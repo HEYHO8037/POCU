@@ -5,18 +5,21 @@
 namespace assignment2
 {
 	Airplane::Airplane()
-		: Vehicle(), mTravelCheck(3)
+		: Vehicle()
 	{
+		mTravelCheck = 3;
 	}
 
 	Airplane::Airplane(const Airplane& airPlane)
-		: Vehicle(airPlane), mTravelCheck(3)
+		: Vehicle(airPlane)
 	{
+		mTravelCheck = 3;
 	}
 
 	Airplane::Airplane(unsigned int maxPassengersCount)
-		: Vehicle(maxPassengersCount), mTravelCheck(3)
+		: Vehicle(maxPassengersCount)
 	{
+		mTravelCheck = 3;
 	}
 
 	Airplane::~Airplane()
@@ -63,6 +66,11 @@ namespace assignment2
 		totalSpeed += 0.5;
 		
 		return static_cast<unsigned int>(totalSpeed);
+	}
+
+	void Airplane::ResetTravelCheck()
+	{
+		mTravelCheck = 3;
 	}
 
 	unsigned int Airplane::GetDriveSpeed() const

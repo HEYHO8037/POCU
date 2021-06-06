@@ -3,13 +3,16 @@
 namespace assignment2
 {
 	Sedan::Sedan()
-		: Vehicle(4), mTrailer(nullptr), mTravelCheck(6)
+		: Vehicle(4), mTrailer(nullptr)
 	{
+		mTravelCheck = 6;
 	}
 
 	Sedan::Sedan(const Sedan& sedan)
-		: Vehicle(sedan), mTravelCheck(6)
+		: Vehicle(sedan)
 	{
+		mTravelCheck = 6;
+
 		if (sedan.mTrailer != nullptr)
 		{
 			mTrailer = new Trailer(sedan.mTrailer->GetWeight());
@@ -58,7 +61,7 @@ namespace assignment2
 
 	unsigned int Sedan::GetDriveSpeed() const
 	{
-		int weight = 0;
+		unsigned int weight = 0;
 
 		if (mTrailer != nullptr)
 		{
@@ -118,6 +121,11 @@ namespace assignment2
 			mTravelCheck--;
 			return GetMaxSpeed();
 		}
+	}
+	
+	void Sedan::ResetTravelCheck()
+	{
+		mTravelCheck = 6;
 	}
 
 

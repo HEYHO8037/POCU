@@ -3,13 +3,15 @@
 namespace assignment2
 {
 	UBoat::UBoat()
-		: Vehicle(50), mTravelCheck(5)
+		: Vehicle(50)
 	{
+		mTravelCheck = 5;
 	}
 
 	UBoat::UBoat(const UBoat& uBoat)
-		: Vehicle(uBoat), mTravelCheck(5)
+		: Vehicle(uBoat)
 	{
+		mTravelCheck = 5;
 	}
 
 	UBoat::~UBoat()
@@ -63,6 +65,11 @@ namespace assignment2
 		}
 	}
 
+	void UBoat::ResetTravelCheck()
+	{
+		mTravelCheck = 5;
+	}
+
 	UBoat& UBoat::operator=(const UBoat& uBoat)
 	{
 		if (this != &uBoat)
@@ -77,7 +84,7 @@ namespace assignment2
 			{
 				mPerson = new Person * [mMaxPassengerCount];
 
-				for (int length = 0; length < mCount; length++)
+				for (unsigned int length = 0; length < mCount; length++)
 				{
 					AddPassenger(new Person(uBoat.mPerson[length]->GetName().c_str(), uBoat.mPerson[length]->GetWeight()));
 				}

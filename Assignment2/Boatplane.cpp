@@ -3,13 +3,15 @@
 namespace assignment2
 {
 	Boatplane::Boatplane(unsigned int maxPassengersCount)
-		:Vehicle(maxPassengersCount), mTravelCheck(3)
+		: Vehicle(maxPassengersCount)
 	{
+		mTravelCheck = 3;
 	}
 
 	Boatplane::Boatplane(const Boatplane& boatPlane)
-		: Vehicle(boatPlane), mTravelCheck(3)
+		: Vehicle(boatPlane)
 	{
+		mTravelCheck = 3;
 	}
 
 	Boatplane::~Boatplane()
@@ -62,6 +64,11 @@ namespace assignment2
 		sailSpeed += 0.5f;
 
 		return static_cast<unsigned int>(sailSpeed);
+	}
+
+	void Boatplane::ResetTravelCheck()
+	{
+		mTravelCheck = 3;
 	}
 
 	Boatplane& Boatplane::operator=(const Boatplane& boatPlane)

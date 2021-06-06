@@ -15,7 +15,7 @@ namespace assignment2
 	{
 		if (mCountVehicle != 0)
 		{
-			for (int length = 0; length < mCountVehicle; length++)
+			for (unsigned int length = 0; length < mCountVehicle; length++)
 			{
 				if (mVehicle[length] != nullptr)
 				{
@@ -59,6 +59,7 @@ namespace assignment2
 		else
 		{
 			mVehicle[mCountVehicle] = vehicle;
+			mVehicle[mCountVehicle]->ResetTravelCheck();
 			mCountVehicle++;
 			return true;
 		}

@@ -21,11 +21,11 @@ namespace assignment2
 		virtual unsigned int GetDriveSpeed() const;
 		virtual unsigned int GetMaxSpeed() const;
 		virtual unsigned int GetTravelSpeed();
+		virtual void ResetTravelCheck();
 
 		Sedan& operator=(const Sedan& sedan);
 
 	private:
 		const Trailer* mTrailer;
-		unsigned int mTravelCheck;
 	};
 }

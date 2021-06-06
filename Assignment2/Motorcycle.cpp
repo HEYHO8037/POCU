@@ -3,13 +3,15 @@
 namespace assignment2
 {
 	Motorcycle::Motorcycle()
-		: Vehicle(2), mTravelCheck(5)
+		: Vehicle(2)
 	{
+		mTravelCheck = 5;
 	}
 
 	Motorcycle::Motorcycle(const Motorcycle& motorCycle)
-		: Vehicle(motorCycle), mTravelCheck(5)
+		: Vehicle(motorCycle)
 	{
+		mTravelCheck = 5;
 	}
 
 	Motorcycle::~Motorcycle()
@@ -41,6 +43,11 @@ namespace assignment2
 	unsigned int Motorcycle::GetMaxSpeed() const
 	{
 		return GetDriveSpeed();
+	}
+
+	void Motorcycle::ResetTravelCheck()
+	{
+		mTravelCheck = 5;
 	}
 
 	Motorcycle& Motorcycle::operator=(const Motorcycle& motorCycle)

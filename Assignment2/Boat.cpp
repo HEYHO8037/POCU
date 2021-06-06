@@ -3,13 +3,15 @@
 namespace assignment2
 {
 	Boat::Boat(unsigned int maxPassengersCount)
-		:Vehicle(maxPassengersCount), mTravelCheck(2)
+		: Vehicle(maxPassengersCount)
 	{
+		mTravelCheck = 2;
 	}
 	
 	Boat::Boat(const Boat& boat)
-		: Vehicle(boat), mTravelCheck(2)
+		: Vehicle(boat)
 	{
+		mTravelCheck = 2;
 	}
 
 	Boat::~Boat()
@@ -43,6 +45,11 @@ namespace assignment2
 			mTravelCheck--;
 			return GetMaxSpeed();
 		}
+	}
+
+	void Boat::ResetTravelCheck()
+	{
+		mTravelCheck = 2;
 	}
 
 	Boatplane Boat::operator+(Airplane& plane)
@@ -82,7 +89,7 @@ namespace assignment2
 			{
 				mPerson = new Person * [mMaxPassengerCount];
 
-				for (int length = 0; length < mCount; length++)
+				for (unsigned int length = 0; length < mCount; length++)
 				{
 					AddPassenger(new Person(boat.mPerson[length]->GetName().c_str(), boat.mPerson[length]->GetWeight()));
 				}

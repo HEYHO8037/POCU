@@ -15,10 +15,10 @@ namespace assignment2
 		virtual unsigned int GetDriveSpeed() const;
 		virtual unsigned int GetTravelSpeed();
 		virtual unsigned int GetMaxSpeed() const;
+		virtual void ResetTravelCheck();
+
 
 		Motorcycle& operator=(const Motorcycle& motorCycle);
 	private:
-		unsigned int mTravelCheck;
-
 	};
 }

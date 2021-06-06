@@ -16,6 +16,7 @@ namespace assignment2
 
 		virtual unsigned int GetMaxSpeed() const = 0;
 		virtual unsigned int GetTravelSpeed() = 0;
+		virtual void ResetTravelCheck() = 0;
 
 		bool AddPassenger(const Person* person);
 		bool RemovePassenger(unsigned int i);
@@ -26,11 +27,12 @@ namespace assignment2
 
 		Vehicle& operator=(const Vehicle& vehicle);
 		void ChangeArrayNullptr();
-		void DeletePerson();
 
 	protected:
+		void DeletePerson();
 		unsigned int mCount;
 		unsigned int mMaxPassengerCount;
+		unsigned int mTravelCheck;
 		Person** mPerson;
 	};
 }
