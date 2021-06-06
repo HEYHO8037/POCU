@@ -127,6 +127,12 @@ namespace assignment2
 		{
 			DeletePerson();
 
+			if (mTrailer != nullptr)
+			{
+				delete mTrailer;
+				mTrailer = nullptr;
+			}
+
 			mTrailer = sedan.mTrailer;
 			mMaxPassengerCount = sedan.mMaxPassengerCount;
 			mTravelCheck = 6;

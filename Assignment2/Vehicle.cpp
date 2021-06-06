@@ -20,7 +20,6 @@ namespace assignment2
 			}
 		}
 
-		vehicle.~Vehicle();
 	}
 
 	Vehicle::Vehicle(unsigned int maxPassengersCount)
