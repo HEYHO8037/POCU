@@ -7,9 +7,10 @@ namespace assignment2
 	{
 	}
 
-	Motorcycle::Motorcycle(const Motorcycle& motorCycle)
+	Motorcycle::Motorcycle(Motorcycle& motorCycle)
 		: Vehicle(motorCycle), mTravelCheck(5)
 	{
+		motorCycle.DeletePerson();
 	}
 
 	Motorcycle::~Motorcycle()

@@ -7,9 +7,10 @@ namespace assignment2
 	{
 	}
 	
-	Boat::Boat(const Boat& boat)
+	Boat::Boat(Boat& boat)
 		: Vehicle(boat), mTravelCheck(2)
 	{
+		boat.DeletePerson();
 	}
 
 	Boat::~Boat()

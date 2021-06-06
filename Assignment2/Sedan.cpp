@@ -7,7 +7,7 @@ namespace assignment2
 	{
 	}
 
-	Sedan::Sedan(const Sedan& sedan)
+	Sedan::Sedan(Sedan& sedan)
 		: Vehicle(sedan), mTravelCheck(6)
 	{
 		if (sedan.mTrailer != nullptr)
@@ -18,6 +18,8 @@ namespace assignment2
 		{
 			mTrailer = nullptr;
 		}
+
+		sedan.DeletePerson();
 	}
 
 

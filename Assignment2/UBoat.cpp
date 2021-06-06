@@ -7,9 +7,10 @@ namespace assignment2
 	{
 	}
 
-	UBoat::UBoat(const UBoat& uBoat)
+	UBoat::UBoat(UBoat& uBoat)
 		: Vehicle(uBoat), mTravelCheck(5)
 	{
+		uBoat.DeletePerson();
 	}
 
 	UBoat::~UBoat()
