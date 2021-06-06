@@ -5,21 +5,18 @@
 namespace assignment2
 {
 	Airplane::Airplane()
-		: Vehicle()
+		: Vehicle(), mTravelCheck(3)
 	{
-		mTravelCheck = 3;
 	}
 
 	Airplane::Airplane(const Airplane& airPlane)
-		: Vehicle(airPlane)
+		: Vehicle(airPlane), mTravelCheck(3)
 	{
-		mTravelCheck = 3;
 	}
 
 	Airplane::Airplane(unsigned int maxPassengersCount)
-		: Vehicle(maxPassengersCount)
+		: Vehicle(maxPassengersCount), mTravelCheck(3)
 	{
-		mTravelCheck = 3;
 	}
 
 	Airplane::~Airplane()

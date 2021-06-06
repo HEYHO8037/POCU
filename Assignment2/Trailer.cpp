@@ -3,13 +3,13 @@
 namespace assignment2
 {
 	Trailer::Trailer(unsigned int weight)
+		: mTrailerWeight(weight)
 	{
-		mTrailerWeight = weight;
 	}
 
 	Trailer::Trailer(const Trailer& trailer)
-	{
-		mTrailerWeight = trailer.mTrailerWeight;
+		: mTrailerWeight(trailer.mTrailerWeight)
+	{;
 	}
 
 	Trailer::~Trailer()

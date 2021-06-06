@@ -3,15 +3,13 @@
 namespace assignment2
 {
 	Boat::Boat(unsigned int maxPassengersCount)
-		:Vehicle(maxPassengersCount)
+		:Vehicle(maxPassengersCount), mTravelCheck(2)
 	{
-		mTravelCheck = 2;
 	}
 	
 	Boat::Boat(const Boat& boat)
-		: Vehicle(boat)
+		: Vehicle(boat), mTravelCheck(2)
 	{
-		mTravelCheck = 2;
 	}
 
 	Boat::~Boat()

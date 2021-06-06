@@ -3,19 +3,13 @@
 namespace assignment2
 {
 	Vehicle::Vehicle()
+		: mCount(0), mMaxPassengerCount(0), mPerson(nullptr)
 	{
-		mCount = 0;
-		mMaxPassengerCount = 0;
-		mPerson = nullptr;
 	}
 
 	Vehicle::Vehicle(const Vehicle& vehicle)
+		: mPerson(nullptr), mCount(vehicle.mCount), mMaxPassengerCount(vehicle.mMaxPassengerCount)
 	{
-		unsigned int maxPassenger = vehicle.GetMaxPassengersCount();
-		mPerson = nullptr;
-		mCount = vehicle.mCount;
-		mMaxPassengerCount = maxPassenger;
-
 		if (mMaxPassengerCount != 0)
 		{
 			mPerson = new Person * [mMaxPassengerCount];
@@ -25,14 +19,13 @@ namespace assignment2
 				mPerson[length] = new Person(vehicle.mPerson[length]->GetName().c_str(), vehicle.mPerson[length]->GetWeight());
 			}
 		}
+
+
 	}
 
 	Vehicle::Vehicle(unsigned int maxPassengersCount)
+		: mPerson(nullptr), mMaxPassengerCount(maxPassengersCount), mCount(0)
 	{
-		mPerson = nullptr;
-		mMaxPassengerCount = maxPassengersCount;
-		mCount = 0;
-
 		if (mMaxPassengerCount != 0)
 		{
 			mPerson = new Person * [mMaxPassengerCount];
@@ -157,13 +150,12 @@ namespace assignment2
 		mCount = 0;
 	}
 
-	void Vehicle::DeletePerson()
+	void Vehicle::DeletePerson() 
 	{
 		for (unsigned int length = 0; length < mCount; length++)
 		{
 			delete mPerson[length];
 		}
-
 		mCount = 0;
 		delete[] mPerson;
 		mPerson = nullptr;

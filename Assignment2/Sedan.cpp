@@ -3,14 +3,12 @@
 namespace assignment2
 {
 	Sedan::Sedan()
-		: Vehicle(4)
+		: Vehicle(4), mTrailer(nullptr), mTravelCheck(6)
 	{
-		mTrailer = nullptr;
-		mTravelCheck = 6;
 	}
 
 	Sedan::Sedan(const Sedan& sedan)
-		: Vehicle(sedan)
+		: Vehicle(sedan), mTravelCheck(6)
 	{
 		if (sedan.mTrailer != nullptr)
 		{
@@ -20,9 +18,8 @@ namespace assignment2
 		{
 			mTrailer = nullptr;
 		}
-
-		mTravelCheck = 6;
 	}
+
 
 	Sedan::~Sedan()
 	{

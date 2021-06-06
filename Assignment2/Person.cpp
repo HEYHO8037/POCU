@@ -3,21 +3,19 @@
 namespace assignment2
 {
 	Person::Person()
+		: mName(""), mPersonWeight(0)
 	{
-		mName = "";
-		mPersonWeight = 0;
 	}
 
 	Person::Person(const Person& person)
+		: mName(person.mName), mPersonWeight(person.mPersonWeight)
 	{
-		mName = person.mName;
-		mPersonWeight = person.mPersonWeight;
+		
 	}
 
 	Person::Person(const char* name, unsigned int weight)
+		: mName(name), mPersonWeight(weight)
 	{
-		mName = name;
-		mPersonWeight = weight;
 	}
 
 	Person::~Person()

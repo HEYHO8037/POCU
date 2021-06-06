@@ -3,20 +3,18 @@
 namespace assignment2
 {
 	Boatplane::Boatplane(unsigned int maxPassengersCount)
-		:Vehicle(maxPassengersCount)
+		:Vehicle(maxPassengersCount), mTravelCheck(3)
 	{
-		mTravelCheck = 3;
 	}
 
-	Boatplane::Boatplane(const Boatplane& boatPlane)
-		: Vehicle(boatPlane)
+	Boatplane::Boatplane(Boatplane& boatPlane)
+		: Vehicle(boatPlane), mTravelCheck(3)
 	{
-		mTravelCheck = 3;
+		boatPlane.DeletePerson();
 	}
 
 	Boatplane::~Boatplane()
 	{
-
 	}
 
 	unsigned int Boatplane::GetFlySpeed() const

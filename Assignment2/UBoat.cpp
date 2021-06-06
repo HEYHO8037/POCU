@@ -3,15 +3,13 @@
 namespace assignment2
 {
 	UBoat::UBoat()
-		: Vehicle(50)
+		: Vehicle(50), mTravelCheck(5)
 	{
-		mTravelCheck = 5;
 	}
 
 	UBoat::UBoat(const UBoat& uBoat)
-		: Vehicle(uBoat)
+		: Vehicle(uBoat), mTravelCheck(5)
 	{
-		mTravelCheck = 5;
 	}
 
 	UBoat::~UBoat()

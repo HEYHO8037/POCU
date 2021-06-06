@@ -3,15 +3,13 @@
 namespace assignment2
 {
 	Motorcycle::Motorcycle()
-		: Vehicle(2)
+		: Vehicle(2), mTravelCheck(5)
 	{
-		mTravelCheck = 5;
 	}
 
 	Motorcycle::Motorcycle(const Motorcycle& motorCycle)
-		: Vehicle(motorCycle)
+		: Vehicle(motorCycle), mTravelCheck(5)
 	{
-		mTravelCheck = 5;
 	}
 
 	Motorcycle::~Motorcycle()
