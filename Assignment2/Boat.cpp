@@ -84,6 +84,7 @@ namespace assignment2
 			mMaxPassengerCount = boat.mMaxPassengerCount;
 			mTravelCheck = 2;
 			mCount = boat.mCount;
+			mTravelTotalSpeed = boat.mTravelTotalSpeed;
 
 			if (mMaxPassengerCount != 0)
 			{

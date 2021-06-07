@@ -147,6 +147,7 @@ namespace assignment2
 			mMaxPassengerCount = sedan.mMaxPassengerCount;
 			mTravelCheck = 6;
 			mCount = sedan.mCount;
+			mTravelTotalSpeed = sedan.mTravelTotalSpeed;
 			
 			if (mMaxPassengerCount != 0)
 			{

@@ -30,11 +30,13 @@ using namespace std;
 
 int main()
 {
-	Sedan* a = new Sedan();
-	Trailer* b =  new Trailer(10);
-	a->AddTrailer(b);
-	Sedan* c = new Sedan();
-	*c = *a;
+	Airplane* airplane = new Airplane(0);
+	Boat* boat = new Boat(0);
+	DeusExMachina* deusExMachina = DeusExMachina::GetInstance();
+	deusExMachina->AddVehicle(airplane);
+	deusExMachina->AddVehicle(boat);
+	deusExMachina->Travel();
+	assert(deusExMachina->GetFurthestTravelled() == airplane);
 
 	return 0;
 

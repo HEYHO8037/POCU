@@ -59,6 +59,8 @@ namespace assignment2
 			mMaxPassengerCount = motorCycle.mMaxPassengerCount;
 			mTravelCheck = 5;
 			mCount = motorCycle.mCount;
+			mTravelTotalSpeed = motorCycle.mTravelTotalSpeed;
+
 
 			if (mMaxPassengerCount != 0)
 			{

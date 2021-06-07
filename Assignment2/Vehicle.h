@@ -23,7 +23,9 @@ namespace assignment2
 		const Person* GetPassenger(unsigned int i) const;
 		unsigned int GetPassengersCount() const;
 		unsigned int GetMaxPassengersCount() const;
-		int GetTotalPassengerWeight() const;
+		unsigned int GetTotalPassengerWeight() const;
+		unsigned int GetTravelTotalSpeed();
+		void GetTravel();
 
 		Vehicle& operator=(const Vehicle& vehicle);
 		void ChangeArrayNullptr();
@@ -31,6 +33,7 @@ namespace assignment2
 	protected:
 		void deletePerson();
 		unsigned int mCount;
+		unsigned int mTravelTotalSpeed;
 		unsigned int mMaxPassengerCount;
 		unsigned int mTravelCheck;
 		Person** mPerson;

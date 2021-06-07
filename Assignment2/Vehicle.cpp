@@ -3,12 +3,13 @@
 namespace assignment2
 {
 	Vehicle::Vehicle()
-		: mCount(0), mMaxPassengerCount(0), mPerson(nullptr)
+		: mCount(0), mMaxPassengerCount(0), mPerson(nullptr), mTravelTotalSpeed(0)
 	{
 	}
 
 	Vehicle::Vehicle(const Vehicle& vehicle)
 		: mPerson(nullptr), mCount(vehicle.mCount), mMaxPassengerCount(vehicle.mMaxPassengerCount)
+		, mTravelTotalSpeed(vehicle.mTravelTotalSpeed)
 	{
 		if (mMaxPassengerCount != 0)
 		{
@@ -24,6 +25,7 @@ namespace assignment2
 
 	Vehicle::Vehicle(unsigned int maxPassengersCount)
 		: mPerson(nullptr), mMaxPassengerCount(maxPassengersCount), mCount(0)
+		, mTravelTotalSpeed(0)
 	{
 		if (mMaxPassengerCount != 0)
 		{
@@ -90,9 +92,9 @@ namespace assignment2
 		return mMaxPassengerCount;
 	}
 
-	int Vehicle::GetTotalPassengerWeight() const
+	unsigned int Vehicle::GetTotalPassengerWeight() const
 	{
-		int totalWeight = 0;
+		unsigned int totalWeight = 0;
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
@@ -112,6 +114,16 @@ namespace assignment2
 		{
 			return mPerson[i];
 		}
+	}
+
+	unsigned int Vehicle::GetTravelTotalSpeed()
+	{
+		return mTravelTotalSpeed;
+	}
+
+	void Vehicle::GetTravel()
+	{
+		mTravelTotalSpeed += GetTravelSpeed();
 	}
 
 	Vehicle& Vehicle::operator=(const Vehicle& vehicle)

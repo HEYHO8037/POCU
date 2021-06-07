@@ -116,6 +116,7 @@ namespace assignment2
 			mMaxPassengerCount = airPlane.mMaxPassengerCount;
 			mCount = airPlane.mCount;
 			mTravelCheck = 3;
+			mTravelTotalSpeed = airPlane.mTravelTotalSpeed;
 
 			if (mMaxPassengerCount != 0)
 			{

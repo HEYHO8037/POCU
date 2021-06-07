@@ -3,7 +3,6 @@
 namespace assignment2
 {
 	DeusExMachina* DeusExMachina::mDeusExMachina = nullptr;
-	unsigned int DeusExMachina::mCountSpeed[10] = { 0 };
 	unsigned int DeusExMachina::mCountVehicle = 0;
 	bool DeusExMachina::mbTravel = false;
 
@@ -46,7 +45,7 @@ namespace assignment2
 
 		for (unsigned int length = 0; length < mCountVehicle; length++)
 		{
-			mCountSpeed[length] += mVehicle[length]->GetTravelSpeed();
+			mVehicle[length]->GetTravel();
 		}
 	}
 
@@ -74,19 +73,16 @@ namespace assignment2
 		else
 		{
 			delete mVehicle[i];
-			mCountSpeed[i] = 0;
 
 			for (unsigned int length = i; length < mCountVehicle; length++)
 			{
 				if (length == mCountVehicle - 1)
 				{
 					mVehicle[length] = nullptr;
-					mCountSpeed[length] = 0;
 				}
 				else
 				{
 					mVehicle[length] = mVehicle[length + 1];
-					mCountSpeed[length] = mCountSpeed[length + 1];
 				}
 			}
 
@@ -98,7 +94,7 @@ namespace assignment2
 	const Vehicle* DeusExMachina::GetFurthestTravelled() const
 	{
 		unsigned int topSpeed = 0;
-		Vehicle* topVehicle = nullptr;
+		unsigned int topLength = 0;
 
 		if (mCountVehicle == 0)
 		{
@@ -112,18 +108,18 @@ namespace assignment2
 		{
 			for (unsigned int length = 0; length < mCountVehicle; length++)
 			{
-				if (topSpeed >= mCountSpeed[length])
+				if (topSpeed >= mVehicle[length]->GetTravelTotalSpeed())
 				{
 					continue;
 				}
 				else
 				{
-					topSpeed = mCountSpeed[length];
-					topVehicle = mVehicle[length];
+					topSpeed = mVehicle[length]->GetTravelTotalSpeed();
+					topLength = length;
 				}
 			}
 
-			return topVehicle;
+			return mVehicle[topLength];
 		}
 
 	}

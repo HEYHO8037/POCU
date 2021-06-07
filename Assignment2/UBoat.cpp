@@ -79,6 +79,7 @@ namespace assignment2
 			mMaxPassengerCount = uBoat.mMaxPassengerCount;
 			mTravelCheck = 5;
 			mCount = uBoat.mCount;
+			mTravelTotalSpeed = uBoat.mTravelTotalSpeed;
 
 			if (mMaxPassengerCount != 0)
 			{

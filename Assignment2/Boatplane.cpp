@@ -80,6 +80,8 @@ namespace assignment2
 			mMaxPassengerCount = boatPlane.mMaxPassengerCount;
 			mTravelCheck = 3;
 			mCount = boatPlane.mCount;
+			mTravelTotalSpeed = boatPlane.mTravelTotalSpeed;
+
 			if (mMaxPassengerCount != 0)
 			{
 				mPerson = new Person * [mMaxPassengerCount];

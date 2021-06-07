@@ -19,7 +19,6 @@ namespace assignment2
 		DeusExMachina();
 		static DeusExMachina* mDeusExMachina;
 		Vehicle* mVehicle[10] = { nullptr };
-		static unsigned int mCountSpeed[10];
 		static unsigned int mCountVehicle;
 		static bool mbTravel;
 	};
