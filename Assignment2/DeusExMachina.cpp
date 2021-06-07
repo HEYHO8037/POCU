@@ -25,6 +25,8 @@ namespace assignment2
 			}
 		}
 
+		mbTravel = false;
+		mCountVehicle = 0;
 		mDeusExMachina = nullptr;
 	}
 
