@@ -22,7 +22,7 @@ namespace assignment2
 	{
 		double weight = GetTotalPassengerWeight();
 		double diveSpeed = 500 * log((weight + 150) / 150) + 30;
-		diveSpeed += 0.5f;
+		diveSpeed = round(diveSpeed);
 
 		return static_cast<unsigned int>(diveSpeed);
 	}

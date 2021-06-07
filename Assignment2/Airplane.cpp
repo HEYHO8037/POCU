@@ -79,7 +79,7 @@ namespace assignment2
 		double totalSpeed = 0;
 
 		totalSpeed = 4 * exp((-totalWeight + 400) / 70);
-		totalSpeed += 0.5;
+		totalSpeed = round(totalSpeed);
 
 		return static_cast<unsigned int>(totalSpeed);
 	}

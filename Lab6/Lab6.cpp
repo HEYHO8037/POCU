@@ -4,7 +4,14 @@ namespace lab6
 {
 	int Sum(const std::vector<int>& v)
 	{
-		return 0;
+		int sum = 0;
+
+		for (std::vector<int>::const_iterator iter = v.begin(); iter != v.end(); iter++)
+		{
+			sum += *iter;
+		}
+
+		return sum;
 	}
 
 	int Min(const std::vector<int>& v)

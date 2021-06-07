@@ -22,7 +22,7 @@ namespace assignment2
 	{
 		double weight = GetTotalPassengerWeight();
 		double driveSpeed = fmax((-pow((weight / 15), 3) + 2 * weight + 400), 0);
-		driveSpeed += 0.5f;
+		driveSpeed = round(driveSpeed);
 
 		return static_cast<unsigned int>(driveSpeed);
 	}

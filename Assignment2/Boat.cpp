@@ -28,7 +28,7 @@ namespace assignment2
 	{
 		double weight = GetTotalPassengerWeight();
 		double sailSpeed = fmax(800 - (10 * weight), 20);
-		sailSpeed += 0.5;
+		sailSpeed = round(sailSpeed);
 
 		return static_cast<unsigned int>(sailSpeed);
 	}

@@ -22,7 +22,7 @@ namespace assignment2
 	{
 		double weight = GetTotalPassengerWeight();
 		double flySpeed = 150 * (exp((-weight + 500) / 300));
-		flySpeed += 0.5f;
+		flySpeed = round(flySpeed);
 
 		return static_cast<unsigned int>(flySpeed);
 	}
@@ -61,7 +61,7 @@ namespace assignment2
 	{
 		double weight = GetTotalPassengerWeight();
 		double sailSpeed = fmax(800 - (1.7 * weight), 20);
-		sailSpeed += 0.5f;
+		sailSpeed = round(sailSpeed);
 
 		return static_cast<unsigned int>(sailSpeed);
 	}
