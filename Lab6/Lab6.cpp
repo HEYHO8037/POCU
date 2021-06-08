@@ -70,14 +70,21 @@ namespace lab6
 	{
 		float average = 0;
 
-		for (std::vector<int>::const_iterator iter = v.begin(); iter != v.end(); iter++)
+		if (v.size() == 0)
 		{
-			average += *iter;
+			return 0;
 		}
+		else
+		{
+			for (std::vector<int>::const_iterator iter = v.begin(); iter != v.end(); iter++)
+			{
+				average += *iter;
+			}
 
-		average /= v.size();
+			average /= v.size();
 
-		return average;
+			return average;
+		}
 	}
 
 	int NumberWithMaxOccurrence(const std::vector<int>& v)
@@ -92,11 +99,11 @@ namespace lab6
 		}
 		else
 		{
-			for (int totalLength = 0; totalLength < v.size(); totalLength++)
+			for (int totalLength = 0; totalLength < static_cast<int>(v.size()); totalLength++)
 			{
 				count = 0;
 
-				for (int length = 0; length < v.size(); length++)
+				for (int length = 0; length < static_cast<int>(v.size()); length++)
 				{
 					if (totalLength == length)
 					{
@@ -123,9 +130,9 @@ namespace lab6
 	{
 		int save = 0;
 
-		for (int totalLength = 0; totalLength < v.size(); totalLength++)
+		for (int totalLength = 0; totalLength < static_cast<int>(v.size()); totalLength++)
 		{
-			for (int length = totalLength; length < v.size(); length++)
+			for (int length = totalLength; length < static_cast<int>(v.size()); length++)
 			{
 				if (v[totalLength] < v[length] && totalLength != length)
 				{
