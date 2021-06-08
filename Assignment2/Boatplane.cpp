@@ -5,13 +5,13 @@ namespace assignment2
 	Boatplane::Boatplane(unsigned int maxPassengersCount)
 		: Vehicle(maxPassengersCount)
 	{
-		mTravelCheck = 3;
+		mTravelCheck = 4;
 	}
 
 	Boatplane::Boatplane(const Boatplane& boatPlane)
 		: Vehicle(boatPlane)
 	{
-		mTravelCheck = 3;
+		mTravelCheck = 4;
 	}
 
 	Boatplane::~Boatplane()
@@ -41,7 +41,7 @@ namespace assignment2
 
 	unsigned int Boatplane::GetTravelSpeed()
 	{
-		if (mTravelCheck == 3)
+		if (mTravelCheck == 4)
 		{
 			mTravelCheck--;
 			return GetMaxSpeed();
@@ -51,7 +51,7 @@ namespace assignment2
 			mTravelCheck--;
 			if (mTravelCheck == 0)
 			{
-				mTravelCheck = 3;
+				mTravelCheck = 4;
 			}
 			return 0;
 		}
@@ -68,7 +68,7 @@ namespace assignment2
 
 	void Boatplane::ResetTravelCheck()
 	{
-		mTravelCheck = 3;
+		mTravelCheck = 4;
 	}
 
 	Boatplane& Boatplane::operator=(const Boatplane& boatPlane)

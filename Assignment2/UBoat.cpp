@@ -5,13 +5,13 @@ namespace assignment2
 	UBoat::UBoat()
 		: Vehicle(50)
 	{
-		mTravelCheck = 5;
+		mTravelCheck = 6;
 	}
 
 	UBoat::UBoat(const UBoat& uBoat)
 		: Vehicle(uBoat)
 	{
-		mTravelCheck = 5;
+		mTravelCheck = 6;
 	}
 
 	UBoat::~UBoat()
@@ -49,7 +49,7 @@ namespace assignment2
 	}
 	unsigned int UBoat::GetTravelSpeed()
 	{
-		if (mTravelCheck == 5 || mTravelCheck == 4)
+		if (mTravelCheck == 6 || mTravelCheck == 5)
 		{
 			mTravelCheck--;
 			return GetMaxSpeed();
@@ -67,7 +67,7 @@ namespace assignment2
 
 	void UBoat::ResetTravelCheck()
 	{
-		mTravelCheck = 5;
+		mTravelCheck = 6;
 	}
 
 	UBoat& UBoat::operator=(const UBoat& uBoat)
