@@ -121,24 +121,18 @@ namespace lab6
 
 	void SortDescending(std::vector<int>& v)
 	{
-		std::vector<int> sort;
-		sort.reserve(v.size());
-		int count = 0;
+		int save = 0;
 
 		for (int totalLength = 0; totalLength < v.size(); totalLength++)
 		{
-			for (int length = 0; length < v.size(); length++)
+			for (int length = totalLength; length < v.size(); length++)
 			{
-				if (v[totalLength] > v[length])
+				if (v[totalLength] < v[length] && totalLength != length)
 				{
-					count++;
+					save = v[totalLength];
+					v[totalLength] = v[length];
+					v[length] = save;
 				}
-			}
-
-			if (count == v.size() - 1)
-			{
-				sort.push_back(v[totalLength]);
-				v.
 			}
 		}
 	}
