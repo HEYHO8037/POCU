@@ -113,5 +113,29 @@ int main()
 	std::cout << v1 << std::endl;
 	std::cout << m1 << std::endl;
 
+	std::vector<int> v4;
+	v4.push_back(1);
+	v4.push_back(2);
+	v4.push_back(3);
+
+	std::vector<int> v5;
+	v5.push_back(1);
+	v5.push_back(2);
+	v5.push_back(3);
+
+	std::vector<int> v6 = v4 + v5;
+
+	std::map<char, int> m4;
+	m4['a'] = 1;
+	m4['b'] = 2;
+	m4['c'] = 3;
+
+	std::map<char, int> m5;
+	m5['a'] = 1;
+	m5['b'] = 2;
+	m5['c'] = 3;
+
+	std::map<char, int> m6 = m4 + m5;
+
 	return 0;
 }

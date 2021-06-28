@@ -87,22 +87,34 @@ namespace lab7
 	std::vector<T> operator+(const std::vector<T>& v1, const std::vector<T>& v2)
 	{
 		unsigned int combinedSize = v1.size() + v2.size();
+		bool bCheck = false;
 
 		std::vector<T> combined;
 
 		combined.reserve(combinedSize);
 
-		for (unsigned int length = 0; length < combinedSize; length++)
+		for (unsigned int length = 0; length < v1.size(); length++)
 		{
-			if (length < v1.size())
+			combined.push_back(v1[length]);
+		}
+
+		for (unsigned int length = 0; length < v2.size(); length++)
+		{
+			for (unsigned int innerLength = 0; innerLength < combined.size(); innerLength++)
 			{
-				combined.push_back(v1[length]);
+				if (combined[innerLength] == v2[length])
+				{
+					bCheck = true;
+					break;
+				}
 			}
-			else
+
+			if (bCheck == false)
 			{
-				combined.push_back(v2[length - v1.size()]);
+				combined.push_back(v2[length]);
 			}
 		}
+
 
 		return combined;
 	}
