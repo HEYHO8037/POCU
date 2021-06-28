@@ -113,6 +113,8 @@ namespace lab7
 			{
 				combined.push_back(v2[length]);
 			}
+
+			bCheck = false;
 		}
 
 

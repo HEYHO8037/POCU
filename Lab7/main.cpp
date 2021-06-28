@@ -119,9 +119,9 @@ int main()
 	v4.push_back(3);
 
 	std::vector<int> v5;
-	v5.push_back(1);
 	v5.push_back(2);
 	v5.push_back(3);
+	v5.push_back(4);
 
 	std::vector<int> v6 = v4 + v5;
 
