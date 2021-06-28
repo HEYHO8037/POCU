@@ -13,11 +13,11 @@ namespace lab7
 
 		if (keys.size() > values.size())
 		{
-			mapSize = keys.size();
+			mapSize = values.size();
 		}
 		else if (keys.size() < values.size())
 		{
-			mapSize = values.size();
+			mapSize = keys.size();
 		}
 		else
 		{
