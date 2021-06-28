@@ -122,6 +122,7 @@ int main()
 	v5.push_back(2);
 	v5.push_back(3);
 	v5.push_back(4);
+	v5.push_back(2);
 
 	std::vector<int> v6 = v4 + v5;
 
