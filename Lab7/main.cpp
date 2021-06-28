@@ -116,13 +116,10 @@ int main()
 	std::vector<int> v4;
 	v4.push_back(1);
 	v4.push_back(2);
-	v4.push_back(3);
+	v4.push_back(2);
 
 	std::vector<int> v5;
-	v5.push_back(2);
-	v5.push_back(3);
-	v5.push_back(4);
-	v5.push_back(2);
+
 
 	std::vector<int> v6 = v4 + v5;
 

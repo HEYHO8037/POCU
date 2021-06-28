@@ -95,7 +95,22 @@ namespace lab7
 
 		for (unsigned int length = 0; length < v1.size(); length++)
 		{
-			combined.push_back(v1[length]);
+			for (unsigned int innerLength = 0; innerLength < combined.size(); innerLength++)
+			{
+				if (combined[innerLength] == v1[length])
+				{
+					bCheck = true;
+					break;
+				}
+			}
+			if (bCheck == false)
+			{
+				combined.push_back(v1[length]);
+			}
+			else
+			{
+				bCheck = false;
+			}
 		}
 
 		for (unsigned int length = 0; length < v2.size(); length++)
