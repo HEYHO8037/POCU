@@ -8,8 +8,8 @@ template<typename T>
 class QueueStack
 {
 public:
-	QueueStack<T>();
-	QueueStack<T>(const SmartQueue smartStack);
+	QueueStack();
+	QueueStack(const QueueStack& queueStack);
 	void Enqueue();
 	void Dequeue();
 	void Peek();
@@ -21,3 +21,16 @@ public:
 	T GetStackCount();
 private:
 };
+
+
+template<typename T>
+QueueStack<T>::QueueStack()
+{
+
+}
+
+template<typename T>
+QueueStack<T>::QueueStack(const QueueStack& queueStack)
+{
+
+}

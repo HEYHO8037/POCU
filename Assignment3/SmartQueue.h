@@ -7,8 +7,8 @@ template<typename T>
 class SmartQueue
 {
 public:
-	SmartQueue<T>();
-	SmartQueue<T>(const SmartQueue smartStack);
+	SmartQueue();
+	SmartQueue(const SmartQueue& smartStack);
 	void Enqueue();
 	void Dequeue();
 	void Peek();
