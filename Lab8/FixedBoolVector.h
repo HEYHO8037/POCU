@@ -44,7 +44,6 @@ namespace lab8
 	template<size_t N>
 	FixedVector<bool, N>::~FixedVector()
 	{
-		mStore = nullptr;
 	}
 
 	template<size_t N>
