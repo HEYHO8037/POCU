@@ -19,7 +19,6 @@ namespace lab8
 		size_t GetCapacity();
 
 	private:
-		unsigned int mMaxSize;
 		unsigned int mCount = 0;
 		T mStore[N];
 	};
@@ -33,7 +32,8 @@ namespace lab8
 	template<typename T, size_t N>
 	FixedVector<T, N>::FixedVector(const FixedVector& fixedVector)
 	{
-		fixedVector.mMaxSize = mMaxSize;
+		mMaxSize = fixedVector.mMaxSize;
+		mCount = fixedVector.mCount;
 
 		for (unsigned int length = 0; length < mMaxSize; length++)
 		{

@@ -33,7 +33,8 @@ namespace lab8
 	template<size_t N>
 	FixedVector<bool, N>::FixedVector(const FixedVector& fixedVector)
 	{
-		fixedVector.mMaxSize = mMaxSize;
+		mMaxSize = fixedVector.mMaxSize;
+		mCount = fixedVector.mCount;
 
 		for (unsigned int length = 0; length < mMaxSize; length++)
 		{
