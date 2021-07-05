@@ -9,6 +9,7 @@ class SmartQueue
 public:
 	SmartQueue();
 	SmartQueue(const SmartQueue& smartQueue);
+	SmartQueue& operator=(const SmartQueue& smartQueue);
 	void Enqueue(T number);
 	T Dequeue();
 	T Peek();

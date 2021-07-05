@@ -9,6 +9,7 @@ class SmartStack
 public:
 	SmartStack();
 	SmartStack(const SmartStack& smartStack);
+	SmartStack& operator=(const SmartStack& smartStack);
 	void Push(T number);
 	void Pop();
 	T Peek();
@@ -36,6 +37,12 @@ SmartStack<T>::SmartStack(const SmartStack& smartStack)
 {
 	mStack = smartStack.mStack;
 	mCount = smartStack.mCount;
+}
+
+template<typename T>
+SmartStack<T>& SmartStack<T>::operator=(const SmartStack& smartStack)
+{
+
 }
 
 template<typename T>

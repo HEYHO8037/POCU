@@ -11,6 +11,7 @@ public:
 	QueueStack();
 	QueueStack(unsigned int maxStackSize);
 	QueueStack(const QueueStack& queueStack);
+	QueueStack& operator=(const QueueStack& queueStack);
 	void Enqueue(T number);
 	void Dequeue();
 	void Peek();

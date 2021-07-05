@@ -91,16 +91,9 @@ namespace lab8
 		}
 		else
 		{
-			for (unsigned int length = saveLength; length < mCount; length++)
+			for (unsigned int length = saveLength; length < mCount - 1; length++)
 			{
-				if (length == mMaxSize - 1)
-				{
-					mStore[length] = 0;
-				}
-				else
-				{
-					mStore[length] = mStore[length + 1];
-				}
+				mStore[length] = mStore[length + 1];
 			}
 
 			mCount--;
