@@ -11,8 +11,8 @@ namespace lab8
 		~FixedVector();
 		bool Add(bool bAdd);
 		bool Remove(bool bRemove);
-		bool Get(const unsigned int index);
-		bool& operator[](const unsigned int index);
+		bool Get(unsigned int index);
+		bool operator[](unsigned int index);
 		FixedVector& operator=(const FixedVector& fixedVector);
 		int GetIndex(bool bIndex);
 		size_t GetSize();
@@ -21,7 +21,7 @@ namespace lab8
 	private:
 		unsigned int mMaxSize;
 		unsigned int mCount = 0;
-		bool mbStore[N];
+		bool mbStore[N] = { NULL };
 	};
 
 	template<size_t N>
@@ -103,7 +103,7 @@ namespace lab8
 	}
 
 	template<size_t N>
-	bool& FixedVector<bool, N>::operator[](const unsigned int index)
+	bool FixedVector<bool, N>::operator[](const unsigned int index)
 	{
 		return mbStore[index];
 	}
