@@ -24,14 +24,14 @@ namespace lab8
 	};
 
 	template<size_t N>
-	FixedVector<bool, N>::FixedVector()
+	FixedVector<bool, N>::FixedVector<bool, N>()
 		: mSize(0)
 	{
 	}
 
 
 	template<size_t N>
-	FixedVector<bool, N>::FixedVector(const FixedVector& fixedVector)
+	FixedVector<bool, N>::FixedVector<bool, N>(const FixedVector& fixedVector)
 	{
 		mSize = fixedVector.mSize;
 
@@ -42,7 +42,7 @@ namespace lab8
 	}
 
 	template<size_t N>
-	FixedVector<bool, N>::~FixedVector()
+	FixedVector<bool, N>::~FixedVector<bool, N>()
 	{
 	}
 
