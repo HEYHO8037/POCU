@@ -12,7 +12,7 @@ namespace lab8
 		bool Add(const bool& bAdd);
 		bool Remove(const bool& bRemove);
 		const bool& Get(unsigned int index);
-		bool operator[](unsigned int index);
+		const bool& operator[](unsigned int index);
 		FixedVector& operator=(const FixedVector& fixedVector);
 		int GetIndex(const bool& bIndex);
 		size_t GetSize() const;
@@ -100,7 +100,7 @@ namespace lab8
 	}
 
 	template<size_t N>
-	bool FixedVector<bool, N>::operator[](unsigned int index)
+	const bool& FixedVector<bool, N>::operator[](unsigned int index)
 	{
 		return mbArray[index];
 	}

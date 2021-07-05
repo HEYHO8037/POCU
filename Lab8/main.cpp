@@ -14,7 +14,7 @@ int main()
 	int i4 = -4;
 	int i5 = 70;
 
-	FixedVector<int, 33> iv;
+	FixedVector<bool, 33> iv;
 
 	assert(iv.GetCapacity() == 33);
 
