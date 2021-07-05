@@ -20,7 +20,7 @@ namespace lab8
 
 	private:
 		size_t mSize;
-		T& mArray[N];
+		T mArray[N];
 	};
 
 	template<typename T, size_t N>
