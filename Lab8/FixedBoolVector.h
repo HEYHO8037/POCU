@@ -9,36 +9,34 @@ namespace lab8
 		FixedVector();
 		FixedVector(const FixedVector& fixedVector);
 		~FixedVector();
-		bool Add(bool bAdd);
-		bool Remove(bool bRemove);
+		bool Add(const bool& bAdd);
+		bool Remove(const bool& bRemove);
 		bool Get(unsigned int index);
 		bool operator[](unsigned int index);
 		FixedVector& operator=(const FixedVector& fixedVector);
 		int GetIndex(bool bIndex);
-		size_t GetSize();
-		size_t GetCapacity();
+		size_t GetSize() const;
+		size_t GetCapacity() const;
 
 	private:
-		unsigned int mMaxSize;
-		unsigned int mCount = 0;
-		bool mbStore[N] = { NULL };
+		size_t mSize;
+		bool mbArray[N];
 	};
 
 	template<size_t N>
 	FixedVector<bool, N>::FixedVector()
+		: mSize(0)
 	{
-		mMaxSize = N;
 	}
 
 	template<size_t N>
 	FixedVector<bool, N>::FixedVector(const FixedVector& fixedVector)
 	{
-		mMaxSize = fixedVector.mMaxSize;
-		mCount = fixedVector.mCount;
+		mSize = fixedVector.mSize;
 
-		for (unsigned int length = 0; length < mMaxSize; length++)
+		for (unsigned int length = 0; length < mSize; length++)
 		{
-			mbStore[length] = fixedVector.mbStore[length];
+			mbArray[length] = fixedVector.mbArray[length];
 		}
 	}
 
@@ -48,31 +46,29 @@ namespace lab8
 	}
 
 	template<size_t N>
-	bool FixedVector<bool, N>::Add(bool bAdd)
+	bool FixedVector<bool, N>::Add(const bool& bAdd)
 	{
-		if (mCount >= mMaxSize)
+		if (mSize >= N)
 		{
 			return false;
 		}
 		else
 		{
-			mbStore[mCount] = bAdd;
-			mCount++;
-
+			mbArray[mSize++] = bAdd;
 			return true;
 		}
 	}
 
 
 	template<size_t N>
-	bool FixedVector<bool, N>::Remove(bool bRemove)
+	bool FixedVector<bool, N>::Remove(const bool& bRemove)
 	{
 		unsigned int saveLength;
 		bool bFind = false;
 
-		for (unsigned int length = 0; length < mCount; length++)
+		for (unsigned int length = 0; length < mSize; length++)
 		{
-			if (mbStore[length] == bRemove)
+			if (mbArray[length] == bRemove)
 			{
 				saveLength = length;
 				bFind = true;
@@ -86,12 +82,12 @@ namespace lab8
 		}
 		else
 		{
-			for (unsigned int length = saveLength; length < mCount - 1; length++)
+			for (unsigned int length = saveLength; length < mSize - 1; length++)
 			{
-				mbStore[length] = mbStore[length + 1];
+				mbArray[length] = mbArray[length + 1];
 			}
 
-			mCount--;
+			mSize--;
 			return true;
 		}
 	}
@@ -99,13 +95,13 @@ namespace lab8
 	template<size_t N>
 	bool FixedVector<bool, N>::Get(const unsigned int index)
 	{
-		return mbStore[index];
+		return mbArray[index];
 	}
 
 	template<size_t N>
 	bool FixedVector<bool, N>::operator[](const unsigned int index)
 	{
-		return mbStore[index];
+		return mbArray[index];
 	}
 
 	template<size_t N>
@@ -113,9 +109,9 @@ namespace lab8
 	{
 		int index = -1;
 
-		for (unsigned int length = 0; length < mCount; length++)
+		for (unsigned int length = 0; length < mSize; length++)
 		{
-			if (mbStore[length] == bIndex)
+			if (mbArray[length] == bIndex)
 			{
 				index = length;
 				break;
@@ -128,24 +124,23 @@ namespace lab8
 	template<size_t N>
 	FixedVector<bool, N>& FixedVector<bool, N>::operator=(const FixedVector& fixedVector)
 	{
-		mMaxSize = fixedVector.mMaxSize;
-		mCount = fixedVector.mCount;
+		mSize = fixedVector.mSize;
 
-		for (unsigned int length = 0; length < mCount; length++)
+		for (unsigned int length = 0; length < mSize; length++)
 		{
-			mbStore[length] = fixedVector.mbStore[length];
+			mbArray[length] = fixedVector.mbArray[length];
 		}
 	}
 
 	template<size_t N>
-	size_t  FixedVector<bool, N>::GetSize()
+	size_t  FixedVector<bool, N>::GetSize() const
 	{
-		return static_cast<size_t>(mCount);
+		return mSize;
 	}
 
 	template<size_t N>
-	size_t FixedVector<bool, N>::GetCapacity()
+	size_t FixedVector<bool, N>::GetCapacity() const
 	{
-		return static_cast<size_t>(mMaxSize);
+		return N;
 	}
 }
