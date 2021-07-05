@@ -21,21 +21,19 @@ namespace lab8
 	private:
 		unsigned int mMaxSize;
 		unsigned int mCount = 0;
-		bool* mStore;
+		bool mStore[N];
 	};
 
 	template<size_t N>
 	FixedVector<bool, N>::FixedVector()
 	{
 		mMaxSize = N;
-		mStore = new bool[mMaxSize];
 	}
 
 	template<size_t N>
 	FixedVector<bool, N>::FixedVector(const FixedVector& fixedVector)
 	{
 		fixedVector.mMaxSize = mMaxSize;
-		mStore = new bool[mMaxSize];
 
 		for (unsigned int length = 0; length < mMaxSize; length++)
 		{
@@ -46,7 +44,6 @@ namespace lab8
 	template<size_t N>
 	FixedVector<bool, N>::~FixedVector()
 	{
-		delete[] mStore;
 		mStore = nullptr;
 	}
 
@@ -131,21 +128,8 @@ namespace lab8
 	template<size_t N>
 	FixedVector<bool, N> FixedVector<bool, N>::operator=(const FixedVector& fixedVector)
 	{
-		if (mStore != nullptr)
-		{
-			for (unsigned int length = 0; length < mMaxSize; length++)
-			{
-				delete mStore[length];
-			}
-
-			delete[] mStore;
-			mStore = nullptr;
-		}
-
 		mMaxSize = fixedVector.mMaxSize;
 		mCount = fixedVector.mCount;
-
-		mStore = new bool[mMaxSize];
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{

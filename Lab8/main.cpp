@@ -8,5 +8,5 @@ using namespace lab8;
 
 int main()
 {
-
+	FixedVector<int, 5> v1;
 }

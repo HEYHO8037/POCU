@@ -21,21 +21,19 @@ namespace lab8
 	private:
 		unsigned int mMaxSize;
 		unsigned int mCount = 0;
-		T* mStore;
+		T mStore[N];
 	};
 
 	template<typename T, size_t N>
 	FixedVector<T, N>::FixedVector()
 	{
 		mMaxSize = N;
-		mStore = new T[mMaxSize];
 	}
 
 	template<typename T, size_t N>
 	FixedVector<T, N>::FixedVector(const FixedVector& fixedVector)
 	{
 		fixedVector.mMaxSize = mMaxSize;
-		mStore = new T[mMaxSize];
 
 		for (unsigned int length = 0; length < mMaxSize; length++)
 		{
@@ -46,7 +44,6 @@ namespace lab8
 	template<typename T, size_t N>
 	FixedVector<T, N>::~FixedVector()
 	{
-		delete[] mStore;
 		mStore = nullptr;
 	}
 
@@ -89,7 +86,7 @@ namespace lab8
 		}
 		else
 		{
-			for (unsigned int length = saveLength; length < mCount-1; length++)
+			for (unsigned int length = saveLength; length < mCount; length++)
 			{
 				mStore[length] = mStore[length + 1];
 			}
@@ -131,21 +128,8 @@ namespace lab8
 	template<typename T, size_t N>
 	FixedVector<T, N> FixedVector<T, N>::operator=(const FixedVector& fixedVector)
 	{
-		if (mStore != nullptr)
-		{
-			for (unsigned int length = 0; length < mMaxSize; length++)
-			{
-				delete mStore[length];
-			}
-
-			delete[] mStore;
-			mStore = nullptr;
-		}
-
 		mMaxSize = fixedVector.mMaxSize;
 		mCount = fixedVector.mCount;
-
-		mStore = new T[mMaxSize];
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
