@@ -11,7 +11,7 @@ namespace lab8
 		~FixedVector();
 		bool Add(const T& t);
 		bool Remove(const T& t);
-		T Get(unsigned int index);
+		const T& Get(unsigned int index);
 		T& operator[](unsigned int index);
 		FixedVector& operator=(const FixedVector& fixedVector);
 		int GetIndex(const T& t);
@@ -20,7 +20,7 @@ namespace lab8
 
 	private:
 		size_t mSize;
-		T mArray[N];
+		T& mArray[N];
 	};
 
 	template<typename T, size_t N>
@@ -94,7 +94,7 @@ namespace lab8
 	}
 
 	template<typename T, size_t N>
-	T FixedVector<T, N>::Get(unsigned int index)
+	const T& FixedVector<T, N>::Get(unsigned int index)
 	{
 		return mArray[index];
 	}
