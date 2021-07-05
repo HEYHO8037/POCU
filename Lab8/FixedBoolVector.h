@@ -38,7 +38,7 @@ namespace lab8
 
 		for (unsigned int length = 0; length < mMaxSize; length++)
 		{
-			mStore[length] = fixedVector.mStore[length];
+			mbStore[length] = fixedVector.mbStore[length];
 		}
 	}
 
@@ -56,7 +56,7 @@ namespace lab8
 		}
 		else
 		{
-			mStore[mCount] = bAdd;
+			mbStore[mCount] = bAdd;
 			mCount++;
 
 			return true;
@@ -72,7 +72,7 @@ namespace lab8
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			if (mStore[length] == bRemove)
+			if (mbStore[length] == bRemove)
 			{
 				saveLength = length;
 				bFind = true;
@@ -88,7 +88,7 @@ namespace lab8
 		{
 			for (unsigned int length = saveLength; length < mCount - 1; length++)
 			{
-				mStore[length] = mStore[length + 1];
+				mbStore[length] = mbStore[length + 1];
 			}
 
 			mCount--;
@@ -99,13 +99,13 @@ namespace lab8
 	template<size_t N>
 	bool FixedVector<bool, N>::Get(const unsigned int index)
 	{
-		return mStore[index];
+		return mbStore[index];
 	}
 
 	template<size_t N>
 	bool& FixedVector<bool, N>::operator[](const unsigned int index)
 	{
-		return mStore[index];
+		return mbStore[index];
 	}
 
 	template<size_t N>
@@ -115,7 +115,7 @@ namespace lab8
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			if (mStore[length] == bIndex)
+			if (mbStore[length] == bIndex)
 			{
 				index = length;
 				break;
@@ -133,7 +133,7 @@ namespace lab8
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			mStore[length] = fixedVector.mStore[length];
+			mbStore[length] = fixedVector.mbStore[length];
 		}
 	}
 
