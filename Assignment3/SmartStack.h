@@ -35,14 +35,31 @@ SmartStack<T>::SmartStack()
 template<typename T>
 SmartStack<T>::SmartStack(const SmartStack& smartStack)
 {
-	mStack = smartStack.mStack;
 	mCount = smartStack.mCount;
+
+	for (unsigned int length = 0; length < mCount; length++)
+	{
+		mStack.push(smartStack.mStack[length]);
+	}
 }
 
 template<typename T>
 SmartStack<T>& SmartStack<T>::operator=(const SmartStack& smartStack)
 {
+	if (mStack.size() != 0)
+	{
+		for (unsigned int length = 0; length < mCount; length++)
+		{
+			mStack.pop();
+		}
+	}
 
+	mCount = smartStack.mCount;
+
+	for (unsigned int length = 0; length < mCount; length++)
+	{
+		mStack.push(smartStack.mStack[length]);
+	}
 }
 
 template<typename T>

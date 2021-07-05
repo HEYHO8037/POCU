@@ -4,6 +4,9 @@
 
 namespace lab8
 {
+	template<typename T, size_t N>
+	class FixedVector;
+
 	template<size_t N>
 	class FixedVector<bool, N>
 	{

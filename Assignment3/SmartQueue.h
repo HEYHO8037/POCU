@@ -34,9 +34,33 @@ SmartQueue<T>::SmartQueue()
 template<typename T>
 SmartQueue<T>::SmartQueue(const SmartQueue& smartQueue)
 {
-	mQueue = smartQueue.mQueue;
 	mCount = smartQueue.mCount;
+
+	for (unsigned int length = 0; length < mCount; length++)
+	{
+		mQueue.push(smartStack.mQueue[length]);
+	}
 }
+
+template<typename T>
+SmartQueue<T>& SmartQueue<T>::operator=(const SmartQueue& smartQueue)
+{
+	if (mQueue.size() != 0)
+	{
+		for (unsigned int length = 0; length < mCount; length++)
+		{
+			mQueue.pop();
+		}
+	}
+
+	mCount = smartQueue.mCount;
+
+	for (unsigned int length = 0; length < mCount; length++)
+	{
+		mQueue.push(smartStack.mQueue[length]);
+	}
+}
+
 
 template<typename T>
 void SmartQueue<T>::Enqueue(T number)
