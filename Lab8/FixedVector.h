@@ -94,13 +94,13 @@ namespace lab8
 	}
 
 	template<typename T, size_t N>
-	T FixedVector<T, N>::Get(const unsigned int index)
+	T FixedVector<T, N>::Get(unsigned int index)
 	{
 		return mArray[index];
 	}
 
 	template<typename T, size_t N>
-	T& FixedVector<T, N>::operator[](const unsigned int index)
+	T& FixedVector<T, N>::operator[](unsigned int index)
 	{
 		return mArray[index];
 	}
