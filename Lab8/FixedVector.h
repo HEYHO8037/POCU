@@ -20,6 +20,7 @@ namespace lab8
 
 	private:
 		unsigned int mCount = 0;
+		unsigned int mMaxSize;
 		T mStore[N];
 	};
 
