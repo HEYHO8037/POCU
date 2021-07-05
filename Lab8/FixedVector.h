@@ -11,9 +11,9 @@ namespace lab8
 		~FixedVector();
 		bool Add(T t);
 		bool Remove(T t);
-		T Get(unsigned int index);
-		T& operator[](const int index);
-		FixedVector operator=(const FixedVector& fixedVector);
+		T Get(const unsigned int index);
+		T& operator[](const unsigned int index);
+		FixedVector& operator=(const FixedVector& fixedVector);
 		int GetIndex(T t);
 		size_t GetSize();
 		size_t GetCapacity();
@@ -97,13 +97,13 @@ namespace lab8
 	}
 
 	template<typename T, size_t N>
-	T FixedVector<T, N>::Get(unsigned int index)
+	T FixedVector<T, N>::Get(const unsigned int index)
 	{
 		return mStore[index];
 	}
 
 	template<typename T, size_t N>
-	T& FixedVector<T, N>::operator[](const int index)
+	T& FixedVector<T, N>::operator[](const unsigned int index)
 	{
 		return mStore[index];
 	}
@@ -126,7 +126,7 @@ namespace lab8
 	}
 
 	template<typename T, size_t N>
-	FixedVector<T, N> FixedVector<T, N>::operator=(const FixedVector& fixedVector)
+	FixedVector<T, N>& FixedVector<T, N>::operator=(const FixedVector& fixedVector)
 	{
 		mMaxSize = fixedVector.mMaxSize;
 		mCount = fixedVector.mCount;
@@ -135,6 +135,8 @@ namespace lab8
 		{
 			mStore[length] = fixedVector.mStore[length];
 		}
+
+		return *this;
 	}
 
 	template<typename T, size_t N>
