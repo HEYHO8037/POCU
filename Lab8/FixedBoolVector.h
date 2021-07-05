@@ -94,13 +94,13 @@ namespace lab8
 	}
 
 	template<size_t N>
-	const bool& FixedVector<bool, N>::Get(unsigned int index)
+	bool FixedVector<bool, N>::Get(unsigned int index)
 	{
 		return mbArray[index];
 	}
 
 	template<size_t N>
-	const bool& FixedVector<bool, N>::operator[](unsigned int index)
+	bool FixedVector<bool, N>::operator[](unsigned int index)
 	{
 		return mbArray[index];
 	}
