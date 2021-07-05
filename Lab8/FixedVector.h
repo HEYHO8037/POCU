@@ -14,7 +14,7 @@ namespace lab8
 		T Get(unsigned int index);
 		T& operator[](unsigned int index);
 		FixedVector& operator=(const FixedVector& fixedVector);
-		int GetIndex(T t);
+		int GetIndex(const T& t);
 		size_t GetSize() const;
 		size_t GetCapacity() const;
 
@@ -106,7 +106,7 @@ namespace lab8
 	}
 
 	template<typename T, size_t N>
-	int FixedVector<T, N>::GetIndex(T t)
+	int FixedVector<T, N>::GetIndex(const T& t)
 	{
 		int index = -1;
 
