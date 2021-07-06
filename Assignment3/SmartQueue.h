@@ -41,7 +41,7 @@ namespace assignment3
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			mQueue.push(smartStack.mQueue[length]);
+			mQueue.push(smartQueue.mQueue[length]);
 		}
 	}
 
@@ -60,7 +60,7 @@ namespace assignment3
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			mQueue.push(smartStack.mQueue[length]);
+			mQueue.push(smartQueue.mQueue[length]);
 		}
 	}
 
@@ -194,16 +194,16 @@ namespace assignment3
 	template<typename T>
 	double SmartQueue<T>::GetStandardDeviation()
 	{
-
+		double x = 2;
 		unsigned int rotation = 10;
 		double standardDeviation = GetVariance();
 
-		for (unsigned int length = 0; length < rotataion; length++)
+		for (unsigned int length = 0; length < rotation; length++)
 		{
-			standardDeviation = (standardDeviation + (2 / standardDeviation)) / 2;
+			x = (2 + (standardDeviation / x)) / 2;
 		}
 
-		return standardDeviation;
+		return x;
 	}
 
 	template<typename T>

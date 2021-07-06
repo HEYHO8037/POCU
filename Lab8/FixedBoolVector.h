@@ -110,7 +110,7 @@ namespace lab8
 		}
 		else
 		{
-			for (unsigned int length = saveLength; length < mSize; length++)
+			for (unsigned int length = saveLength; length < mSize - 1; length++)
 			{
 				if (length % 32 == 0 && length != 0)
 				{
@@ -141,7 +141,6 @@ namespace lab8
 
 				}
 			}
-
 
 			mSize--;
 			return true;

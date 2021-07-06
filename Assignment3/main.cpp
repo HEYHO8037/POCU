@@ -2,6 +2,7 @@
 #include <cmath>
 
 #include "SmartStack.h"
+#include "SmartQueue.h"
 
 using namespace assignment3;
 
@@ -9,18 +10,18 @@ int main()
 {
 	const double EPSILON = 0.0009765625;
 
-	SmartStack<float> ss;
+	SmartQueue<float> ss;
 
-	ss.Push(3.4999f);
-	ss.Push(1.2f);
-	ss.Push(4.6555f);
-	ss.Push(3.3299f);
-	ss.Push(10.2f);
-	ss.Push(1.1f);
-	ss.Push(-5.9f);
-	ss.Push(1.1f);
-	ss.Push(-12.4f);
-	ss.Push(9.2f);
+	ss.Enqueue(3.4999f);
+	ss.Enqueue(1.2f);
+	ss.Enqueue(4.6555f);
+	ss.Enqueue(3.3299f);
+	ss.Enqueue(10.2f);
+	ss.Enqueue(1.1f);
+	ss.Enqueue(-5.9f);
+	ss.Enqueue(1.1f);
+	ss.Enqueue(-12.4f);
+	ss.Enqueue(9.2f);
 
 	assert(ss.GetCount() == 10U);
 	assert(ss.Peek() == 9.2f);
@@ -32,8 +33,8 @@ int main()
 	assert(std::abs(ss.GetStandardDeviation() - 6.329) <= EPSILON);
 	assert(ss.Peek() == 9.2f);
 
-	float popped1 = ss.Pop();
-	float popped2 = ss.Pop();
+	float popped1 = ss.Dequeue();
+	float popped2 = ss.Dequeue();
 
 	assert(popped1 == 9.2f);
 	assert(popped2 == -12.4f);

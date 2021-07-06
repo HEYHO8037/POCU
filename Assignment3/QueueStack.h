@@ -58,7 +58,7 @@ namespace assignment3
 			mStack->push(number);
 			mCount++;
 
-			if (mCount % mMaxStackSize == 0)
+			if (mCount % mMaxStackSize == 0 && mCount != 0)
 			{
 				mStack = nullptr;
 			}
@@ -101,22 +101,17 @@ namespace assignment3
 		{
 			std::queue<std::stack<T>* >::iterator iter;
 
-			while (!mQueue.empty())
+			for(iter = mQueue.front; iter != mQueue.back; iter++)
 			{
-				mQueue.front()
-					for (unsigned int innerLength = 0; length < mStack->size(); innerLength++)
+				mStack = iter;
+				for (unsigned int innerLength = 0; length < mStack->size(); innerLength++)
+				{
+					if (max < mStack[innerLength])
 					{
-						if (max < mStack[innerLength])
-						{
-							max = mStack[innerLength];
-						}
-
+						max = mStack[innerLength];
 					}
-
-				mQueue.front
-
+				}
 			}
-
 
 			return max;
 		}
@@ -125,7 +120,30 @@ namespace assignment3
 	template<typename T>
 	T QueueStack<T>::GetMin()
 	{
+		T min = std::numeric_limits<T>::max();
 
+		if (mCount == 0)
+		{
+			return min;
+		}
+		else
+		{
+			std::queue<std::stack<T>* >::iterator iter;
+
+			for (iter = mQueue.front; iter != mQueue.back; iter++)
+			{
+				mStack = iter;
+				for (unsigned int innerLength = 0; length < mStack->size(); innerLength++)
+				{
+					if (min > mStack[innerLength])
+					{
+						min = mStack[innerLength];
+					}
+				}
+			}
+
+			return min;
+		}
 	}
 
 	template<typename T>
