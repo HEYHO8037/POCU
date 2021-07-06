@@ -105,9 +105,9 @@ namespace lab8
 		}
 		else
 		{
-			arrayLength = 0;
+			arrayLength = saveLength / 32;
 			
-			for (unsigned int length = saveLength; length < mSize - 1; length++)
+			for (unsigned int length = saveLength; length < mSize; length++)
 			{
 				if (length % 32 == 0 && length != 0)
 				{

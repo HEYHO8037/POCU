@@ -13,6 +13,7 @@ namespace assignment3
 		QueueStack(unsigned int maxStackSize);
 		QueueStack(const QueueStack& queueStack);
 		QueueStack& operator=(const QueueStack& queueStack);
+		~QueueStack();
 		void Enqueue(T number);
 		void Dequeue();
 		T Peek();
@@ -40,6 +41,16 @@ namespace assignment3
 	QueueStack<T>::QueueStack(const QueueStack& queueStack)
 	{
 
+	}
+
+	template<typename T>
+	QueueStack<T>::~QueueStack()
+	{
+		for (unsigned int length = 0; length < mQueue.size(); length++)
+		{
+			delete mQueue.front();
+			mQueue.pop();
+		}
 	}
 
 
@@ -71,10 +82,11 @@ namespace assignment3
 		std::stack<T>* saveStack;
 		saveStack = mQueue.front();
 		saveStack->pop();
+		mCount--;
 
 		if (saveStack->size() == 0)
 		{
-			delete[] mQueue.front();
+			delete mQueue.front();
 			mQueue.pop();
 		}
 	}
@@ -92,6 +104,9 @@ namespace assignment3
 	T QueueStack<T>::GetMax()
 	{
 		T max = std::numeric_limits<T>::min();
+		std::queue< std::stack<T>* > saveQueue = mQueue;
+		std::stack<T> saveStack;
+
 
 		if (mCount == 0)
 		{
@@ -99,18 +114,25 @@ namespace assignment3
 		}
 		else
 		{
-			std::queue<std::stack<T>* >::iterator iter;
-
-			for(iter = mQueue.front; iter != mQueue.back; iter++)
+			while(!saveQueue.empty())
 			{
-				mStack = iter;
-				for (unsigned int innerLength = 0; length < mStack->size(); innerLength++)
+				mStack = saveQueue.front();
+				saveStack = *mStack;
+	
+				for (unsigned int innerLength = 0; innerLength < mStack->size(); innerLength++)
 				{
-					if (max < mStack[innerLength])
+					if (max < saveStack.top())
 					{
-						max = mStack[innerLength];
+						max = saveStack.top();
+						saveStack.pop();
+					}
+					else
+					{
+						saveStack.pop();
 					}
 				}
+
+				saveQueue.pop();
 			}
 
 			return max;
@@ -121,6 +143,8 @@ namespace assignment3
 	T QueueStack<T>::GetMin()
 	{
 		T min = std::numeric_limits<T>::max();
+		std::queue< std::stack<T>* > saveQueue = mQueue;
+		std::stack<T> saveStack;
 
 		if (mCount == 0)
 		{
@@ -128,18 +152,25 @@ namespace assignment3
 		}
 		else
 		{
-			std::queue<std::stack<T>* >::iterator iter;
-
-			for (iter = mQueue.front; iter != mQueue.back; iter++)
+			while (!saveQueue.empty())
 			{
-				mStack = iter;
-				for (unsigned int innerLength = 0; length < mStack->size(); innerLength++)
+				mStack = saveQueue.front();
+				saveStack = *mStack;
+
+				for (unsigned int innerLength = 0; innerLength < mStack->size(); innerLength++)
 				{
-					if (min > mStack[innerLength])
+					if (min > saveStack.top())
 					{
-						min = mStack[innerLength];
+						min = saveStack.top();
+						saveStack.pop();
+					}
+					else
+					{
+						saveStack.pop();
 					}
 				}
+
+				saveQueue.pop();
 			}
 
 			return min;
@@ -149,24 +180,60 @@ namespace assignment3
 	template<typename T>
 	double QueueStack<T>::GetAverage()
 	{
+		std::queue< std::stack<T>* > saveQueue = mQueue;
+		std::stack<T> saveStack;
+		double average = 0;
 
+		while (!saveQueue.empty())
+		{
+			mStack = saveQueue.front();
+			saveStack = *mStack;
+
+			for (unsigned int innerLength = 0; innerLength < mStack->size(); innerLength++)
+			{
+				average += saveStack.top();
+				saveStack.pop();
+			}
+			saveQueue.pop();
+		}
+		average /= mCount;
+
+		return average;
 	}
 
 	template<typename T>
 	T QueueStack<T>::GetSum()
 	{
+		std::queue< std::stack<T>* > saveQueue = mQueue;
+		std::stack<T> saveStack;
 
+		T total = 0;
+
+		while (!saveQueue.empty())
+		{
+			mStack = saveQueue.front();
+			saveStack = *mStack;
+
+			for (unsigned int innerLength = 0; innerLength < mStack->size(); innerLength++)
+			{
+				total += saveStack.top();
+				saveStack.pop();
+			}
+			saveQueue.pop();
+		}
+
+		return total;
 	}
 
 	template<typename T>
 	unsigned int QueueStack<T>::GetCount()
 	{
-		return;
+		return mCount;
 	}
 
 	template<typename T>
 	unsigned int QueueStack<T>::GetStackCount()
 	{
-		return;
+		return mQueue.size();
 	}
 }
