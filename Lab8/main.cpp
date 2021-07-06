@@ -64,6 +64,7 @@ int main()
 		{
 			assert(fv2.Remove(true));
 		}
+
 		for (size_t i = 0; i != 56; ++i)
 		{
 			if (i < 8)
