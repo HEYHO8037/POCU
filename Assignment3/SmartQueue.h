@@ -158,7 +158,8 @@ namespace assignment3
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			average += mQueue[length];
+			average += saveQueue.front();
+			saveQueue.pop();
 		}
 
 		average /= mCount;
@@ -169,11 +170,13 @@ namespace assignment3
 	template<typename T>
 	T SmartQueue<T>::GetSum()
 	{
+		std::queue<T> saveQueue = mQueue;
 		T total = 0;
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			total += mQueue[length];
+			total += saveQueue.front();
+			saveQueue.pop();
 		}
 
 		return total;
@@ -182,15 +185,17 @@ namespace assignment3
 	template<typename T>
 	double SmartQueue<T>::GetVariance()
 	{
+		std::queue<T> saveQueue = mQueue;
 		double average = GetAverage();
-		double singleVariance;
-		double totalVariance;
+		double singleVariance = 0;
+		double totalVariance = 0;
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			singleVariance = average - mQueue[length];
+			singleVariance = average - saveQueue.front();
 			singleVariance *= singleVariance;
 			totalVariance += singleVariance;
+			saveQueue.pop();
 		}
 
 		totalVariance /= mCount;

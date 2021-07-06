@@ -57,6 +57,11 @@ namespace lab8
 		}
 		else
 		{
+			if (mSize % 32 == 0 && mSize != 0)
+			{
+				mArraySize++;
+			}
+
 			if (bAdd == true)
 			{
 				mArray[mArraySize] |= 1UL << mSize % 32;
@@ -67,15 +72,8 @@ namespace lab8
 				mArray[mArraySize] &= ~(1UL << mSize % 32);
 				mSize++;
 			}
-
-			if (mSize % 32 == 0 && mSize != 0)
-			{
-				mArraySize++;
-			}
-
+			return true;
 		}
-
-		return true;
 	}
 
 
@@ -91,7 +89,6 @@ namespace lab8
 			if (length % 32 == 0 && length != 0)
 			{
 				arrayLength++;
-
 			}
 
 			if ((mArray[arrayLength] >> (length % 32) & 1U) == bRemove)
@@ -102,14 +99,14 @@ namespace lab8
 			}
 		}
 
-		arrayLength = 0;
-
 		if (bFind == false)
 		{
 			return false;
 		}
 		else
 		{
+			arrayLength = 0;
+			
 			for (unsigned int length = saveLength; length < mSize - 1; length++)
 			{
 				if (length % 32 == 0 && length != 0)
