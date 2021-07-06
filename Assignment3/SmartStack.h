@@ -3,205 +3,208 @@
 
 #pragma once
 
-template<typename T>
-class SmartStack
+namespace assignment3
 {
-public:
-	SmartStack();
-	SmartStack(const SmartStack& smartStack);
-	SmartStack& operator=(const SmartStack& smartStack);
-	void Push(T number);
-	void Pop();
-	T Peek();
-	T GetMax();
-	T GetMin();
-	double GetAverage();
-	T GetSum();
-	double GetVariance();
-	double GetStandardDeviation();
-	unsigned int GetCount();
-private:
-	std::stack<T> mStack;
-	unsigned int mCount = 0;
-};
-
-
-template<typename T>
-SmartStack<T>::SmartStack()
-	: mCount(0)
-{
-}
-
-template<typename T>
-SmartStack<T>::SmartStack(const SmartStack& smartStack)
-{
-	mCount = smartStack.mCount;
-
-	for (unsigned int length = 0; length < mCount; length++)
+	template<typename T>
+	class SmartStack
 	{
-		mStack.push(smartStack.mStack[length]);
+	public:
+		SmartStack();
+		SmartStack(const SmartStack& smartStack);
+		SmartStack& operator=(const SmartStack& smartStack);
+		void Push(T number);
+		void Pop();
+		T Peek();
+		T GetMax();
+		T GetMin();
+		double GetAverage();
+		T GetSum();
+		double GetVariance();
+		double GetStandardDeviation();
+		unsigned int GetCount();
+	private:
+		std::stack<T> mStack;
+		unsigned int mCount = 0;
+	};
+
+
+	template<typename T>
+	SmartStack<T>::SmartStack()
+		: mCount(0)
+	{
 	}
-}
 
-template<typename T>
-SmartStack<T>& SmartStack<T>::operator=(const SmartStack& smartStack)
-{
-	if (mStack.size() != 0)
+	template<typename T>
+	SmartStack<T>::SmartStack(const SmartStack& smartStack)
 	{
+		mCount = smartStack.mCount;
+
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			mStack.pop();
+			mStack.push(smartStack.mStack[length]);
 		}
 	}
 
-	mCount = smartStack.mCount;
-
-	for (unsigned int length = 0; length < mCount; length++)
+	template<typename T>
+	SmartStack<T>& SmartStack<T>::operator=(const SmartStack& smartStack)
 	{
-		mStack.push(smartStack.mStack[length]);
-	}
-}
-
-template<typename T>
-void SmartStack<T>::Push(T number)
-{
-	mStack.push(number);
-	mCount++;
-}
-
-template<typename T>
-void SmartStack<T>::Pop()
-{
-	mStack.pop();
-	mCount--;
-}
-
-template<typename T>
-T SmartStack<T>::Peek()
-{
-	return mStack.top();
-}
-
-
-template<typename T>
-T SmartStack<T>::GetMax()
-{
-	T max = std::numeric_limits<T>::min();
-
-	if (mCount == 0)
-	{
-		return max;
-	}
-	else
-	{
-		for (unsigned int length = 0; length < mCount; length++)
+		if (mStack.size() != 0)
 		{
-			if (max < mStack[length])
+			for (unsigned int length = 0; length < mCount; length++)
 			{
-				max = mStack[length];
-			}
-			else
-			{
-				continue;
+				mStack.pop();
 			}
 		}
 
-		return max;
-	}
-}
+		mCount = smartStack.mCount;
 
-
-template<typename T>
-T SmartStack<T>::GetMin()
-{
-	T min =  std::numeric_limits<T>::max();
-
-	if (mCount == 0)
-	{
-		return min;
-	}
-	else
-	{
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			if (min > mStack[length])
+			mStack.push(smartStack.mStack[length]);
+		}
+	}
+
+	template<typename T>
+	void SmartStack<T>::Push(T number)
+	{
+		mStack.push(number);
+		mCount++;
+	}
+
+	template<typename T>
+	void SmartStack<T>::Pop()
+	{
+		mStack.pop();
+		mCount--;
+	}
+
+	template<typename T>
+	T SmartStack<T>::Peek()
+	{
+		return mStack.top();
+	}
+
+
+	template<typename T>
+	T SmartStack<T>::GetMax()
+	{
+		T max = std::numeric_limits<T>::min();
+
+		if (mCount == 0)
+		{
+			return max;
+		}
+		else
+		{
+			for (unsigned int length = 0; length < mCount; length++)
 			{
-				min = mStack[length];
+				if (max < mStack[length])
+				{
+					max = mStack[length];
+				}
+				else
+				{
+					continue;
+				}
 			}
-			else
+
+			return max;
+		}
+	}
+
+
+	template<typename T>
+	T SmartStack<T>::GetMin()
+	{
+		T min = std::numeric_limits<T>::max();
+
+		if (mCount == 0)
+		{
+			return min;
+		}
+		else
+		{
+			for (unsigned int length = 0; length < mCount; length++)
 			{
-				continue;
+				if (min > mStack[length])
+				{
+					min = mStack[length];
+				}
+				else
+				{
+					continue;
+				}
 			}
+
+			return min;
+		}
+	}
+
+	template<typename T>
+	double SmartStack<T>::GetAverage()
+	{
+		double average = 0;
+
+		for (unsigned int length = 0; length < mCount; length++)
+		{
+			average += mStack[length];
 		}
 
-		return min;
+		average /= mCount;
+
+		return average;
 	}
-}
 
-template<typename T>
-double SmartStack<T>::GetAverage()
-{
-	double average = 0;
-
-	for (unsigned int length = 0; length < mCount; length++)
+	template<typename T>
+	T SmartStack<T>::GetSum()
 	{
-		average += mStack[length];
+		T total = 0;
+
+		for (unsigned int length = 0; length < mCount; length++)
+		{
+			total += mStack[length];
+		}
+
+		return total;
 	}
 
-	average /= mCount;
-
-	return average;
-}
-
-template<typename T>
-T SmartStack<T>::GetSum()
-{
-	T total = 0;
-
-	for (unsigned int length = 0; length < mCount; length++)
+	template<typename T>
+	double SmartStack<T>::GetVariance()
 	{
-		total += mStack[length];
+		double average = GetAverage();
+		double singleVariance;
+		double totalVariance;
+
+		for (unsigned int length = 0; length < mCount; length++)
+		{
+			singleVariance = average - mStack[length];
+			singleVariance *= singleVariance;
+			totalVariance += singleVariance;
+		}
+
+		totalVariance /= mCount;
+
+		return totalVariance;
 	}
 
-	return total;
-}
-
-template<typename T>
-double SmartStack<T>::GetVariance()
-{
-	double average = GetAverage();
-	double singleVariance;
-	double totalVariance;
-
-	for (unsigned int length = 0; length < mCount; length++)
+	template<typename T>
+	double SmartStack<T>::GetStandardDeviation()
 	{
-		singleVariance = average - mStack[length];
-		singleVariance *= singleVariance;
-		totalVariance += singleVariance;
+
+		unsigned int rotation = 10;
+		double standardDeviation = GetVariance();
+
+		for (unsigned int length = 0; length < rotataion; length++)
+		{
+			standardDeviation = (standardDeviation + (2 / standardDeviation)) / 2;
+		}
+
+		return standardDeviation;
 	}
-	
-	totalVariance /= mCount;
 
-	return totalVariance;
-}
-
-template<typename T>
-double SmartStack<T>::GetStandardDeviation()
-{
-
-	unsigned int rotation = 10;
-	double standardDeviation = GetVariance();
-
-	for (unsigned int length = 0; length < rotataion; length++)
+	template<typename T>
+	unsigned int  SmartStack<T>::GetCount()
 	{
-		standardDeviation = (standardDeviation + (2 / standardDeviation)) / 2;
+		return mCount;
 	}
-
-	return standardDeviation;
-}
-
-template<typename T>
-unsigned int  SmartStack<T>::GetCount()
-{
-	return mCount;
 }

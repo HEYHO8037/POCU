@@ -35,8 +35,12 @@ namespace lab8
 	FixedVector<bool, N>::FixedVector(const FixedVector& fixedVector)
 	{
 		mSize = fixedVector.mSize;
+		mArraySize = fixedVector.mArraySize;
 
-		mArray = fixedVector.mArray;
+		for (unsigned int length = 0; length < mArraySize + 1; length++)
+		{
+			mArray[length] = fixedVector.mArray[length];
+		}
 	}
 
 	template<size_t N>
@@ -185,8 +189,12 @@ namespace lab8
 	FixedVector<bool, N>& FixedVector<bool, N>::operator=(const FixedVector& fixedVector)
 	{
 		mSize = fixedVector.mSize;
+		mArraySize = fixedVector.mArraySize;
 
-		mArray = fixedVector.mArray;
+		for (unsigned int length = 0; length < mArraySize + 1; length++)
+		{
+			mArray[length] = fixedVector.mArray[length];
+		}
 	}
 
 	template<size_t N>
