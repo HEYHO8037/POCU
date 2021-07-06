@@ -38,11 +38,7 @@ namespace assignment3
 	SmartStack<T>::SmartStack(const SmartStack& smartStack)
 	{
 		mCount = smartStack.mCount;
-
-		for (unsigned int length = 0; length < mCount; length++)
-		{
-			mStack.push(smartStack.mStack[length]);
-		}
+		mStack = smartStack.mStack;
 	}
 
 	template<typename T>
@@ -57,11 +53,8 @@ namespace assignment3
 		}
 
 		mCount = smartStack.mCount;
+		mStack = smartStack.mStack;
 
-		for (unsigned int length = 0; length < mCount; length++)
-		{
-			mStack.push(smartStack.mStack[length]);
-		}
 	}
 
 	template<typename T>

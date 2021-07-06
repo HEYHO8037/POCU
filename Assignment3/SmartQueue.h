@@ -92,6 +92,7 @@ namespace assignment3
 	template<typename T>
 	T SmartQueue<T>::GetMax()
 	{
+		std::queue<T> saveQueue = mQueue;
 		T max = std::numeric_limits<T>::min();
 
 		if (mCount == 0)
@@ -102,12 +103,14 @@ namespace assignment3
 		{
 			for (unsigned int length = 0; length < mCount; length++)
 			{
-				if (max < mQueue[length])
+				if (max < saveQueue.front())
 				{
-					max = mQueue[length];
+					max = saveQueue.front();
+					saveQueue.pop();
 				}
 				else
 				{
+					saveQueue.pop();
 					continue;
 				}
 			}
@@ -120,6 +123,7 @@ namespace assignment3
 	template<typename T>
 	T SmartQueue<T>::GetMin()
 	{
+		std::queue<T> saveQueue = mQueue;
 		T min = std::numeric_limits<T>::max();
 
 		if (mCount == 0)
@@ -130,12 +134,14 @@ namespace assignment3
 		{
 			for (unsigned int length = 0; length < mCount; length++)
 			{
-				if (min > mQueue[length])
+				if (min > saveQueue.front())
 				{
-					min = mQueue[length];
+					min = saveQueue.front();
+					saveQueue.pop();
 				}
 				else
 				{
+					saveQueue.pop();
 					continue;
 				}
 			}
@@ -147,6 +153,7 @@ namespace assignment3
 	template<typename T>
 	double SmartQueue<T>::GetAverage()
 	{
+		std::queue<T> saveQueue = mQueue;
 		double average = 0;
 
 		for (unsigned int length = 0; length < mCount; length++)

@@ -88,17 +88,17 @@ namespace lab8
 
 		for (unsigned int length = 0; length < mSize; length++)
 		{
+			if (length % 32 == 0 && length != 0)
+			{
+				arrayLength++;
+
+			}
+
 			if ((mArray[arrayLength] >> (length % 32) & 1U) == bRemove)
 			{
 				saveLength = length;
 				bFind = true;
 				break;
-			}
-
-			if (length % 32 == 0 && length != 0)
-			{
-				arrayLength++;
-
 			}
 		}
 
