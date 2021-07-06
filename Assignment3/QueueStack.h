@@ -22,7 +22,7 @@ public:
 	T GetCount();
 	T GetStackCount();
 private:
-	std::queue<std::stack*> mQueue;
+	std::queue< std::stack* > mQueue;
 	std::stack<T>* mStack = nullptr;
 	unsigned int mMaxStackSize;
 	unsigned int mCount = 0;
@@ -61,5 +61,18 @@ void QueueStack<T>::Enqueue(T number)
 		{
 			mStack = nullptr;
 		}
+	}
+}
+
+template<typename T>
+void QueueStack<T>::Dequeue()
+{
+	std::stack<T>* saveStack;
+	saveStack = mQueue.front();
+	saveStack->pop();
+
+	if (saveStack->size() == 0)
+	{
+		mQueue.pop();
 	}
 }

@@ -20,7 +20,7 @@ namespace lab8
 
 	private:
 		size_t mSize;
-		bool mbArray[N];
+		unsigned int mArray = { 0 };
 	};
 
 	template<size_t N>
@@ -35,10 +35,7 @@ namespace lab8
 	{
 		mSize = fixedVector.mSize;
 
-		for (unsigned int length = 0; length < mSize; length++)
-		{
-			mbArray[length] = fixedVector.mbArray[length];
-		}
+		mArray = fixedVector.mArray;
 	}
 
 	template<size_t N>
@@ -55,8 +52,17 @@ namespace lab8
 		}
 		else
 		{
-			mbArray[mSize++] = bAdd;
-			return true;
+			if (bAdd == true)
+			{
+				mArray |= 1UL << mSize;
+				mSize++;
+			}
+			else
+			{
+				mArray &= ~(1UL << mSize);
+				mSize++;
+			}
+
 		}
 	}
 
@@ -69,7 +75,7 @@ namespace lab8
 
 		for (unsigned int length = 0; length < mSize; length++)
 		{
-			if (mbArray[length] == bRemove)
+			if ((mArray >> length & 1U) == bRemove)
 			{
 				saveLength = length;
 				bFind = true;
@@ -85,7 +91,15 @@ namespace lab8
 		{
 			for (unsigned int length = saveLength; length < mSize - 1; length++)
 			{
-				mbArray[length] = mbArray[length + 1];
+				if ((mArray >> (length + 1) & 1U) == true)
+				{
+					mArray |= 1UL << length;
+				}
+				else
+				{
+					mArray &= ~(1UL << length);
+				}
+				
 			}
 
 			mSize--;
@@ -96,13 +110,13 @@ namespace lab8
 	template<size_t N>
 	bool FixedVector<bool, N>::Get(unsigned int index)
 	{
-		return mbArray[index];
+		return (mArray >> index) & 1U;
 	}
 
 	template<size_t N>
 	bool FixedVector<bool, N>::operator[](unsigned int index)
 	{
-		return mbArray[index];
+		return (mArray >> index) & 1U;
 	}
 
 	template<size_t N>
@@ -112,7 +126,7 @@ namespace lab8
 
 		for (unsigned int length = 0; length < mSize; length++)
 		{
-			if (mbArray[length] == bIndex)
+			if (((mArray >> length) & 1U) == bIndex)
 			{
 				index = length;
 				break;
@@ -127,10 +141,7 @@ namespace lab8
 	{
 		mSize = fixedVector.mSize;
 
-		for (unsigned int length = 0; length < mSize; length++)
-		{
-			mbArray[length] = fixedVector.mbArray[length];
-		}
+		mArray = fixedVector.mArray;
 	}
 
 	template<size_t N>

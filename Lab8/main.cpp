@@ -25,27 +25,41 @@ int main()
 	}
 	fv.Add(true);
 	fv.Add(true);
-	assert(!fv.Get(31)); assert(fv.Get(31) == fv[31]);
-	assert(fv.Get(32)); assert(fv.Get(32) == fv[32]);
-	assert(fv.Get(33)); assert(fv.Get(33) == fv[33]);
+	assert(!fv.Get(31));
+	assert(fv.Get(31) == fv[31]);
+	assert(fv.Get(32));
+	assert(fv.Get(32) == fv[32]);
+	assert(fv.Get(33));
+	assert(fv.Get(33) == fv[33]);
 	assert(fv.GetSize() == 34);
 	fv.Remove(false);
 	assert(fv.Get(31));
 	assert(fv.Get(32));
 	assert(fv.GetSize() == 33);
+
 		FixedVector<bool, 64> fv2;
 		for (size_t i = 0; i != 4; ++i)
 		{
-			assert(fv2.Add(true)); assert(fv2.Add(true));
-			assert(fv2.Add(true)); assert(fv2.Add(true));
-			assert(fv2.Add(true)); assert(fv2.Add(true));
-			assert(fv2.Add(true)); assert(fv2.Add(true));
-			assert(fv2.Add(false)); assert(fv2.Add(false));
-			assert(fv2.Add(false)); assert(fv2.Add(false));
-			assert(fv2.Add(false)); assert(fv2.Add(false));
-			assert(fv2.Add(false)); assert(fv2.Add(false));
+			assert(fv2.Add(true));
+			assert(fv2.Add(true));
+			assert(fv2.Add(true));
+			assert(fv2.Add(true));
+			assert(fv2.Add(true)); 
+			assert(fv2.Add(true));
+			assert(fv2.Add(true));
+			assert(fv2.Add(true));
+			assert(fv2.Add(false));
+			assert(fv2.Add(false));
+			assert(fv2.Add(false)); 
+			assert(fv2.Add(false));
+			assert(fv2.Add(false));
+			assert(fv2.Add(false));
+			assert(fv2.Add(false));
+			assert(fv2.Add(false));
 		}
+
 		assert(!fv2.Add(true));
+
 		for (size_t i = 0; i != 8; ++i)
 		{
 			assert(fv2.Remove(true));
