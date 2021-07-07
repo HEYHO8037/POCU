@@ -89,27 +89,21 @@ namespace assignment3
 
 		std::stack<T> saveStack = mStack;
 
-		if (mCount == 0)
-		{
-			return max;
-		}
-		else
-		{
-			for (unsigned int length = 0; length < mCount; length++)
-			{
-				if (max < saveStack.top())
-				{
-					max = saveStack.top();
-					saveStack.pop();
-				}
-				else
-				{
-					saveStack.pop();
-				}
-			}
 
-			return max;
+		for (unsigned int length = 0; length < mCount; length++)
+		{
+			if (max < saveStack.top())
+			{
+				max = saveStack.top();
+				saveStack.pop();
+			}
+			else
+			{
+				saveStack.pop();
+			}
 		}
+
+		return max;
 	}
 
 
@@ -119,27 +113,20 @@ namespace assignment3
 		T min = std::numeric_limits<T>::max();
 		std::stack<T> saveStack = mStack;
 
-		if (mCount == 0)
+		for (unsigned int length = 0; length < mCount; length++)
 		{
-			return min;
-		}
-		else
-		{
-			for (unsigned int length = 0; length < mCount; length++)
+			if (min > saveStack.top())
 			{
-				if (min > saveStack.top())
-				{
-					min = saveStack.top();
-					saveStack.pop();
-				}
-				else
-				{
-					saveStack.pop();
-				}
+				min = saveStack.top();
+				saveStack.pop();
 			}
-
-			return min;
+			else
+			{
+				saveStack.pop();
+			}
 		}
+
+		return min;
 	}
 
 	template<typename T>
@@ -178,13 +165,14 @@ namespace assignment3
 	double SmartStack<T>::GetVariance()
 	{
 		std::stack<T> saveStack = mStack;
+
 		double average = GetAverage();
 		double singleVariance = 0;
 		double totalVariance = 0;
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			singleVariance = average - saveStack.top();
+			singleVariance = saveStack.top() - average;
 			singleVariance *= singleVariance;
 			totalVariance += singleVariance;
 			saveStack.pop();

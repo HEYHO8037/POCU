@@ -205,7 +205,7 @@ namespace assignment3
 		}
 		else
 		{
-			while (!saveQueue.empty())
+			while (! saveQueue.empty())
 			{
 				mStack = saveQueue.front();
 				saveStack = *mStack;

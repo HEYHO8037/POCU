@@ -97,28 +97,21 @@ namespace assignment3
 		std::queue<T> saveQueue = mQueue;
 		T max = std::numeric_limits<T>::lowest();
 
-		if (mCount == 0)
+		for (unsigned int length = 0; length < mCount; length++)
 		{
-			return max;
-		}
-		else
-		{
-			for (unsigned int length = 0; length < mCount; length++)
+			if (max < saveQueue.front())
 			{
-				if (max < saveQueue.front())
-				{
-					max = saveQueue.front();
-					saveQueue.pop();
-				}
-				else
-				{
-					saveQueue.pop();
-					continue;
-				}
+				max = saveQueue.front();
+				saveQueue.pop();
 			}
-
-			return max;
+			else
+			{
+				saveQueue.pop();
+				continue;
+			}
 		}
+
+		return max;
 	}
 
 
@@ -128,28 +121,21 @@ namespace assignment3
 		std::queue<T> saveQueue = mQueue;
 		T min = std::numeric_limits<T>::max();
 
-		if (mCount == 0)
+		for (unsigned int length = 0; length < mCount; length++)
 		{
-			return min;
-		}
-		else
-		{
-			for (unsigned int length = 0; length < mCount; length++)
+			if (min > saveQueue.front())
 			{
-				if (min > saveQueue.front())
-				{
-					min = saveQueue.front();
-					saveQueue.pop();
-				}
-				else
-				{
-					saveQueue.pop();
-					continue;
-				}
+				min = saveQueue.front();
+				saveQueue.pop();
 			}
-
-			return min;
+			else
+			{
+				saveQueue.pop();
+			}
 		}
+
+		return min;
+
 	}
 
 	template<typename T>
