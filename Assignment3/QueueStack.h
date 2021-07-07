@@ -40,7 +40,52 @@ namespace assignment3
 	template<typename T>
 	QueueStack<T>::QueueStack(const QueueStack& queueStack)
 	{
+		std::queue< std::stack<T>* > saveQueue = queueStack.mQueue;
+		std::stack<T> saveStack;
 
+		mCount = queueStack.mCount;
+		mMaxStackSize = queueStack.mMaxStackSize;
+
+		while (!saveQueue.empty())
+		{
+			mStack = saveQueue.front();
+			saveStack = *mStack;
+
+			mStack = new std::stack<T>(saveStack);
+			mQueue.push(mStack);
+
+			saveQueue.pop();
+		}
+	}
+
+	template<typename T>
+	QueueStack<T>& QueueStack<T>::operator=(const QueueStack& queueStack)
+	{
+		std::queue< std::stack<T>* > saveQueue = queueStack.mQueue;
+		std::stack<T> saveStack;
+
+		if (mQueue.size() != 0)
+		{
+			for (unsigned int length = 0; length < mQueue.size(); length++)
+			{
+				delete mQueue.front();
+				mQueue.pop();
+			}
+		}
+
+		mCount = queueStack.mCount;
+		mMaxStackSize = queueStack.mMaxStackSize;
+
+		while (!saveQueue.empty())
+		{
+			mStack = saveQueue.front();
+			saveStack = *mStack;
+
+			mStack = new std::stack<T>(saveStack);
+			mQueue.push(mStack);
+
+			saveQueue.pop();
+		}
 	}
 
 	template<typename T>
