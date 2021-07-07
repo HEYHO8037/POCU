@@ -85,7 +85,8 @@ namespace assignment3
 	template<typename T>
 	T SmartQueue<T>::Peek()
 	{
-		return mQueue.front();
+		std::stack<T> saveStack = *(mQueue.front());
+		return saveStack.top();
 	}
 
 
