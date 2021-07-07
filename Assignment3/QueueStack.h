@@ -9,13 +9,12 @@ namespace assignment3
 	class QueueStack
 	{
 	public:
-		QueueStack();
 		QueueStack(unsigned int maxStackSize);
 		QueueStack(const QueueStack& queueStack);
 		QueueStack& operator=(const QueueStack& queueStack);
 		~QueueStack();
 		void Enqueue(T number);
-		void Dequeue();
+		T Dequeue();
 		T Peek();
 		T GetMax();
 		T GetMin();
@@ -122,10 +121,15 @@ namespace assignment3
 	}
 
 	template<typename T>
-	void QueueStack<T>::Dequeue()
+	T QueueStack<T>::Dequeue()
 	{
+		T saveNumber;
+
 		std::stack<T>* saveStack;
 		saveStack = mQueue.front();
+
+		saveNumber = saveStack->top();
+
 		saveStack->pop();
 		mCount--;
 
@@ -134,6 +138,8 @@ namespace assignment3
 			delete mQueue.front();
 			mQueue.pop();
 		}
+
+		return saveNumber;
 	}
 
 	template<typename T>
