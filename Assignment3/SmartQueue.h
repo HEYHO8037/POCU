@@ -95,7 +95,7 @@ namespace assignment3
 	T SmartQueue<T>::GetMax()
 	{
 		std::queue<T> saveQueue = mQueue;
-		T max = std::numeric_limits<T>::min();
+		T max = std::numeric_limits<T>::lowest();
 
 		if (mCount == 0)
 		{

@@ -9,6 +9,16 @@ using namespace assignment3;
 
 int main()
 {
+	SmartStack<int> st;
+	st.Push(4);
+	st.Push(4);
+	st.Push(4);
+	st.Push(4);
+	st.GetMax();
+	st.GetMin();
+	st.Pop();
+	st.Pop();
+
 	QueueStack<int> qs(3);
 	qs.Enqueue(1);
 	qs.Enqueue(2);

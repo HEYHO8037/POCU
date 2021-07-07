@@ -75,7 +75,7 @@ namespace assignment3
 		mCount = queueStack.mCount;
 		mMaxStackSize = queueStack.mMaxStackSize;
 
-		while (!saveQueue.empty())
+		while (! saveQueue.empty())
 		{
 			mStack = saveQueue.front();
 			saveStack = *mStack;
@@ -156,7 +156,7 @@ namespace assignment3
 	template<typename T>
 	T QueueStack<T>::GetMax()
 	{
-		T max = std::numeric_limits<T>::min();
+		T max = std::numeric_limits<T>::lowest();
 		std::queue< std::stack<T>* > saveQueue = mQueue;
 		std::stack<T> saveStack;
 

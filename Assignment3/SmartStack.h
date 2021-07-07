@@ -85,7 +85,7 @@ namespace assignment3
 	template<typename T>
 	T SmartStack<T>::GetMax()
 	{
-		T max = std::numeric_limits<T>::min();
+		T max = std::numeric_limits<T>::lowest();
 
 		std::stack<T> saveStack = mStack;
 
@@ -105,7 +105,6 @@ namespace assignment3
 				else
 				{
 					saveStack.pop();
-					continue;
 				}
 			}
 
@@ -136,7 +135,6 @@ namespace assignment3
 				else
 				{
 					saveStack.pop();
-					continue;
 				}
 			}
 
