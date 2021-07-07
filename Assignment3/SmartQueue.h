@@ -146,7 +146,7 @@ namespace assignment3
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			average += saveQueue.front();
+			average += static_cast<double>(saveQueue.front());
 			saveQueue.pop();
 		}
 
@@ -180,7 +180,7 @@ namespace assignment3
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			singleVariance = average - saveQueue.front();
+			singleVariance = average - static_cast<double>(saveQueue.front());
 			singleVariance *= singleVariance;
 			totalVariance += singleVariance;
 			saveQueue.pop();

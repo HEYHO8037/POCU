@@ -137,7 +137,7 @@ namespace assignment3
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			average += saveStack.top();
+			average += static_cast<double>(saveStack.top());
 			saveStack.pop();
 		}
 
@@ -172,7 +172,7 @@ namespace assignment3
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{
-			singleVariance = saveStack.top() - average;
+			singleVariance = static_cast<double>(saveStack.top()) - average;
 			singleVariance *= singleVariance;
 			totalVariance += singleVariance;
 			saveStack.pop();
