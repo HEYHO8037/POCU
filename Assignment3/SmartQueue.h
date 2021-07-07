@@ -62,6 +62,8 @@ namespace assignment3
 		{
 			mQueue.push(smartQueue.mQueue[length]);
 		}
+
+		return *this;
 	}
 
 

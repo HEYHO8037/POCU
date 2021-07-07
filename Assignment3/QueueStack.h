@@ -85,6 +85,8 @@ namespace assignment3
 
 			saveQueue.pop();
 		}
+
+		return *this;
 	}
 
 	template<typename T>

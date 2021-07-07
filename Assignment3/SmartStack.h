@@ -55,6 +55,7 @@ namespace assignment3
 		mCount = smartStack.mCount;
 		mStack = smartStack.mStack;
 
+		return *this;
 	}
 
 	template<typename T>
