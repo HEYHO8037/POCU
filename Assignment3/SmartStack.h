@@ -97,6 +97,7 @@ namespace assignment3
 		T saveNum = mStack.top();
 		mStack.pop();
 		mSumStack.pop();
+		mVarianceStack.pop();
 		mCount--;
 
 		if (saveNum == mMaxStack.top())
