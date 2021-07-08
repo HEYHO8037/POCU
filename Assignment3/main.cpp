@@ -9,12 +9,12 @@ using namespace assignment3;
 
 int main()
 {
-
+	
 	SmartStack<int> s1;
+	s1.Push(1);
+	s1.Push(1);
 	s1.Push(2);
-	s1.Push(2);
-	s1.Push(2);
-	s1.Push(2);
+	s1.Push(3);
 
 	/*const double EPSILON = 0.0009765625;
 
