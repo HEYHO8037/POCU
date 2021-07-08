@@ -60,12 +60,12 @@ namespace assignment3
 	{
 		mStack.push(number);
 
-		if (number > mMaxStack.top())
+		if (number >= mMaxStack.top())
 		{
 			mMaxStack.push(number);
 		}
 
-		if (number < mMinStack.top())
+		if (number <= mMinStack.top())
 		{
 			mMinStack.push(number);
 		}

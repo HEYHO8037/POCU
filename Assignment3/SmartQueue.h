@@ -66,7 +66,7 @@ namespace assignment3
 		{
 			mMaxQueue.push(number);
 		}
-		else if (!mMaxQueue.empty() && mMaxQueue.front() < number)
+		else if (!mMaxQueue.empty() && mMaxQueue.front() <= number)
 		{
 			mMaxQueue.push(number);
 		}
@@ -75,7 +75,7 @@ namespace assignment3
 		{
 			mMinQueue.push(number);
 		}
-		else if (!mMaxQueue.empty() && mMinQueue.front() > number)
+		else if (!mMaxQueue.empty() && mMinQueue.front() >= number)
 		{
 			mMinQueue.push(number);
 		}

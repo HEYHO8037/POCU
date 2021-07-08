@@ -16,6 +16,29 @@ int main()
 	s1.Push(2);
 	s1.Push(3);
 
+	s1.GetMax();
+	s1.GetMin();
+
+	s1.Pop();
+
+
+	s1.GetMax();
+	s1.GetMin();
+
+	s1.Pop();
+
+
+	s1.GetMax();
+	s1.GetMin();
+
+	s1.Pop();
+
+
+	s1.GetMax();
+	s1.GetMin();
+
+	s1.Pop();
+
 	/*const double EPSILON = 0.0009765625;
 
 	SmartStack<float> ss;
