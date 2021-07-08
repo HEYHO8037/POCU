@@ -84,11 +84,11 @@ namespace assignment3
 		{
 			mMinStack.push(number);
 		}
+
 		mSumStack.push(mSumStack.top() + number);
 
-		variance = GetAverage() - mStack.top();
-		variance *= variance;
-		mVarianceStack.push(variance);
+		variance = pow(mStack.top(), 2);
+		mVarianceStack.push(mVarianceStack.top() + variance);
 	}
 
 	template<typename T>
@@ -116,16 +116,15 @@ namespace assignment3
 	template<typename T>
 	T SmartStack<T>::Peek()
 	{
+		
 		return mStack.top();
 	}
-
 
 	template<typename T>
 	T SmartStack<T>::GetMax()
 	{
 		return mMaxStack.top();
 	}
-
 
 	template<typename T>
 	T SmartStack<T>::GetMin()
@@ -151,8 +150,9 @@ namespace assignment3
 	template<typename T>
 	double SmartStack<T>::GetVariance()
 	{
-		mVarianceStack.top() /= mCount;
-		return mVarianceStack.top();
+		double variance;
+		variance = mVarianceStack.top() / mCount - pow(GetAverage(), 2);
+		return variance;
 	}
 
 	template<typename T>
