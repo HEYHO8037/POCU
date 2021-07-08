@@ -25,6 +25,10 @@ namespace assignment3
 		unsigned int GetCount();
 	private:
 		std::queue<T> mQueue;
+		std::queue<T> mMaxQueue;
+		std::queue<T> mMinQueue;
+		std::queue<T> mSumQueue;
+		std::queue<T> mVarianceQueue;
 		unsigned int mCount = 0;
 	};
 

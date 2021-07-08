@@ -28,11 +28,9 @@ namespace assignment3
 		std::stack<T> mMinStack;
 		std::stack<T> mSumStack;
 		std::stack<T> mVarianceStack;
-		double mVariance;
 		
 		unsigned int mCount = 0;
 	};
-
 
 	template<typename T>
 	SmartStack<T>::SmartStack()
@@ -49,21 +47,21 @@ namespace assignment3
 	{
 		mCount = smartStack.mCount;
 		mStack = smartStack.mStack;
+		mMaxStack = smartStack.mMaxStack;
+		mMinStack = smartStack.mMinStack;
+		mSumStack = smartStack.mSumStack;
+		mVarianceStack = smartStack.mVarianceStack;
 	}
 
 	template<typename T>
 	SmartStack<T>& SmartStack<T>::operator=(const SmartStack& smartStack)
 	{
-		if (mStack.size() != 0)
-		{
-			for (unsigned int length = 0; length < mCount; length++)
-			{
-				mStack.pop();
-			}
-		}
-
 		mCount = smartStack.mCount;
 		mStack = smartStack.mStack;
+		mMaxStack = smartStack.mMaxStack;
+		mMinStack = smartStack.mMinStack;
+		mSumStack = smartStack.mSumStack;
+		mVarianceStack = smartStack.mVarianceStack;
 
 		return *this;
 	}
@@ -72,6 +70,7 @@ namespace assignment3
 	void SmartStack<T>::Push(T number)
 	{
 		T variance;
+
 		mStack.push(number);
 		mCount++;
 
@@ -87,7 +86,7 @@ namespace assignment3
 
 		mSumStack.push(mSumStack.top() + number);
 
-		variance = pow(mStack.top(), 2);
+		variance = static_cast<T>(pow(mStack.top(), 2));
 		mVarianceStack.push(mVarianceStack.top() + variance);
 	}
 
@@ -95,6 +94,7 @@ namespace assignment3
 	T SmartStack<T>::Pop()
 	{
 		T saveNum = mStack.top();
+
 		mStack.pop();
 		mSumStack.pop();
 		mVarianceStack.pop();
@@ -116,7 +116,6 @@ namespace assignment3
 	template<typename T>
 	T SmartStack<T>::Peek()
 	{
-		
 		return mStack.top();
 	}
 
@@ -135,9 +134,9 @@ namespace assignment3
 	template<typename T>
 	double SmartStack<T>::GetAverage()
 	{
-		double average = GetSum();
+		double average = static_cast<double>(GetSum());
 		average /= mCount;
-
+		
 		return average;
 	}
 
@@ -158,16 +157,9 @@ namespace assignment3
 	template<typename T>
 	double SmartStack<T>::GetStandardDeviation()
 	{
-		double x = 2;
-		unsigned int rotation = 10;
-		double standardDeviation = GetVariance();
-
-		for (unsigned int length = 0; length < rotation; length++)
-		{
-			x = (x + (standardDeviation / x)) / 2;
-		}
-
-		return x;
+		double standardDeviation = sqrt(GetVariance());
+		
+		return standardDeviation;
 	}
 
 	template<typename T>
