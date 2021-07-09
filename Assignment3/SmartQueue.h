@@ -80,11 +80,11 @@ namespace assignment3
 			mMaxQueue.push(number);
 		}
 
-		if (!mMinQueue.empty() && mMinQueue.empty())
+		if (mMinQueue.empty())
 		{
 			mMinQueue.push(number);
 		}
-		else if (mMinQueue.back() >= number)
+		else if (!mMinQueue.empty() &&mMinQueue.back() >= number)
 		{
 			mMinQueue.push(number);
 		}

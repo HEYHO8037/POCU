@@ -9,11 +9,12 @@ using namespace assignment3;
 
 int main()
 {
-
+	SmartQueue<float> aa;
+	QueueStack<float> bb(3);
 
 	const double EPSILON = 0.0009765625;
 
-	SmartStack<int> ss;
+	SmartStack<float> ss;
 
 	ss.Push(3.4999f);
 	ss.Push(1.2f);
