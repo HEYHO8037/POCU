@@ -85,7 +85,7 @@ namespace assignment3
 
 		mSum += number;
 
-		mVariance += pow(mStack.top(), 2);
+		mVariance += static_cast<T>(pow(mStack.top(), 2));
 	}
 
 
@@ -98,7 +98,7 @@ namespace assignment3
 		mCount--;
 
 		mSum -= saveNum;
-		mVariance -= pow(saveNum, 2);
+		mVariance -= static_cast<T>(pow(saveNum, 2));
 
 		if (saveNum == mMaxStack.top())
 		{
@@ -134,10 +134,10 @@ namespace assignment3
 	template<typename T>
 	double SmartStack<T>::GetAverage()
 	{
-		double average = mSum;
+		T average = mSum;
 		average /= mCount;
 		
-		return average;
+		return static_cast<double>(average);
 	}
 
 	template<typename T>
@@ -149,8 +149,10 @@ namespace assignment3
 	template<typename T>
 	double SmartStack<T>::GetVariance()
 	{
+		T average = mSum / mCount;
+
 		double variance;
-		variance = mVariance / mCount - pow(GetAverage(), 2);
+		variance = mVariance / mCount - pow(average, 2);
 
 		return variance;
 	}
@@ -158,7 +160,10 @@ namespace assignment3
 	template<typename T>
 	double SmartStack<T>::GetStandardDeviation()
 	{
-		double standardDeviation = sqrt(GetVariance());
+		T average = mSum / mCount;
+		T variance = mVariance / mCount - pow(average, 2);
+
+		double standardDeviation = sqrt(variance);
 		
 		return standardDeviation;
 	}
