@@ -13,7 +13,7 @@ int main()
 
 	const double EPSILON = 0.0009765625;
 
-	SmartStack<float> ss;
+	SmartStack<int> ss;
 
 	ss.Push(3.4999f);
 	ss.Push(1.2f);

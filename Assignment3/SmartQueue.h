@@ -42,8 +42,8 @@ namespace assignment3
 		mQueue = smartQueue.mQueue;
 		mMaxQueue = smartQueue.mMaxQueue;
 		mMinQueue = smartQueue.mMinQueue;
-		mSum = smartStack.mSum;
-		mVariance = smartStack.mVariance;
+		mSum = smartQueue.mSum;
+		mVariance = smartQueue.mVariance;
 	}
 
 	template<typename T>
@@ -57,8 +57,8 @@ namespace assignment3
 		mQueue = smartQueue.mQueue;
 		mMaxQueue = smartQueue.mMaxQueue;
 		mMinQueue = smartQueue.mMinQueue;
-		mSum = smartStack.mSum;
-		mVariance = smartStack.mVariance;
+		mSum = smartQueue.mSum;
+		mVariance = smartQueue.mVariance;
 
 		return *this;
 	}

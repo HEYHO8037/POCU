@@ -84,6 +84,7 @@ namespace assignment3
 		mVariance += pow(mStack.top(), 2);
 	}
 
+
 	template<typename T>
 	T SmartStack<T>::Pop()
 	{
