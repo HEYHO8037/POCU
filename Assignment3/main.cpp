@@ -10,11 +10,20 @@ using namespace assignment3;
 int main()
 {
 	SmartQueue<float> aa;
+
+	aa.Enqueue(1.f);
+
+	aa.Dequeue();
+
 	QueueStack<float> bb(3);
 
-	const double EPSILON = 0.0009765625;
+	SmartStack<int> cc;
+	cc.Push(3);
+	cc.Pop();
 
-	SmartStack<float> ss;
+	/*const double EPSILON = 0.0009765625;
+
+	SmartStack<int> ss;
 
 	ss.Push(3.4999f);
 	ss.Push(1.2f);
@@ -51,5 +60,5 @@ int main()
 	assert(std::abs(ss.GetVariance() - 17.714) <= EPSILON);
 	assert(std::abs(ss.GetStandardDeviation() - 4.209) <= EPSILON);
 
-	return 0;
+	return 0;*/
 }
