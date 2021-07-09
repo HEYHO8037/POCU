@@ -24,9 +24,9 @@ namespace assignment3
 		double GetStandardDeviation();
 		unsigned int GetCount();
 	private:
-		std::queue<T> mQueue;
-		std::queue<T> mMaxQueue;
-		std::queue<T> mMinQueue;
+		std::queue<double> mQueue;
+		std::queue<double> mMaxQueue;
+		std::queue<double> mMinQueue;
 		T mSum;
 		T mVariance;
 	};
@@ -129,7 +129,7 @@ namespace assignment3
 	template<typename T>
 	double SmartQueue<T>::GetAverage()
 	{
-		T average = GetSum();
+		double average = GetSum();
 		average /= mQueue.size();
 
 		return average;
@@ -144,7 +144,7 @@ namespace assignment3
 	template<typename T>
 	double SmartQueue<T>::GetVariance()
 	{
-		T variance;
+		double variance;
 		variance = mVariance / mQueue.size() - pow(GetAverage(), 2);
 
 		return variance;

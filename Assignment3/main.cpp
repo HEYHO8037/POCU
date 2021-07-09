@@ -9,31 +9,8 @@ using namespace assignment3;
 
 int main()
 {
-	SmartQueue<double> m2;
-	SmartStack<double> m1;
-
-	m1.Push(10.51);
-
-	m1.Pop();
-
-	m1.Push(11.51);
-	m1.Push(13.51);
-
-	m1.GetSum();
-	m1.GetAverage();
-
-	m1.Pop();
-	m1.Pop();
-
-	m1.GetSum();
-	m1.GetAverage();
 
 
-
-
-
-
-	/*
 	const double EPSILON = 0.0009765625;
 
 	SmartStack<float> ss;
@@ -71,7 +48,7 @@ int main()
 	assert(std::abs(ss.GetSum() - 19.1853008f) <= EPSILON);
 	assert(std::abs(ss.GetAverage() - 2.398) <= EPSILON);
 	assert(std::abs(ss.GetVariance() - 17.714) <= EPSILON);
-	assert(std::abs(ss.GetStandardDeviation() - 4.209) <= EPSILON);*/
+	assert(std::abs(ss.GetStandardDeviation() - 4.209) <= EPSILON);
 
 	return 0;
 }
