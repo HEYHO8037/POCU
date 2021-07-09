@@ -25,8 +25,8 @@ namespace assignment3
 		unsigned int GetCount();
 	private:
 		std::queue<T> mQueue;
-		std::stack<T> mMaxStack;
-		std::stack<T> mMinStack;
+		std::queue<T> mMaxQueue;
+		std::queue<T> mMinQueue;
 		T mSum;
 		T mVariance;
 	};
@@ -34,24 +34,27 @@ namespace assignment3
 	template<typename T>
 	SmartQueue<T>::SmartQueue()
 	{
-		mMaxStack.push(std::numeric_limits<T>::lowest());
-		mMinStack.push(std::numeric_limits<T>::max());
 	}
 
 	template<typename T>
 	SmartQueue<T>::SmartQueue(const SmartQueue& smartQueue)
 	{
 		mQueue = smartQueue.mQueue;
-		mMaxStack = smartQueue.mMaxStack;
-		mMinStack = smartQueue.mMinStack;
+		mMaxQueue = smartQueue.mMaxQueue;
+		mMinQueue = smartQueue.mMinQueue;
 	}
 
 	template<typename T>
 	SmartQueue<T>& SmartQueue<T>::operator=(const SmartQueue& smartQueue)
 	{
+		if (this == &smartQueue)
+		{
+			return *this;
+		}
+
 		mQueue = smartQueue.mQueue;
-		mMaxStack = smartQueue.mMaxStack;
-		mMinStack = smartQueue.mMinStack;
+		mMaxQueue = smartQueue.mMaxQueue;
+		mMinQueue = smartQueue.mMinQueue;
 
 		return *this;
 	}
@@ -64,14 +67,14 @@ namespace assignment3
 		mSum += number;
 		mVariance += static_cast<T>(pow(number, 2));
 
-		if (mMaxStack.top() <= number)
+		if (mMaxQueue.back() <= number)
 		{
-			mMaxStack.push(number);
+			mMaxQueue.push(number);
 		}
 
-		if (mMinStack.top() >= number)
+		if (mMinQueue.back() >= number)
 		{
-			mMinStack.push(number);
+			mMinQueue.push(number);
 		}
 	}
 
@@ -83,14 +86,14 @@ namespace assignment3
 		mSum -= saveNum;
 		mVariance -= static_cast<T>(pow(saveNum, 2));
 
-		if (mMaxStack.top() == saveNum)
+		if (mMaxQueue.front() == saveNum)
 		{
-			mMaxStack.pop();
+			mMaxQueue.pop();
 		}
 
-		if (mMinStack.top() == saveNum)
+		if (mMinQueue.front() == saveNum)
 		{
-			mMinStack.pop();
+			mMinQueue.pop();
 		}
 
 		return saveNum;
@@ -105,20 +108,20 @@ namespace assignment3
 	template<typename T>
 	T SmartQueue<T>::GetMax()
 	{
-		return mMaxStack.top();
+		return mMaxQueue.front();
 	}
 
 
 	template<typename T>
 	T SmartQueue<T>::GetMin()
 	{
-		return mMinStack.top();
+		return mMinQueue.front();
 	}
 
 	template<typename T>
 	double SmartQueue<T>::GetAverage()
 	{
-		double average = static_cast<double>(GetSum());
+		T average = GetSum();
 		average /= mQueue.size();
 
 		return average;
@@ -133,7 +136,7 @@ namespace assignment3
 	template<typename T>
 	double SmartQueue<T>::GetVariance()
 	{
-		double variance;
+		T variance;
 		variance = mVariance / mQueue.size() - pow(GetAverage(), 2);
 
 		return variance;

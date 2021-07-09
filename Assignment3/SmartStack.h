@@ -48,6 +48,11 @@ namespace assignment3
 	template<typename T>
 	SmartStack<T>& SmartStack<T>::operator=(const SmartStack& smartStack)
 	{
+		if (this == &smartStack)
+		{
+			return *this;
+		}
+
 		mStack = smartStack.mStack;
 		mMaxStack = smartStack.mMaxStack;
 		mMinStack = smartStack.mMinStack;

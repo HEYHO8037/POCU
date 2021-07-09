@@ -9,6 +9,7 @@ using namespace assignment3;
 
 int main()
 {
+	SmartQueue<double> m2;
 	SmartStack<double> m1;
 
 	m1.Push(10.51);

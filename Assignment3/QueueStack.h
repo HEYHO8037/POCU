@@ -60,7 +60,7 @@ namespace assignment3
 	template<typename T>
 	QueueStack<T>& QueueStack<T>::operator=(const QueueStack& queueStack)
 	{
-		if (queueStack == *this)
+		if (&queueStack == this)
 		{
 			return *this;
 		}
