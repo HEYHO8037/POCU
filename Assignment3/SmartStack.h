@@ -26,8 +26,8 @@ namespace assignment3
 		std::stack<T> mStack;
 		std::stack<T> mMaxStack;
 		std::stack<T> mMinStack;
-		T mSum;
-		T mVariance;
+		T mSum = NULL;
+		T mVariance = NULL;
 	};
 
 	template<typename T>
@@ -119,7 +119,7 @@ namespace assignment3
 	template<typename T>
 	double SmartStack<T>::GetAverage()
 	{
-		double average = static_cast<double>(GetSum());
+		T average = mSum;
 		average /= mStack.size();
 		
 		return average;
@@ -134,7 +134,7 @@ namespace assignment3
 	template<typename T>
 	double SmartStack<T>::GetVariance()
 	{
-		double variance;
+		T variance;
 		variance = mVariance / mStack.size() - pow(GetAverage(), 2);
 
 		return variance;

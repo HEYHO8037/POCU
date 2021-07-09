@@ -25,8 +25,8 @@ namespace assignment3
 		unsigned int GetCount();
 	private:
 		std::queue<T> mQueue;
-		std::queue<T> mMaxQueue;
-		std::queue<T> mMinQueue;
+		std::stack<T> mMaxStack;
+		std::stack<T> mMinStack;
 		T mSum;
 		T mVariance;
 	};
@@ -34,22 +34,24 @@ namespace assignment3
 	template<typename T>
 	SmartQueue<T>::SmartQueue()
 	{
+		mMaxStack.push(std::numeric_limits<T>::lowest());
+		mMinStack.push(std::numeric_limits<T>::max());
 	}
 
 	template<typename T>
 	SmartQueue<T>::SmartQueue(const SmartQueue& smartQueue)
 	{
 		mQueue = smartQueue.mQueue;
-		mMaxQueue = smartQueue.mMaxQueue;
-		mMinQueue = smartQueue.mMinQueue;
+		mMaxStack = smartQueue.mMaxStack;
+		mMinStack = smartQueue.mMinStack;
 	}
 
 	template<typename T>
 	SmartQueue<T>& SmartQueue<T>::operator=(const SmartQueue& smartQueue)
 	{
 		mQueue = smartQueue.mQueue;
-		mMaxQueue = smartQueue.mMaxQueue;
-		mMinQueue = smartQueue.mMinQueue;
+		mMaxStack = smartQueue.mMaxStack;
+		mMinStack = smartQueue.mMinStack;
 
 		return *this;
 	}
@@ -62,22 +64,14 @@ namespace assignment3
 		mSum += number;
 		mVariance += static_cast<T>(pow(number, 2));
 
-		if (mMaxQueue.empty())
+		if (mMaxStack.top() <= number)
 		{
-			mMaxQueue.push(number);
-		}
-		else if (!mMaxQueue.empty() && mMaxQueue.front() <= number)
-		{
-			mMaxQueue.push(number);
+			mMaxStack.push(number);
 		}
 
-		if (mMinQueue.empty())
+		if (mMinStack.top() >= number)
 		{
-			mMinQueue.push(number);
-		}
-		else if (!mMaxQueue.empty() && mMinQueue.front() >= number)
-		{
-			mMinQueue.push(number);
+			mMinStack.push(number);
 		}
 	}
 
@@ -88,6 +82,16 @@ namespace assignment3
 		mQueue.pop();
 		mSum -= saveNum;
 		mVariance -= static_cast<T>(pow(saveNum, 2));
+
+		if (mMaxStack.top() == saveNum)
+		{
+			mMaxStack.pop();
+		}
+
+		if (mMinStack.top() == saveNum)
+		{
+			mMinStack.pop();
+		}
 
 		return saveNum;
 	}
@@ -101,28 +105,14 @@ namespace assignment3
 	template<typename T>
 	T SmartQueue<T>::GetMax()
 	{
-		if (mQueue.empty())
-		{
-			return std::numeric_limits<T>::lowest();
-		}
-		else
-		{
-			return mMaxQueue.back();
-		}
+		return mMaxStack.top();
 	}
 
 
 	template<typename T>
 	T SmartQueue<T>::GetMin()
 	{
-		if (mQueue.empty())
-		{
-			return std::numeric_limits<T>::max();
-		}
-		else
-		{
-			return mMinQueue.back();
-		}
+		return mMinStack.top();
 	}
 
 	template<typename T>

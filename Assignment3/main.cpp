@@ -9,37 +9,31 @@ using namespace assignment3;
 
 int main()
 {
-	
-	SmartStack<int> s1;
-	s1.Push(1);
-	s1.Push(1);
-	s1.Push(2);
-	s1.Push(3);
+	SmartStack<double> m1;
 
-	s1.GetMax();
-	s1.GetMin();
+	m1.Push(10.51);
 
-	s1.Pop();
+	m1.Pop();
 
+	m1.Push(11.51);
+	m1.Push(13.51);
 
-	s1.GetMax();
-	s1.GetMin();
+	m1.GetSum();
+	m1.GetAverage();
 
-	s1.Pop();
+	m1.Pop();
+	m1.Pop();
 
-
-	s1.GetMax();
-	s1.GetMin();
-
-	s1.Pop();
+	m1.GetSum();
+	m1.GetAverage();
 
 
-	s1.GetMax();
-	s1.GetMin();
 
-	s1.Pop();
 
-	/*const double EPSILON = 0.0009765625;
+
+
+	/*
+	const double EPSILON = 0.0009765625;
 
 	SmartStack<float> ss;
 
