@@ -67,12 +67,20 @@ namespace assignment3
 		mSum += number;
 		mVariance += static_cast<T>(pow(number, 2));
 
-		if (mMaxQueue.back() <= number)
+		if (mMaxQueue.empty())
+		{
+			mMaxQueue.push(number);
+		}
+		else if (mMaxQueue.back() <= number)
 		{
 			mMaxQueue.push(number);
 		}
 
-		if (mMinQueue.back() >= number)
+		if (mMinQueue.empty())
+		{
+			mMinQueue.push(number);
+		}
+		else if (mMinQueue.back() >= number)
 		{
 			mMinQueue.push(number);
 		}
