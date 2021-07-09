@@ -24,11 +24,11 @@ namespace assignment3
 		double GetStandardDeviation();
 		unsigned int GetCount();
 	private:
-		std::queue<double> mQueue;
-		std::queue<double> mMaxQueue;
-		std::queue<double> mMinQueue;
-		T mSum;
-		T mVariance;
+		std::queue<T> mQueue;
+		std::queue<T> mMaxQueue;
+		std::queue<T> mMinQueue;
+		T mSum = NULL;
+		double mVariance = NULL;
 	};
 
 	template<typename T>
@@ -42,6 +42,8 @@ namespace assignment3
 		mQueue = smartQueue.mQueue;
 		mMaxQueue = smartQueue.mMaxQueue;
 		mMinQueue = smartQueue.mMinQueue;
+		mSum = smartStack.mSum;
+		mVariance = smartStack.mVariance;
 	}
 
 	template<typename T>
@@ -55,6 +57,8 @@ namespace assignment3
 		mQueue = smartQueue.mQueue;
 		mMaxQueue = smartQueue.mMaxQueue;
 		mMinQueue = smartQueue.mMinQueue;
+		mSum = smartStack.mSum;
+		mVariance = smartStack.mVariance;
 
 		return *this;
 	}
@@ -65,18 +69,18 @@ namespace assignment3
 	{
 		mQueue.push(number);
 		mSum += number;
-		mVariance += static_cast<T>(pow(number, 2));
+		mVariance += pow(number, 2);
 
 		if (mMaxQueue.empty())
 		{
 			mMaxQueue.push(number);
 		}
-		else if (mMaxQueue.back() <= number)
+		else if (!mMaxQueue.empty() && mMaxQueue.back() <= number)
 		{
 			mMaxQueue.push(number);
 		}
 
-		if (mMinQueue.empty())
+		if (!mMinQueue.empty() && mMinQueue.empty())
 		{
 			mMinQueue.push(number);
 		}
@@ -90,9 +94,11 @@ namespace assignment3
 	T SmartQueue<T>::Dequeue()
 	{
 		T saveNum = mQueue.front();
+
 		mQueue.pop();
 		mSum -= saveNum;
-		mVariance -= static_cast<T>(pow(saveNum, 2));
+
+		mVariance -= pow(saveNum, 2);
 
 		if (mMaxQueue.front() == saveNum)
 		{

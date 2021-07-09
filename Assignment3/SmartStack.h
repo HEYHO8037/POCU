@@ -23,11 +23,11 @@ namespace assignment3
 		double GetStandardDeviation();
 		unsigned int GetCount();
 	private:
-		std::stack<double> mStack;
-		std::stack<double> mMaxStack;
-		std::stack<double> mMinStack;
+		std::stack<T> mStack;
+		std::stack<T> mMaxStack;
+		std::stack<T> mMinStack;
 		T mSum = NULL;
-		T mVariance = NULL;
+		double mVariance = NULL;
 	};
 
 	template<typename T>
@@ -43,6 +43,8 @@ namespace assignment3
 		mStack = smartStack.mStack;
 		mMaxStack = smartStack.mMaxStack;
 		mMinStack = smartStack.mMinStack;
+		mSum = smartStack.mSum;
+		mVariance = smartStack.mVariance;
 	}
 
 	template<typename T>
@@ -56,6 +58,8 @@ namespace assignment3
 		mStack = smartStack.mStack;
 		mMaxStack = smartStack.mMaxStack;
 		mMinStack = smartStack.mMinStack;
+		mSum = smartStack.mSum;
+		mVariance = smartStack.mVariance;
 
 		return *this;
 	}
@@ -77,7 +81,7 @@ namespace assignment3
 
 		mSum += number;
 
-		mVariance += static_cast<T>(pow(mStack.top(), 2));
+		mVariance += pow(mStack.top(), 2);
 	}
 
 	template<typename T>
@@ -88,7 +92,7 @@ namespace assignment3
 		mStack.pop();
 
 		mSum -= saveNum;
-		mVariance -= static_cast<T>(pow(saveNum, 2));
+		mVariance -= pow(saveNum, 2);
 
 		if (saveNum == mMaxStack.top())
 		{
