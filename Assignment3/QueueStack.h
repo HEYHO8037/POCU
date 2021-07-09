@@ -13,7 +13,7 @@ namespace assignment3
 		QueueStack(const QueueStack& queueStack);
 		QueueStack& operator=(const QueueStack& queueStack);
 		~QueueStack();
-		void Enqueue(T number);
+		void Enqueue(const T& number);
 		T Dequeue();
 		T Peek();
 		T GetMax();
@@ -106,7 +106,7 @@ namespace assignment3
 
 
 	template<typename T>
-	void QueueStack<T>::Enqueue(T number)
+	void QueueStack<T>::Enqueue(const T& number)
 	{
 		if (mStack == nullptr)
 		{

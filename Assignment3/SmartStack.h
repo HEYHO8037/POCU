@@ -12,7 +12,7 @@ namespace assignment3
 		SmartStack();
 		SmartStack(const SmartStack& smartStack);
 		SmartStack& operator=(const SmartStack& smartStack);
-		void Push(T number);
+		void Push(const T& number);
 		T Pop();
 		T Peek();
 		T GetMax();
@@ -23,11 +23,11 @@ namespace assignment3
 		double GetStandardDeviation();
 		unsigned int GetCount();
 	private:
-		std::stack<double> mStack;
-		std::stack<double> mMaxStack;
-		std::stack<double> mMinStack;
-		double mSum = NULL;
-		double mVariance = NULL;
+		std::stack<T> mStack;
+		std::stack<T> mMaxStack;
+		std::stack<T> mMinStack;
+		T mSum = NULL;
+		T mVariance = NULL;
 		unsigned int mCount = 0;
 	};
 
@@ -68,22 +68,22 @@ namespace assignment3
 	}
 
 	template<typename T>
-	void SmartStack<T>::Push(T number)
+	void SmartStack<T>::Push(const T& number)
 	{
-		mStack.push(static_cast<double>(number));
+		mStack.push(number);
 		mCount++;
 
 		if (number >= mMaxStack.top())
 		{
-			mMaxStack.push(static_cast<double>(number));
+			mMaxStack.push(number);
 		}
 
 		if (number <= mMinStack.top())
 		{
-			mMinStack.push(static_cast<double>(number));
+			mMinStack.push(number);
 		}
 
-		mSum += static_cast<double>(number);
+		mSum += number;
 
 		mVariance += pow(mStack.top(), 2);
 	}
@@ -92,7 +92,7 @@ namespace assignment3
 	template<typename T>
 	T SmartStack<T>::Pop()
 	{
-		double saveNum = mStack.top();
+		T saveNum = mStack.top();
 
 		mStack.pop();
 		mCount--;
@@ -110,25 +110,25 @@ namespace assignment3
 			mMinStack.pop();
 		}
 
-		return static_cast<T>(saveNum);
+		return saveNum;
 	}
 
 	template<typename T>
 	T SmartStack<T>::Peek()
 	{
-		return static_cast<T>(mStack.top());
+		return mStack.top();
 	}
 
 	template<typename T>
 	T SmartStack<T>::GetMax()
 	{
-		return static_cast<T>(mMaxStack.top());
+		return mMaxStack.top();
 	}
 
 	template<typename T>
 	T SmartStack<T>::GetMin()
 	{
-		return static_cast<T>(mMinStack.top());
+		return mMinStack.top();
 	}
 
 	template<typename T>
@@ -143,7 +143,7 @@ namespace assignment3
 	template<typename T>
 	T SmartStack<T>::GetSum()
 	{
-		return static_cast<T>(mSum);
+		return mSum;
 	}
 
 	template<typename T>
