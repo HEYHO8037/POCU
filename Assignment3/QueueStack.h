@@ -80,7 +80,7 @@ namespace assignment3
 		mCount = queueStack.mCount;
 		mMaxStackSize = queueStack.mMaxStackSize;
 
-		while (! saveQueue.empty())
+		while (!saveQueue.empty())
 		{
 			mStack = saveQueue.front();
 			saveStack = *mStack;
@@ -172,11 +172,11 @@ namespace assignment3
 		}
 		else
 		{
-			while(!saveQueue.empty())
+			while (!saveQueue.empty())
 			{
 				mStack = saveQueue.front();
 				saveStack = *mStack;
-	
+
 				for (unsigned int innerLength = 0; innerLength < mStack->size(); innerLength++)
 				{
 					if (max < saveStack.top())
@@ -210,7 +210,7 @@ namespace assignment3
 		}
 		else
 		{
-			while (! saveQueue.empty())
+			while (!saveQueue.empty())
 			{
 				mStack = saveQueue.front();
 				saveStack = *mStack;

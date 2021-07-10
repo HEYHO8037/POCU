@@ -40,8 +40,6 @@ namespace assignment3
 	SmartQueue<T>::SmartQueue(const SmartQueue& smartQueue)
 	{
 		mCount = smartQueue.mCount;
-		mMax = smartQueue.mMax;
-		mMin = smartQueue.mMin;
 		mSum = smartQueue.mSum;
 		mVariance = smartQueue.mVariance;
 	}
@@ -55,8 +53,6 @@ namespace assignment3
 		}
 
 		mCount = smartQueue.mCount;
-		mMax = smartQueue.mMax;
-		mMin = smartQueue.mMin;
 		mSum = smartQueue.mSum;
 		mVariance = smartQueue.mVariance;
 
