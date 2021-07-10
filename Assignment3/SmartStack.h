@@ -134,7 +134,7 @@ namespace assignment3
 	template<typename T>
 	double SmartStack<T>::GetAverage()
 	{
-		double average = mSum;
+		double average = static_cast<double>(mSum);
 		average /= mCount;
 		
 		return average;
@@ -150,7 +150,7 @@ namespace assignment3
 	double SmartStack<T>::GetVariance()
 	{
 		double variance;
-		variance = mVariance / mCount - pow(GetAverage(), 2);
+		variance = mVastatic_cast<double>(mVariance) / mCount - pow(GetAverage(), 2);
 
 		return variance;
 	}
