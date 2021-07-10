@@ -131,7 +131,7 @@ namespace assignment3
 	{
 		if (mCount == 0)
 		{
-			return std::numeric_limits<T>::max());
+			return std::numeric_limits<T>::max();
 		}
 		else
 		{
