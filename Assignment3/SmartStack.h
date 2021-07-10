@@ -110,6 +110,12 @@ namespace assignment3
 			mMinStack.pop();
 		}
 
+		if (mCount == 0)
+		{
+			mSum = NULL;
+			mVariance = NULL;
+		}
+
 		return saveNum;
 	}
 
