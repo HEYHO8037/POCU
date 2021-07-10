@@ -27,7 +27,7 @@ namespace assignment3
 		std::stack<T> mMaxStack;
 		std::stack<T> mMinStack;
 		T mSum = NULL;
-		T mVariance = NULL;
+		double mVariance = NULL;
 		unsigned int mCount = 0;
 	};
 
@@ -85,7 +85,7 @@ namespace assignment3
 
 		mSum += number;
 
-		mVariance += static_cast<T>(pow(mStack.top(), 2));
+		mVariance += pow(mStack.top(), 2);
 	}
 
 
@@ -98,7 +98,7 @@ namespace assignment3
 		mCount--;
 
 		mSum -= saveNum;
-		mVariance -= static_cast<T>(pow(saveNum, 2));
+		mVariance -= pow(saveNum, 2);
 
 		if (saveNum == mMaxStack.top())
 		{
@@ -156,7 +156,7 @@ namespace assignment3
 	double SmartStack<T>::GetVariance()
 	{
 		double variance;
-		variance = static_cast<double>(mVariance) / mCount - pow(GetAverage(), 2);
+		variance = mVariance / mCount - pow(GetAverage(), 2);
 
 		return variance;
 	}
