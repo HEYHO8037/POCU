@@ -150,7 +150,7 @@ namespace assignment3
 	double SmartStack<T>::GetVariance()
 	{
 		double variance;
-		variance = mVastatic_cast<double>(mVariance) / mCount - pow(GetAverage(), 2);
+		variance = static_cast<double>(mVariance) / mCount - pow(GetAverage(), 2);
 
 		return variance;
 	}
