@@ -157,10 +157,8 @@ namespace assignment3
 
 	template<typename T>
 	double SmartStack<T>::GetStandardDeviation()
-	{
-		double standardDeviation = sqrt(GetVariance());
-		
-		return standardDeviation;
+	{	
+		return sqrt(GetVariance());
 	}
 
 	template<typename T>
