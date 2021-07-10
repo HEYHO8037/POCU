@@ -33,6 +33,7 @@ namespace assignment3
 
 	template<typename T>
 	SmartStack<T>::SmartStack()
+		: mCount(0)
 	{
 		mMaxStack.push(std::numeric_limits<T>::lowest());
 		mMinStack.push(std::numeric_limits<T>::max());
