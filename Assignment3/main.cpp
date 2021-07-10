@@ -9,17 +9,32 @@ using namespace assignment3;
 
 int main()
 {
-	SmartQueue<float> aa;
+	SmartQueue<double> aa;
 
-	aa.Enqueue(1.f);
-
+	aa.GetMax();
+	aa.GetMin();
+	aa.Enqueue(8.43);
+	aa.Enqueue(19.32);
+	aa.Enqueue(10.23);
+	aa.GetMin();
+	aa.GetMax();
+	
 	aa.Dequeue();
 
-	QueueStack<float> bb(3);
+	aa.GetMin();
+	aa.GetMax();
+	
+	aa.Dequeue();
 
-	SmartStack<int> cc;
-	cc.Push(3);
-	cc.Pop();
+	aa.GetMin();
+	aa.GetMax();
+
+	aa.Dequeue();
+	
+	aa.GetMax();
+	aa.GetMin();
+
+	QueueStack<float> bb(3);
 
 	/*const double EPSILON = 0.0009765625;
 

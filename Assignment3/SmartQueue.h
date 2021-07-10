@@ -25,9 +25,9 @@ namespace assignment3
 		unsigned int GetCount();
 	private:
 		std::queue<T> mQueue;
-		std::priority_queue<T> mMaxQueue;
-		std::priority_queue<T, std::vector<T>, std::greater<T>> mMinQueue;
 		T mSum = NULL;
+		T mMax = NULL;
+		T mMin = NULL;
 		double mVariance = NULL;
 		unsigned int mCount = 0;
 	};
@@ -36,14 +36,16 @@ namespace assignment3
 	SmartQueue<T>::SmartQueue()
 		: mCount(0)
 	{
+		mMax = std::numeric_limits<T>::lowest();
+		mMin = std::numeric_limits<T>::max();
 	}
 
 	template<typename T>
 	SmartQueue<T>::SmartQueue(const SmartQueue& smartQueue)
 	{
 		mCount = smartQueue.mCount;
-		mMaxQueue = smartQueue.mMaxQueue;
-		mMinQueue = smartQueue.mMinQueue;
+		mMax = smartQueue.mMax;
+		mMin = smartQueue.mMin;
 		mSum = smartQueue.mSum;
 		mVariance = smartQueue.mVariance;
 	}
@@ -57,8 +59,8 @@ namespace assignment3
 		}
 
 		mCount = smartQueue.mCount;
-		mMaxQueue = smartQueue.mMaxQueue;
-		mMinQueue = smartQueue.mMinQueue;
+		mMax = smartQueue.mMax;
+		mMin = smartQueue.mMin;
 		mSum = smartQueue.mSum;
 		mVariance = smartQueue.mVariance;
 
@@ -70,8 +72,7 @@ namespace assignment3
 	void SmartQueue<T>::Enqueue(const T& number)
 	{
 		mQueue.push(number);
-		mMaxQueue.push(number);
-		mMinQueue.push(number);
+
 		mSum += number;
 		mVariance += pow(number, 2);
 		mCount++;
@@ -81,20 +82,11 @@ namespace assignment3
 	T SmartQueue<T>::Dequeue()
 	{
 		T saveTemplate = mQueue.front();
+
 		mQueue.pop();
 		mSum -= saveTemplate;
 		mVariance -= pow(saveTemplate, 2);
 		mCount--;
-
-		if (mMaxQueue.top() == saveTemplate)
-		{
-			mMaxQueue.pop();
-		}
-
-		if (mMinQueue.top() == saveTemplate)
-		{
-			mMinQueue.pop();
-		}
 
 		if (mCount == 0)
 		{
@@ -111,32 +103,43 @@ namespace assignment3
 		return mQueue.front();
 	}
 
-
 	template<typename T>
 	T SmartQueue<T>::GetMax()
 	{
-		if (mCount == 0)
+		mMax = std::numeric_limits<T>::lowest();
+		std::queue<T> saveQueue = mQueue;
+
+		while (!saveQueue.empty())
 		{
-			return std::numeric_limits<T>::lowest();
+			if (saveQueue.front() >= mMax)
+			{
+				mMax = saveQueue.front();
+			}
+
+			saveQueue.pop();
 		}
-		else
-		{
-			return mMaxQueue.top();
-		}
+
+		return mMax;
 	}
 
 
 	template<typename T>
 	T SmartQueue<T>::GetMin()
 	{
-		if (mCount == 0)
+		mMin = std::numeric_limits<T>::max();
+		std::queue<T> saveQueue = mQueue;
+		
+		while (!saveQueue.empty())
 		{
-			return std::numeric_limits<T>::max();
+			if (saveQueue.front() <= mMin)
+			{
+				mMin = saveQueue.front();
+			}
+
+			saveQueue.pop();
 		}
-		else
-		{
-			return mMinQueue.top();
-		}
+
+		return mMin;
 	}
 
 	template<typename T>
