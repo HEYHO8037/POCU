@@ -85,7 +85,7 @@ namespace assignment3
 
 		mSum += number;
 
-		mVariance += static_cast<T>(pow(mStack.top(), 2);
+		mVariance += static_cast<T>(pow(mStack.top(), 2));
 	}
 
 
