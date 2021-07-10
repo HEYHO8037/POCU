@@ -26,7 +26,7 @@ namespace assignment3
 	private:
 		std::queue<T> mQueue;
 		std::priority_queue<T> mMaxQueue;
-		std::priority_queue<T, std::vector<T>, greater<T>> mMinQueue;
+		std::priority_queue<T, std::vector<T>, std::greater<T>> mMinQueue;
 		T mSum = NULL;
 		double mVariance = NULL;
 		unsigned int mCount = 0;
@@ -143,7 +143,7 @@ namespace assignment3
 	double SmartQueue<T>::GetAverage()
 	{
 		double average = static_cast<double>(mSum);
-		average /= count;
+		average /= mCount;
 
 		return average;
 	}
