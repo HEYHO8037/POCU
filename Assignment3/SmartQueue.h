@@ -26,8 +26,6 @@ namespace assignment3
 	private:
 		std::queue<T> mQueue;
 		T mSum = NULL;
-		T mMax = NULL;
-		T mMin = NULL;
 		double mVariance = NULL;
 		unsigned int mCount = 0;
 	};
@@ -36,8 +34,6 @@ namespace assignment3
 	SmartQueue<T>::SmartQueue()
 		: mCount(0)
 	{
-		mMax = std::numeric_limits<T>::lowest();
-		mMin = std::numeric_limits<T>::max();
 	}
 
 	template<typename T>
@@ -106,7 +102,7 @@ namespace assignment3
 	template<typename T>
 	T SmartQueue<T>::GetMax()
 	{
-		mMax = std::numeric_limits<T>::lowest();
+		T mMax = std::numeric_limits<T>::lowest();
 		std::queue<T> saveQueue = mQueue;
 
 		while (!saveQueue.empty())
@@ -126,7 +122,7 @@ namespace assignment3
 	template<typename T>
 	T SmartQueue<T>::GetMin()
 	{
-		mMin = std::numeric_limits<T>::max();
+		T mMin = std::numeric_limits<T>::max();
 		std::queue<T> saveQueue = mQueue;
 		
 		while (!saveQueue.empty())
