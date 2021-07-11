@@ -24,6 +24,7 @@ int main()
 	bb.Enqueue(5.0);
 
 	bb.GetCount();
+	bb.GetMax();
 	bb.Dequeue();
 	bb.GetCount();
 	bb.GetSum();
