@@ -41,7 +41,6 @@ namespace assignment3
 		mQueue = queueStack.mQueue;
 		mMaxStackSize = queueStack.mMaxStackSize;
 		mCount = queueStack.mCount;
-		mSum = queueStack.mSum;
 	}
 
 	template<typename T>
@@ -55,7 +54,6 @@ namespace assignment3
 		mQueue = queueStack.mQueue;
 		mMaxStackSize = queueStack.mMaxStackSize;
 		mCount = queueStack.mCount;
-		mSum = queueStack.mSum;
 
 		return *this;
 	}
@@ -74,13 +72,11 @@ namespace assignment3
 			std::stack<T> saveStack;
 			saveStack.push(number);
 			mQueue.push(saveStack);
-			mSum += number;
 			mCount++;
 		}
 		else
 		{
 			mQueue.back().push(number);
-			mSum += number;
 			mCount++;
 		}
 	}
@@ -90,7 +86,6 @@ namespace assignment3
 	{
 		T saveNumber = mQueue.front().top();
 		mQueue.front().pop();
-		mSum -= saveNumber;
 		mCount--;
 
 		if (mQueue.front().size() == 0)
@@ -98,11 +93,6 @@ namespace assignment3
 			mQueue.pop();
 		}
 
-		if (mQueue.empty())
-		{
-			mSum = NULL;
-			mCount = 0;
-		}
 
 		return saveNumber;
 	}
