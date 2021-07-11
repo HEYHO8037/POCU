@@ -159,7 +159,7 @@ namespace assignment3
 	template<typename T>
 	double QueueStack<T>::GetAverage()
 	{
-		double average = GetSum / mCount;
+		double average = GetSum() / mCount;
 
 		return average;
 	}
