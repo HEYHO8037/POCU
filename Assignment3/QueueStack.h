@@ -38,7 +38,9 @@ namespace assignment3
 	template<typename T>
 	QueueStack<T>::QueueStack(const QueueStack& queueStack)
 	{
-		
+		mQueue = queueStack.mQueue;
+		mMaxStackSize = queueStack.mMaxStackSize;
+		mCount = queueStack.mCount;
 	}
 
 	template<typename T>
@@ -49,7 +51,9 @@ namespace assignment3
 			return *this;
 		}
 
-		
+		mQueue = queueStack.mQueue;
+		mMaxStackSize = queueStack.mMaxStackSize;
+		mCount = queueStack.mCount;
 
 		return *this;
 	}
@@ -57,7 +61,6 @@ namespace assignment3
 	template<typename T>
 	QueueStack<T>::~QueueStack()
 	{
-		
 	}
 
 
