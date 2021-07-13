@@ -15,7 +15,7 @@ namespace lab9
 
 	private:
 		ObjectPool(const ObjectPool& objectPool);
-		ObjectPool operator=(const ObjectPool& obejctPool) = default;
+		ObjectPool& operator=(const ObjectPool& obejctPool);
 
 		unsigned int mMaxPoolSize;
 		T** mObjectArray;
