@@ -10,8 +10,8 @@ namespace lab9
 		~ObjectPool();
 		T* Get();
 		void Return(T* pT);
-		size_t GetFreeObjectCount();
-		size_t GetMaxFreeObjectCount();
+		size_t GetFreeObjectCount() const;
+		size_t GetMaxFreeObjectCount() const;
 
 	private:
 		ObjectPool(const ObjectPool& objectPool);
@@ -79,13 +79,13 @@ namespace lab9
 	}
 
 	template<typename T>
-	size_t ObjectPool<T>::GetFreeObjectCount()
+	size_t ObjectPool<T>::GetFreeObjectCount() const
 	{
 		return mCount;
 	}
 
 	template<typename T>
-	size_t ObjectPool<T>::GetMaxFreeObjectCount()
+	size_t ObjectPool<T>::GetMaxFreeObjectCount() const
 	{
 		return (mMaxPoolSize - mCount);
 	}
