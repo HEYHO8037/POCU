@@ -11,10 +11,10 @@ namespace lab9
 
 	Game::~Game()
 	{
-		for (auto it = mActiveGameObjects.begin(); it != mActiveGameObjects.end(); ++it)
-		{
-			delete (*it);
-		}
+		//for (auto it = mActiveGameObjects.begin(); it != mActiveGameObjects.end(); ++it)
+		//{
+		//	delete (*it);
+		//}
 
 		mActiveGameObjects.clear();
 
@@ -40,14 +40,13 @@ namespace lab9
 			if (!iceCube->IsActive())
 			{
 				it = mActiveGameObjects.erase(it);
+				mObjectPool->Get();
 				delete iceCube;
 				continue;
 			}
 
 			++it;
 		}
-
-
 	}
 
 	const std::vector<IceCube*>& Game::GetActiveGameObjects() const

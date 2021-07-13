@@ -35,7 +35,12 @@ namespace lab9
 	template<typename T>
 	ObjectPool<T>::~ObjectPool()
 	{
+		for (unsigned int length = 0; length < mCount; length++)
+		{
+			delete mObjectArray[length];
+		}
 
+		delete[] mObjectArray;
 	}
 
 	template<typename T>
@@ -66,9 +71,11 @@ namespace lab9
 		{
 			delete pT;
 		}
-
-		mObjectArray[mCount] = pT;
-		mCount++;
+		else
+		{
+			mObjectArray[mCount] = pT;
+			mCount++;
+		}
 	}
 
 	template<typename T>
