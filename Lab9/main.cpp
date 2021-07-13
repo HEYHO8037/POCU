@@ -7,6 +7,7 @@ using namespace lab9;
 
 int main()
 {
+
 	ObjectPool<IceCube> pool(3);
 
 	assert(pool.GetMaxFreeObjectCount() == 3);
