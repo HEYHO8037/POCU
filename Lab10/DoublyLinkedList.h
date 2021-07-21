@@ -127,13 +127,13 @@ namespace lab10
 				saveNode = saveNode->Next;
 			}
 
-			if (findCount == 0)
+			if (saveNode->Previous.expired())
 			{
 				mNode = saveNode->Next;
 				saveNode->Previous.reset();
 				mCount--;
 			}
-			else if (findCount == delCount)
+			else if (!saveNode->Next)
 			{
 				saveNode->Previous.lock()->Next.reset();
 				mCount--;
@@ -158,15 +158,13 @@ namespace lab10
 	template<typename T>
 	bool DoublyLinkedList<T>::Search(const T& data) const
 	{
-		bool bSearch = false;
 		std::shared_ptr<Node<T>> findNode = mNode;
 
 		while (findNode != nullptr)
 		{
 			if (*findNode->Data == data)
 			{
-				bSearch = true;
-				break;
+				return true;
 			}
 			else
 			{
@@ -174,14 +172,7 @@ namespace lab10
 			}
 		}
 
- 		if (bSearch)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return false;
 	}
 
 	template<typename T>
