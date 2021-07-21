@@ -63,7 +63,7 @@ namespace lab10
 		
 		std::shared_ptr<Node<T>> saveNode = mNode;
 
-		if (index > mCount)
+		if (index >= mCount)
 		{
 			Insert(std::move(data));
 		}
