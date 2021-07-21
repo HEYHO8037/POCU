@@ -23,18 +23,18 @@ namespace lab10
 
 	private:
 		std::shared_ptr<Node<T>> mNode;
-		unsigned int mCount = 0;
+		unsigned int mCount;
 	};
 
 	template<typename T>
 	DoublyLinkedList<T>::DoublyLinkedList()
+		: mCount(0), mNode(nullptr)
 	{
 	}
 
 	template<typename T>
 	void DoublyLinkedList<T>::Insert(std::unique_ptr<T> data)
 	{
-
 		std::shared_ptr<Node<T>> saveNode = mNode;
 		std::shared_ptr<Node<T>> savePrevious;
 
@@ -71,17 +71,27 @@ namespace lab10
 		{
 			std::shared_ptr<Node<T>> findNode = std::make_shared<Node<T>>(std::move(data));
 
-			for (unsigned int length = 0; length < (index-1); length++)
+			if (index == 0)
 			{
-				saveNode = saveNode->Next;
+				findNode->Next = mNode;
+				mNode->Previous = findNode;
+				mNode = findNode;
+				mCount++;
 			}
+			else
+			{
+				for (unsigned int length = 0; length < (index - 1); length++)
+				{
+					saveNode = saveNode->Next;
+				}
 
-			findNode->Next = saveNode->Next;
-			saveNode->Next->Previous = findNode;
-			saveNode->Next = findNode;
-			findNode->Previous = saveNode;
+				findNode->Next = saveNode->Next;
+				saveNode->Next->Previous = findNode;
+				saveNode->Next = findNode;
+				findNode->Previous = saveNode;
 
-			mCount++;
+				mCount++;
+			}
 		}
 	}
 
@@ -89,8 +99,8 @@ namespace lab10
 	bool DoublyLinkedList<T>::Delete(const T& data)
 	{
 		std::shared_ptr<Node<T>> saveNode = mNode;
-		unsigned int findCount = 0;
 		std::shared_ptr<Node<T>> findNode;
+		unsigned int findCount = 0;
 		bool bAlive = false;
 
 		while (saveNode != nullptr)
@@ -116,12 +126,25 @@ namespace lab10
 				saveNode = saveNode->Next;
 			}
 
-			findNode = saveNode->Previous.lock();
+			if (findCount == 0)
+			{
+				mNode = saveNode->Next;
+				saveNode->Previous.reset();
+				mCount--;
+			}
+			else if (findCount == mCount-1)
+			{
+				saveNode->Previous.lock()->Next.reset();
+				mCount--;
+			}
+			else
+			{
+				findNode = saveNode->Previous.lock();
+				saveNode->Previous.lock()->Next = saveNode->Next;
+				saveNode->Next->Previous = findNode;
 
-			saveNode->Previous.lock()->Next = saveNode->Next;
-			saveNode->Next->Previous.lock() = saveNode->Previous.lock();
-			saveNode.reset();
-			mCount--;
+				mCount--;
+			}
 
 			return true;
 		}
@@ -183,6 +206,6 @@ namespace lab10
 	template<typename T>
 	unsigned int DoublyLinkedList<T>::GetLength() const
 	{
-		return mCount;;
+		return mCount;
 	}
 }
