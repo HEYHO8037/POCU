@@ -100,6 +100,7 @@ namespace lab10
 	{
 		std::shared_ptr<Node<T>> saveNode = mNode;
 		std::shared_ptr<Node<T>> findNode;
+		unsigned int delCount = mCount - 1;
 		unsigned int findCount = 0;
 		bool bAlive = false;
 
@@ -132,7 +133,7 @@ namespace lab10
 				saveNode->Previous.reset();
 				mCount--;
 			}
-			else if (findCount == mCount-1)
+			else if (findCount == delCount)
 			{
 				saveNode->Previous.lock()->Next.reset();
 				mCount--;
@@ -157,14 +158,14 @@ namespace lab10
 	template<typename T>
 	bool DoublyLinkedList<T>::Search(const T& data) const
 	{
-		bool bAlive = false;
+		bool bSearch = false;
 		std::shared_ptr<Node<T>> findNode = mNode;
 
 		while (findNode != nullptr)
 		{
 			if (*findNode->Data == data)
 			{
-				bAlive = true;
+				bSearch = true;
 				break;
 			}
 			else
@@ -173,7 +174,7 @@ namespace lab10
 			}
 		}
 
- 		if (bAlive == true)
+ 		if (bSearch)
 		{
 			return true;
 		}
