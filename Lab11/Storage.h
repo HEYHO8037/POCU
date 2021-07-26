@@ -61,6 +61,7 @@ namespace lab11
 		mArray = std::move(storage.mArray);
 		mLength = storage.mLength;
 		storage.mLength = 0;
+		storage.mArray = nullptr;
 	}
 
 	template<typename T>
