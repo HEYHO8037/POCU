@@ -15,6 +15,7 @@ namespace lab11
 
 
 		Storage& operator=(const Storage& storage);
+		Storage& operator=(Storage&& storage);
 		bool Update(unsigned int index, const T& data);
 		const std::unique_ptr<T[]>& GetData() const;
 		unsigned int GetSize() const;
@@ -61,7 +62,6 @@ namespace lab11
 		mArray = std::move(storage.mArray);
 		mLength = storage.mLength;
 		storage.mLength = 0;
-		storage.mArray = nullptr;
 	}
 
 	template<typename T>
@@ -79,6 +79,24 @@ namespace lab11
 		{
 			mArray[myLength] = storage.mArray[myLength];
 		}
+
+		return *this;
+	}
+
+	template<typename T>
+	Storage<T>& Storage<T>::operator=(Storage&& storage)
+	{
+		if (this == &storage)
+		{
+			return *this;
+		}
+		
+		mArray.reset();
+
+		mLength = storage.mLength;
+		mArray = std::move(storage.mArray);
+
+		storage.mLength = 0;
 
 		return *this;
 	}
