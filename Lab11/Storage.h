@@ -32,7 +32,7 @@ namespace lab11
 
 		for (unsigned int myLength = 0; myLength < length; myLength++)
 		{
-			mArray[myLength] = 0;
+			mArray[myLength] = NULL;
 		}
 	}
 
@@ -71,7 +71,7 @@ namespace lab11
 	template<typename T>
 	Storage<T>& Storage<T>::operator=(const Storage& storage)
 	{
-		if (this == *stoarge)
+		if (this == &storage)
 		{
 			return *this;
 		}
