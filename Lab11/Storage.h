@@ -29,11 +29,6 @@ namespace lab11
 	{
 		mArray = std::make_unique<T[]>(length);
 		mLength = length;
-
-		for (unsigned int myLength = 0; myLength < length; myLength++)
-		{
-			mArray[myLength] = NULL;
-		}
 	}
 
 	template<typename T>
