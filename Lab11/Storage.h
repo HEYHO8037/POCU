@@ -10,7 +10,11 @@ namespace lab11
 	public:
 		Storage(unsigned int length);
 		Storage(unsigned int length, const T& initialValue);
+		Storage(const Storage& storage);
 		Storage(Storage&& storage);
+
+
+		Storage& operator=(const Storage& storage);
 		bool Update(unsigned int index, const T& data);
 		const std::unique_ptr<T[]>& GetData() const;
 		unsigned int GetSize() const;
@@ -45,11 +49,42 @@ namespace lab11
 	}
 
 	template<typename T>
+	Storage<T>::Storage(const Storage& storage)
+	{
+		mLength = storage.mLength;
+		mArray = std::make_unique<T[]>(mLength);
+
+		for (unsigned int myLength = 0; myLength < mLength; myLength++)
+		{
+			mArray[myLength] = storage.mArray[myLength];
+		}
+	}
+
+	template<typename T>
 	Storage<T>::Storage(Storage&& storage)
 	{
 		mArray = std::move(storage.mArray);
 		mLength = storage.mLength;
 		storage.mLength = 0;
+	}
+
+	template<typename T>
+	Storage<T>& Storage<T>::operator=(const Storage& storage)
+	{
+		if (this == *stoarge)
+		{
+			return *this;
+		}
+
+		mLength = storage.mLength;
+		mArray = std::make_unique<T[]>(mLength);
+
+		for (unsigned int myLength = 0; myLength < mLength; myLength++)
+		{
+			mArray[myLength] = storage.mArray[myLength];
+		}
+
+		return *this;
 	}
 
 
