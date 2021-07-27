@@ -21,6 +21,7 @@ namespace assignment4
 
 	private:
 		std::shared_ptr<TreeNode<T>> SearchMinNode(std::shared_ptr<TreeNode<T>> treeNode);
+		void NonSearchDelete(std::shared_ptr<TreeNode<T>> treeNode);
 		std::shared_ptr<TreeNode<T>> mTreeNode = nullptr;
 		unsigned int mCount;
 	};
@@ -130,6 +131,52 @@ namespace assignment4
 	}
 
 	template<typename T>
+	void BinarySearchTree<T>::NonSearchDelete(std::shared_ptr<TreeNode<T>> treeNode)
+	{
+		std::shared_ptr<TreeNode<T>> saveTreeNode = treeNode;
+		std::shared_ptr<TreeNode<T>> saveLeftRightNode;
+
+		if (saveTreeNode->Left == nullptr && saveTreeNode->Right == nullptr)
+		{
+			saveLeftRightNode = saveTreeNode;
+			saveTreeNode = saveTreeNode->Parent.lock();
+
+			if (saveTreeNode->Left == saveLeftRightNode)
+			{
+				saveTreeNode->Left.reset();
+			}
+			else if (saveTreeNode->Right == saveLeftRightNode)
+			{
+				saveTreeNode->Right.reset();
+			}
+		}
+		else if (saveTreeNode->Left == nullptr || saveTreeNode->Right == nullptr)
+		{
+			if (saveTreeNode->Left != nullptr)
+			{
+				saveLeftRightNode = saveTreeNode->Left;
+			}
+			else
+			{
+				saveLeftRightNode = saveTreeNode->Right;
+			}
+
+			if (saveTreeNode->Parent.lock()->Left == saveTreeNode)
+			{
+				saveTreeNode = saveTreeNode->Parent.lock();
+				saveTreeNode->Left = saveLeftRightNode;
+				saveLeftRightNode->Parent = saveTreeNode;
+			}
+			else
+			{
+				saveTreeNode = saveTreeNode->Parent.lock();
+				saveTreeNode->Right = saveLeftRightNode;
+				saveLeftRightNode->Parent = saveTreeNode;
+			}
+		}
+	}
+
+	template<typename T>
 	bool BinarySearchTree<T>::Delete(const T& data)
 	{
 		std::shared_ptr<TreeNode<T>> saveTreeNode = mTreeNode;
@@ -160,6 +207,13 @@ namespace assignment4
 				}
 			}
 		}
+
+		if (mCount == 1 && saveTreeNode == mTreeNode)
+		{
+			saveTreeNode.reset();
+			return true;
+		}
+
 
 		if (saveTreeNode->Left == nullptr && saveTreeNode->Right == nullptr)
 		{
@@ -201,9 +255,19 @@ namespace assignment4
 		}
 		else if(saveTreeNode->Left != nullptr && saveTreeNode->Right != nullptr)
 		{
-			saveLeftRightNode = SearchMinNode(saveTreeNode->Right);
-			Delete(*saveLeftRightNode->Data);
-			saveTreeNode->Data = std::move(saveLeftRightNode->Data);
+			if (saveTreeNode == mTreeNode)
+			{
+				saveLeftRightNode = SearchMinNode(saveTreeNode);
+				saveTreeNode->Data = std::move(saveLeftRightNode->Data);
+				NonSearchDelete(saveLeftRightNode);
+
+			}
+			else
+			{
+				saveLeftRightNode = SearchMinNode(saveTreeNode->Right);
+				Delete(*saveLeftRightNode->Data);
+				saveTreeNode->Data = std::move(saveLeftRightNode->Data);
+			}
 		}
 
 		mCount--;
