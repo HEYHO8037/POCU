@@ -265,8 +265,8 @@ namespace assignment4
 			else
 			{
 				saveLeftRightNode = SearchMinNode(saveTreeNode->Right);
-				Delete(*saveLeftRightNode->Data);
 				saveTreeNode->Data = std::move(saveLeftRightNode->Data);
+				NonSearchDelete(saveLeftRightNode);
 			}
 		}
 
