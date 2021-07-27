@@ -130,7 +130,6 @@ namespace assignment4
 				{
 					return false;
 				}
-
 			}
 			else
 			{
@@ -217,13 +216,20 @@ namespace assignment4
 				saveLeftRightNode->Parent.lock()->Right = saveTreeNode;
 			}
 
-			if (saveLeftRightNode->Left->Parent.lock() == saveLeftRightNode)
+			if (saveLeftRightNode->Left != nullptr)
 			{
-				saveLeftRightNode->Left->Parent = saveTreeNode;
+				if (saveLeftRightNode->Left->Parent.lock() == saveLeftRightNode)
+				{
+					saveLeftRightNode->Left->Parent = saveTreeNode;
+				}
 			}
-			if (saveLeftRightNode->Right->Parent.lock() == saveLeftRightNode)
+
+			if (saveLeftRightNode->Right != nullptr)
 			{
-				saveLeftRightNode->Right->Parent = saveTreeNode;
+				if (saveLeftRightNode->Right->Parent.lock() == saveLeftRightNode)
+				{
+					saveLeftRightNode->Right->Parent = saveTreeNode;
+				}
 			}
 
 			saveTreeNode->Parent = saveLeftRightNode->Parent;
