@@ -38,7 +38,7 @@ int main()
 	bDeleted = tree.Delete(100);
 	assert(!bDeleted);
 
-	bDeleted = tree.Delete(19);
+	bDeleted = tree.Delete(4);
 	assert(bDeleted);
 
 	v = tree.TraverseInOrder(tree.GetRootNode().lock());

@@ -20,7 +20,7 @@ namespace assignment4
 		static std::vector<T> TraverseInOrder(const std::shared_ptr<TreeNode<T>> startNode);
 
 	private:
-		static void Inorder(const std::shared_ptr<TreeNode<T>> node);
+		std::shared_ptr<TreeNode<T>> SearchMinNode(std::shared_ptr<TreeNode<T>> treeNode);
 		std::shared_ptr<TreeNode<T>> mTreeNode = nullptr;
 		unsigned int mCount;
 	};
@@ -110,6 +110,25 @@ namespace assignment4
 		return false;
 	}
 
+
+	template<typename T>
+	std::shared_ptr<TreeNode<T>> BinarySearchTree<T>::SearchMinNode(std::shared_ptr<TreeNode<T>> treeNode)
+	{
+		if (treeNode == nullptr)
+		{
+			return nullptr;
+		}
+
+		if (treeNode->Left == nullptr)
+		{
+			return treeNode;
+		}
+		else
+		{
+			return SearchMinNode(treeNode->Left);
+		}
+	}
+
 	template<typename T>
 	bool BinarySearchTree<T>::Delete(const T& data)
 	{
@@ -171,80 +190,22 @@ namespace assignment4
 			{
 				saveTreeNode = saveTreeNode->Parent.lock();
 				saveTreeNode->Left = saveLeftRightNode;
+				saveLeftRightNode->Parent = saveTreeNode;
 			}
 			else
 			{
 				saveTreeNode = saveTreeNode->Parent.lock();
 				saveTreeNode->Right = saveLeftRightNode;
+				saveLeftRightNode->Parent = saveTreeNode;
 			}
 		}
-		else
+		else if(saveTreeNode->Left != nullptr && saveTreeNode->Right != nullptr)
 		{
-			saveLeftRightNode = saveTreeNode;
-
-			if (saveTreeNode->Right != nullptr)
-			{
-				saveTreeNode = saveTreeNode->Right;
-			}
-
-			while (saveTreeNode->Left != nullptr)
-			{
-				saveTreeNode = saveTreeNode->Left;
-
-				if (saveTreeNode->Left == nullptr)
-				{
-					break;
-				}
-			}
-
-			if (saveTreeNode->Parent.lock()->Left == saveTreeNode)
-			{
-				saveTreeNode->Parent.lock()->Left = nullptr;
-			}
-			if (saveTreeNode->Parent.lock()->Right == saveTreeNode)
-			{
-				saveTreeNode->Parent.lock()->Right = nullptr;
-			}
-
-
-			if (saveLeftRightNode->Parent.lock()->Left == saveLeftRightNode)
-			{
-				saveLeftRightNode->Parent.lock()->Left = saveTreeNode;
-			}
-			if (saveLeftRightNode->Parent.lock()->Right == saveLeftRightNode)
-			{
-				saveLeftRightNode->Parent.lock()->Right = saveTreeNode;
-			}
-
-			if (saveLeftRightNode->Left != nullptr)
-			{
-				if (saveLeftRightNode->Left->Parent.lock() == saveLeftRightNode)
-				{
-					saveLeftRightNode->Left->Parent = saveTreeNode;
-				}
-			}
-
-			if (saveLeftRightNode->Right != nullptr)
-			{
-				if (saveLeftRightNode->Right->Parent.lock() == saveLeftRightNode)
-				{
-					saveLeftRightNode->Right->Parent = saveTreeNode;
-				}
-			}
-
-			saveTreeNode->Parent = saveLeftRightNode->Parent;
-			saveTreeNode->Left = saveLeftRightNode->Left;
-			saveTreeNode->Right = saveLeftRightNode->Right;
-			
-			if (saveLeftRightNode->Left != nullptr)
-			{
-				saveLeftRightNode->Left->Parent.lock() = saveTreeNode;
-			}
-			if (saveLeftRightNode->Right != nullptr)
-			{
-				saveLeftRightNode->Right->Parent.lock() = saveTreeNode;
-			}
+			saveLeftRightNode = SearchMinNode(saveTreeNode->Right);
+			Delete(*saveLeftRightNode->Data);
+			saveTreeNode->Data = std::move(saveLeftRightNode->Data);
 		}
+
 		mCount--;
 		return true;
 	}
