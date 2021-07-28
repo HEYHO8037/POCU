@@ -149,6 +149,8 @@ namespace assignment4
 			{
 				saveTreeNode->Right.reset();
 			}
+
+			mCount--;
 		}
 		else if (saveTreeNode->Left == nullptr || saveTreeNode->Right == nullptr)
 		{
@@ -173,6 +175,8 @@ namespace assignment4
 				saveTreeNode->Right = saveLeftRightNode;
 				saveLeftRightNode->Parent = saveTreeNode;
 			}
+
+			mCount--;
 		}
 	}
 
@@ -197,7 +201,7 @@ namespace assignment4
 					return false;
 				}
 			}
-			else
+			else if(*saveTreeNode->Data < data)
 			{
 				saveTreeNode = saveTreeNode->Right;
 
@@ -210,7 +214,7 @@ namespace assignment4
 
 		if (mCount == 1 && saveTreeNode == mTreeNode)
 		{
-			saveTreeNode.reset();
+			mTreeNode.reset();
 			return true;
 		}
 
@@ -271,25 +275,12 @@ namespace assignment4
 				saveLeftRightNode->Parent = saveTreeNode;
 				mTreeNode = saveLeftRightNode;
 			}
-
-
-
 		}
 		else if(saveTreeNode->Left != nullptr && saveTreeNode->Right != nullptr)
 		{
-			if (saveTreeNode == mTreeNode)
-			{
-				saveLeftRightNode = SearchMinNode(saveTreeNode);
-				saveTreeNode->Data = std::move(saveLeftRightNode->Data);
-				NonSearchDelete(saveLeftRightNode);
-
-			}
-			else
-			{
-				saveLeftRightNode = SearchMinNode(saveTreeNode->Right);
-				saveTreeNode->Data = std::move(saveLeftRightNode->Data);
-				NonSearchDelete(saveLeftRightNode);
-			}
+			saveLeftRightNode = SearchMinNode(saveTreeNode->Right);
+			saveTreeNode->Data = std::move(saveLeftRightNode->Data);
+			NonSearchDelete(saveLeftRightNode);
 		}
 
 		mCount--;
@@ -302,6 +293,11 @@ namespace assignment4
 		std::shared_ptr<TreeNode<T>> saveTreeNode = startNode;
 		std::shared_ptr<TreeNode<T>> saveRightTreeNode;
 		std::vector<T> saveVector;
+
+		if (startNode == nullptr)
+		{
+			return saveVector;
+		}
 
 		while (saveTreeNode->Right != nullptr)
 		{
@@ -335,6 +331,11 @@ namespace assignment4
 			}
 			else
 			{
+				if (saveTreeNode->Parent.lock()->Right == saveTreeNode)
+				{
+					saveTreeNode = saveTreeNode->Parent.lock();
+				}
+
 				if (saveTreeNode->Parent.lock() != nullptr)
 				{
 					saveTreeNode = saveTreeNode->Parent.lock();
