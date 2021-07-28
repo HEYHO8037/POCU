@@ -149,8 +149,6 @@ namespace assignment4
 			{
 				saveTreeNode->Right.reset();
 			}
-
-			mCount--;
 		}
 		else if (saveTreeNode->Left == nullptr || saveTreeNode->Right == nullptr)
 		{
@@ -175,8 +173,6 @@ namespace assignment4
 				saveTreeNode->Right = saveLeftRightNode;
 				saveLeftRightNode->Parent = saveTreeNode;
 			}
-
-			mCount--;
 		}
 	}
 
@@ -215,6 +211,7 @@ namespace assignment4
 		if (mCount == 1 && saveTreeNode == mTreeNode)
 		{
 			mTreeNode.reset();
+			mCount = 0;
 			return true;
 		}
 
@@ -238,20 +235,10 @@ namespace assignment4
 			if (saveTreeNode->Left != nullptr)
 			{
 				saveLeftRightNode = saveTreeNode->Left;
-
-				while (saveLeftRightNode->Right != nullptr)
-				{
-					saveLeftRightNode = saveLeftRightNode->Right;
-				}
 			}
 			else
 			{
 				saveLeftRightNode = saveTreeNode->Right;
-
-				while (saveLeftRightNode->Left != nullptr)
-				{
-					saveLeftRightNode = saveLeftRightNode->Left;
-				}
 			}
 
 
