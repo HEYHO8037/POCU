@@ -24,6 +24,5 @@ int main()
     assert(bDelete);
     assert(traverseResult.size() == 1);
     assert(traverseResult[0] == 15);
-    assert(tree.GetRootNode().lock());
 
 }
