@@ -22,7 +22,7 @@ namespace assignment4
 	private:
 		std::shared_ptr<TreeNode<T>> SearchMinNode(std::shared_ptr<TreeNode<T>> treeNode);
 		void NonSearchDelete(std::shared_ptr<TreeNode<T>> treeNode);
-		std::shared_ptr<TreeNode<T>> mTreeNode = nullptr;
+		std::shared_ptr<TreeNode<T>> mTreeNode;
 		unsigned int mCount;
 	};
 
@@ -181,6 +181,11 @@ namespace assignment4
 	{
 		std::shared_ptr<TreeNode<T>> saveTreeNode = mTreeNode;
 		std::shared_ptr<TreeNode<T>> saveLeftRightNode;
+
+		if (mTreeNode == nullptr)
+		{
+			return false;
+		}
 
 		for (unsigned int length = 0; length < mCount; length++)
 		{

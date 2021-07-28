@@ -6,17 +6,24 @@ using namespace assignment4;
 
 int main()
 {
-	BinarySearchTree<int> tree;
+    bool bDelete = false;
+    bool bSearch = false;
+    BinarySearchTree<int> tree;
+    std::vector<int> traverseResult;
 
-	tree.Insert(std::make_unique<int>(0));
-	tree.Insert(std::make_unique<int>(1));
-	tree.Insert(std::make_unique<int>(0));
-	tree.Insert(std::make_unique<int>(0));
-	tree.Insert(std::make_unique<int>(1));
+    bDelete = tree.Delete(15);
+    bSearch = tree.Search(15);
+    traverseResult = tree.TraverseInOrder(tree.GetRootNode().lock());
+    assert(!bDelete);
+    assert(!bSearch);
+    assert(traverseResult.empty());
 
-	tree.Delete(0);
-	tree.Delete(0);
-	tree.Delete(1);
-	tree.Delete(1);
-	tree.Delete(0);
+    tree.Insert(std::make_unique<int>(15));
+    traverseResult = tree.TraverseInOrder(tree.GetRootNode().lock());
+    bDelete = tree.Delete(15);
+    assert(bDelete);
+    assert(traverseResult.size() == 1);
+    assert(traverseResult[0] == 15);
+    assert(tree.GetRootNode().lock());
+
 }
