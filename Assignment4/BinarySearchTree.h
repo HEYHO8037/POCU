@@ -234,24 +234,46 @@ namespace assignment4
 			if (saveTreeNode->Left != nullptr)
 			{
 				saveLeftRightNode = saveTreeNode->Left;
+
+				while (saveLeftRightNode->Right != nullptr)
+				{
+					saveLeftRightNode = saveLeftRightNode->Right;
+				}
 			}
 			else
 			{
 				saveLeftRightNode = saveTreeNode->Right;
+
+				while (saveLeftRightNode->Left != nullptr)
+				{
+					saveLeftRightNode = saveLeftRightNode->Left;
+				}
 			}
 
-			if (saveTreeNode->Parent.lock()->Left == saveTreeNode)
+
+			if (saveTreeNode->Parent.lock() != nullptr)
 			{
-				saveTreeNode = saveTreeNode->Parent.lock();
-				saveTreeNode->Left = saveLeftRightNode;
-				saveLeftRightNode->Parent = saveTreeNode;
+				if (saveTreeNode->Parent.lock()->Left == saveTreeNode)
+				{
+					saveTreeNode = saveTreeNode->Parent.lock();
+					saveTreeNode->Left = saveLeftRightNode;
+					saveLeftRightNode->Parent = saveTreeNode;
+				}
+				else
+				{
+					saveTreeNode = saveTreeNode->Parent.lock();
+					saveTreeNode->Right = saveLeftRightNode;
+					saveLeftRightNode->Parent = saveTreeNode;
+				}
 			}
 			else
 			{
-				saveTreeNode = saveTreeNode->Parent.lock();
-				saveTreeNode->Right = saveLeftRightNode;
 				saveLeftRightNode->Parent = saveTreeNode;
+				mTreeNode = saveLeftRightNode;
 			}
+
+
+
 		}
 		else if(saveTreeNode->Left != nullptr && saveTreeNode->Right != nullptr)
 		{
