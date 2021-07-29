@@ -24,12 +24,7 @@ namespace assignment4
 		void NonSearchDelete(std::shared_ptr<TreeNode<T>> treeNode);
 
 		std::shared_ptr<TreeNode<T>> mTreeNode;
-		unsigned int mCount = 0;
-		static std::vector<T> mVector;
 	};
-
-	template<typename T>
-	std::vector<T> BinarySearchTree<T>::mVector;
 
 	template<typename T>
 	void BinarySearchTree<T>::Insert(std::unique_ptr<T> data)
@@ -40,14 +35,13 @@ namespace assignment4
 		if (mTreeNode == nullptr)
 		{
 			mTreeNode = std::make_shared<TreeNode<T>>(move(data));
-			mCount++;
 			return;
 		}
 		else
 		{
 			saveTreeNode = mTreeNode;
 
-			for (unsigned int length = 0; length < mCount; length++)
+			while (true)
 			{
 				if (*saveTreeNode->Data >= *data)
 				{
@@ -57,7 +51,6 @@ namespace assignment4
 						saveTreeNode->Left = std::make_shared<TreeNode<T>>(move(data));
 						saveTreeNode = saveTreeNode->Left;
 						saveTreeNode->Parent = saveParentNode;
-						mCount++;
 						return;
 					}
 					else
@@ -73,7 +66,6 @@ namespace assignment4
 						saveTreeNode->Right = std::make_shared<TreeNode<T>>(move(data));
 						saveTreeNode = saveTreeNode->Right;
 						saveTreeNode->Parent = saveParentNode;
-						mCount++;
 						return;
 					}
 					else
@@ -188,7 +180,7 @@ namespace assignment4
 			return false;
 		}
 
-		for (unsigned int length = 0; length < mCount; length++)
+		while(saveTreeNode != nullptr)
 		{
 			if (*saveTreeNode->Data == data)
 			{
@@ -214,10 +206,9 @@ namespace assignment4
 			}
 		}
 
-		if (mCount == 1 && saveTreeNode == mTreeNode)
+		if (saveTreeNode == mTreeNode && saveTreeNode->Left == nullptr && saveTreeNode->Right == nullptr)
 		{
 			mTreeNode.reset();
-			mCount = 0;
 			return true;
 		}
 
@@ -276,25 +267,33 @@ namespace assignment4
 			NonSearchDelete(saveLeftRightNode);
 		}
 
-		mCount--;
 		return true;
 	}
 
 	template<typename T>
 	std::vector<T> BinarySearchTree<T>::TraverseInOrder(const std::shared_ptr<TreeNode<T>> startNode)
 	{
+		std::vector<T> inorderVector;
+		
 		if (startNode == nullptr)
 		{
-			return mVector;
+			return inorderVector;
 		}
 
-		TraverseInOrder(startNode->Left);
+		if (TraverseInOrder(startNode->Left).size() != 0)
+		{
+			inorderVector = TraverseInOrder(startNode->Left);
+		}
 
-		mVector.push_back(*startNode->Data);
+		inorderVector.push_back(*startNode->Data);
 
-		TraverseInOrder(startNode->Right);
+		if (TraverseInOrder(startNode->Right).size() != 0)
+		{
+			inorderVector = TraverseInOrder(startNode->Right);;
+		}
 
-		return mVector;
+
+		return inorderVector;
 	}
 
 }
