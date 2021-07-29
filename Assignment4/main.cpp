@@ -6,9 +6,18 @@ using namespace assignment4;
 
 int main()
 {
-    BinarySearchTree<int> tree;
-    
-	tree.Insert(std::make_unique<int>(5));
+	BinarySearchTree<int> tree;
+
+	for (int length = 1; length < 31; length++)
+	{
+		tree.Insert(std::make_unique<int>(length));
+	}
+
+	for (int length = 1; length < 31; length++)
+	{
+		tree.Delete(length);
+	}
+	
 	tree.Insert(std::make_unique<int>(3));
 	tree.Insert(std::make_unique<int>(1));
 	tree.Insert(std::make_unique<int>(7));

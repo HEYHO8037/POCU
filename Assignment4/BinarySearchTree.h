@@ -23,7 +23,7 @@ namespace assignment4
 		std::shared_ptr<TreeNode<T>> SearchMinNode(std::shared_ptr<TreeNode<T>> treeNode);
 		void NonSearchDelete(std::shared_ptr<TreeNode<T>> treeNode);
 		std::shared_ptr<TreeNode<T>> mTreeNode;
-		unsigned int mCount;
+		unsigned int mCount = 0;
 	};
 
 	template<typename T>
@@ -264,7 +264,7 @@ namespace assignment4
 			}
 			else
 			{
-				saveLeftRightNode->Parent = saveTreeNode;
+				saveLeftRightNode->Parent = saveTreeNode->Parent;
 				mTreeNode = saveLeftRightNode;
 			}
 		}
