@@ -20,8 +20,7 @@ namespace assignment4
 		static std::vector<T> TraverseInOrder(const std::shared_ptr<TreeNode<T>> startNode);
 
 	private:
-		std::shared_ptr<TreeNode<T>> SearchRightMinNode(std::shared_ptr<TreeNode<T>> treeNode);
-		std::shared_ptr<TreeNode<T>> SearchLeftMinNode(std::shared_ptr<TreeNode<T>> treeNode);
+		std::shared_ptr<TreeNode<T>> SearchMinNode(std::shared_ptr<TreeNode<T>> treeNode);
 		void NonSearchDelete(std::shared_ptr<TreeNode<T>> treeNode);
 		std::shared_ptr<TreeNode<T>> mTreeNode;
 		unsigned int mCount;
@@ -114,7 +113,7 @@ namespace assignment4
 
 
 	template<typename T>
-	std::shared_ptr<TreeNode<T>> BinarySearchTree<T>::SearchRightMinNode(std::shared_ptr<TreeNode<T>> treeNode)
+	std::shared_ptr<TreeNode<T>> BinarySearchTree<T>::SearchMinNode(std::shared_ptr<TreeNode<T>> treeNode)
 	{
 		if (treeNode == nullptr)
 		{
@@ -127,25 +126,7 @@ namespace assignment4
 		}
 		else
 		{
-			return SearchRightMinNode(treeNode->Left);
-		}
-	}
-
-	template<typename T>
-	std::shared_ptr<TreeNode<T>> BinarySearchTree<T>::SearchLeftMinNode(std::shared_ptr<TreeNode<T>> treeNode)
-	{
-		if (treeNode == nullptr)
-		{
-			return nullptr;
-		}
-
-		if (treeNode->Right == nullptr)
-		{
-			return treeNode;
-		}
-		else
-		{
-			return SearchLeftMinNode(treeNode->Right);
+			return SearchMinNode(treeNode->Left);
 		}
 	}
 
@@ -289,14 +270,10 @@ namespace assignment4
 		}
 		else if(saveTreeNode->Left != nullptr && saveTreeNode->Right != nullptr)
 		{
-			saveLeftRightNode = SearchRightMinNode(saveTreeNode->Right);
-			if (!(saveLeftRightNode >= saveTreeNode->Left && saveLeftRightNode < saveTreeNode->Right))
-			{
-				saveLeftRightNode = SearchLeftMinNode(saveTreeNode->Left);
-			}
-
+			saveLeftRightNode = SearchMinNode(saveTreeNode->Right);
 			saveTreeNode->Data = std::move(saveLeftRightNode->Data);
 			NonSearchDelete(saveLeftRightNode);
+			Delete(data);
 		}
 
 		mCount--;
