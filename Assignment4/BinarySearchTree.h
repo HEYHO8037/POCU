@@ -22,9 +22,14 @@ namespace assignment4
 	private:
 		std::shared_ptr<TreeNode<T>> SearchMinNode(std::shared_ptr<TreeNode<T>> treeNode);
 		void NonSearchDelete(std::shared_ptr<TreeNode<T>> treeNode);
+
 		std::shared_ptr<TreeNode<T>> mTreeNode;
 		unsigned int mCount = 0;
+		static std::vector<T> mVector;
 	};
+
+	template<typename T>
+	std::vector<T> BinarySearchTree<T>::mVector;
 
 	template<typename T>
 	void BinarySearchTree<T>::Insert(std::unique_ptr<T> data)
@@ -115,11 +120,6 @@ namespace assignment4
 	template<typename T>
 	std::shared_ptr<TreeNode<T>> BinarySearchTree<T>::SearchMinNode(std::shared_ptr<TreeNode<T>> treeNode)
 	{
-		if (treeNode == nullptr)
-		{
-			return nullptr;
-		}
-
 		if (treeNode->Left == nullptr)
 		{
 			return treeNode;
@@ -175,6 +175,7 @@ namespace assignment4
 			}
 		}
 	}
+
 
 	template<typename T>
 	bool BinarySearchTree<T>::Delete(const T& data)
@@ -282,104 +283,18 @@ namespace assignment4
 	template<typename T>
 	std::vector<T> BinarySearchTree<T>::TraverseInOrder(const std::shared_ptr<TreeNode<T>> startNode)
 	{
-		std::shared_ptr<TreeNode<T>> saveTreeNode = startNode;
-		std::shared_ptr<TreeNode<T>> saveRightTreeNode;
-		std::vector<T> saveVector;
-
 		if (startNode == nullptr)
 		{
-			return saveVector;
+			return mVector;
 		}
 
-		while (saveTreeNode->Right != nullptr)
-		{
-			saveTreeNode = saveTreeNode->Right;
-		}
+		TraverseInOrder(startNode->Left);
 
-		saveRightTreeNode = saveTreeNode;
+		mVector.push_back(*startNode->Data);
 
-		saveTreeNode = startNode;
+		TraverseInOrder(startNode->Right);
 
-		while (saveTreeNode->Left != nullptr)
-		{
-			saveTreeNode = saveTreeNode->Left;
-		}
-
-		while(saveTreeNode->Parent.lock() != startNode->Parent.lock())
-		{
-			saveVector.push_back(*saveTreeNode->Data);
-
-			if (saveTreeNode->Right != nullptr)
-			{
-				saveTreeNode = saveTreeNode->Right;
-
-				if (saveTreeNode->Left != nullptr)
-				{
-					while (saveTreeNode->Left != nullptr)
-					{
-						saveTreeNode = saveTreeNode->Left;
-					}
-				}
-			}
-			else
-			{
-				if (saveTreeNode->Parent.lock()->Right == saveTreeNode)
-				{
-					saveTreeNode = saveTreeNode->Parent.lock();
-				}
-
-				if (saveTreeNode->Parent.lock() != nullptr)
-				{
-					saveTreeNode = saveTreeNode->Parent.lock();
-				}
-			}
-		}
-
-		saveVector.push_back(*saveTreeNode->Data);
-
-		if (saveTreeNode->Right != nullptr)
-		{
-			saveTreeNode = saveTreeNode->Right;
-
-			while (saveTreeNode->Left != nullptr)
-			{
-				saveTreeNode = saveTreeNode->Left;
-			}
-
-			while (true)
-			{
-				saveVector.push_back(*saveTreeNode->Data);
-
-				if (saveRightTreeNode == saveTreeNode)
-				{
-					break;
-				}
-				else
-				{
-					if (saveTreeNode->Right != nullptr)
-					{
-						saveTreeNode = saveTreeNode->Right;
-
-						if (saveTreeNode->Left != nullptr)
-						{
-							while (saveTreeNode->Left != nullptr)
-							{
-								saveTreeNode = saveTreeNode->Left;
-							}
-						}
-					}
-					else
-					{
-						if (saveTreeNode->Parent.lock() != nullptr)
-						{
-							saveTreeNode = saveTreeNode->Parent.lock();
-						}
-					}
-				}
-			}
-		}
-
-		return saveVector;
+		return mVector;
 	}
 
 }
