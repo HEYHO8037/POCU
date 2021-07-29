@@ -270,30 +270,27 @@ namespace assignment4
 		return true;
 	}
 
+
 	template<typename T>
 	std::vector<T> BinarySearchTree<T>::TraverseInOrder(const std::shared_ptr<TreeNode<T>> startNode)
 	{
 		std::vector<T> inorderVector;
+		std::vector<T> saveVector;
 		
 		if (startNode == nullptr)
 		{
 			return inorderVector;
 		}
 
-		if (TraverseInOrder(startNode->Left).size() != 0)
-		{
-			inorderVector = TraverseInOrder(startNode->Left);
-		}
+		saveVector = TraverseInOrder(startNode->Left);
+		inorderVector.insert(inorderVector.end(), saveVector.begin(), saveVector.end());
 
 		inorderVector.push_back(*startNode->Data);
-
-		if (TraverseInOrder(startNode->Right).size() != 0)
-		{
-			inorderVector = TraverseInOrder(startNode->Right);;
-		}
-
+		
+		saveVector = TraverseInOrder(startNode->Right);
+		inorderVector.insert(inorderVector.end(), saveVector.begin() , saveVector.end());
 
 		return inorderVector;
-	}
 
+	}
 }
