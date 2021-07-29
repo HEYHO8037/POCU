@@ -273,7 +273,6 @@ namespace assignment4
 			saveLeftRightNode = SearchMinNode(saveTreeNode->Right);
 			saveTreeNode->Data = std::move(saveLeftRightNode->Data);
 			NonSearchDelete(saveLeftRightNode);
-			Delete(data);
 		}
 
 		mCount--;
